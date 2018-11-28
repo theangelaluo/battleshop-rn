@@ -14,6 +14,7 @@ import {
 } from 'react-native';
 import { createStackNavigator, createAppContainer } from "react-navigation";
 import axios from 'axios';
+import NavigationBar from '.';
 
 // *****MAKE ALL THE PAGES. todo: abstract this to their own pages somehow.******//
 class Rewards extends React.Component {
@@ -126,7 +127,6 @@ class GroupOrSolo extends React.Component {
   toHuntOrSave() {
     this.props.navigation.navigate('HuntOrSave');
   }
-
 
   render() {
     return (
