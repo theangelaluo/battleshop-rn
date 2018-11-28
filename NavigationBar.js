@@ -11,9 +11,9 @@ export default class NavigationBar extends React.Component {
   state = {
     index: 0,
     routes: [
-      { key: 'music', title: 'Music', icon: 'queue-music' },
-      { key: 'albums', title: 'Albums', icon: 'album' },
-      { key: 'recents', title: 'Recents', icon: 'history' },
+      { key: 'music', title: 'Me', icon: '' },
+      { key: 'albums', title: 'Compete', icon: '' },
+      { key: 'recents', title: 'Rewards', icon: '' },
     ],
   };
 
