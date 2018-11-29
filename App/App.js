@@ -21,7 +21,11 @@ import TimePicker from 'react-native-simple-time-picker';
 //var FBLoginButton = require('./FBLoginButton');
 
 import { createBottomTabNavigator,  createStackNavigator, createAppContainer } from 'react-navigation';
+
+// global variables
 var opponents_arr = []; // makes sure user has chosen at least one opponent
+var budget;
+
 class Header extends React.Component {
   render() {
     return (
@@ -207,19 +211,56 @@ class ChooseBudget extends React.Component {
       text: ''
     };
   }
+
   handleInputChange = (text) => {
-    if (/^\d+$/.test(text)) {
       this.setState({
-        text: text
+        text: text,
       });
-    }else{
-      this.setState({
-        text: 0
-      });
-    }
+      budget = text;
   }
   toChooseTime() {
-    this.props.navigation.navigate('ChooseTime');
+    // Error prevention
+    // Error prevention
+    if (typeof(budget) === 'undefined' || (typeof(budget) === 'string' && budget.length == 0)) {
+        Alert.alert(
+        'Battleshop Says',
+        'Your budget cannot be empty. Please choose a budget that is a positive number.',
+        [
+          {text: 'OK'},
+        ],
+        {cancelable: false}
+        )
+  } else if (budget[0] === '-') {
+    Alert.alert(
+    'Battleshop Says',
+    'Budgets cannot be negative. Please choose a budget that is a positive number.',
+    [
+      {text: 'OK'},
+    ],
+    {cancelable: false}
+    )
+    // Checks if the budget only contains digits
+  } else if (!/^\d+$/.test(budget)) {
+        Alert.alert(
+        'Battleshop Says',
+        'Budgets cannot include letters. Please choose a budget that is a positive number.',
+        [
+          {text: 'OK'},
+        ],
+        {cancelable: false}
+        )
+    } else if (budget === '0') {
+      Alert.alert(
+      'Battleshop Says',
+      'Zero is not a valid budget. Please choose a budget that is a positive number.',
+      [
+        {text: 'OK'},
+      ],
+      {cancelable: false}
+      )
+    }  else {
+      this.props.navigation.navigate('ChooseTime');
+    }
   }
   render() {
     return (
@@ -376,8 +417,9 @@ class ChooseOpponents extends React.Component {
       color: '#F2C57D',
       dataSource: ds.cloneWithRows(['Xiajang Wang', 'Melinda Vandersteen',
       'John Klickman', 'Alice Vera', 'Jason Brown']),
-      dataSource2: ds.cloneWithRows([ 'Alice Vera', 'Angela Luo', 'Barry Allen', 'Damon Salvatore',
-      'Emily Hu', 'Francesca Colombo','Jason Brown', 'John Klickman','Kara Danvers', 'Logan Pearce', 'Melinda Vandersteen',
+      dataSource2: ds.cloneWithRows([ 'Alice Vera', 'Angela Luo', 'Barry Allen', 'Bruce Wayne',
+      'Emily Hu', 'Francesca Colombo','Jason Brown', 'John Klickman','Kara Danvers',
+      'Logan Pearce', 'Melinda Vandersteen',
       'Peter Parker', 'Tony Stark', 'Xiajang Wang', 'Yanyan Tong'
       ]),
     };
@@ -419,7 +461,7 @@ class ChooseOpponents extends React.Component {
               renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
             />
             <View style={{marginTop: 10, borderColor: 'black', borderTopWidth: 1}}>
-          <Text style={styles.subheader}> All Contacts </Text>
+          <Text style={styles.subheader}> All Available Contacts </Text>
           </View>
           <ListView
               dataSource={this.state.dataSource2}
