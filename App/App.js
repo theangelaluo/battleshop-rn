@@ -100,10 +100,17 @@ class GroupOrSolo extends React.Component {
 }
 
 class ChallengeSent extends React.Component {
+  backToCompete() {
+    this.props.navigation.navigate('HuntOrSave');
+  }
   render() {
     return (
       <View style={styles.container}>
-        <Text>Challenge sent!</Text>
+        <Text style={{fontSize: 60, color: 'white'}}>Challenge Sent!</Text>
+        <Text style={{fontSize: 30, color: 'white'}}>We will inform you when you are ready to start the challenge.</Text>
+      <TouchableOpacity onPress={() => this.backToCompete()} style={[styles.button, {backgroundColor: '#f3c677', borderRadius: 2}]}>
+      <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 30, color: 'black'}}>Back to Compete Page</Text>
+      </TouchableOpacity>
       </View>
     )
   }
