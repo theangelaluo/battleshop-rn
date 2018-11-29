@@ -63,10 +63,10 @@ class Login extends React.Component {
           <Text></Text>
           <View style={{display: 'flex', flexDirection: 'column', marginTop: 10}}>
             <TouchableOpacity onPress={() => this.login('Facebook.com')} style={[styles.button, {backgroundColor: "#2553B4", borderRadius: 2}]}>
-              <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 16, color: 'white'}}>Login with Facebook</Text>
+              <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 20, color: 'white'}}>Login with Facebook</Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={() => this.login('Google.com')} style={[styles.button, {backgroundColor: '#ffffff', borderRadius: 2}]}>
-              <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 16, color: 'black'}}>Login with Google</Text>
+              <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 20, color: 'black'}}>Login with Google</Text>
               </TouchableOpacity>
           </View>
         </View>
@@ -144,11 +144,11 @@ class ChallengeSent extends React.Component {
   }
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={{fontSize: 60, color: 'white'}}>Challenge Sent!</Text>
-        <Text style={{fontSize: 30, color: 'white'}}>We will inform you when you are ready to start the challenge.</Text>
-      <TouchableOpacity onPress={() => this.backToCompete()} style={[styles.button, {backgroundColor: '#f3c677', borderRadius: 2}]}>
-      <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 30, color: 'black'}}>Back to Compete Page</Text>
+      <View style={{flex: 1, backgroundColor: '#F9564F', alignItems: 'center', padding: 15}}>
+        <Text style={{marginTop: 30, fontSize: 36, color: "white", fontWeight: 'bold', textAlign: 'center'}}>Challenge Sent!</Text>
+        <Text style={{marginTop: 20, fontSize: 30, color: 'white', textAlign: 'center'}}>We will inform you when you are ready to start the challenge.</Text>
+      <TouchableOpacity onPress={() => this.backToCompete()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 40}]}>
+      <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 20, color: 'white'}}>Back to Compete Page</Text>
       </TouchableOpacity>
       </View>
     )
@@ -172,10 +172,11 @@ class ChooseTime extends React.Component {
   render() {
     const { selectedHours, selectedMinutes } = this.state;
     return (
-      <View style={styles.container}>
-        <Text style={{fontSize: 60, color: 'white'}}>Choose Time</Text>
-        <Text style={{fontSize: 60, color: 'white'}}>{selectedHours} hr:{selectedMinutes} min</Text>
+      <View style={{flex: 1, backgroundColor: '#F9564F', alignItems: 'center'}}>
+        <Text style={{fontSize: 36, color: "white", fontWeight: 'bold', marginTop: 30}}>Choose Time</Text>
+        <Text style={{fontSize: 30, color: 'white', margin: 15}}>{selectedHours} hr : {selectedMinutes} min</Text>
         <View style={styles.yellowContainer}>
+        <View style={{backgroundColor: 'white', padding: 15, display: 'flex', width: '93%', height: '93%'}}>
           <TimePicker
             selectedHours={selectedHours}
             //initial Hours value
@@ -185,9 +186,10 @@ class ChooseTime extends React.Component {
                  selectedHours: hours, selectedMinutes: minutes
            })}
           />
+          </View>
         </View>
-        <TouchableOpacity onPress={() => this.toChallengeSent()} style={[styles.button, {backgroundColor: '#f3c677', borderRadius: 2}]}>
-        <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 30, color: 'black'}}>Send Challenge</Text>
+        <TouchableOpacity onPress={() => this.toChallengeSent()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 25}]}>
+          <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 30, color: 'white'}}>Send Challenge</Text>
         </TouchableOpacity>
       </View>
     );
@@ -221,18 +223,20 @@ class ChooseBudget extends React.Component {
   }
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={{fontSize: 60, color: 'white'}}>Choose Budget</Text>
-        <View style={styles.textBoxSurroundings}>
-          <TextInput
-          style={styles.textBox}
-          keyboardType='numeric'
-          onChangeText={this.handleInputChange}
-          value={this.state.text}
-          />
-        </View>
-        <TouchableOpacity onPress={() => this.toChooseTime()} style={[styles.button, {backgroundColor: '#f3c677', borderRadius: 2}]}>
-        <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 30, color: 'black'}}>Continue</Text>
+      <View style = {{flex: 1, backgroundColor: '#F9564F', alignItems: 'center'}}>
+        <Text style={{marginTop: 30, marginBottom: 30, textAlign: 'center', fontSize: 36, color: "white", fontWeight: 'bold'}}>Choose Budget</Text>
+
+          <View style={styles.textBoxSurroundings}>
+            <TextInput
+            style={styles.textBox}
+            keyboardType='numeric'
+            onChangeText={this.handleInputChange}
+            value={this.state.text}
+            />
+          </View>
+
+        <TouchableOpacity onPress={() => this.toChooseTime()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 25}]}>
+          <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 30, color: 'white'}}>Continue</Text>
         </TouchableOpacity>
       </View>
 
@@ -257,7 +261,7 @@ class ChooseItem extends React.Component {
   render() {
     return (
       <View style = {{flex: 1, backgroundColor: '#F9564F'}}>
-        <Text style={{margin: 30, textAlign: 'center', fontWeight: 'bold', fontSize: 36}}>Choose Item:</Text>
+        <Text style={{margin: 30, color: "white", fontWeight: 'bold', textAlign: 'center', fontSize: 36}}>Choose Your Item</Text>
         <View style={styles.itemsContainer}>
             <TouchableOpacity style={styles.itemButton} onPress={this.selectedItem.bind(this)}>
               <Text style={{textAlign: 'center', fontSize: 24}}>Dress</Text>
@@ -402,12 +406,10 @@ class ChooseOpponents extends React.Component {
 
   render() {
     return (
-      <View style={{flex: 1, backgroundColor: '#F9564F'}}>
-        <TouchableOpacity onPress={() => this.toChooseItem()} style={[styles.button, {backgroundColor: '#f3c677', borderRadius: 2}]}>
-          <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 30, color: 'black'}}>Continue</Text>
-        </TouchableOpacity>
-        <Text style={styles.header}>Choose Opponents</Text>
-        <View style={{backgroundColor: '#F2C57D'}}>
+      <View style={{flex: 1, alignItems: 'center', backgroundColor: '#F9564F'}}>
+
+        <Text style={[styles.header, {marginTop: 30, marginBottom: 30}]}>Choose Opponents</Text>
+        <View style={{backgroundColor: '#F2C57D', width: '80%', height: '60%', borderColor: 'black', borderWidth: 1}}>
           <Text style={ styles.subheader}> Recent Opponents </Text>
           <ListView
               dataSource={this.state.dataSource}
@@ -416,7 +418,9 @@ class ChooseOpponents extends React.Component {
               )}
               renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
             />
-          <Text style={ styles.subheader}> All Contacts </Text>
+            <View style={{marginTop: 10, borderColor: 'black', borderTopWidth: 1}}>
+          <Text style={styles.subheader}> All Contacts </Text>
+          </View>
           <ListView
               dataSource={this.state.dataSource2}
               renderRow={(item) => (
@@ -425,7 +429,9 @@ class ChooseOpponents extends React.Component {
               renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
             />
           </View>
-
+          <TouchableOpacity onPress={() => this.toChooseItem()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 25}]}>
+            <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 30, color: 'white'}}>Continue</Text>
+          </TouchableOpacity>
       </View>
     );
   }
@@ -469,11 +475,12 @@ const AppNavigator = createStackNavigator({
   //   screen: NavBar,
   // }
 }, {
-  initialRouteName: "Login"
+  initialRouteName: "Login",
+  headerMode: "none"
   }
 )
 
-//export default createAppContainer(AppNavigator);
+export default createAppContainer(AppNavigator);
 
 
 const NavBar = createBottomTabNavigator({
@@ -517,51 +524,51 @@ const NavBar = createBottomTabNavigator({
 })
 
 
-export default createAppContainer(createBottomTabNavigator({
-  // Login: {
-  //   screen: Login,
-  //   navigationOptions: {
-  //
-  //   }
-  // },
-  Profile: {
-    screen: Profile,
-    navigationOptions: {
-      tabBarLabel: 'Profile',
-      tabBarIcon: ({ tintColor }) => <Image source={require('../img/Profile.png')} />
-    },
-  },
-  Compete: {
-    screen: CompeteStack, // Replaced Feed with FeedStack
-    navigationOptions: {
-      tabBarLabel: 'Compete',
-      tabBarIcon: ({ tintColor }) => <Image source={require('../img/Compete.png')} />
-    },
-  },
-  Rewards: {
-    screen: Rewards,
-    navigationOptions: {
-      tabBarLabel: 'Rewards',
-      tabBarIcon: ({ tintColor }) => <Image source={require('../img/Rewards.png')} />
-    }
-  }
-
-}, {
-
-  initialRouteName: "Compete",
-		swipeEnabled: true,
-		animationEnabled: true,
-		lazy: true,
-		order: ["Profile", "Compete", "Rewards"],
-		backBehavior: "Login",
-		tabBarOptions: {
-			activeTintColor: 'coral',
-			showLabel: true,
-			showIcon: true,
-			pressColor: 'coral',
-			allowFontScaling: true
-		}
-}));
+// export default createAppContainer(createBottomTabNavigator({
+//   // Login: {
+//   //   screen: Login,
+//   //   navigationOptions: {
+//   //
+//   //   }
+//   // },
+//   Profile: {
+//     screen: Profile,
+//     navigationOptions: {
+//       tabBarLabel: 'Profile',
+//       tabBarIcon: ({ tintColor }) => <Image source={require('../img/Profile.png')} />
+//     },
+//   },
+//   Compete: {
+//     screen: CompeteStack, // Replaced Feed with FeedStack
+//     navigationOptions: {
+//       tabBarLabel: 'Compete',
+//       tabBarIcon: ({ tintColor }) => <Image source={require('../img/Compete.png')} />
+//     },
+//   },
+//   Rewards: {
+//     screen: Rewards,
+//     navigationOptions: {
+//       tabBarLabel: 'Rewards',
+//       tabBarIcon: ({ tintColor }) => <Image source={require('../img/Rewards.png')} />
+//     }
+//   }
+//
+// }, {
+//
+//   initialRouteName: "Compete",
+// 		swipeEnabled: true,
+// 		animationEnabled: true,
+// 		lazy: true,
+// 		order: ["Profile", "Compete", "Rewards"],
+// 		backBehavior: "Login",
+// 		tabBarOptions: {
+// 			activeTintColor: 'coral',
+// 			showLabel: true,
+// 			showIcon: true,
+// 			pressColor: 'coral',
+// 			allowFontScaling: true
+// 		}
+// }));
 
 const styles = StyleSheet.create({
   container: {
@@ -571,13 +578,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   itemsContainer: {
-  flex: 1,
-  flexDirection: 'row',
-  margin: 10,
+    flex: 1,
+    flexDirection: 'row',
+    margin: 10,
 //  paddingVertical: '10%',
-  flexWrap: 'wrap',
-  justifyContent: 'center',
-  alignItems: "center"
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    alignItems: "center"
 },
 itemButton: {
   width: '40%',
@@ -603,7 +610,10 @@ itemButton: {
     margin: 10
   },
   yellowContainer: {
-    flex: 0,
+    borderColor: "black",
+    borderWidth: 1,
+    width: '85%',
+    height: '55%',
     backgroundColor: '#f3c677',
     alignItems: 'center',
     justifyContent: 'center',
@@ -614,7 +624,7 @@ itemButton: {
     alignItems: 'center',
     justifyContent: 'center',
     height: 60,
-    width: 200,
+    width: '95%',
   },
   textBoxSurroundings: {
     flex: 0,
@@ -622,7 +632,7 @@ itemButton: {
     alignItems: 'center',
     justifyContent: 'center',
     height: 70,
-    width: 210,
+    width: '80%',
     fontSize: 30,
   },
   buttonShadow: {
@@ -636,10 +646,18 @@ itemButton: {
     marginRight: 5,
     marginTop: 10,
   },
+  shadow: {
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.8,
+    shadowRadius: 1,
+    elevation: 1,
+    shadowColor:'black',
+    shadowRadius: 1,
+    shadowOffset: {width: 4, height: 4},
+  },
   header: {
-    paddingRight: 15,
-    paddingLeft: 15,
-    fontSize: 40,
+    fontSize: 36,
     fontWeight: 'bold',
     color: 'white'
   },
