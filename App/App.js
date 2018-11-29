@@ -63,10 +63,10 @@ class Login extends React.Component {
           <Text></Text>
           <View style={{display: 'flex', flexDirection: 'column', marginTop: 10}}>
             <TouchableOpacity onPress={() => this.login('Facebook.com')} style={[styles.button, {backgroundColor: "#2553B4", borderRadius: 2}]}>
-              <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 16, color: 'white'}}>Login with Facebook</Text>
+              <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 20, color: 'white'}}>Login with Facebook</Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={() => this.login('Google.com')} style={[styles.button, {backgroundColor: '#ffffff', borderRadius: 2}]}>
-              <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 16, color: 'black'}}>Login with Google</Text>
+              <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 20, color: 'black'}}>Login with Google</Text>
               </TouchableOpacity>
           </View>
         </View>
@@ -399,12 +399,10 @@ class ChooseOpponents extends React.Component {
 
   render() {
     return (
-      <View style={{flex: 1, backgroundColor: '#F9564F'}}>
-        <TouchableOpacity onPress={() => this.toChooseItem()} style={[styles.button, {backgroundColor: '#f3c677', borderRadius: 2}]}>
-          <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 30, color: 'black'}}>Continue</Text>
-        </TouchableOpacity>
-        <Text style={styles.header}>Choose Opponents</Text>
-        <View style={{backgroundColor: '#F2C57D'}}>
+      <View style={{flex: 1, alignItems: 'center', backgroundColor: '#F9564F'}}>
+
+        <Text style={[styles.header, {marginTop: 30, marginBottom: 30}]}>Choose Opponents</Text>
+        <View style={{backgroundColor: '#F2C57D', width: '80%', height: '60%', borderColor: 'black', borderWidth: 1}}>
           <Text style={ styles.subheader}> Recent Opponents </Text>
           <ListView
               dataSource={this.state.dataSource}
@@ -413,7 +411,9 @@ class ChooseOpponents extends React.Component {
               )}
               renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
             />
-          <Text style={ styles.subheader}> All Contacts </Text>
+            <View style={{marginTop: 10, borderColor: 'black', borderTopWidth: 1}}>
+          <Text style={styles.subheader}> All Contacts </Text>
+          </View>
           <ListView
               dataSource={this.state.dataSource2}
               renderRow={(item) => (
@@ -422,7 +422,9 @@ class ChooseOpponents extends React.Component {
               renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
             />
           </View>
-
+          <TouchableOpacity onPress={() => this.toChooseItem()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 25}]}>
+            <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 30, color: 'white'}}>Continue</Text>
+          </TouchableOpacity>
       </View>
     );
   }
@@ -648,9 +650,7 @@ itemButton: {
     shadowOffset: {width: 4, height: 4},
   },
   header: {
-    paddingRight: 15,
-    paddingLeft: 15,
-    fontSize: 40,
+    fontSize: 36,
     fontWeight: 'bold',
     color: 'white'
   },
