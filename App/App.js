@@ -209,46 +209,38 @@ export default createAppContainer(createBottomTabNavigator({
     screen: Profile,
     navigationOptions: {
       tabBarLabel: 'Profile',
-      tabBarIcon: ({ tintColor }) => <Icon name="list" size={35} color={tintColor} />
+      tabBarIcon: ({ tintColor }) => <Image source={require('../img/Profile.png')} />
     },
   },
   Compete: {
     screen: CompeteStack, // Replaced Feed with FeedStack
     navigationOptions: {
       tabBarLabel: 'Compete',
-      tabBarIcon: ({ tintColor }) => <Icon name="list" size={35} color={tintColor} />
+      tabBarIcon: ({ tintColor }) => <Image source={require('../img/Compete.png')} />
     },
   },
   Rewards: {
     screen: Rewards,
     navigationOptions: {
       tabBarLabel: 'Rewards',
-      tabBarIcon: ({ tintColor }) => <Icon name="list" size={35} color={tintColor} />
+      tabBarIcon: ({ tintColor }) => <Image source={require('../img/Rewards.png')} />
     }
   }
 
 }, {
 
-  initialRouteName: "Login",
-		tabBarPosition: "bottom",
+  initialRouteName: "Compete",
 		swipeEnabled: true,
 		animationEnabled: true,
 		lazy: true,
 		order: ["Profile", "Compete", "Rewards"],
 		backBehavior: "Login",
 		tabBarOptions: {
-			activeTintColor: Colors.white,
-			inactiveTintColor: Colors.transparentWhite,
+			activeTintColor: 'white',
 			showLabel: true,
 			showIcon: true,
-			upperCaseLabel: false,
-			pressColor: Colors.transparentWhite,
-			scrollEnabled: false,
-			tabStyle: styles.tab,
-			indicatorStyle: styles.indicator,
-			labelStyle: styles.label,
-			iconStyle: styles.icon,
-			style: styles.tabBar
+			pressColor: 'coral',
+			allowFontScaling: true
 		}
 }));
 
