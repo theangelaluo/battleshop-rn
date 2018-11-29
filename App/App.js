@@ -36,8 +36,8 @@ class Login extends React.Component {
     //this.props.navigation.navigate('Compete');
   //  createAppContainer(NavBar);
   Alert.alert(
-  'Battleshop says:',
-  'Battleshop would like to use ' + company + ' to login.',
+  '"Battleshop" Wants to Use "' + company + '" to Sign In',
+  'This allows the app and website to share information about you.',
   [
     {text: 'Cancel', style: 'cancel'},
     {text: 'OK', onPress: () => this.loginActual()},
@@ -241,37 +241,43 @@ class ChooseItem extends React.Component {
   static navigationOptions = {
     headerTitle: <Header />
   }
-  selectedItem(item) {
-  }
-  toChooseBudget() {
+
+
+  selectedItem() {
     this.props.navigation.navigate('ChooseBudget');
   }
+
+  // toChooseBudget() {
+  //   this.props.navigation.navigate('ChooseBudget');
+  // }
   render() {
     return (
-      <View style = {{backgroundColor: 'white', marginTop: '15%'}}>
-        <Text style={{textAlign: 'center', fontWeight: 'bold', fontSize: 36}}>Choose Item:</Text>
+      <View style = {{flex: 1, backgroundColor: '#F9564F'}}>
+        <Text style={{margin: 30, textAlign: 'center', fontWeight: 'bold', fontSize: 36}}>Choose Item:</Text>
         <View style={styles.itemsContainer}>
-            <TouchableOpacity style={styles.itemButton} onPress={this.selectedItem('Dress')}>
+            <TouchableOpacity style={styles.itemButton} onPress={this.selectedItem.bind(this)}>
               <Text style={{textAlign: 'center', fontSize: 24}}>Dress</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.itemButton} onPress={this.selectedItem('Shirt')}>
+            <TouchableOpacity style={styles.itemButton} onPress={this.selectedItem.bind(this)}>
               <Text style={{textAlign: 'center', fontSize: 24}}>Shirt</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.itemButton} onPress={this.selectedItem('Jacket')}>
+            <TouchableOpacity style={styles.itemButton} onPress={this.selectedItem.bind(this)}>
               <Text style={{textAlign: 'center', fontSize: 24}}>Jacket</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.itemButton} onPress={this.selectedItem('Pants')}>
+            <TouchableOpacity style={styles.itemButton} onPress={this.selectedItem.bind(this)}>
               <Text style={{textAlign: 'center', fontSize: 24}}>Pants</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={{width: '80%', height: 70, marginTop:30, borderRadius: 15, justifyContent: 'center', alignItems: 'center', backgroundColor: '#7B1E7A'}} onPress={() => this.toChooseBudget()}>
-              <Text style={{textAlign: 'center', fontSize: 24}}>Continue</Text>
-            </TouchableOpacity>
+
         </View>
 
       </View>
     )
   }
 }
+
+// <TouchableOpacity style={{width: '80%', height: 70, marginTop:30, borderRadius: 15, justifyContent: 'center', alignItems: 'center', backgroundColor: '#7B1E7A'}} onPress={() => this.toChooseBudget()}>
+//   <Text style={{textAlign: 'center', fontSize: 24}}>Continue</Text>
+// </TouchableOpacity>
 
 class HuntOrSave extends React.Component {
   static navigationOptions = {
@@ -370,7 +376,7 @@ const AppNavigator = createStackNavigator({
   }
 )
 
-export default createAppContainer(AppNavigator);
+//export default createAppContainer(AppNavigator);
 
 
 const NavBar = createBottomTabNavigator({
@@ -414,51 +420,51 @@ const NavBar = createBottomTabNavigator({
 })
 
 
-// export default createAppContainer(createBottomTabNavigator({
-//   // Login: {
-//   //   screen: Login,
-//   //   navigationOptions: {
-//   //
-//   //   }
-//   // },
-//   Profile: {
-//     screen: Profile,
-//     navigationOptions: {
-//       tabBarLabel: 'Profile',
-//       tabBarIcon: ({ tintColor }) => <Image source={require('../img/Profile.png')} />
-//     },
-//   },
-//   Compete: {
-//     screen: CompeteStack, // Replaced Feed with FeedStack
-//     navigationOptions: {
-//       tabBarLabel: 'Compete',
-//       tabBarIcon: ({ tintColor }) => <Image source={require('../img/Compete.png')} />
-//     },
-//   },
-//   Rewards: {
-//     screen: Rewards,
-//     navigationOptions: {
-//       tabBarLabel: 'Rewards',
-//       tabBarIcon: ({ tintColor }) => <Image source={require('../img/Rewards.png')} />
-//     }
-//   }
-//
-// }, {
-//
-//   initialRouteName: "Compete",
-// 		swipeEnabled: true,
-// 		animationEnabled: true,
-// 		lazy: true,
-// 		order: ["Profile", "Compete", "Rewards"],
-// 		backBehavior: "Login",
-// 		tabBarOptions: {
-// 			activeTintColor: 'coral',
-// 			showLabel: true,
-// 			showIcon: true,
-// 			pressColor: 'coral',
-// 			allowFontScaling: true
-// 		}
-// }));
+export default createAppContainer(createBottomTabNavigator({
+  // Login: {
+  //   screen: Login,
+  //   navigationOptions: {
+  //
+  //   }
+  // },
+  Profile: {
+    screen: Profile,
+    navigationOptions: {
+      tabBarLabel: 'Profile',
+      tabBarIcon: ({ tintColor }) => <Image source={require('../img/Profile.png')} />
+    },
+  },
+  Compete: {
+    screen: CompeteStack, // Replaced Feed with FeedStack
+    navigationOptions: {
+      tabBarLabel: 'Compete',
+      tabBarIcon: ({ tintColor }) => <Image source={require('../img/Compete.png')} />
+    },
+  },
+  Rewards: {
+    screen: Rewards,
+    navigationOptions: {
+      tabBarLabel: 'Rewards',
+      tabBarIcon: ({ tintColor }) => <Image source={require('../img/Rewards.png')} />
+    }
+  }
+
+}, {
+
+  initialRouteName: "Compete",
+		swipeEnabled: true,
+		animationEnabled: true,
+		lazy: true,
+		order: ["Profile", "Compete", "Rewards"],
+		backBehavior: "Login",
+		tabBarOptions: {
+			activeTintColor: 'coral',
+			showLabel: true,
+			showIcon: true,
+			pressColor: 'coral',
+			allowFontScaling: true
+		}
+}));
 
 const styles = StyleSheet.create({
   container: {
@@ -471,7 +477,7 @@ const styles = StyleSheet.create({
   flex: 1,
   flexDirection: 'row',
   margin: 10,
-  paddingVertical: '10%',
+//  paddingVertical: '10%',
   flexWrap: 'wrap',
   justifyContent: 'center',
   alignItems: "center"
