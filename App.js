@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react'
 import {
   AsyncStorage,
   StyleSheet,
@@ -15,6 +15,9 @@ import {
 import { createStackNavigator, createAppContainer } from "react-navigation";
 import axios from 'axios';
 import NavigationBar from '.';
+import TimePicker from 'react-native-simple-time-picker';
+//TODO: FBLoginButton doesn't quite work because the package isn't found for some reason?
+var FBLoginButton = require('./FBLoginButton');
 
 // *****MAKE ALL THE PAGES. todo: abstract this to their own pages somehow.******//
 class Rewards extends React.Component {
@@ -48,12 +51,36 @@ class ChallengeSent extends React.Component {
 }
 
 class ChooseTime extends React.Component {
+  toChallengeSent() {
+    this.props.navigation.navigate('ChallengeSent');
+  }
+  state = {
+   selectedHours: 0,
+   //initial Hours
+   selectedMinutes: 0,
+   //initial Minutes
+  }
   render() {
+    const { selectedHours, selectedMinutes } = this.state;
     return (
       <View style={styles.container}>
-        <Text>Choose time</Text>
+        <Text style={{fontSize: 60, color: 'white'}}>{selectedHours} hr:{selectedMinutes} min</Text>
+        <View style={styles.yellowContainer}>
+          <TimePicker
+            selectedHours={selectedHours}
+            //initial Hourse value
+            selectedMinutes={selectedMinutes}
+            //initial Minutes value
+            onChange={(hours, minutes) => this.setState({
+                 selectedHours: hours, selectedMinutes: minutes
+           })}
+          />
+        </View>
+        <TouchableOpacity onPress={() => this.toChallengeSent()} style={[styles.button, {backgroundColor: '#f3c677', borderRadius: 2}]}>
+        <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 30, color: 'black'}}>Send Challenge</Text>
+        </TouchableOpacity>
       </View>
-    )
+    );
   }
 }
 
@@ -227,5 +254,11 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     marginRight: 5,
     borderRadius: 5
+  },
+  yellowContainer: {
+    flex: 0,
+    backgroundColor: '#f3c677',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
