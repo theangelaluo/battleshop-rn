@@ -95,31 +95,95 @@ class GroupOrSolo extends React.Component {
 }
 
 class ChallengeSent extends React.Component {
+  backToCompete() {
+    this.props.navigation.navigate('HuntOrSave');
+  }
   render() {
     return (
       <View style={styles.container}>
-        <Text>Challenge sent!</Text>
+        <Text style={{fontSize: 60, color: 'white'}}>Challenge Sent!</Text>
+        <Text style={{fontSize: 30, color: 'white'}}>We will inform you when you are ready to start the challenge.</Text>
+      <TouchableOpacity onPress={() => this.backToCompete()} style={[styles.button, {backgroundColor: '#f3c677', borderRadius: 2}]}>
+      <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 30, color: 'black'}}>Back to Compete Page</Text>
+      </TouchableOpacity>
       </View>
     )
   }
 }
 
 class ChooseTime extends React.Component {
+  toChallengeSent() {
+    this.props.navigation.navigate('ChallengeSent');
+  }
+  state = {
+   selectedHours: 0,
+   //initial Hours
+   selectedMinutes: 0,
+   //initial Minutes
+  }
   render() {
+    const { selectedHours, selectedMinutes } = this.state;
     return (
       <View style={styles.container}>
-        <Text>Choose time</Text>
+        <Text style={{fontSize: 60, color: 'white'}}>Choose Time</Text>
+        <Text style={{fontSize: 60, color: 'white'}}>{selectedHours} hr:{selectedMinutes} min</Text>
+        <View style={styles.yellowContainer}>
+          <TimePicker
+            selectedHours={selectedHours}
+            //initial Hours value
+            selectedMinutes={selectedMinutes}
+            //initial Minutes value
+            onChange={(hours, minutes) => this.setState({
+                 selectedHours: hours, selectedMinutes: minutes
+           })}
+          />
+        </View>
+        <TouchableOpacity onPress={() => this.toChallengeSent()} style={[styles.button, {backgroundColor: '#f3c677', borderRadius: 2}]}>
+        <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 30, color: 'black'}}>Send Challenge</Text>
+        </TouchableOpacity>
       </View>
-    )
+    );
   }
 }
 
 class ChooseBudget extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: ''
+    };
+  }
+  handleInputChange = (text) => {
+    if (/^\d+$/.test(text)) {
+      this.setState({
+        text: text
+      });
+    }else{
+      this.setState({
+        text: 0
+      });
+    }
+  }
+  toChooseTime() {
+    this.props.navigation.navigate('ChooseTime');
+  }
   render() {
     return (
       <View style={styles.container}>
-        <Text>Choose budget</Text>
+        <Text style={{fontSize: 60, color: 'white'}}>Choose Budget</Text>
+        <View style={styles.textBoxSurroundings}>
+          <TextInput
+          style={styles.textBox}
+          keyboardType='numeric'
+          onChangeText={this.handleInputChange}
+          value={this.state.text}
+          />
+        </View>
+        <TouchableOpacity onPress={() => this.toChooseTime()} style={[styles.button, {backgroundColor: '#f3c677', borderRadius: 2}]}>
+        <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 30, color: 'black'}}>Continue</Text>
+        </TouchableOpacity>
       </View>
+
     )
   }
 }
@@ -159,10 +223,12 @@ class ChooseItem extends React.Component {
 
 class HuntOrSave extends React.Component {
 
-  toHunt() {
-    this.props.navigation.navigate('ChooseItem');
+  // toHunt() {
+  //   this.props.navigation.navigate('ChooseItem');
+  // }
+  toHunt() { //TODO:temporary navigation, delete before commit
+    this.props.navigation.navigate('ChooseBudget');
   }
-
   toSave() {
     //todo: save not implemented yet!
   }
@@ -307,5 +373,28 @@ itemButton: {
     marginLeft: 5,
     marginRight: 5,
     borderRadius: 5
+  },
+  yellowContainer: {
+    flex: 0,
+    backgroundColor: '#f3c677',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  textBox: {
+    flex: 0,
+    backgroundColor: '#ffffff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 60,
+    width: 200,
+  },
+  textBoxSurroundings: {
+    flex: 0,
+    backgroundColor: '#f3c677',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 70,
+    width: 210,
+    fontSize: 30,
   },
 });
