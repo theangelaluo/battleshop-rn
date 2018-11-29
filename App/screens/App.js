@@ -12,30 +12,11 @@ import {
   Image,
   FlatList
 } from 'react-native';
-import { createStackNavigator, createAppContainer } from "react-navigation";
+import { createBottomTabNavigator, createStackNavigator, createAppContainer } from "react-navigation";
 import axios from 'axios';
 import NavigationBar from '.';
 
 // *****MAKE ALL THE PAGES. todo: abstract this to their own pages somehow.******//
-class Rewards extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Rewards Page</Text>
-      </View>
-    )
-  }
-}
-
-class Profile extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Profile Page</Text>
-      </View>
-    )
-  }
-}
 
 class ChallengeSent extends React.Component {
   render() {
@@ -129,6 +110,7 @@ class GroupOrSolo extends React.Component {
   }
 
   render() {
+    const { navigation } = this.props;
     return (
       <View style={styles.container}>
           <View style={{display: 'flex', flexDirection: 'column', marginTop: 10}}>
@@ -144,58 +126,17 @@ class GroupOrSolo extends React.Component {
   }
 }
 
-
-class Login extends React.Component {
-  login() {
-    this.props.navigation.navigate('Compete');
-  }
-
-  render() {
-      return (
-        <View style={styles.container}>
-          <View style={{ display:'flex', alignItems: 'center', width: '100%', height: 150, marginTop: 5, marginBottom: 0}}>
-            <Image source={require('./img/battleshop-svg.png')} style={{flex: 1, width: '200%', height: '200%', resizeMode: 'contain'}}/>
-          </View>
-          <View style={{ display:'flex', alignItems: 'center', width: '100%', height: 150, marginTop: 0, marginBottom: 0}}>
-            <Image source={require('./img/Battleshop-name.png')} style={{flex: 1, width: '50%', height: '50%', resizeMode: 'contain'}}/>
-          </View>
-          <Text></Text>
-          <View style={{display: 'flex', flexDirection: 'column', marginTop: 10}}>
-            <TouchableOpacity onPress={() => this.login()} style={[styles.button, {backgroundColor: "#2553B4", borderRadius: 2}]}>
-              <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 16, color: 'white'}}>Login with Facebook</Text>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() => this.login()} style={[styles.button, {backgroundColor: '#ffffff', borderRadius: 2}]}>
-              <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 16, color: 'black'}}>Login with Google</Text>
-              </TouchableOpacity>
-          </View>
-        </View>
-      );
-    }
-  }
-
 const AppNavigator = createStackNavigator({
   Login: {
     screen: Login
   },
   Compete: {
-    screen: GroupOrSolo
-  },
-  ChooseOpponents: {
-    screen: ChooseOpponents
-  },
-  HuntOrSave: {
-    screen: HuntOrSave
-  },
-  ChooseItem: {
-    screen: ChooseItem
-  },
-  ChooseBudget: {
-    screen: ChooseBudget
-  },
-  ChooseTime: {
-    screen: ChooseTime
-  },
-  ChallengeSent: {
+    screen: GroupOrSolo,
+    screen: ChooseOpponents,
+    screen: HuntOrSave,
+    screen: ChooseItem,
+    screen: ChooseBudget,
+    screen: ChooseTime,
     screen: ChallengeSent
   },
   Profile: {
@@ -209,6 +150,13 @@ const AppNavigator = createStackNavigator({
   }
 
 );
+
+const TabNavigator = createBottomTabNavigator({
+  Profile: Profile,
+  Compete: GroupOrSolo,
+  Rewards: Rewards
+});
+export default createAppContainer(TabNavigator);
 
 export default createAppContainer(AppNavigator);
 
