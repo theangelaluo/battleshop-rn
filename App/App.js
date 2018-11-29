@@ -386,7 +386,14 @@ class ChooseOpponents extends React.Component {
 
   toChooseItem() {
     if (opponents_arr.length == 0) {
-      alert("Please select at least one opponent.");
+      Alert.alert(
+      'Battleshop Says',
+      'Please select at least one opponent.',
+      [
+        {text: 'OK'},
+      ],
+      {cancelable: false}
+      )
     } else {
         this.props.navigation.navigate('ChooseItem');
     }
