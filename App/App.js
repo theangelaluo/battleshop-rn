@@ -24,7 +24,11 @@ import { createBottomTabNavigator,  createStackNavigator, createAppContainer } f
 
 // global variables
 var opponents_arr = []; // makes sure user has chosen at least one opponent
+var challenged_opponents = ''; // for confirmation message
 var budget;
+var global_hours;
+var global_minutes;
+var global_item;
 
 class Header extends React.Component {
   render() {
@@ -165,13 +169,58 @@ class ChooseTime extends React.Component {
   }
 
   toChallengeSent() {
-    this.props.navigation.navigate('ChallengeSent');
+    if (global_hours === 0 && global_minutes === 0) {
+      Alert.alert(
+      'Battleshop Says',
+      'You must enter a valid time limit. Please choose time besides zero hours and zero minutes.',
+      [
+        {text: 'OK'},
+      ],
+      {cancelable: false}
+      )
+    } else {
+      // Format the opponent string
+      // ERROR: challenged_opponents ends up being undefined for some odd reason,
+      // so  I commented it out
+      // if (opponents_arr.length === 1) {
+      //   challenged_opponents = opponents_arr[0];
+      // } else {
+      //   for (var i = 0; i < opponents_arr.length; i++) {
+      //     if (i !== opponents_arr.length - 2) {
+      //       challenged_opponents = challenged_opponents.concat(opponents_arr[i] + ', ');
+      //     } else if (i == opponents_arr.length - 2) {
+      //       challenged_opponents = challenged_opponents.concat(opponents_arr[i] + ', and ');
+      //     } else {
+      //       challenged_opponents = challenged_opponents.concat(opponents_arr[i]);
+      //     }
+      //   }
+      // }
+      // alert('outside main alert' + opponents_arr.length);
+      Alert.alert(
+        'Battleshop Says',
+        'You are about to send a challenge for '  + global_hours + ' hours ' +
+        global_minutes + ' and minutes with ' + opponents_arr.toString(),
+      [
+        {text: 'Cancel', style: 'cancel'},
+        {text: 'OK', onPress: () => this.props.navigation.navigate('ChallengeSent')},
+        // {text: 'OK', onPress: () => this.loginActual()},
+      ],
+      { cancelable: false }
+      )
+    }
   }
   state = {
    selectedHours: 0,
    //initial Hours
    selectedMinutes: 0,
    //initial Minutes
+  }
+  handleInputChange = (hours, minutes) => {
+      this.setState({
+        selectedHours: hours, selectedMinutes: minutes
+      });
+      global_hours = hours;
+      global_minutes = minutes;
   }
   render() {
     const { selectedHours, selectedMinutes } = this.state;
@@ -183,12 +232,12 @@ class ChooseTime extends React.Component {
         <View style={{backgroundColor: 'white', padding: 15, display: 'flex', width: '93%', height: '93%'}}>
           <TimePicker
             selectedHours={selectedHours}
+            global_hours = {selectedHours}
             //initial Hours value
             selectedMinutes={selectedMinutes}
+            global_minutes = {selectedMinutes}
             //initial Minutes value
-            onChange={(hours, minutes) => this.setState({
-                 selectedHours: hours, selectedMinutes: minutes
-           })}
+            onChange={this.handleInputChange}
           />
           </View>
         </View>
@@ -370,6 +419,7 @@ class Opponent extends React.Component {
 
   press(item) {
     if (!this.state.clicked) {
+      //challenged_opponents += this.item + ', ';
       opponents_arr.push(this.item);
       this.setState({
         color: 'white',
@@ -431,6 +481,19 @@ class ChooseOpponents extends React.Component {
   }
 
   toChooseItem() {
+    // if (opponents_arr.length === 1) {
+    //   challenged_opponents = opponents_arr[0];
+    // } else {
+    //   for (var i = 0; i < opponents_arr.length; i++) {
+    //     if (i !== opponents_arr.length - 2) {
+    //       challenged_opponents = challenged_opponents.concat(opponents_arr[i] + ', ');
+    //     } else if (i == opponents_arr.length - 2) {
+    //       challenged_opponents = challenged_opponents.concat(opponents_arr[i] + ', and ');
+    //     } else {
+    //       challenged_opponents = challenged_opponents.concat(opponents_arr[i]);
+    //     }
+    //   }
+    // }
     if (opponents_arr.length == 0) {
       Alert.alert(
       'Battleshop Says',
@@ -524,46 +587,46 @@ const AppNavigator = createStackNavigator({
 
 export default createAppContainer(AppNavigator);
 
-
-const NavBar = createBottomTabNavigator({
-  Profile: {
-    screen: Profile,
-    navigationOptions: {
-      tabBarLabel: 'Profile',
-      tabBarIcon: ({ tintColor }) => <Image source={require('../img/Profile.png')} />
-    },
-  },
-  Compete: {
-    screen: CompeteStack, // Replaced Feed with FeedStack
-    navigationOptions: {
-      tabBarLabel: 'Compete',
-      tabBarIcon: ({ tintColor }) => <Image source={require('../img/Compete.png')} />
-    },
-  },
-  Rewards: {
-    screen: Rewards,
-    navigationOptions: {
-      tabBarLabel: 'Rewards',
-      tabBarIcon: ({ tintColor }) => <Image source={require('../img/Rewards.png')} />
-    }
-  }
-
-}, {
-
-  initialRouteName: "Compete",
-		swipeEnabled: true,
-		animationEnabled: true,
-		lazy: true,
-		order: ["Profile", "Compete", "Rewards"],
-		backBehavior: "Login",
-		tabBarOptions: {
-			activeTintColor: 'white',
-			showLabel: true,
-			showIcon: true,
-			pressColor: 'coral',
-			allowFontScaling: true
-		}
-})
+//This code doesn't do anything; it was used to try to move the navbar
+// const NavBar = createBottomTabNavigator({
+//   Profile: {
+//     screen: Profile,
+//     navigationOptions: {
+//       tabBarLabel: 'Profile',
+//       tabBarIcon: ({ tintColor }) => <Image source={require('../img/Profile.png')} />
+//     },
+//   },
+//   Compete: {
+//     screen: CompeteStack, // Replaced Feed with FeedStack
+//     navigationOptions: {
+//       tabBarLabel: 'Compete',
+//       tabBarIcon: ({ tintColor }) => <Image source={require('../img/Compete.png')} />
+//     },
+//   },
+//   Rewards: {
+//     screen: Rewards,
+//     navigationOptions: {
+//       tabBarLabel: 'Rewards',
+//       tabBarIcon: ({ tintColor }) => <Image source={require('../img/Rewards.png')} />
+//     }
+//   }
+//
+// }, {
+//
+//   initialRouteName: "Compete",
+// 		swipeEnabled: true,
+// 		animationEnabled: true,
+// 		lazy: true,
+// 		order: ["Profile", "Compete", "Rewards"],
+// 		backBehavior: "Login",
+// 		tabBarOptions: {
+// 			activeTintColor: 'white',
+// 			showLabel: true,
+// 			showIcon: true,
+// 			pressColor: 'coral',
+// 			allowFontScaling: true
+// 		}
+// })
 
 
 // export default createAppContainer(createBottomTabNavigator({
