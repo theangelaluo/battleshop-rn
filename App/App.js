@@ -40,6 +40,10 @@ class Header extends React.Component {
 
 // *****MAKE ALL THE PAGES. todo: abstract this to their own pages somehow.******//
 class Login extends React.Component {
+  static navigationOptions = {
+    tabBarVisible: false,
+  };
+
   loginActual() {
     this.props.navigation.navigate('Compete');
   }
@@ -585,95 +589,53 @@ const AppNavigator = createStackNavigator({
   }
 )
 
-export default createAppContainer(AppNavigator);
+// export default createAppContainer(AppNavigator);
 
-//This code doesn't do anything; it was used to try to move the navbar
-// const NavBar = createBottomTabNavigator({
-//   Profile: {
-//     screen: Profile,
-//     navigationOptions: {
-//       tabBarLabel: 'Profile',
-//       tabBarIcon: ({ tintColor }) => <Image source={require('../img/Profile.png')} />
-//     },
-//   },
-//   Compete: {
-//     screen: CompeteStack, // Replaced Feed with FeedStack
-//     navigationOptions: {
-//       tabBarLabel: 'Compete',
-//       tabBarIcon: ({ tintColor }) => <Image source={require('../img/Compete.png')} />
-//     },
-//   },
-//   Rewards: {
-//     screen: Rewards,
-//     navigationOptions: {
-//       tabBarLabel: 'Rewards',
-//       tabBarIcon: ({ tintColor }) => <Image source={require('../img/Rewards.png')} />
-//     }
-//   }
-//
-// }, {
-//
-//   initialRouteName: "Compete",
-// 		swipeEnabled: true,
-// 		animationEnabled: true,
-// 		lazy: true,
-// 		order: ["Profile", "Compete", "Rewards"],
-// 		backBehavior: "Login",
-// 		tabBarOptions: {
-// 			activeTintColor: 'white',
-// 			showLabel: true,
-// 			showIcon: true,
-// 			pressColor: 'coral',
-// 			allowFontScaling: true
-// 		}
-// })
+export default createAppContainer(createBottomTabNavigator({
+  Login: {
+    screen: Login,
+    // navigationOptions: {
+    //
+    // }
+  },
+  Profile: {
+    screen: Profile,
+    navigationOptions: {
+      tabBarLabel: 'Profile',
+      tabBarIcon: ({ tintColor }) => <Image source={require('../img/Profile.png')} />
+    },
+  },
+  Compete: {
+    screen: CompeteStack, // Replaced Feed with FeedStack
+    navigationOptions: {
+      tabBarLabel: 'Compete',
+      tabBarIcon: ({ tintColor }) => <Image source={require('../img/Compete.png')} />
+    },
+  },
+  Rewards: {
+    screen: Rewards,
+    navigationOptions: {
+      tabBarLabel: 'Rewards',
+      tabBarIcon: ({ tintColor }) => <Image source={require('../img/Rewards.png')} />
+    }
+  }
 
+}, {
 
-// export default createAppContainer(createBottomTabNavigator({
-//   // Login: {
-//   //   screen: Login,
-//   //   navigationOptions: {
-//   //
-//   //   }
-//   // },
-//   Profile: {
-//     screen: Profile,
-//     navigationOptions: {
-//       tabBarLabel: 'Profile',
-//       tabBarIcon: ({ tintColor }) => <Image source={require('../img/Profile.png')} />
-//     },
-//   },
-//   Compete: {
-//     screen: CompeteStack, // Replaced Feed with FeedStack
-//     navigationOptions: {
-//       tabBarLabel: 'Compete',
-//       tabBarIcon: ({ tintColor }) => <Image source={require('../img/Compete.png')} />
-//     },
-//   },
-//   Rewards: {
-//     screen: Rewards,
-//     navigationOptions: {
-//       tabBarLabel: 'Rewards',
-//       tabBarIcon: ({ tintColor }) => <Image source={require('../img/Rewards.png')} />
-//     }
-//   }
-//
-// }, {
-//
-//   initialRouteName: "Compete",
-// 		swipeEnabled: true,
-// 		animationEnabled: true,
-// 		lazy: true,
-// 		order: ["Profile", "Compete", "Rewards"],
-// 		backBehavior: "Login",
-// 		tabBarOptions: {
-// 			activeTintColor: 'coral',
-// 			showLabel: true,
-// 			showIcon: true,
-// 			pressColor: 'coral',
-// 			allowFontScaling: true
-// 		}
-// }));
+  initialRouteName: "Login",
+		swipeEnabled: true,
+		animationEnabled: true,
+		lazy: true,
+		order: ["Login", "Profile", "Compete", "Rewards"],
+		backBehavior: "Login",
+		tabBarOptions: {
+			activeTintColor: 'coral',
+			showLabel: true,
+			showIcon: true,
+			pressColor: 'coral',
+			allowFontScaling: true
+		}
+}));
 
 const styles = StyleSheet.create({
   container: {
