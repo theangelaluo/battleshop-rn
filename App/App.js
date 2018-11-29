@@ -574,29 +574,72 @@ const CompeteStack = createStackNavigator({
   // headerMode: "none"
 });
 
-const AppNavigator = createStackNavigator({
-  Login: {
-    screen: Login,
-  },
-  Compete: CompeteStack
-//  CompeteStack: CompeteStack,
-  // Compete: {
-  //   screen: NavBar,
-  // }
-}, {
-  initialRouteName: "Login",
-  headerMode: "none"
-  }
-)
+// const AppNavigator = createStackNavigator({
+//   Login: {
+//     screen: Login,
+//   },
+//   Compete: CompeteStack
+// //  CompeteStack: CompeteStack,
+//   // Compete: {
+//   //   screen: NavBar,
+//   // }
+// }, {
+//   initialRouteName: "Login",
+//   headerMode: "none"
+//   }
+// )
 
 // export default createAppContainer(AppNavigator);
 
+//This code doesn't do anything; it was used to try to move the navbar
+// const NavBar = createBottomTabNavigator({
+//   Profile: {
+//     screen: Profile,
+//     navigationOptions: {
+//       tabBarLabel: 'Profile',
+//       tabBarIcon: ({ tintColor }) => <Image source={require('../img/Profile.png')} />
+//     },
+//   },
+//   Compete: {
+//     screen: CompeteStack, // Replaced Feed with FeedStack
+//     navigationOptions: {
+//       tabBarLabel: 'Compete',
+//       tabBarIcon: ({ tintColor }) => <Image source={require('../img/Compete.png')} />
+//     },
+//   },
+//   Rewards: {
+//     screen: Rewards,
+//     navigationOptions: {
+//       tabBarLabel: 'Rewards',
+//       tabBarIcon: ({ tintColor }) => <Image source={require('../img/Rewards.png')} />
+//     }
+//   }
+//
+// }, {
+//
+//   initialRouteName: "Compete",
+// 		swipeEnabled: true,
+// 		animationEnabled: true,
+// 		lazy: true,
+// 		order: ["Profile", "Compete", "Rewards"],
+// 		backBehavior: "Login",
+// 		tabBarOptions: {
+// 			activeTintColor: 'white',
+// 			showLabel: true,
+// 			showIcon: true,
+// 			pressColor: 'coral',
+// 			allowFontScaling: true
+// 		}
+// })
+
+
 export default createAppContainer(createBottomTabNavigator({
-  Login: {
+  Logout: {
     screen: Login,
-    // navigationOptions: {
-    //
-    // }
+    navigationOptions: {
+      tabBarLabel: 'Logout',
+      tabBarIcon: ({ tintColor }) => <Image source={require('../img/logout.png')} />
+    }
   },
   Profile: {
     screen: Profile,
@@ -622,11 +665,11 @@ export default createAppContainer(createBottomTabNavigator({
 
 }, {
 
-  initialRouteName: "Login",
+  initialRouteName: "Logout",
 		swipeEnabled: true,
 		animationEnabled: true,
 		lazy: true,
-		order: ["Login", "Profile", "Compete", "Rewards"],
+		order: ["Profile", "Compete", "Rewards", "Logout"],
 		backBehavior: "Login",
 		tabBarOptions: {
 			activeTintColor: 'coral',
