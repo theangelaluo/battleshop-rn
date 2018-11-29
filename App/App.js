@@ -15,12 +15,13 @@ import {
 } from 'react-native';
 
 import { Icon } from 'react-native-elements';
-
 import TimePicker from 'react-native-simple-time-picker';
 
 //var FBLoginButton = require('./FBLoginButton');
 
 import { createBottomTabNavigator,  createStackNavigator, createAppContainer } from 'react-navigation';
+
+initialLogin = true //TODO: hacky solution for login page!!
 
 class Header extends React.Component {
   render() {
@@ -33,7 +34,7 @@ class Header extends React.Component {
 // *****MAKE ALL THE PAGES. todo: abstract this to their own pages somehow.******//
 class Login extends React.Component {
   loginActual() {
-    this.props.navigation.navigate('Compete');
+    this.props.navigation.navigate('GroupOrSolo');
   }
 
   login(company) {
@@ -339,7 +340,6 @@ class ChooseOpponents extends React.Component {
   }
 }
 
-
 const CompeteStack = createStackNavigator({
     GroupOrSolo: {
         screen: GroupOrSolo
@@ -366,63 +366,91 @@ const CompeteStack = createStackNavigator({
   // headerMode: "none"
 });
 
-const AppNavigator = createStackNavigator({
-  Login: {
-    screen: Login,
-  },
-  Compete: CompeteStack
-//  CompeteStack: CompeteStack,
-  // Compete: {
-  //   screen: NavBar,
-  // }
+const LoginStack = createStackNavigator({
+    Login: {
+      screen: Login
+    },
+    GroupOrSolo: {
+        screen: GroupOrSolo
+      },
+    ChooseOpponents: {
+      screen: ChooseOpponents
+    },
+    HuntOrSave: {
+      screen: HuntOrSave
+    },
+    ChooseItem: {
+      screen: ChooseItem
+    },
+    ChooseBudget: {
+      screen: ChooseBudget
+    },
+    ChooseTime: {
+      screen: ChooseTime
+    },
+    ChallengeSent: {
+      screen: ChallengeSent
+    },
 }, {
-  initialRouteName: "Login"
-  }
-)
+  // headerMode: "none"
+});
+
+// const AppNavigator = createStackNavigator({
+//   Login: {
+//     screen: Login,
+//   },
+//   Compete: CompeteStack
+// //  CompeteStack: CompeteStack,
+//   // Compete: {
+//   //   screen: NavBar,
+//   // }
+// }, {
+//   initialRouteName: "Login"
+//   }
+// )
 
 //export default createAppContainer(AppNavigator);
 
 
-const NavBar = createBottomTabNavigator({
-  Profile: {
-    screen: Profile,
-    navigationOptions: {
-      tabBarLabel: 'Profile',
-      tabBarIcon: ({ tintColor }) => <Image source={require('../img/Profile.png')} />
-    },
-  },
-  Compete: {
-    screen: CompeteStack, // Replaced Feed with FeedStack
-    navigationOptions: {
-      tabBarLabel: 'Compete',
-      tabBarIcon: ({ tintColor }) => <Image source={require('../img/Compete.png')} />
-    },
-  },
-  Rewards: {
-    screen: Rewards,
-    navigationOptions: {
-      tabBarLabel: 'Rewards',
-      tabBarIcon: ({ tintColor }) => <Image source={require('../img/Rewards.png')} />
-    }
-  }
-
-}, {
-
-  initialRouteName: "Compete",
-		swipeEnabled: true,
-		animationEnabled: true,
-		lazy: true,
-		order: ["Profile", "Compete", "Rewards"],
-		backBehavior: "Login",
-		tabBarOptions: {
-			activeTintColor: 'white',
-			showLabel: true,
-			showIcon: true,
-			pressColor: 'coral',
-			allowFontScaling: true
-		}
-})
-
+// const NavBar = createBottomTabNavigator({
+//   Profile: {
+//     screen: Profile,
+//     navigationOptions: {
+//       tabBarLabel: 'Profile',
+//       tabBarIcon: ({ tintColor }) => <Image source={require('../img/Profile.png')} />
+//     },
+//   },
+//   Compete: {
+//     screen: CompeteStack, // Replaced Feed with FeedStack
+//     navigationOptions: {
+//       tabBarLabel: 'Compete',
+//       tabBarIcon: ({ tintColor }) => <Image source={require('../img/Compete.png')} />
+//     },
+//   },
+//   Rewards: {
+//     screen: Rewards,
+//     navigationOptions: {
+//       tabBarLabel: 'Rewards',
+//       tabBarIcon: ({ tintColor }) => <Image source={require('../img/Rewards.png')} />
+//     }
+//   }
+//
+// }, {
+//
+//   initialRouteName: "Compete",
+// 		swipeEnabled: true,
+// 		animationEnabled: true,
+// 		lazy: true,
+// 		order: ["Profile", "Compete", "Rewards"],
+// 		backBehavior: "Login",
+// 		tabBarOptions: {
+// 			activeTintColor: 'white',
+// 			showLabel: true,
+// 			showIcon: true,
+// 			pressColor: 'coral',
+// 			allowFontScaling: true
+// 		}
+// })
 
 export default createAppContainer(createBottomTabNavigator({
   // Login: {
@@ -439,7 +467,7 @@ export default createAppContainer(createBottomTabNavigator({
     },
   },
   Compete: {
-    screen: CompeteStack, // Replaced Feed with FeedStack
+    screen: getInitialRouteName(), // Replaced Feed with FeedStack
     navigationOptions: {
       tabBarLabel: 'Compete',
       tabBarIcon: ({ tintColor }) => <Image source={require('../img/Compete.png')} />
@@ -451,7 +479,7 @@ export default createAppContainer(createBottomTabNavigator({
       tabBarLabel: 'Rewards',
       tabBarIcon: ({ tintColor }) => <Image source={require('../img/Rewards.png')} />
     }
-  }
+  },
 
 }, {
 
@@ -469,6 +497,15 @@ export default createAppContainer(createBottomTabNavigator({
 			allowFontScaling: true
 		}
 }));
+
+function getInitialRouteName(){
+  if(initialLogin){
+    initialLogin = false;
+    return "LoginStack";
+  }else{
+    return "CompeteStack";
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
