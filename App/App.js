@@ -21,7 +21,7 @@ import TimePicker from 'react-native-simple-time-picker';
 //var FBLoginButton = require('./FBLoginButton');
 
 import { createBottomTabNavigator,  createStackNavigator, createAppContainer } from 'react-navigation';
-
+var opponents_arr = []; // makes sure user has chosen at least one opponent
 class Header extends React.Component {
   render() {
     return (
@@ -318,29 +318,115 @@ class HuntOrSave extends React.Component {
   }
 }
 
+class Opponent extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      color: '#F2C57D',
+      clicked: false
+    };
+  }
+
+  press(item) {
+    if (!this.state.clicked) {
+      opponents_arr.push(this.item);
+      this.setState({
+        color: 'white',
+        clicked: true
+      })
+    } else {
+      // Find the index position of then opponent, then remove one element from that position
+      opponents_arr.splice(opponents_arr.indexOf(this.item, 1));
+      this.setState({
+        color: '#F2C57D',
+        clicked: false
+      })
+    }
+
+  }
+
+  render() {
+    return (
+      <View style={{backgroundColor: this.state.color}}>
+        <TouchableOpacity onPress={this.press.bind(this, this.props.item)}>
+        <Text style={styles.opponent}>{this.props.item}</Text>
+
+         </TouchableOpacity>
+      </View>
+    )
+  }
+}
+
 class ChooseOpponents extends React.Component {
   static navigationOptions = {
     headerTitle: <Header />
   }
+
+  constructor() {
+    super();
+    const ds = new ListView.DataSource({
+       rowHasChanged: (r1, r2) => (r1 != r2)
+    });
+
+    const ds2 = new ListView.DataSource({
+       rowHasChanged: (r1, r2) => (r1 != r2)
+    });
+
+    this.state = {
+      color: '#F2C57D',
+      dataSource: ds.cloneWithRows(['Xiajang Wang', 'Melinda Vandersteen',
+      'John Klickman', 'Alice Vera', 'Jason Brown']),
+      dataSource2: ds.cloneWithRows([ 'Alice Vera', 'Angela Luo', 'Barry Allen', 'Damon Salvatore',
+      'Emily Hu', 'Francesca Colombo','Jason Brown', 'John Klickman','Kara Danvers', 'Logan Pearce', 'Melinda Vandersteen',
+      'Peter Parker', 'Tony Stark', 'Xiajang Wang', 'Yanyan Tong'
+      ]),
+    };
+  }
+
 
   toHuntOrSave() {
     this.props.navigation.navigate('ChooseOpponents');
   }
 
   toChooseItem() {
-    this.props.navigation.navigate('ChooseItem');
+    if (opponents_arr.length == 0) {
+      alert("Please select at least one opponent.");
+    } else {
+        this.props.navigation.navigate('ChooseItem');
+    }
   }
+
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Choose opponents</Text>
-        <TouchableOpacity style={styles.button} onPress={() => this.toChooseItem()}>
-          <Text>Next</Text>
+      <View style={{flex: 1, backgroundColor: '#F9564F'}}>
+        <TouchableOpacity onPress={() => this.toChooseItem()} style={[styles.button, {backgroundColor: '#f3c677', borderRadius: 2}]}>
+          <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 30, color: 'black'}}>Continue</Text>
         </TouchableOpacity>
+        <Text style={styles.header}>Choose Opponents</Text>
+        <View style={{backgroundColor: '#F2C57D'}}>
+          <Text style={ styles.subheader}> Recent Opponents </Text>
+          <ListView
+              dataSource={this.state.dataSource}
+              renderRow={(item) => (
+                <Opponent item={item}/>
+              )}
+              renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
+            />
+          <Text style={ styles.subheader}> All Contacts </Text>
+          <ListView
+              dataSource={this.state.dataSource2}
+              renderRow={(item) => (
+                <Opponent item={item}/>
+              )}
+              renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
+            />
+          </View>
+
       </View>
-    )
+    );
   }
+
 }
 
 
@@ -560,5 +646,30 @@ itemButton: {
     shadowColor:'black',
     shadowRadius: 1,
     shadowOffset: {width: 4, height: 4},
+  },
+  header: {
+    paddingRight: 15,
+    paddingLeft: 15,
+    fontSize: 40,
+    fontWeight: 'bold',
+    color: 'white'
+  },
+  subheader: {
+    paddingRight: 15,
+    paddingLeft: 15,
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: '#575757',
+  },
+  opponent: {
+    paddingRight: 20,
+    paddingLeft: 20,
+    fontSize: 25,
+    color: 'black'
+  },
+  separator: {
+    flex: 1,
+    height: StyleSheet.hairlineWidth,
+    backgroundColor: 'black'
   }
 });
