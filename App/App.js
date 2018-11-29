@@ -21,9 +21,19 @@ import TimePicker from 'react-native-simple-time-picker';
 
 import { createBottomTabNavigator,  createStackNavigator, createAppContainer } from 'react-navigation';
 
+class Header extends React.Component {
+  render() {
+    return (
+      <Image source={require('../img/Battleshop-name-red.png')} style={{width: '50%', height: '50%', resizeMode: 'contain'}}/>
+    )
+  }
+}
+
 // *****MAKE ALL THE PAGES. todo: abstract this to their own pages somehow.******//
 class Login extends React.Component {
   login() {
+    //this.props.navigation.navigate('Compete');
+  //  createAppContainer(NavBar);
     this.props.navigation.navigate('Compete');
   }
 
@@ -52,6 +62,10 @@ class Login extends React.Component {
 
 
 class Profile extends React.Component {
+  static navigationOptions = {
+    headerTitle: <Header />
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -63,6 +77,10 @@ class Profile extends React.Component {
 
 
 class Rewards extends React.Component {
+  static navigationOptions = {
+    headerTitle: <Header />
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -73,6 +91,9 @@ class Rewards extends React.Component {
 }
 
 class GroupOrSolo extends React.Component {
+  static navigationOptions = {
+    headerTitle: <Header />
+  }
 
   toChooseOpponents() {
     this.props.navigation.navigate('ChooseOpponents');
@@ -100,6 +121,10 @@ class GroupOrSolo extends React.Component {
 }
 
 class ChallengeSent extends React.Component {
+  static navigationOptions = {
+    headerTitle: <Header />
+  }
+
   backToCompete() {
     this.props.navigation.navigate('HuntOrSave');
   }
@@ -117,6 +142,10 @@ class ChallengeSent extends React.Component {
 }
 
 class ChooseTime extends React.Component {
+  static navigationOptions = {
+    headerTitle: <Header />
+  }
+
   toChallengeSent() {
     this.props.navigation.navigate('ChallengeSent');
   }
@@ -152,6 +181,10 @@ class ChooseTime extends React.Component {
 }
 
 class ChooseBudget extends React.Component {
+  static navigationOptions = {
+    headerTitle: <Header />
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -194,6 +227,10 @@ class ChooseBudget extends React.Component {
 }
 
 class ChooseItem extends React.Component {
+  static navigationOptions = {
+    headerTitle: <Header />
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -204,6 +241,9 @@ class ChooseItem extends React.Component {
 }
 
 class HuntOrSave extends React.Component {
+  static navigationOptions = {
+    headerTitle: <Header />
+  }
 
   // toHunt() {
   //   this.props.navigation.navigate('ChooseItem');
@@ -232,6 +272,9 @@ class HuntOrSave extends React.Component {
 }
 
 class ChooseOpponents extends React.Component {
+  static navigationOptions = {
+    headerTitle: <Header />
+  }
 
   toHuntOrSave() {
     this.props.navigation.navigate('ChooseOpponents');
@@ -269,9 +312,75 @@ const CompeteStack = createStackNavigator({
     ChallengeSent: {
       screen: ChallengeSent
     },
+}, {
+  // headerMode: "none"
 });
 
+const AppNavigator = createStackNavigator({
+  Login: {
+    screen: Login,
+  },
+  Compete: CompeteStack
+//  CompeteStack: CompeteStack,
+  // Compete: {
+  //   screen: NavBar,
+  // }
+}, {
+  initialRouteName: "Login"
+  }
+)
+
+//export default createAppContainer(AppNavigator);
+
+
+const NavBar = createBottomTabNavigator({
+  Profile: {
+    screen: Profile,
+    navigationOptions: {
+      tabBarLabel: 'Profile',
+      tabBarIcon: ({ tintColor }) => <Image source={require('../img/Profile.png')} />
+    },
+  },
+  Compete: {
+    screen: CompeteStack, // Replaced Feed with FeedStack
+    navigationOptions: {
+      tabBarLabel: 'Compete',
+      tabBarIcon: ({ tintColor }) => <Image source={require('../img/Compete.png')} />
+    },
+  },
+  Rewards: {
+    screen: Rewards,
+    navigationOptions: {
+      tabBarLabel: 'Rewards',
+      tabBarIcon: ({ tintColor }) => <Image source={require('../img/Rewards.png')} />
+    }
+  }
+
+}, {
+
+  initialRouteName: "Compete",
+		swipeEnabled: true,
+		animationEnabled: true,
+		lazy: true,
+		order: ["Profile", "Compete", "Rewards"],
+		backBehavior: "Login",
+		tabBarOptions: {
+			activeTintColor: 'white',
+			showLabel: true,
+			showIcon: true,
+			pressColor: 'coral',
+			allowFontScaling: true
+		}
+})
+
+
 export default createAppContainer(createBottomTabNavigator({
+  // Login: {
+  //   screen: Login,
+  //   navigationOptions: {
+  //
+  //   }
+  // },
   Profile: {
     screen: Profile,
     navigationOptions: {
