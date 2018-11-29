@@ -5,7 +5,7 @@ import { Icon } from 'react-native-elements';
 import Rewards from '../screens/Rewards';
 import Profile from '../screens/Profile';
 
-export const CompeteStack = createStackNavigator({
+const CompeteStack = createStackNavigator({
   Compete: {
     GroupOrSolo: {
         screen: GroupOrSolo
@@ -28,16 +28,10 @@ export const CompeteStack = createStackNavigator({
     ChallengeSent: {
       screen: ChallengeSent
     },
+  }
 });
 
-export const Tabs = TabNavigator({
-  Compete: {
-    screen: CompeteStack, // Replaced Feed with FeedStack
-    navigationOptions: {
-      tabBarLabel: 'Compete',
-      tabBarIcon: ({ tintColor }) => <Icon name="list" size={35} color={tintColor} />
-    },
-  },
+export default createAppContainer(createBottomTabNavigator({
   Profile: {
     screen: Profile,
     navigationOptions: {
@@ -45,14 +39,29 @@ export const Tabs = TabNavigator({
       tabBarIcon: ({ tintColor }) => <Icon name="list" size={35} color={tintColor} />
     },
   },
-});
-
-export const Root = StackNavigator({
-  Tabs: {
-    screen: Tabs,
+  Compete: {
+    screen: CompeteStack, // Replaced Feed with FeedStack
+    navigationOptions: {
+      tabBarLabel: 'Compete',
+      tabBarIcon: ({ tintColor }) => <Icon name="list" size={35} color={tintColor} />
+    },
   },
-}, {
-  mode: 'modal',
-  headerMode: 'none',
-  initialRouteName: 'Login',
-});
+  Rewards: {
+    screen: Rewards,
+    navigationOptions: {
+      tabBarLabel: 'Rewards',
+      tabBarIcon: ({ tintColor }) => <Icon name="list" size={35} color={tintColor} />
+    }
+  }
+
+}));
+//
+// export const Root = StackNavigator({
+//   Tabs: {
+//     screen: TabNavigator,
+//   },
+// }, {
+//   mode: 'modal',
+//   headerMode: 'none',
+//   initialRouteName: 'Login',
+// });

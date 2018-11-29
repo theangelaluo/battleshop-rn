@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   AsyncStorage,
   StyleSheet,
@@ -12,11 +12,8 @@ import {
   Image,
   FlatList
 } from 'react-native';
-import { createBottomTabNavigator, createStackNavigator, createAppContainer } from "react-navigation";
-import axios from 'axios';
-import NavigationBar from '.';
 
-class Login extends React.Component {
+class Login extends Component {
   login() {
     this.props.navigation.navigate('Compete');
   }
@@ -25,10 +22,10 @@ class Login extends React.Component {
       return (
         <View style={styles.container}>
           <View style={{ display:'flex', alignItems: 'center', width: '100%', height: 150, marginTop: 5, marginBottom: 0}}>
-            <Image source={require('./img/battleshop-svg.png')} style={{flex: 1, width: '200%', height: '200%', resizeMode: 'contain'}}/>
+            <Image source={require('../../img/battleshop-svg.png')} style={{flex: 1, width: '200%', height: '200%', resizeMode: 'contain'}}/>
           </View>
           <View style={{ display:'flex', alignItems: 'center', width: '100%', height: 150, marginTop: 0, marginBottom: 0}}>
-            <Image source={require('./img/Battleshop-name.png')} style={{flex: 1, width: '50%', height: '50%', resizeMode: 'contain'}}/>
+            <Image source={require('../../img/Battleshop-name.png')} style={{flex: 1, width: '50%', height: '50%', resizeMode: 'contain'}}/>
           </View>
           <Text></Text>
           <View style={{display: 'flex', flexDirection: 'column', marginTop: 10}}>
