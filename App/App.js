@@ -11,8 +11,10 @@ import {
   Alert,
   Button,
   Image,
-  FlatList
+  FlatList,
 } from 'react-native';
+
+//var FBLoginButton = require('./FBLoginButton');
 
 import { createBottomTabNavigator,  createStackNavigator, createAppContainer } from 'react-navigation';
 
@@ -26,10 +28,23 @@ class Header extends React.Component {
 
 // *****MAKE ALL THE PAGES. todo: abstract this to their own pages somehow.******//
 class Login extends React.Component {
-  login() {
+  loginActual() {
+    this.props.navigation.navigate('Compete');
+  }
+
+  login(company) {
     //this.props.navigation.navigate('Compete');
   //  createAppContainer(NavBar);
-    this.props.navigation.navigate('Compete');
+  Alert.alert(
+  'Battleshop says:',
+  'Battleshop would like to use ' + company + ' to login.',
+  [
+    {text: 'Cancel', style: 'cancel'},
+    {text: 'OK', onPress: () => this.loginActual()},
+  ],
+  { cancelable: false }
+  )
+
   }
 
   render() {
@@ -43,10 +58,10 @@ class Login extends React.Component {
           </View>
           <Text></Text>
           <View style={{display: 'flex', flexDirection: 'column', marginTop: 10}}>
-            <TouchableOpacity onPress={() => this.login()} style={[styles.button, {backgroundColor: "#2553B4", borderRadius: 2}]}>
+            <TouchableOpacity onPress={() => this.login('Facebook.com')} style={[styles.button, {backgroundColor: "#2553B4", borderRadius: 2}]}>
               <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 16, color: 'white'}}>Login with Facebook</Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => this.login()} style={[styles.button, {backgroundColor: '#ffffff', borderRadius: 2}]}>
+              <TouchableOpacity onPress={() => this.login('Google.com')} style={[styles.button, {backgroundColor: '#ffffff', borderRadius: 2}]}>
               <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 16, color: 'black'}}>Login with Google</Text>
               </TouchableOpacity>
           </View>
@@ -355,7 +370,7 @@ const AppNavigator = createStackNavigator({
   }
 )
 
-//export default createAppContainer(AppNavigator);
+export default createAppContainer(AppNavigator);
 
 
 const NavBar = createBottomTabNavigator({
@@ -399,51 +414,51 @@ const NavBar = createBottomTabNavigator({
 })
 
 
-export default createAppContainer(createBottomTabNavigator({
-  // Login: {
-  //   screen: Login,
-  //   navigationOptions: {
-  //
-  //   }
-  // },
-  Profile: {
-    screen: Profile,
-    navigationOptions: {
-      tabBarLabel: 'Profile',
-      tabBarIcon: ({ tintColor }) => <Image source={require('../img/Profile.png')} />
-    },
-  },
-  Compete: {
-    screen: CompeteStack, // Replaced Feed with FeedStack
-    navigationOptions: {
-      tabBarLabel: 'Compete',
-      tabBarIcon: ({ tintColor }) => <Image source={require('../img/Compete.png')} />
-    },
-  },
-  Rewards: {
-    screen: Rewards,
-    navigationOptions: {
-      tabBarLabel: 'Rewards',
-      tabBarIcon: ({ tintColor }) => <Image source={require('../img/Rewards.png')} />
-    }
-  }
-
-}, {
-
-  initialRouteName: "Compete",
-		swipeEnabled: true,
-		animationEnabled: true,
-		lazy: true,
-		order: ["Profile", "Compete", "Rewards"],
-		backBehavior: "Login",
-		tabBarOptions: {
-			activeTintColor: 'coral',
-			showLabel: true,
-			showIcon: true,
-			pressColor: 'coral',
-			allowFontScaling: true
-		}
-}));
+// export default createAppContainer(createBottomTabNavigator({
+//   // Login: {
+//   //   screen: Login,
+//   //   navigationOptions: {
+//   //
+//   //   }
+//   // },
+//   Profile: {
+//     screen: Profile,
+//     navigationOptions: {
+//       tabBarLabel: 'Profile',
+//       tabBarIcon: ({ tintColor }) => <Image source={require('../img/Profile.png')} />
+//     },
+//   },
+//   Compete: {
+//     screen: CompeteStack, // Replaced Feed with FeedStack
+//     navigationOptions: {
+//       tabBarLabel: 'Compete',
+//       tabBarIcon: ({ tintColor }) => <Image source={require('../img/Compete.png')} />
+//     },
+//   },
+//   Rewards: {
+//     screen: Rewards,
+//     navigationOptions: {
+//       tabBarLabel: 'Rewards',
+//       tabBarIcon: ({ tintColor }) => <Image source={require('../img/Rewards.png')} />
+//     }
+//   }
+//
+// }, {
+//
+//   initialRouteName: "Compete",
+// 		swipeEnabled: true,
+// 		animationEnabled: true,
+// 		lazy: true,
+// 		order: ["Profile", "Compete", "Rewards"],
+// 		backBehavior: "Login",
+// 		tabBarOptions: {
+// 			activeTintColor: 'coral',
+// 			showLabel: true,
+// 			showIcon: true,
+// 			pressColor: 'coral',
+// 			allowFontScaling: true
+// 		}
+// }));
 
 const styles = StyleSheet.create({
   container: {
