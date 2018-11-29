@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {
   AsyncStorage,
   StyleSheet,
@@ -12,11 +13,6 @@ import {
   Image,
   FlatList
 } from 'react-native';
-
-// import Rewards from './screens/Rewards';
-// import Profile from './screens/Profile';
-// import GroupOrSolo from './screens/GroupOrSolo';
-// import Login from './screens/Login';
 
 import { createBottomTabNavigator,  createStackNavigator, createAppContainer } from 'react-navigation';
 
@@ -129,10 +125,33 @@ class ChooseBudget extends React.Component {
 }
 
 class ChooseItem extends React.Component {
+  selectedItem(item) {
+  }
+  toChooseBudget() {
+    this.props.navigation.navigate('ChooseBudget');
+  }
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Choose item</Text>
+      <View style = {{backgroundColor: 'white', marginTop: '15%'}}>
+        <Text style={{textAlign: 'center', fontWeight: 'bold', fontSize: 36}}>Choose Item:</Text>
+        <View style={styles.itemsContainer}>
+            <TouchableOpacity style={styles.itemButton} onPress={this.selectedItem('Dress')}>
+              <Text style={{textAlign: 'center', fontSize: 24}}>Dress</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.itemButton} onPress={this.selectedItem('Shirt')}>
+              <Text style={{textAlign: 'center', fontSize: 24}}>Shirt</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.itemButton} onPress={this.selectedItem('Jacket')}>
+              <Text style={{textAlign: 'center', fontSize: 24}}>Jacket</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.itemButton} onPress={this.selectedItem('Pants')}>
+              <Text style={{textAlign: 'center', fontSize: 24}}>Pants</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={{width: '80%', height: 70, marginTop:30, borderRadius: 15, justifyContent: 'center', alignItems: 'center', backgroundColor: '#7B1E7A'}} onPress={() => this.toChooseBudget()}>
+              <Text style={{textAlign: 'center', fontSize: 24}}>Continue</Text>
+            </TouchableOpacity>
+        </View>
+
       </View>
     )
   }
@@ -170,10 +189,17 @@ class ChooseOpponents extends React.Component {
     this.props.navigation.navigate('ChooseOpponents');
   }
 
+  toChooseItem() {
+    this.props.navigation.navigate('ChooseItem');
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <Text>Choose opponents</Text>
+        <TouchableOpacity style={styles.button} onPress={() => this.toChooseItem()}>
+          <Text>Next</Text>
+        </TouchableOpacity>
       </View>
     )
   }
@@ -236,7 +262,7 @@ export default createAppContainer(createBottomTabNavigator({
 		order: ["Profile", "Compete", "Rewards"],
 		backBehavior: "Login",
 		tabBarOptions: {
-			activeTintColor: 'white',
+			activeTintColor: 'coral',
 			showLabel: true,
 			showIcon: true,
 			pressColor: 'coral',
@@ -251,6 +277,28 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  itemsContainer: {
+  flex: 1,
+  flexDirection: 'row',
+  margin: 10,
+  paddingVertical: '10%',
+  flexWrap: 'wrap',
+  justifyContent: 'center',
+  alignItems: "center"
+},
+itemButton: {
+  width: '40%',
+  height: 100,
+  margin: '3%',
+  justifyContent: 'center',
+  alignItems: "center",
+  backgroundColor: '#F2C57D',
+  //marginTop: 5,
+  shadowColor:'black',
+  shadowRadius: 1,
+  shadowOffset: {width: 4, height: 4},
+  borderRadius: 15
+ },
   button: {
     alignSelf: 'stretch',
     paddingTop: 10,
