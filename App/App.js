@@ -112,6 +112,30 @@ class Rewards extends React.Component {
   }
 }
 
+class FastTrack extends React.Component {
+  static navigationOptions = {
+    headerTitle: <Header />
+  }
+  handleTimeChange = (hours, minutes) => {
+      this.setState({
+        selectedHours: hours, selectedMinutes: minutes
+      });
+      global_hours = hours;
+      global_minutes = minutes;
+  }
+
+  // Choose Group or Solo
+
+  // Choose Opponents
+
+  // Choose Hunt or Save
+
+  // Choose item
+
+  // Choose Budget
+
+  // Choose Time
+}
 class GroupOrSolo extends React.Component {
   static navigationOptions = {
     headerTitle: <Header />
@@ -404,7 +428,30 @@ class HuntOrSave extends React.Component {
         <TouchableOpacity onPress={() => this.toSave()} style={[styles.button, styles.buttonShadow, {display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly', width: '90%', height: '30%', backgroundColor: "#f3c677", borderRadius: 15, marginBottom: 25,}]}>
           <Text style={{fontSize: 60, color: 'black'}}>Hunt</Text>
           <Icon name='arrow-forward' size={40} />
+
           </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => this.toChooseItem()} style={[styles.button, styles.buttonShadow, {display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly', width: '90%', height: '30%', backgroundColor: '#f3c677', borderRadius: 15, marginTop: 25}]}>
+          <Text style={{textAlign: 'center', fontSize: 60, color: 'black'}}>Save</Text>
+          <Icon name='arrow-forward' size={40} />
+        </TouchableOpacity>
+      </View>
+    )
+  }
+}
+
+class HuntHelp extends React.Component {
+  static navigationOptions = {
+    headerTitle: <Header />
+  }
+  render() {
+    return (
+      <View style={{backgroundColor: '#F9564F', width: '100%', height: '100%', display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <TouchableOpacity onPress={() => this.toSave()} style={[styles.button, styles.buttonShadow, {display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly', width: '90%', height: '30%', backgroundColor: "#f3c677", borderRadius: 15, marginBottom: 25,}]}>
+          <Text style={{fontSize: 60, color: 'black'}}>Hunt</Text>
+          <Icon name='arrow-forward' size={40} />
+          </TouchableOpacity>
+
         <TouchableOpacity onPress={() => this.toChooseItem()} style={[styles.button, styles.buttonShadow, {display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly', width: '90%', height: '30%', backgroundColor: '#f3c677', borderRadius: 15, marginTop: 25}]}>
           <Text style={{textAlign: 'center', fontSize: 60, color: 'black'}}>Save</Text>
           <Icon name='arrow-forward' size={40} />
