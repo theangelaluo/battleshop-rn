@@ -672,8 +672,7 @@ export default createAppContainer(createBottomTabNavigator({
   }
 
 }, {
-
-  initialRouteName: "Logout",
+    initialRouteName: "Logout",
 		swipeEnabled: true,
 		animationEnabled: true,
 		lazy: true,
@@ -686,6 +685,7 @@ export default createAppContainer(createBottomTabNavigator({
 			pressColor: 'coral',
 			allowFontScaling: true
 		}
+    
 }));
 
 const styles = StyleSheet.create({
