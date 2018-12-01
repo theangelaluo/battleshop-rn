@@ -24,7 +24,6 @@ import { createBottomTabNavigator,  createStackNavigator, createAppContainer } f
 
 // global variables
 var opponents_arr = []; // makes sure user has chosen at least one opponent
-var challenged_opponents = ''; // for confirmation message
 var budget;
 var global_hours;
 var global_minutes;
@@ -212,14 +211,13 @@ class ChooseTime extends React.Component {
       {cancelable: false}
       )
     } else {
+      var challenged_opponents = ''; // for confirmation message
       // Format the opponent string
-      // ERROR: challenged_opponents ends up being undefined for some odd reason,
-      // so  I commented it out
       if (opponents_arr.length === 1) {
         challenged_opponents = opponents_arr[0];
       } else {
         for (var i = 0; i < opponents_arr.length; i++) {
-          if (i !== opponents_arr.length - 2) {
+          if (i < opponents_arr.length - 2) {
             challenged_opponents = challenged_opponents.concat(opponents_arr[i] + ', ');
           } else if (i == opponents_arr.length - 2) {
             challenged_opponents = challenged_opponents.concat(opponents_arr[i] + ', and ');
@@ -228,16 +226,49 @@ class ChooseTime extends React.Component {
           }
         }
       }
-      // console.log(opponents_arr[0]);
-      //alert('outside main alert' + opponents_arr.length);
+      // Format time string
+      var time_string = '';
+      // if (global_minutes === 1) {
+      //   minute_string ='1 minute ';
+      // } else if (global_minutes > 0){
+      //   minute_string = global_minutes + ' minutes ';
+      // } else {
+      //   minute_string = '';
+      // }
+      if (global_hours === 0) {
+        if (global_minutes === 1) {
+          time_string += '1 minute ';
+        } else {
+          time_string += global_minutes + ' minutes ';
+        }
+      } else if (global_minutes === 0) {
+        if (global_hours === 1) {
+          time_string += '1 hour ';
+        } else {
+          time_string += global_hours + ' hours ';
+        }
+      } else {
+        if (global_hours === 1) {
+          time_string += '1 hour ';
+        } else {
+          time_string += global_hours + ' hours ';
+        }
+        if (global_minutes === 1) {
+          time_string += 'and 1 minute ';
+        } else {
+          time_string += 'and ' + global_minutes + ' minutes ';
+        }
+      }
+
+
       Alert.alert(
         'Battleshop Says',
-        'You are about to send a SAVE challenge for '  + global_hours + ' hours and ' +
-        global_minutes + ' minutes with a $' + budget + ' budget.',
+        'You are about to send a SAVE challenge for '  + time_string +
+        'with a $' + budget +
+        ' budget versus ' + challenged_opponents + '.',
       [
         {text: 'Cancel', style: 'cancel'},
         {text: 'OK', onPress: () => this.props.navigation.navigate('ChallengeSent')},
-        // {text: 'OK', onPress: () => this.loginActual()},
       ],
       { cancelable: false }
       )
@@ -477,16 +508,15 @@ class Opponent extends React.Component {
   press(item) {
     // if the button is going from unclicked to clicked
     if (!this.state.clicked) {
-      //challenged_opponents += this.item + ', ';
-      opponents_arr.push(this.item);
+      // how does this work stumped
+      opponents_arr.push(item);
       this.setState({
         color: 'white',
         clicked: true
       })
-      // console.log(opponents_arr[0]);
     } else {
       // Find the index position of then opponent, then remove one element from that position
-      opponents_arr.splice(opponents_arr.indexOf(this.item, 1));
+      opponents_arr.splice(opponents_arr.indexOf(item, 1));
       this.setState({
         color: '#F2C57D',
         clicked: false
@@ -540,19 +570,6 @@ class ChooseOpponents extends React.Component {
   }
 
   toChooseItem() {
-    // if (opponents_arr.length === 1) {
-    //   challenged_opponents = opponents_arr[0];
-    // } else {
-    //   for (var i = 0; i < opponents_arr.length; i++) {
-    //     if (i !== opponents_arr.length - 2) {
-    //       challenged_opponents = challenged_opponents.concat(opponents_arr[i] + ', ');
-    //     } else if (i == opponents_arr.length - 2) {
-    //       challenged_opponents = challenged_opponents.concat(opponents_arr[i] + ', and ');
-    //     } else {
-    //       challenged_opponents = challenged_opponents.concat(opponents_arr[i]);
-    //     }
-    //   }
-    // }
     if (opponents_arr.length == 0) {
       Alert.alert(
       'Battleshop Says',
@@ -732,7 +749,7 @@ export default createAppContainer(createBottomTabNavigator({
 			pressColor: 'coral',
 			allowFontScaling: true
 		}
-    
+
 }));
 
 const styles = StyleSheet.create({
