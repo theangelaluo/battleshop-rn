@@ -72,14 +72,6 @@ export default class ChooseOpponents extends React.Component {
        rowHasChanged: (r1, r2) => (r1 != r2)
     });
 
-    // const ds2 = new ListView.DataSource({
-    //    rowHasChanged: (r1, r2) => (r1 != r2)
-    // });
-    //
-    // const ds3 = new ListView.DataSource({
-    //   rowHasChanged: (r1, r2) => (r1 != r2)
-    // });
-
     this.state = {
       color: '#F2C57D',
       dataSource: ds.cloneWithRows(['Xiajang Wang', 'Melinda Vandersteen',
@@ -89,7 +81,6 @@ export default class ChooseOpponents extends React.Component {
       'Logan Pearce', 'Melinda Vandersteen',
       'Peter Parker', 'Tony Stark', 'Xiajang Wang', 'Yanyan Tong'
       ]),
-      
     };
   }
 
@@ -108,8 +99,25 @@ export default class ChooseOpponents extends React.Component {
       ],
       {cancelable: false}
       )
+    } else if (global.opponents_arr.length > 1){
+      Alert.alert (
+      'Battleshop Says',
+      'Please select select no more than one opponent.',
+      [
+        {text: 'OK'},
+      ],
+      {cancelable: false}
+      )
     } else {
-        this.props.navigation.navigate('HuntOrSave');
+      Alert.alert (
+        'Battleshop Says',
+        'You have challenged ' + global.opponents_arr[0] + '. Continue?',
+        [
+          {text: 'Cancel', style: 'cancel'},
+        {text: 'OK', onPress: () => this.toHuntOrSave()},
+        ],
+        { cancelable: false }
+      )
     }
   }
 
