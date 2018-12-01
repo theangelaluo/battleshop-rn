@@ -72,9 +72,13 @@ export default class ChooseOpponents extends React.Component {
        rowHasChanged: (r1, r2) => (r1 != r2)
     });
 
-    const ds2 = new ListView.DataSource({
-       rowHasChanged: (r1, r2) => (r1 != r2)
-    });
+    // const ds2 = new ListView.DataSource({
+    //    rowHasChanged: (r1, r2) => (r1 != r2)
+    // });
+    //
+    // const ds3 = new ListView.DataSource({
+    //   rowHasChanged: (r1, r2) => (r1 != r2)
+    // });
 
     this.state = {
       color: '#F2C57D',
@@ -85,6 +89,7 @@ export default class ChooseOpponents extends React.Component {
       'Logan Pearce', 'Melinda Vandersteen',
       'Peter Parker', 'Tony Stark', 'Xiajang Wang', 'Yanyan Tong'
       ]),
+      
     };
   }
 

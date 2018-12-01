@@ -18,7 +18,7 @@ import { Icon } from 'react-native-elements';
 
 import TimePicker from 'react-native-simple-time-picker';
 
-var Header = require("./Header"); 
+var Header = require("./Header");
 
 export default class ChooseTime extends React.Component {
   static navigationOptions = {
@@ -42,19 +42,47 @@ export default class ChooseTime extends React.Component {
         challenged_opponents = global.opponents_arr[0];
       } else {
         for (var i = 0; i < global.opponents_arr.length; i++) {
-          if (i !== global.opponents_arr.length - 2) {
-            challenged_opponents = challenged_opponents.concat(global.opponents_arr[i] + ', ');
+          if (i < global.opponents_arr.length - 2) {
+            challenged_opponents += global.opponents_arr[i] + ', ';
           } else if (i == global.opponents_arr.length - 2) {
-            challenged_opponents = challenged_opponents.concat(global.opponents_arr[i] + ', and ');
+            challenged_opponents += global.opponents_arr[i] + ', and ';
           } else {
-            challenged_opponents = challenged_opponents.concat(global.opponents_arr[i]);
+            challenged_opponents += global.opponents_arr[i];
           }
         }
       }
+
+      // Format time string
+var time_string = '';
+if (global.hours === 0) {
+  if (global.minutes === 1) {
+    time_string += '1 minute ';
+  } else {
+    time_string += global.minutes + ' minutes ';
+  }
+} else if (global.minutes === 0) {
+  if (global.hours  === 1) {
+    time_string += '1 hour ';
+  } else {
+    time_string += global.hours  + ' hours ';
+  }
+} else {
+  if (global.hours  === 1) {
+    time_string += '1 hour ';
+  } else {
+    time_string += global.hours  + ' hours ';
+  }
+  if (global.minutes === 1) {
+    time_string += 'and 1 minute ';
+  } else {
+    time_string += 'and ' + global.minutes + ' minutes ';
+  }
+}
       Alert.alert(
         'Battleshop Says',
-        'You are about to send a SAVE challenge for '  + global.hours + ' hours and ' +
-        global.minutes + ' minutes with a $' + global.budget + ' budget versus ' + challenged_opponents,
+        'You are about to send a SAVE challenge for '  + time_string +
+        'with a $' + global.budget + ' budget versus ' +
+        challenged_opponents + '.',
       [
         {text: 'Cancel', style: 'cancel'},
         {text: 'OK', onPress: () => this.props.navigation.navigate('ChallengeSent')},
