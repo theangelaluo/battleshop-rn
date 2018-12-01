@@ -118,6 +118,7 @@ export default class ChooseOpponents extends React.Component {
           <Text style={ styles.subheader}> Recent Opponents </Text>
           <ListView
               dataSource={this.state.dataSource}
+              removeClippedSubviews = {false}
               renderRow={(item) => (
                 <Opponent item={item}/>
               )}
@@ -128,6 +129,7 @@ export default class ChooseOpponents extends React.Component {
           </View>
           <ListView
               dataSource={this.state.dataSource2}
+              removeClippedSubviews = {false}
               renderRow={(item) => (
                 <Opponent item={item}/>
               )}
