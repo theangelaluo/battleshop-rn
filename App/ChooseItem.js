@@ -33,11 +33,30 @@ export default class ChooseItem extends React.Component {
     };
   }
 
-
-  selectedItem(item) {
-    // global.item = item;
+  toChooseBudget() {
     this.props.navigation.navigate('ChooseBudget');
   }
+
+  selectedDress() {
+    global.item = 'a dress';
+    this.props.navigation.navigate('ChooseBudget');
+  }
+
+  selectedShirt() {
+    global.item = 'a shirt';
+    this.props.navigation.navigate('ChooseBudget');
+  }
+
+  selectedJacket() {
+    global.item = 'a jacket';
+    this.props.navigation.navigate('ChooseBudget');
+  }
+
+  selectedPants() {
+    global.item = 'pants';
+    this.props.navigation.navigate('ChooseBudget');
+  }
+
 
   handleInputChange = (text) => {
       this.setState({
@@ -46,24 +65,21 @@ export default class ChooseItem extends React.Component {
       global.item = text;
   }
 
-  toChooseBudget() {
-    this.props.navigation.navigate('ChooseBudget');
-  }
   render() {
     return (
       <View style = {{flex: 1, backgroundColor: '#F9564F'}}>
         <Text style={{margin: 30, color: "white", fontWeight: 'bold', textAlign: 'center', fontSize: 36}}>Choose Your Item</Text>
         <View style={styles.itemsContainer}>
-            <TouchableOpacity style={styles.itemButton} onPress={this.selectedItem.bind(this)}>
+            <TouchableOpacity style={styles.itemButton} onPress={this.selectedDress.bind(this)}>
               <Text style={{textAlign: 'center', fontSize: 24}}>Dress</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.itemButton} onPress={this.selectedItem.bind(this)}>
+            <TouchableOpacity style={styles.itemButton} onPress={this.selectedShirt.bind(this)}>
               <Text style={{textAlign: 'center', fontSize: 24}}>Shirt</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.itemButton} onPress={this.selectedItem.bind(this)}>
+            <TouchableOpacity style={styles.itemButton} onPress={this.selectedJacket.bind(this)}>
               <Text style={{textAlign: 'center', fontSize: 24}}>Jacket</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.itemButton} onPress={this.selectedItem.bind(this)}>
+            <TouchableOpacity style={styles.itemButton} onPress={this.selectedPants.bind(this)}>
               <Text style={{textAlign: 'center', fontSize: 24}}>Pants</Text>
             </TouchableOpacity>
             <View style={styles.textBoxSurroundings}>
