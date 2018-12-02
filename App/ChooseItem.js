@@ -26,14 +26,29 @@ export default class ChooseItem extends React.Component {
     headerTitle: <Header />
   }
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: 'Custom'
+    };
+  }
 
-  selectedItem() {
+
+  selectedItem(item) {
+    // global.item = item;
     this.props.navigation.navigate('ChooseBudget');
   }
 
-  // toChooseBudget() {
-  //   this.props.navigation.navigate('ChooseBudget');
-  // }
+  handleInputChange = (text) => {
+      this.setState({
+        text: text,
+      });
+      global.item = text;
+  }
+
+  toChooseBudget() {
+    this.props.navigation.navigate('ChooseBudget');
+  }
   render() {
     return (
       <View style = {{flex: 1, backgroundColor: '#F9564F'}}>
@@ -51,8 +66,19 @@ export default class ChooseItem extends React.Component {
             <TouchableOpacity style={styles.itemButton} onPress={this.selectedItem.bind(this)}>
               <Text style={{textAlign: 'center', fontSize: 24}}>Pants</Text>
             </TouchableOpacity>
+            <View style={styles.textBoxSurroundings}>
+              <TextInput
+              style={styles.textBox}
+              onChangeText={this.handleInputChange}
+              value={this.state.text}
+              />
+            </View>
+            <TouchableOpacity onPress={() => this.toChooseBudget()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 25}]}>
+              <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 30, color: 'white'}}>Continue</Text>
+            </TouchableOpacity>
 
         </View>
+
 
       </View>
     )
