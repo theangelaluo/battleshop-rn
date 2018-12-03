@@ -86,6 +86,8 @@ export default class ChooseOpponents extends React.Component {
       'Peter Parker', 'Tony Stark', 'Xiajang Wang', 'Yanyan Tong'
       ]),
     };
+    // reset
+    global.opponents_arr = [];
   }
 
 

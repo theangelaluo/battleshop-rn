@@ -39,22 +39,22 @@ export default class ChooseItem extends React.Component {
 
   selectedDress() {
     global.item = 'a dress';
-    this.props.navigation.navigate('ChooseBudget');
+    this.toChooseBudget();
   }
 
   selectedShirt() {
     global.item = 'a shirt';
-    this.props.navigation.navigate('ChooseBudget');
+    this.toChooseBudget();
   }
 
   selectedJacket() {
     global.item = 'a jacket';
-    this.props.navigation.navigate('ChooseBudget');
+    this.toChooseBudget();
   }
 
   selectedPants() {
     global.item = 'pants';
-    this.props.navigation.navigate('ChooseBudget');
+    this.toChooseBudget();
   }
 
 
