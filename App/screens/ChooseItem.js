@@ -15,20 +15,72 @@ import {
 } from 'react-native';
 
 import { Icon } from 'react-native-elements';
-
 import TimePicker from 'react-native-simple-time-picker';
 
-var Header = require("./Header");
+export default class ChooseItem extends React.Component {
+  toChooseBudget() {
+    this.props.navigation.navigate('ChooseBudget');
+  }
 
-export default class Rewards extends React.Component {
-  static navigationOptions = {
-    headerTitle: <Header />
+  selectedDress() {
+    global.item = 'a dress';
+    this.toChooseBudget();
+  }
+
+  selectedShirt() {
+    global.item = 'a shirt';
+    this.toChooseBudget();
+  }
+
+  selectedJacket() {
+    global.item = 'a jacket';
+    this.toChooseBudget();
+  }
+
+  selectedPants() {
+    global.item = 'pants';
+    this.toChooseBudget();
+  }
+
+
+  handleInputChange = (text) => {
+      this.setState({
+        text: text,
+      });
+      global.item = text;
   }
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Rewards Page</Text>
+      <View style = {{flex: 1, backgroundColor: '#F9564F'}}>
+        <Text style={{margin: 30, color: "white", fontWeight: 'bold', textAlign: 'center', fontSize: 36}}>Choose Your Item</Text>
+        <View style={styles.itemsContainer}>
+            <TouchableOpacity style={styles.itemButton} onPress={this.selectedDress.bind(this)}>
+              <Text style={{textAlign: 'center', fontSize: 24}}>Dress</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.itemButton} onPress={this.selectedShirt.bind(this)}>
+              <Text style={{textAlign: 'center', fontSize: 24}}>Shirt</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.itemButton} onPress={this.selectedJacket.bind(this)}>
+              <Text style={{textAlign: 'center', fontSize: 24}}>Jacket</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.itemButton} onPress={this.selectedPants.bind(this)}>
+              <Text style={{textAlign: 'center', fontSize: 24}}>Pants</Text>
+            </TouchableOpacity>
+            <View style={styles.textBoxSurroundings}>
+              <TextInput
+              style={styles.textBox}
+              onChangeText={this.handleInputChange}
+              value={this.state.text}
+              />
+            </View>
+            <TouchableOpacity onPress={() => this.toChooseBudget()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 25}]}>
+              <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 30, color: 'white'}}>Continue</Text>
+            </TouchableOpacity>
+
+        </View>
+
+
       </View>
     )
   }
@@ -145,4 +197,4 @@ itemButton: {
   }
 });
 
-module.exports = Rewards;
+module.exports = ChooseItem;

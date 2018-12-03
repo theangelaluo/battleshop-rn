@@ -21,20 +21,36 @@ import TimePicker from 'react-native-simple-time-picker';
 import './global.js';
 
 var Header = require("./Header");
-var Login = require("./Login");
-var GroupOrSolo = require("./GroupOrSolo");
-var Rewards = require("./Rewards");
-var Profile = require("./Profile");
-var ChallengeSent = require("./ChallengeSent");
-var ChooseBudget = require("./ChooseBudget");
-var ChooseOpponents = require("./ChooseOpponents");
-var HuntOrSave = require("./HuntOrSave");
-var ChooseTime = require("./ChooseTime");
-var ChooseItem = require("./ChooseItem");
+var Login = require("./screens/Login");
+var GroupOrSolo = require("./screens/GroupOrSolo");
+var Rewards = require("./screens/Rewards");
+var Profile = require("./screens/Profile");
+var ChallengeSent = require("./screens/ChallengeSent");
+var ChooseBudget = require("./screens/ChooseBudget");
+var ChooseOpponents = require("./screens/ChooseOpponents");
+var HuntOrSave = require("./screens/HuntOrSave");
+var ChooseTime = require("./screens/ChooseTime");
+var ChooseItem = require("./screens/ChooseItem");
+var CompeteScreen = require("./screens/CompeteScreen");
 
-//var FBLoginButton = require('./FBLoginButton');
+import {
+  createBottomTabNavigator,
+  createStackNavigator,
+  createAppContainer,
+  createSwitchNavigator,
+} from 'react-navigation';
 
-import { createBottomTabNavigator,  createStackNavigator, createAppContainer } from 'react-navigation';
+export default class App extends React.Component {
+  render() {
+    return <AppContainer />;
+  }
+}
+
+const AuthenticationNavigator = createStackNavigator({
+  Login: {
+    screen: Login
+  },
+});
 
 const CompeteStack = createStackNavigator({
     GroupOrSolo: {
@@ -58,36 +74,31 @@ const CompeteStack = createStackNavigator({
     ChallengeSent: {
       screen: ChallengeSent
     },
+    CompeteScreen: {
+      screen: CompeteScreen
+    },
+},{
+  defaultNavigationOptions: ({ navigation }) => ({
+    headerTitle: <Header/>,
+    headerRight: (
+      <TouchableOpacity style={{paddingRight: 20}} onPress={() => navigation.navigate('Login')}>
+        <Image source={require('../img/ic_exit_to_app.png')}/>
+      </TouchableOpacity>
+    ),
+  })
 });
 
-// const AppNavigator = createStackNavigator({
-//   Login: {
-//     screen: Login,
-//   },
-//   Compete: CompeteStack
-// //  CompeteStack: CompeteStack,
-//   // Compete: {
-//   //   screen: NavBar,
-//   // }
-// }, {
-//   initialRouteName: "Login",
-//   headerMode: "none"
-//   }
-// )
-
-// export default createAppContainer(AppNavigator);
-
-
-export default createAppContainer(createBottomTabNavigator({
-  Logout: {
-    screen: Login,
-    navigationOptions: {
-      tabBarLabel: 'Logout',
-      tabBarIcon: ({ tintColor }) => <Image source={require('../img/logout.png')} />
-    }
-  },
+const bottomTabNavigator = createBottomTabNavigator({
   Profile: {
     screen: Profile,
+    defaultNavigationOptions: ({ navigation }) => ({
+      headerTitle: <Header/>,
+      headerRight: (
+        <TouchableOpacity style={{paddingRight: 20}} onPress={() => navigation.navigate('Login')}>
+          <Image source={require('../img/ic_exit_to_app.png')}/>
+        </TouchableOpacity>
+      ),
+    }),
     navigationOptions: {
       tabBarLabel: 'Profile',
       tabBarIcon: ({ tintColor }) => <Image source={require('../img/Profile.png')} />
@@ -102,6 +113,14 @@ export default createAppContainer(createBottomTabNavigator({
   },
   Rewards: {
     screen: Rewards,
+    defaultNavigationOptions: ({ navigation }) => ({
+      headerTitle: <Header/>,
+      headerRight: (
+        <TouchableOpacity style={{paddingRight: 20}} onPress={() => navigation.navigate('Login')}>
+          <Image source={require('../img/ic_exit_to_app.png')}/>
+        </TouchableOpacity>
+      ),
+    }),
     navigationOptions: {
       tabBarLabel: 'Rewards',
       tabBarIcon: ({ tintColor }) => <Image source={require('../img/Rewards.png')} />
@@ -109,12 +128,11 @@ export default createAppContainer(createBottomTabNavigator({
   }
 
 }, {
-    initialRouteName: "Logout",
+    initialRouteName: "Compete",
 		swipeEnabled: true,
 		animationEnabled: true,
 		lazy: true,
-		order: ["Profile", "Compete", "Rewards", "Logout"],
-		backBehavior: "Login",
+		order: ["Profile", "Compete", "Rewards"],
 		tabBarOptions: {
 			activeTintColor: 'coral',
 			showLabel: true,
@@ -122,5 +140,14 @@ export default createAppContainer(createBottomTabNavigator({
 			pressColor: 'coral',
 			allowFontScaling: true
 		}
+});
 
-}));
+const AppNavigator = createSwitchNavigator({
+  Login: AuthenticationNavigator,
+  Main: bottomTabNavigator,
+}, {
+    initialRouteName: "Login"
+  }
+);
+
+const AppContainer = createAppContainer(AppNavigator);

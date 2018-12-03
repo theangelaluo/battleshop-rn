@@ -15,15 +15,9 @@ import {
 } from 'react-native';
 
 import { Icon } from 'react-native-elements';
-
 import TimePicker from 'react-native-simple-time-picker';
 
-var Header = require("./Header");
-
 export default class ChooseTime extends React.Component {
-  static navigationOptions = {
-    headerTitle: <Header />
-  }
 
   toChallengeSent() {
     if (global.hours === 0 && global.minutes === 0) {

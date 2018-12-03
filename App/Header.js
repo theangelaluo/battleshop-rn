@@ -19,7 +19,7 @@ import { Icon } from 'react-native-elements';
 import TimePicker from 'react-native-simple-time-picker';
 
 
-var Login = require("./Login");
+//var Login = require("./screens/Login");
 
 //var FBLoginButton = require('./FBLoginButton');
 

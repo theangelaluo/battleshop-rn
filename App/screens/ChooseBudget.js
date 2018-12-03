@@ -15,35 +15,85 @@ import {
 } from 'react-native';
 
 import { Icon } from 'react-native-elements';
-
 import TimePicker from 'react-native-simple-time-picker';
 
-var Header = require("./Header");
-
-export default class Profile extends React.Component {
-  static navigationOptions = {
-    headerTitle: <Header />
+export default class ChooseBudget extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: ''
+    };
   }
 
+  handleInputChange = (text) => {
+      this.setState({
+        text: text,
+      });
+      global.budget = text;
+  }
+  toChooseTime() {
+    // Error prevention
+    // Error prevention
+    if (typeof(global.budget ) === 'undefined' || (typeof(global.budget ) === 'string' && global.budget.length == 0)) {
+        Alert.alert(
+        'Battleshop Says',
+        'Your budget cannot be empty. Please choose a budget that is a positive number.',
+        [
+          {text: 'OK'},
+        ],
+        {cancelable: false}
+        )
+  } else if (global.budget[0] === '-') {
+    Alert.alert(
+    'Battleshop Says',
+    'Budgets cannot be negative. Please choose a budget that is a positive number.',
+    [
+      {text: 'OK'},
+    ],
+    {cancelable: false}
+    )
+    // Checks if the budget only contains digits
+  } else if (!/^\d+$/.test(global.budget)) {
+        Alert.alert(
+        'Battleshop Says',
+        'Budgets cannot include letters. Please choose a budget that is a positive number.',
+        [
+          {text: 'OK'},
+        ],
+        {cancelable: false}
+        )
+    } else if (global.budget === '0') {
+      Alert.alert(
+      'Battleshop Says',
+      'Zero is not a valid budget. Please choose a budget that is a positive number.',
+      [
+        {text: 'OK'},
+      ],
+      {cancelable: false}
+      )
+    }  else {
+      this.props.navigation.navigate('ChooseTime');
+    }
+  }
   render() {
     return (
-      <View style={{flex: 1, backgroundColor: '#F9564F', alignItems: 'center'}}>
-        <View style={{marginTop: 75, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-          <Image source={require('../img/Rachel-Rouhana-Profile-Pic-Square.jpg')} style={{borderRadius: 200/2, width: 200, height: 200, resizeMode: 'contain'}}/>
-          <Text style={{color: "white", fontSize: 35, marginTop: 20, fontWeight: 'bold'}}>Molly Adams</Text>
-          <Text style={{color: "white", fontSize: 25, marginTop: 10}}>Level 2</Text>
-          <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', marginTop: 50}}>
-            <Image source={require('../img/swords.png')} style={{resizeMode: 'contain', marginRight: 20}}/>
-            <Text style={{color: "white", fontSize: 35, fontWeight: 'bold'}}>1060</Text>
-            <Text style={{color: "white", fontSize: 35}}> XP</Text>
+      <View style = {{flex: 1, backgroundColor: '#F9564F', alignItems: 'center'}}>
+        <Text style={{marginTop: 30, marginBottom: 30, textAlign: 'center', fontSize: 36, color: "white", fontWeight: 'bold'}}>Choose Budget</Text>
+
+          <View style={styles.textBoxSurroundings}>
+            <TextInput
+            style={styles.textBox}
+            keyboardType='numeric'
+            onChangeText={this.handleInputChange}
+            value={this.state.text}
+            />
           </View>
-          <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', marginTop: 20}}>
-            <Image source={require('../img/coins.png')} style={{resizeMode: 'contain', marginRight: 20}}/>
-            <Text style={{color: "white", fontSize: 35, fontWeight: 'bold'}}>2600</Text>
-            <Text style={{color: "white", fontSize: 35}}> COINS</Text>
-          </View>
-        </View>
+
+        <TouchableOpacity onPress={() => this.toChooseTime()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 25}]}>
+          <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 30, color: 'white'}}>Continue</Text>
+        </TouchableOpacity>
       </View>
+
     )
   }
 }
@@ -159,4 +209,4 @@ itemButton: {
   }
 });
 
-module.exports = Profile;
+module.exports = ChooseBudget;

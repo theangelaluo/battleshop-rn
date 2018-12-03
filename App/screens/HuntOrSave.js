@@ -18,34 +18,35 @@ import { Icon } from 'react-native-elements';
 
 import TimePicker from 'react-native-simple-time-picker';
 
-var Header = require("./Header");
-
-export default class ChallengeSent extends React.Component {
-  static navigationOptions = {
-    headerTitle: <Header />
+export default class HuntOrSave extends React.Component {
+  toChooseItem() { //TODO:temporary navigation, delete before commit
+    this.props.navigation.navigate('ChooseItem');
+  }
+  toSave() {
+    //todo: save not implemented yet!
   }
 
-  backToGroupOrSolo() {
-    this.props.navigation.navigate('GroupOrSolo');
-  }
   render() {
     return (
-      <View style={{flex: 1, backgroundColor: '#F9564F', alignItems: 'center', padding: 15}}>
-        <Text style={{marginTop: 30, fontSize: 36, color: "white", fontWeight: 'bold', textAlign: 'center'}}>Challenge Sent!</Text>
-        <Text style={{marginTop: 20, fontSize: 30, color: 'white', textAlign: 'center'}}>
-          Your opponent has 5 minutes to accept this challenge, or the challenge will be cancelled.
-        </Text>
-        <Text style={{marginTop: 20, fontSize: 30, color: 'white', textAlign: 'center'}}>
-          We will send you a notification when your opponent accepts.
-        </Text>
-      <TouchableOpacity onPress={() => this.backToGroupOrSolo()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 40}]}>
-      <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 20, color: 'white'}}>Back to Home</Text>
-      </TouchableOpacity>
+      <View style={{backgroundColor: '#F9564F', width: '100%', height: '100%', display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <TouchableOpacity onPress={() => this.toSave()} style={[styles.button, styles.buttonShadow, {display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly', width: '90%', height: '30%', backgroundColor: "#f3c677", borderRadius: 15, marginBottom: 25,}]}>
+          <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly'}}>
+            <Text style={{fontSize: 60, color: 'black'}}>Hunt </Text>
+            <Icon name='arrow-forward' size={40} />
+          </View>
+          <Text>Get the items you need in the time you have</Text>
+          </TouchableOpacity>
+        <TouchableOpacity onPress={() => this.toChooseItem()} style={[styles.button, styles.buttonShadow, {display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly', width: '90%', height: '30%', backgroundColor: '#f3c677', borderRadius: 15, marginTop: 25}]}>
+          <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly'}}>
+            <Text style={{textAlign: 'center', fontSize: 60, color: 'black'}}>Save </Text>
+            <Icon name='arrow-forward' size={40} />
+          </View>
+          <Text>Shop within your budget</Text>
+        </TouchableOpacity>
       </View>
     )
   }
 }
-
 
 const styles = StyleSheet.create({
   container: {
@@ -158,4 +159,4 @@ itemButton: {
   }
 });
 
-module.exports = ChallengeSent;
+module.exports = HuntOrSave;
