@@ -29,13 +29,19 @@ export default class HuntOrSave extends React.Component {
   render() {
     return (
       <View style={{backgroundColor: '#F9564F', width: '100%', height: '100%', display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <TouchableOpacity onPress={() => this.toSave()} style={[styles.button, styles.buttonShadow, {display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly', width: '90%', height: '30%', backgroundColor: "#f3c677", borderRadius: 15, marginBottom: 25,}]}>
-          <Text style={{fontSize: 60, color: 'black'}}>Hunt</Text>
-          <Icon name='arrow-forward' size={40} />
+        <TouchableOpacity onPress={() => this.toSave()} style={[styles.button, styles.buttonShadow, {display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly', width: '90%', height: '30%', backgroundColor: "#f3c677", borderRadius: 15, marginBottom: 25,}]}>
+          <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly'}}>
+            <Text style={{fontSize: 60, color: 'black'}}>Hunt </Text>
+            <Icon name='arrow-forward' size={40} />
+          </View>
+          <Text>Get the items you need in the time you have</Text>
           </TouchableOpacity>
-        <TouchableOpacity onPress={() => this.toChooseItem()} style={[styles.button, styles.buttonShadow, {display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly', width: '90%', height: '30%', backgroundColor: '#f3c677', borderRadius: 15, marginTop: 25}]}>
-          <Text style={{textAlign: 'center', fontSize: 60, color: 'black'}}>Save</Text>
-          <Icon name='arrow-forward' size={40} />
+        <TouchableOpacity onPress={() => this.toChooseItem()} style={[styles.button, styles.buttonShadow, {display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly', width: '90%', height: '30%', backgroundColor: '#f3c677', borderRadius: 15, marginTop: 25}]}>
+          <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly'}}>
+            <Text style={{textAlign: 'center', fontSize: 60, color: 'black'}}>Save </Text>
+            <Icon name='arrow-forward' size={40} />
+          </View>
+          <Text>Shop within your budget</Text>
         </TouchableOpacity>
       </View>
     )

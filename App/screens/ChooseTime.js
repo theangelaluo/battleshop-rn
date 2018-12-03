@@ -74,7 +74,7 @@ if (global.hours === 0) {
 }
       Alert.alert(
         'Battleshop Says',
-        'You are about to send a SAVE challenge for '  + time_string +
+        'You are about to send a SAVE challenge for ' + global.item + ' for ' + time_string +
         'with a $' + global.budget + ' budget versus ' +
         challenged_opponents + '.',
       [
