@@ -18,89 +18,12 @@ import { Icon } from 'react-native-elements';
 
 import TimePicker from 'react-native-simple-time-picker';
 
-var Header = require("./Header");
-
-export default class ChooseBudget extends React.Component {
-  static navigationOptions = {
-    headerTitle: <Header />
-  }
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      text: ''
-    };
-  }
-
-  handleInputChange = (text) => {
-      this.setState({
-        text: text,
-      });
-      global.budget = text;
-  }
-  toChooseTime() {
-    // Error prevention
-    // Error prevention
-    if (typeof(global.budget ) === 'undefined' || (typeof(global.budget ) === 'string' && global.budget.length == 0)) {
-        Alert.alert(
-        'Battleshop Says',
-        'Your budget cannot be empty. Please choose a budget that is a positive number.',
-        [
-          {text: 'OK'},
-        ],
-        {cancelable: false}
-        )
-  } else if (global.budget[0] === '-') {
-    Alert.alert(
-    'Battleshop Says',
-    'Budgets cannot be negative. Please choose a budget that is a positive number.',
-    [
-      {text: 'OK'},
-    ],
-    {cancelable: false}
-    )
-    // Checks if the budget only contains digits
-  } else if (!/^\d+$/.test(global.budget)) {
-        Alert.alert(
-        'Battleshop Says',
-        'Budgets cannot include letters. Please choose a budget that is a positive number.',
-        [
-          {text: 'OK'},
-        ],
-        {cancelable: false}
-        )
-    } else if (global.budget === '0') {
-      Alert.alert(
-      'Battleshop Says',
-      'Zero is not a valid budget. Please choose a budget that is a positive number.',
-      [
-        {text: 'OK'},
-      ],
-      {cancelable: false}
-      )
-    }  else {
-      this.props.navigation.navigate('ChooseTime');
-    }
-  }
+export default class Profile extends React.Component {
   render() {
     return (
-      <View style = {{flex: 1, backgroundColor: '#F9564F', alignItems: 'center'}}>
-        <Text style={{marginTop: 30, marginBottom: 30, textAlign: 'center', fontSize: 36, color: "white", fontWeight: 'bold'}}>Choose Budget</Text>
-
-          <View style={styles.textBoxSurroundings}>
-            <TextInput
-            style={styles.textBox}
-            keyboardType='numeric'
-            onChangeText={this.handleInputChange}
-            value={this.state.text}
-            />
-          </View>
-
-        <TouchableOpacity onPress={() => this.toChooseTime()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 25}]}>
-          <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 30, color: 'white'}}>Continue</Text>
-        </TouchableOpacity>
+      <View style={styles.container}>
+        <Text>Profile Page</Text>
       </View>
-
     )
   }
 }
@@ -216,4 +139,4 @@ itemButton: {
   }
 });
 
-module.exports = ChooseBudget;
+module.exports = Profile;

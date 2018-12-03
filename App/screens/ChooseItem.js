@@ -15,37 +15,40 @@ import {
 } from 'react-native';
 
 import { Icon } from 'react-native-elements';
-
 import TimePicker from 'react-native-simple-time-picker';
 
-var Header = require("./Header");
-
-export default class ChallengeSent extends React.Component {
-  static navigationOptions = {
-    headerTitle: <Header />
+export default class ChooseItem extends React.Component {
+  selectedItem() {
+    this.props.navigation.navigate('ChooseBudget');
   }
 
-  backToGroupOrSolo() {
-    this.props.navigation.navigate('GroupOrSolo');
-  }
+  // toChooseBudget() {
+  //   this.props.navigation.navigate('ChooseBudget');
+  // }
   render() {
     return (
-      <View style={{flex: 1, backgroundColor: '#F9564F', alignItems: 'center', padding: 15}}>
-        <Text style={{marginTop: 30, fontSize: 36, color: "white", fontWeight: 'bold', textAlign: 'center'}}>Challenge Sent!</Text>
-        <Text style={{marginTop: 20, fontSize: 30, color: 'white', textAlign: 'center'}}>
-          Your opponent has 5 minutes to accept this challenge, or the challenge will be cancelled.
-        </Text>
-        <Text style={{marginTop: 20, fontSize: 30, color: 'white', textAlign: 'center'}}>
-          We will send you a notification when your opponent accepts.
-        </Text>
-      <TouchableOpacity onPress={() => this.backToGroupOrSolo()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 40}]}>
-      <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 20, color: 'white'}}>Back to Home</Text>
-      </TouchableOpacity>
+      <View style = {{flex: 1, backgroundColor: '#F9564F'}}>
+        <Text style={{margin: 30, color: "white", fontWeight: 'bold', textAlign: 'center', fontSize: 36}}>Choose Your Item</Text>
+        <View style={styles.itemsContainer}>
+            <TouchableOpacity style={styles.itemButton} onPress={this.selectedItem.bind(this)}>
+              <Text style={{textAlign: 'center', fontSize: 24}}>Dress</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.itemButton} onPress={this.selectedItem.bind(this)}>
+              <Text style={{textAlign: 'center', fontSize: 24}}>Shirt</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.itemButton} onPress={this.selectedItem.bind(this)}>
+              <Text style={{textAlign: 'center', fontSize: 24}}>Jacket</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.itemButton} onPress={this.selectedItem.bind(this)}>
+              <Text style={{textAlign: 'center', fontSize: 24}}>Pants</Text>
+            </TouchableOpacity>
+
+        </View>
+
       </View>
     )
   }
 }
-
 
 const styles = StyleSheet.create({
   container: {
@@ -158,4 +161,4 @@ itemButton: {
   }
 });
 
-module.exports = ChallengeSent;
+module.exports = ChooseItem;

@@ -18,9 +18,6 @@ import { Icon } from 'react-native-elements';
 
 import TimePicker from 'react-native-simple-time-picker';
 
-var Header = require("./Header");
-
-
 class Opponent extends React.Component {
   constructor() {
     super();
@@ -46,7 +43,6 @@ class Opponent extends React.Component {
         clicked: false
       })
     }
-
   }
 
   render() {
@@ -62,10 +58,6 @@ class Opponent extends React.Component {
 }
 
 export default class ChooseOpponents extends React.Component {
-  static navigationOptions = {
-    headerTitle: <Header />
-  }
-
   constructor() {
     super();
     const ds = new ListView.DataSource({

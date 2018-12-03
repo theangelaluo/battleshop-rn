@@ -22,6 +22,65 @@ import TimePicker from 'react-native-simple-time-picker';
 
 import { createBottomTabNavigator,  createStackNavigator, createAppContainer } from 'react-navigation';
 
+import { AccessToken, LoginManager } from 'react-native-fbsdk';
+import firebase from '../config/firebase';
+
+// var Login = React.createClass({
+//   render: function() {
+//     return (
+//       <View>
+//         <LoginButton
+//           publishPermissions={["publish_actions"]}
+//           onLoginFinished={
+//             (error, result) => {
+//               if (error) {
+//                 alert("login has error: " + result.error);
+//               } else if (result.isCancelled) {
+//                 alert("login is cancelled.");
+//               } else {
+//                 AccessToken.getCurrentAccessToken().then(
+//                   (data) => {
+//                     alert(data.accessToken.toString())
+//                   }
+//                 )
+//               }
+//             }
+//           }
+//           onLogoutFinished={() => alert("logout.")}/>
+//       </View>
+//     );
+//   }
+// });
+//
+// Calling the following function will open the FB login dialogue:
+// const facebookLogin = async () => {
+//   try {
+//     const result = await LoginManager.logInWithReadPermissions(['public_profile', 'email']);
+//
+//     if (result.isCancelled) {
+//       throw new Error('User cancelled request'); // Handle this however fits the flow of your app
+//     }
+//
+//     console.log(`Login success with permissions: ${result.grantedPermissions.toString()}`);
+//
+//     // get the access token
+//     const data = await AccessToken.getCurrentAccessToken();
+//
+//     if (!data) {
+//       throw new Error('Something went wrong obtaining the users access token'); // Handle this however fits the flow of your app
+//     }
+//
+//     // create a new firebase credential with the token
+//     const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken);
+//
+//     // login with credential
+//     const currentUser = await firebase.auth().signInAndRetrieveDataWithCredential(credential);
+//
+//     console.info(JSON.stringify(currentUser.user.toJSON()))
+//   } catch (e) {
+//     console.error(e);
+//   }
+// }
 
 
 
@@ -53,10 +112,10 @@ export default class Login extends React.Component {
       return (
         <View style={styles.container}>
           <View style={{ display:'flex', alignItems: 'center', width: '100%', height: 150, marginTop: 5, marginBottom: 0}}>
-            <Image source={require('../img/battleshop-svg.png')} style={{flex: 1, width: '200%', height: '200%', resizeMode: 'contain'}}/>
+            <Image source={require('../../img/battleshop-svg.png')} style={{flex: 1, width: '200%', height: '200%', resizeMode: 'contain'}}/>
           </View>
           <View style={{ display:'flex', alignItems: 'center', width: '100%', height: 150, marginTop: 0, marginBottom: 0}}>
-            <Image source={require('../img/Battleshop-name.png')} style={{flex: 1, width: '50%', height: '50%', resizeMode: 'contain'}}/>
+            <Image source={require('../../img/Battleshop-name.png')} style={{flex: 1, width: '50%', height: '50%', resizeMode: 'contain'}}/>
           </View>
           <Text></Text>
           <View style={{display: 'flex', flexDirection: 'column', marginTop: 10}}>

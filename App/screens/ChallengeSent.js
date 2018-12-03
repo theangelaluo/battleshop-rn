@@ -15,24 +15,36 @@ import {
 } from 'react-native';
 
 import { Icon } from 'react-native-elements';
-
 import TimePicker from 'react-native-simple-time-picker';
 
-var Header = require("./Header");
-
-export default class Profile extends React.Component {
-  static navigationOptions = {
-    headerTitle: <Header />
+export default class ChallengeSent extends React.Component {
+  backToGroupOrSolo() {
+    this.props.navigation.navigate('GroupOrSolo');
   }
-
+  // toCompete() {
+  //   this.props.navigation.navigate('CompeteScreen');
+  // }
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Profile Page</Text>
+      <View style={{flex: 1, backgroundColor: '#F9564F', alignItems: 'center', padding: 15}}>
+        <Text style={{marginTop: 30, fontSize: 36, color: "white", fontWeight: 'bold', textAlign: 'center'}}>Challenge Sent!</Text>
+        <Text style={{marginTop: 20, fontSize: 30, color: 'white', textAlign: 'center'}}>
+          Your opponent has 5 minutes to accept this challenge, or the challenge will be cancelled.
+        </Text>
+        <Text style={{marginTop: 20, fontSize: 30, color: 'white', textAlign: 'center'}}>
+          We will send you a notification when your opponent accepts.
+        </Text>
+      <TouchableOpacity onPress={() => this.backToGroupOrSolo()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 10}]}>
+      <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 20, color: 'white'}}>Back to Home</Text>
+      </TouchableOpacity>
+      // <TouchableOpacity onPress={() => this.toCompete()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 10}]}>
+      // <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 20, color: 'white'}}>Compete</Text>
+      // </TouchableOpacity>
       </View>
     )
   }
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -58,13 +70,10 @@ itemButton: {
   alignItems: "center",
   backgroundColor: '#F2C57D',
   //marginTop: 5,
-  shadowColor: '#000',
-  shadowOffset: { width: 0, height: 0 },
-  shadowOpacity: 0.8,
+  shadowColor: 'rgba(0, 0, 0, 0.25)',
+  //shadowOffset: { width: 0, height: 0 },
   shadowRadius: 1,
-  elevation: 1,
-  shadowColor:'black',
-  shadowRadius: 1,
+  //elevation: 1,
   shadowOffset: {width: 4, height: 4},
   borderRadius: 15
  },
@@ -99,25 +108,11 @@ itemButton: {
     width: '80%',
     fontSize: 30,
   },
-  buttonShadow: {
-    borderBottomWidth: 0,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.8,
-    shadowRadius: 4,
-    elevation: 1,
-    marginLeft: 5,
-    marginRight: 5,
-    marginTop: 10,
-  },
   shadow: {
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.8,
+    shadowColor: 'rgba(0, 0, 0, 0.25)',
+    //shadowOffset: { width: 0, height: 0 },
     shadowRadius: 1,
     elevation: 1,
-    shadowColor:'black',
-    shadowRadius: 1,
     shadowOffset: {width: 4, height: 4},
   },
   header: {
@@ -145,4 +140,4 @@ itemButton: {
   }
 });
 
-module.exports = Profile;
+module.exports = ChallengeSent;

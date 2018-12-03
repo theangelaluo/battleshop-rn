@@ -18,35 +18,34 @@ import { Icon } from 'react-native-elements';
 
 import TimePicker from 'react-native-simple-time-picker';
 
-var Header = require("./Header");
-
-export default class HuntOrSave extends React.Component {
-  static navigationOptions = {
-    headerTitle: <Header />
+export default class GroupOrSolo extends React.Component {
+  toChooseOpponents() {
+    this.props.navigation.navigate('ChooseOpponents');
   }
 
-  // toHunt() {
-  //   this.props.navigation.navigate('ChooseItem');
-  // }
-  toChooseItem() { //TODO:temporary navigation, delete before commit
-    this.props.navigation.navigate('ChooseItem');
+  toHuntOrSave() {
+    this.props.navigation.navigate('HuntOrSave');
   }
-  toSave() {
-    //todo: save not implemented yet!
+
+  toCompete() {
+    this.props.navigation.navigate('CompeteScreen');
   }
 
   render() {
+    const { navigation } = this.props;
     return (
-      <View style={{backgroundColor: '#F9564F', width: '100%', height: '100%', display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <TouchableOpacity onPress={() => this.toSave()} style={[styles.button, styles.buttonShadow, {display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly', width: '90%', height: '30%', backgroundColor: "#f3c677", borderRadius: 15, marginBottom: 25,}]}>
-          <Text style={{fontSize: 60, color: 'black'}}>Hunt</Text>
-          <Icon name='arrow-forward' size={40} />
-          </TouchableOpacity>
-        <TouchableOpacity onPress={() => this.toChooseItem()} style={[styles.button, styles.buttonShadow, {display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly', width: '90%', height: '30%', backgroundColor: '#f3c677', borderRadius: 15, marginTop: 25}]}>
-          <Text style={{textAlign: 'center', fontSize: 60, color: 'black'}}>Save</Text>
-          <Icon name='arrow-forward' size={40} />
-        </TouchableOpacity>
-      </View>
+          <View style={{backgroundColor: '#F9564F', width: '100%', height: '100%', display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+            <TouchableOpacity onPress={() => this.toChooseOpponents()} style={[styles.button, styles.buttonShadow, {display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly', width: '90%', height: '30%', backgroundColor: "#f3c677", borderRadius: 15, marginBottom: 25,}]}>
+              <Text style={{fontSize: 60, color: 'black'}}>Group</Text>
+              <Icon name='arrow-forward' size={40} />
+              </TouchableOpacity>
+            <TouchableOpacity onPress={() => this.toHuntOrSave()} style={[styles.button, styles.buttonShadow, {display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly', width: '90%', height: '30%', backgroundColor: '#f3c677', borderRadius: 15, marginTop: 25}]}>
+              <Text style={{textAlign: 'center', fontSize: 60, color: 'black'}}>Solo</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => this.toCompete()} style={[styles.button, styles.buttonShadow, {display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly', width: '90%', height: '30%', backgroundColor: '#f3c677', borderRadius: 15, marginTop: 25}]}>
+              <Text style={{textAlign: 'center', fontSize: 60, color: 'black'}}>Skip to Compete</Text>
+            </TouchableOpacity>
+          </View>
     )
   }
 }
@@ -162,4 +161,4 @@ itemButton: {
   }
 });
 
-module.exports = HuntOrSave;
+module.exports = GroupOrSolo;

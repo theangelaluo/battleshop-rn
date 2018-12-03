@@ -18,13 +18,7 @@ import { Icon } from 'react-native-elements';
 
 import TimePicker from 'react-native-simple-time-picker';
 
-var Header = require("./Header");
-
 export default class Rewards extends React.Component {
-  static navigationOptions = {
-    headerTitle: <Header />
-  }
-
   render() {
     return (
       <View style={styles.container}>
