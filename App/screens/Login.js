@@ -23,7 +23,7 @@ import TimePicker from 'react-native-simple-time-picker';
 import { createBottomTabNavigator,  createStackNavigator, createAppContainer } from 'react-navigation';
 
 import { AccessToken, LoginManager } from 'react-native-fbsdk';
-import firebase from '../config/firebase';
+// import firebase from '../config/firebase';
 
 // var Login = React.createClass({
 //   render: function() {

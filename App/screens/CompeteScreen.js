@@ -23,7 +23,7 @@ import CountDown from 'react-native-countdown-component';
 import { Icon } from 'react-native-elements';
 import { Provider } from 'react-redux'
 
-import firebaseBackend from '../config/firebase';
+// import firebaseBackend from '../config/firebase';
 
 //     setTimeout(() => {
 //       if (this._isMounted === true) {
