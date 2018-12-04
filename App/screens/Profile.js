@@ -23,16 +23,13 @@ export default class Profile extends React.Component {
     return (
       <View style={{flex: 1, backgroundColor: '#F9564F', alignItems: 'center'}}>
         <View style={{marginTop: 75, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-          // <Image source={require('../img/Rachel-Rouhana-Profile-Pic-Square.jpg')} style={{borderRadius: 200/2, width: 200, height: 200, resizeMode: 'contain'}}/>
           <Text style={{color: "white", fontSize: 35, marginTop: 20, fontWeight: 'bold'}}>Molly Adams</Text>
           <Text style={{color: "white", fontSize: 25, marginTop: 10}}>Level 2</Text>
           <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', marginTop: 50}}>
-            <Image source={require('../img/swords.png')} style={{resizeMode: 'contain', marginRight: 20}}/>
             <Text style={{color: "white", fontSize: 35, fontWeight: 'bold'}}>1060</Text>
             <Text style={{color: "white", fontSize: 35}}> XP</Text>
           </View>
           <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', marginTop: 20}}>
-            <Image source={require('../img/coins.png')} style={{resizeMode: 'contain', marginRight: 20}}/>
             <Text style={{color: "white", fontSize: 35, fontWeight: 'bold'}}>2600</Text>
             <Text style={{color: "white", fontSize: 35}}> COINS</Text>
           </View>
