@@ -5,7 +5,7 @@ import {
   StyleSheet,
   View,
   Text,
-  TouchableOpacity, 
+  TouchableOpacity,
   TextInput,
   ListView,
   Alert,
@@ -51,9 +51,6 @@ export default class ChooseItem extends React.Component {
 
 
   handleInputChange = (text) => {
-      this.setState({
-        item_text: text,
-      });
       global.item = text;
   }
 
@@ -79,7 +76,7 @@ export default class ChooseItem extends React.Component {
               <TextInput
               style={styles.textBox}
               onChangeText={this.handleInputChange}
-              value={this.state.text}
+              value={this.state.item_text}
               />
             </View>
             <TouchableOpacity onPress={() => this.toChooseBudget()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 25}]}>
