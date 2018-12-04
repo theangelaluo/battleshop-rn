@@ -5,7 +5,7 @@ import {
   StyleSheet,
   View,
   Text,
-  TouchableOpacity,
+  TouchableOpacity, 
   TextInput,
   ListView,
   Alert,
@@ -18,6 +18,13 @@ import { Icon } from 'react-native-elements';
 import TimePicker from 'react-native-simple-time-picker';
 
 export default class ChooseItem extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      item_text: ''
+    };
+  }
+
   toChooseBudget() {
     this.props.navigation.navigate('ChooseBudget');
   }
@@ -45,10 +52,11 @@ export default class ChooseItem extends React.Component {
 
   handleInputChange = (text) => {
       this.setState({
-        text: text,
+        item_text: text,
       });
       global.item = text;
   }
+
 
   render() {
     return (
