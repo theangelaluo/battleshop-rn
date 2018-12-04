@@ -19,17 +19,30 @@ import { Icon } from 'react-native-elements';
 import TimePicker from 'react-native-simple-time-picker';
 
 export default class HuntOrSave extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      item_text: ''
+    };
+  }
   toChooseItem() { //TODO:temporary navigation, delete before commit
     this.props.navigation.navigate('ChooseItem');
   }
-  toSave() {
-    //todo: save not implemented yet!
+  toHunt() {
+    //todo: hunt not implemented yet!
+  }
+
+  handleInputChange = (text) => {
+      this.setState({
+        item_text: text,
+      });
+      global.item = text;
   }
 
   render() {
     return (
       <View style={{backgroundColor: '#F9564F', width: '100%', height: '100%', display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <TouchableOpacity onPress={() => this.toSave()} style={[styles.button, styles.buttonShadow, {display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly', width: '90%', height: '30%', backgroundColor: "#f3c677", borderRadius: 15, marginBottom: 25,}]}>
+        <TouchableOpacity onPress={() => this.toHunt()} style={[styles.button, styles.buttonShadow, {display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly', width: '90%', height: '30%', backgroundColor: "#f3c677", borderRadius: 15, marginBottom: 25,}]}>
           <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly'}}>
             <Text style={{fontSize: 60, color: 'black'}}>Hunt </Text>
             <Icon name='arrow-forward' size={40} />
