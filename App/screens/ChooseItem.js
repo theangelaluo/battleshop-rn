@@ -77,10 +77,7 @@ export default class ChooseItem extends React.Component {
             <TouchableOpacity onPress={() => this.toChooseBudget()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 25}]}>
               <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 30, color: 'white'}}>Continue</Text>
             </TouchableOpacity>
-
         </View>
-
-
       </View>
     )
   }
