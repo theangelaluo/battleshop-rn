@@ -12,6 +12,7 @@ import {
   Button,
   Image,
   FlatList,
+  StatusBar,
 } from 'react-native';
 
 import { Icon } from 'react-native-elements';
@@ -107,12 +108,12 @@ export default class Login extends React.Component {
                  onSkip={() => this.loginActual()}
                  pages={[
                    {
-                     title: 'Hey!',
-                     subtitle: 'Welcome to Battleshop! This is a tutorial to get you started.',
+                     title: 'Welcome to Battleshop!',
+                     subtitle: 'We\'re here to bring friends and family togther and help you accomplish your shopping goals. This tutorial will get you started.',
                      backgroundColor: '#F9564F',
                      image: (
                        <Icon
-                         name="hand-peace-o"
+                         name="shopping-cart"
                          type="font-awesome"
                          size={100}
                          color="white"
@@ -120,12 +121,12 @@ export default class Login extends React.Component {
                      ),
                    },
                    {
-                     title: 'Send Messages',
-                     subtitle: 'You can reach everybody with us',
+                     title: 'Create Challenges',
+                     subtitle: 'Turn your shopping list into a game. Choose \'Solo\' to play by yourself and \'Duel\' to invite a friend.',
                      backgroundColor: '#F9564F',
                      image: (
                        <Icon
-                         name="paper-plane-o"
+                         name="gamepad"
                          type="font-awesome"
                          size={100}
                          color="white"
@@ -133,26 +134,35 @@ export default class Login extends React.Component {
                      ),
                    },
                    {
-                     title: 'Get Notified',
-                     subtitle: 'We will send you notification as soon as something happened',
+                     title: 'Customize Your Experience',
+                     subtitle: 'Choose \'Hunt\' to input a shopping list. Choose \'Save\' to look for one item. Don\'t forget to set a budget and time frame!',
                      backgroundColor: '#F9564F',
                      image: (
-                       <Icon name="bell-o" type="font-awesome" size={100} color="white" />
+                       <Icon name="tasks" type="font-awesome" size={100} color="white" />
                      ),
                    },
                    {
-                     title: "That's Enough",
-                     subtitle: (
-                       <Button
-                         title={'Get Started'}
-                         containerViewStyle={{ marginTop: 20 }}
-                         backgroundColor={'white'}
-                         borderRadius={5}
-                         textStyle={{ color: '#003c8f' }}
-                         onPress={() => {
-                           this.loginActual();
-                         }}
-                       />
+                     title: 'Get Rewarded for Playing',
+                     subtitle: 'The more you play, the more you earn. Check out the Rewards tab to see what you can redeem.',
+                     backgroundColor: '#F9564F',
+                     image: (
+                       <Icon name="trophy" type="font-awesome" size={100} color="white" />
+                     ),
+                   },
+                   {
+                     title: "Ready to Battleshop?",
+                     subtitle:(
+                         <Button
+                           title={'Get Started'}
+                           containerViewStyle={{ marginTop: 20 }}
+                           backgroundColor={'white'}
+                           borderRadius={5}
+                           textStyle={{ color: '#003c8f' }}
+                           onPress={() => {
+                             this.loginActual();
+                             StatusBar.setBarStyle('default');
+                           }}
+                         />
                      ),
                      backgroundColor: '#F9564F',
                      image: (
