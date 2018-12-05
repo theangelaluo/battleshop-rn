@@ -4,3 +4,4 @@ global.budget;
 global.hours = 0;
 global.minutes = 0;
 global.item;
+global.rewards_arr = []; // all the rewards the user has redeemed
