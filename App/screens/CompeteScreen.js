@@ -4,14 +4,11 @@ import {
   StyleSheet,
   View,
   Text,
-  Platform,
+  Keyboard,
   TouchableOpacity,
   KeyboardAvoidingView,
-  RefreshControl,
-  TextInput,
   ListView,
   Alert,
-  Button,
   Image,
   FlatList,
 } from 'react-native';
@@ -22,8 +19,13 @@ import CountDown from 'react-native-countdown-component';
 
 import { Icon } from 'react-native-elements';
 import { Provider } from 'react-redux'
-
-import Firebase from '../config/firebase';
+import {
+  createBottomTabNavigator,
+  createStackNavigator,
+  createAppContainer,
+  createSwitchNavigator,
+} from 'react-navigation';
+import firebaseBackend from '../config/firebase';
 
 //     setTimeout(() => {
 //       if (this._isMounted === true) {
@@ -90,6 +92,10 @@ import Firebase from '../config/firebase';
 // }
 
 export default class CompeteScreen extends React.Component {
+  // static navigationOptions = {
+  //   tabBarVisible: false,
+  // }
+
   constructor(props) {
    super(props);
 
@@ -103,7 +109,7 @@ export default class CompeteScreen extends React.Component {
    // this.onSend = this.onSend.bind(this);
    // this.onReceive = this.onReceive.bind(this);
    // //this.renderCustomActions = this.renderCustomActions.bind(this);
-   // this.renderBubble = this.renderBubble.bind(this);
+   this.renderBubble = this.renderBubble.bind(this);
    // //this.renderSystemMessage = this.renderSystemMessage.bind(this);
    //
    // this._isAlright = null;
@@ -116,12 +122,18 @@ export default class CompeteScreen extends React.Component {
   //   };
   // }
   onSend(messages = []) {
-    Firebase.sendMessage()
-     this.setState((previousState) => {
-       return {
-         messages: GiftedChat.append(previousState.messages, messages),
-       };
-     });
+    // firebaseBackend.sendMessage()
+    this.setState((previousState) => {
+     return {
+       messages: GiftedChat.append(previousState.messages, messages),
+     };
+   });
+     // this.setState((previousState) => {
+     //   return {
+     //     messages: GiftedChat.append(previousState.messages, messages),
+     //   };
+     // });
+     Keyboard.dismiss();
    }
   // onReceive(text) {
   //  //firebaseBackend.shared.on(message =>
@@ -160,7 +172,7 @@ export default class CompeteScreen extends React.Component {
   render() {
     const { navigation } = this.props;
     return (
-      <View>
+      <View style={{flex:1}}>
         <View style={styles.competeStatus}>
           <Text style={{color: 'white', fontSize: 30}}>You are battleshopping</Text>
         </View>
@@ -172,71 +184,57 @@ export default class CompeteScreen extends React.Component {
             digitBgColor={'#F8F8F8'}
             digitTxtColor={'#565656'}
             timeToShow={['H', 'M', 'S']}
-            labelM={'MM'}
-            labelH={'HH'}
-            labelS={'SS'}
+            labelM={'minutes'}
+            labelH={'hours'}
+            labelS={'seconds'}
           />
         </View>
-              <GiftedChat
-                messages={this.state.messages}
-                onSend={Firebase.shared.send}
-                //loadEarlier={this.state.loadEarlier}
-              //  onLoadEarlier={this.onLoadEarlier}
-                //isLoadingEarlier={this.state.isLoadingEarlier}
-
-                user={{
-                  _id: 1, // sent messages should have same user._id
-                }}
-
-              //  renderActions={this.renderCustomActions}
-                renderBubble={this.renderBubble}
-                //renderSystemMessage={this.renderSystemMessage}
-                //renderCustomView={this.renderCustomView}
-                //renderFooter={this.renderFooter}
-              />
+        <GiftedChat
+          bottomOffset={56}
+          messages={this.state.messages}
+          onSend={(messages) => this.onSend(messages)}
+          user={{
+            _id: 1, // sent messages should have same user._id
+          }}
+          renderBubble={this.renderBubble}
+        />
       </View>
     )
   }
-  // <GiftedChat
-  //         messages={this.state.messages}
-  //         //onSend={firebaseBackend.sendMessage()}
-  //         user={this.user}
-  //       />
-componentDidMount() {
-  this._isMounted = true;
-    Firebase.shared.on(message =>
-      this.setState(previousState => ({
-        messages: GiftedChat.append(previousState.messages, message),
-      }))
-    );
-  }
+
+  // //  renderActions={this.renderCustomActions}
+  //   //renderSystemMessage={this.renderSystemMessage}
+  //   //renderCustomView={this.renderCustomView}
+  //   //renderFooter={this.renderFooter}
+// componentDidMount() {
+//   this._isMounted = true;
+//     firebaseBackend.loadMessages((message) => {
+//       this.setState((previousState) => {
+//         return {
+//           messages: GiftedChat.append(previousState.messages, message),
+//         };
+//       });
+//     });
+//   }
 
 componentWillUnmount() {
-    Firebase.shared.off();
+    //Firebase.shared.off();
     this._isMounted = false;
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    height: '100%',
-    backgroundColor: 'white'
-  },
   competeStatus: {
-    flex: 1,
-    flexDirection: 'row',
     height: 90,
-    paddingTop: Constants.statusBarHeight + 64,
+    alignItems: 'center',
+    justifyContent: 'center',
+    //paddingTop: Constants.statusBarHeight + 64,
     backgroundColor: '#F65854',
   },
   countdown: {
-    flex: 1,
-    flexDirection: 'row',
     height: 100,
-    marginTop: 64,
-    backgroundColor: '#F8F8F8',
+    //marginTop: 64,
+    backgroundColor: 'white',
     //alignContent: 'center',
     justifyContent: 'center',
   },

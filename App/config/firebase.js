@@ -1,84 +1,66 @@
-import firebase from 'firebase'; // 4.8.1
-import React from 'react'
+import firebase from 'firebase';
 
-class Firebase extends default React.Component {
+class firebaseBackend {
+  uid = '';
+  messagesRef = null;
+  // initialize Firebase Backend
   constructor() {
-    this.init();
-    //this.observeAuth();
-  }
-
-  init = () =>
     firebase.initializeApp({
-      apiKey: 'AIzaSyDLgW8QG1qO8O5WZLC1U8WaqCr5-CvEVmo',
-      authDomain: 'chatter-b85d7.firebaseapp.com',
-      databaseURL: 'https://chatter-b85d7.firebaseio.com',
-      projectId: 'chatter-b85d7',
-      storageBucket: '',
-      messagingSenderId: '861166145757',
+      apiKey: 'AIzaSyAiuvZgc9iLMezprc5zYLBw9PsrgRkXjrE',
+      authDomain: 'meetupchat-dbce1.firebaseapp.com',
+      databaseURL: 'https://meetupchat-dbce1.firebaseio.com',
+      storageBucket: 'meetupchat-dbce1.appspot.com',
     });
-
-  // observeAuth = () =>
-  //   firebase.auth().onAuthStateChanged(this.onAuthStateChanged);
-  //
-  // onAuthStateChanged = user => {
-  //   if (!user) {
-  //     try {
-  //       firebase.auth().signInAnonymously();
-  //     } catch ({ message }) {
-  //       alert(message);
-  //     }
-  //   }
-  // };
-
-  // get uid() {
-  //   return (firebase.auth().currentUser || {}).uid;
-  // }
-
-  get ref() {
-    return firebase.database().ref('messages');
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.setUid(user.uid);
+      } else {
+        firebase.auth().signInAnonymously().catch((error) => {
+          alert(error.message);
+        });
+      }
+    });
   }
-
-  parse = snapshot => {
-    const { timestamp: numberStamp, text, user } = snapshot.val();
-    const { key: _id } = snapshot;
-    const timestamp = new Date(numberStamp);
-    const message = {
-      _id,
-      timestamp,
-      text,
-      user,
+  setUid(value) {
+    this.uid = value;
+  }
+  getUid() {
+    return this.uid;
+  }
+  // retrieve the messages from the Backend
+  loadMessages(callback) {
+    this.messagesRef = firebase.database().ref('messages');
+    this.messagesRef.off();
+    const onReceive = (data) => {
+      const message = data.val();
+      callback({
+        _id: data.key,
+        text: message.text,
+        createdAt: new Date(message.createdAt),
+        user: {
+          _id: message.user._id,
+          name: message.user.name,
+        },
+      });
     };
-    return message;
-  };
-
-  on = callback =>
-    this.ref
-      .limitToLast(20)
-      .on('child_added', snapshot => callback(this.parse(snapshot)));
-
-  get timestamp() {
-    return firebase.database.ServerValue.TIMESTAMP;
+    this.messagesRef.limitToLast(20).on('child_added', onReceive);
   }
   // send the message to the Backend
-  send = messages => {
-    for (let i = 0; i < messages.length; i++) {
-      const { text, user } = messages[i];
-      const message = {
-        text,
-        user,
-        timestamp: this.timestamp,
-      };
-      this.append(message);
+  sendMessage(message) {
+    for (let i = 0; i < message.length; i++) {
+      this.messagesRef.push({
+        text: message[i].text,
+        user: message[i].user,
+        createdAt: firebase.database.ServerValue.TIMESTAMP,
+      });
     }
-  };
-
-  append = message => this.ref.push(message);
-
+  }
   // close the connection to the Backend
-  off() {
-    this.ref.off();
+  closeChat() {
+    if (this.messagesRef) {
+      this.messagesRef.off();
+    }
   }
 }
 
-Firebase.shared = new Firebase();
-export default Firebase;
+export default new firebaseBackend();

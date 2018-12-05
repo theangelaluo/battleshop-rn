@@ -105,6 +105,7 @@ const bottomTabNavigator = createBottomTabNavigator({
   Compete: {
     screen: CompeteStack,
     navigationOptions: {
+      //tabBarVisible: false,
       tabBarLabel: 'Compete',
       tabBarIcon: ({ tintColor }) => <Image source={require('../img/Compete.png')} />
     },
