@@ -16,7 +16,7 @@ import {
 
 import { Icon } from 'react-native-elements';
 import TimePicker from 'react-native-simple-time-picker';
-import Onboarding from 'react-native-onboarding-swiper';
+import Tutorial from './Tutorial.js'
 
 //var FBLoginButton = require('./FBLoginButton');
 
@@ -85,46 +85,76 @@ import { AccessToken, LoginManager } from 'react-native-fbsdk';
 
 
 export default class Login extends React.Component {
+  constructor() {
+    super();
+    this.state = { showTutorial: false};
+  }
+
   static navigationOptions = {
     tabBarVisible: false,
   };
 
+  _renderTutorial() {
+       if (this.state.showTutorial) {
+           return (  
+               <Tutorial></Tutorial>
+           );
+       } else return null;
+   }
+
+   _renderLoginScreen(){
+     if(!this.state.showTutorial){
+       return(
+         <View>
+           <View style={{ display:'flex', alignItems: 'center', width: '100%', height: 150, marginTop: 5, marginBottom: 0}}>
+             <Image source={require('../../img/battleshop-svg.png')} style={{flex: 1, width: '200%', height: '200%', resizeMode: 'contain'}}/>
+           </View>
+           <View style={{ display:'flex', alignItems: 'center', width: '100%', height: 150, marginTop: 0, marginBottom: 0}}>
+             <Image source={require('../../img/Battleshop-name.png')} style={{flex: 1, width: '50%', height: '50%', resizeMode: 'contain'}}/>
+           </View>
+           <Text></Text>
+           <View style={{display: 'flex', flexDirection: 'column', marginTop: 10}}>
+             <TouchableOpacity onPress={() => this.login('Facebook.com')} style={[styles.button, {backgroundColor: "#2553B4", borderRadius: 2}]}>
+               <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 20, color: 'white'}}>Login with Facebook</Text>
+               </TouchableOpacity>
+               <TouchableOpacity onPress={() => this.login('Google.com')} style={[styles.button, {backgroundColor: '#ffffff', borderRadius: 2}]}>
+               <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 20, color: 'black'}}>Login with Google</Text>
+               </TouchableOpacity>
+           </View>
+         </View>
+       );
+     }else return null;
+   }
+
   loginActual() {
-    this.props.navigation.navigate('Compete');
+    //this.props.navigation.navigate('Compete');
   }
 
   login(company) {
     //this.props.navigation.navigate('Compete');
   //  createAppContainer(NavBar);
-  Alert.alert(
-  '"Battleshop" Wants to Use "' + company + '" to Sign In',
-  'This allows the app and website to share information about you.',
-  [
-    {text: 'Cancel', style: 'cancel'},
-    {text: 'OK', onPress: () => this.loginActual()},
-  ],
-  { cancelable: false }
-  )
-
+    Alert.alert(
+    '"Battleshop" Wants to Use "' + company + '" to Sign In',
+    'This allows the app and website to share information about you.',
+    [
+      {text: 'Cancel', style: 'cancel'},
+      {text: 'OK', onPress: () => this.loginActual()},
+    ],
+    { cancelable: false }
+    )
+    this.setState({
+      showTutorial: !this.state.showTutorial,
+    });
   }
 
   render() {
       return (
         <View style={styles.container}>
-          <View style={{ display:'flex', alignItems: 'center', width: '100%', height: 150, marginTop: 5, marginBottom: 0}}>
-            <Image source={require('../../img/battleshop-svg.png')} style={{flex: 1, width: '200%', height: '200%', resizeMode: 'contain'}}/>
+          <View>
+            {this._renderTutorial()}
           </View>
-          <View style={{ display:'flex', alignItems: 'center', width: '100%', height: 150, marginTop: 0, marginBottom: 0}}>
-            <Image source={require('../../img/Battleshop-name.png')} style={{flex: 1, width: '50%', height: '50%', resizeMode: 'contain'}}/>
-          </View>
-          <Text></Text>
-          <View style={{display: 'flex', flexDirection: 'column', marginTop: 10}}>
-            <TouchableOpacity onPress={() => this.login('Facebook.com')} style={[styles.button, {backgroundColor: "#2553B4", borderRadius: 2}]}>
-              <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 20, color: 'white'}}>Login with Facebook</Text>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() => this.login('Google.com')} style={[styles.button, {backgroundColor: '#ffffff', borderRadius: 2}]}>
-              <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 20, color: 'black'}}>Login with Google</Text>
-              </TouchableOpacity>
+          <View>
+            {this._renderLoginScreen()}
           </View>
         </View>
       );
