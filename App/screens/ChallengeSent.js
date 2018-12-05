@@ -21,9 +21,9 @@ export default class ChallengeSent extends React.Component {
   backToGroupOrSolo() {
     this.props.navigation.navigate('GroupOrSolo');
   }
-  // toCompete() {
-  //   this.props.navigation.navigate('CompeteScreen');
-  // }
+  toCompete() {
+    this.props.navigation.navigate('CompeteScreen');
+  }
   render() {
     return (
       <View style={{flex: 1, backgroundColor: '#F9564F', alignItems: 'center', padding: 15}}>
