@@ -21,7 +21,9 @@ import {GiftedChat, Actions, Bubble, SystemMessage} from 'react-native-gifted-ch
 import CountDown from 'react-native-countdown-component';
 
 import { Icon } from 'react-native-elements';
-import { Provider } from 'react-redux'
+import { Provider } from 'react-redux';
+
+var CompeteStatusBar = require("../components/CompeteStatusBar");
 
 // import firebaseBackend from '../config/firebase';
 
@@ -161,6 +163,7 @@ export default class CompeteScreen extends React.Component {
     const { navigation } = this.props;
     return (
       <View>
+        <CompeteStatusBar></CompeteStatusBar>
         <View style={styles.competeStatus}>
           <Text style={{color: 'white', fontSize: 30}}>You are battleshopping</Text>
         </View>
