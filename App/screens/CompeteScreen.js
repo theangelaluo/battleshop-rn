@@ -164,9 +164,6 @@ export default class CompeteScreen extends React.Component {
     return (
       <View>
         <CompeteStatusBar></CompeteStatusBar>
-        <View style={styles.competeStatus}>
-          <Text style={{color: 'white', fontSize: 30}}>You are battleshopping</Text>
-        </View>
         <View style={styles.countdown}>
           <CountDown
             until={global.hours * 60 * 60 + global.minutes * 60}
