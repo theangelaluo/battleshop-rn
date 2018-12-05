@@ -26,12 +26,16 @@ export default class ChallengeSent extends React.Component {
   // }
   render() {
     return (
-      <View style={{flex: 1, backgroundColor: '#F9564F', alignItems: 'center', padding: 15}}> 
-      <TouchableOpacity onPress={() => this.backToGroupOrSolo()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 10}]}>
-      </TouchableOpacity>
-      // <TouchableOpacity onPress={() => this.toCompete()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 10}]}>
-      // <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 20, color: 'white'}}>Compete</Text>
-      // </TouchableOpacity>
+      <View style={{flex: 1, backgroundColor: '#F9564F', alignItems: 'center', padding: 15}}>
+        <Text style={{marginTop: 20, fontSize: 30, color: 'white', textAlign: 'center'}}>
+          We will send you a notification when your opponent accepts.
+        </Text>
+        <TouchableOpacity onPress={() => this.backToGroupOrSolo()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 10}]}>
+          <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 20, color: 'white'}}>Back to Home</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => this.toCompete()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 10}]}>
+          <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 20, color: 'white'}}>Compete</Text>
+        </TouchableOpacity>
       </View>
     )
   }
