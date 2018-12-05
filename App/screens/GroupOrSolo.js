@@ -15,8 +15,8 @@ import {
 } from 'react-native';
 
 import { Icon } from 'react-native-elements';
-
 import TimePicker from 'react-native-simple-time-picker';
+import * as Progress from 'react-native-progress';
 
 export default class GroupOrSolo extends React.Component {
   toChooseOpponents() {
@@ -43,6 +43,9 @@ export default class GroupOrSolo extends React.Component {
               <Text style={{textAlign: 'center', fontSize: 60, color: 'black'}}>Solo</Text>
               <Icon name='arrow-forward' size={40} />
             </TouchableOpacity>
+            <View style={styles.progressBar}>
+              <Progress.Bar progress={0.3} width={300} progress={0} color={'rgba(123, 30, 122, 1)'}/>
+            </View>
           </View>
     )
   }
@@ -156,6 +159,10 @@ itemButton: {
     flex: 1,
     height: StyleSheet.hairlineWidth,
     backgroundColor: 'black'
+  },
+  progressBar:{
+    bottom: 20,
+    position: 'absolute'
   }
 });
 

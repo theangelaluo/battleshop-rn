@@ -16,6 +16,7 @@ import {
 
 import { Icon } from 'react-native-elements';
 import TimePicker from 'react-native-simple-time-picker';
+import * as Progress from 'react-native-progress';
 
 export default class ChooseTime extends React.Component {
 
@@ -119,6 +120,9 @@ if (global.hours === 0) {
         <TouchableOpacity onPress={() => this.toChallengeSent()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 25}]}>
           <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 30, color: 'white'}}>Send Challenge</Text>
         </TouchableOpacity>
+        <View style={styles.progressBar}>
+          <Progress.Bar progress={0.3} width={300} progress={1} color={'rgba(123, 30, 122, 1)'}/>
+        </View>
       </View>
     );
   }
@@ -232,6 +236,10 @@ itemButton: {
     flex: 1,
     height: StyleSheet.hairlineWidth,
     backgroundColor: 'black'
+  },
+  progressBar:{
+    bottom: 20,
+    position: 'absolute'
   }
 });
 

@@ -16,6 +16,7 @@ import {
 
 import { Icon } from 'react-native-elements';
 import TimePicker from 'react-native-simple-time-picker';
+import * as Progress from 'react-native-progress';
 
 export default class ChooseItem extends React.Component {
   constructor(props) {
@@ -82,6 +83,9 @@ export default class ChooseItem extends React.Component {
             <TouchableOpacity onPress={() => this.toChooseBudget()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 25}]}>
               <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 30, color: 'white'}}>Continue</Text>
             </TouchableOpacity>
+            <View style={styles.progressBar}>
+              <Progress.Bar progress={0.3} width={300} progress={0.5} color={'rgba(123, 30, 122, 1)'}/>
+            </View>
         </View>
       </View>
     )
@@ -196,6 +200,10 @@ itemButton: {
     flex: 1,
     height: StyleSheet.hairlineWidth,
     backgroundColor: 'black'
+  },
+  progressBar:{
+    bottom: 20,
+    position: 'absolute'
   }
 });
 
