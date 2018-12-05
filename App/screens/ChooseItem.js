@@ -18,6 +18,13 @@ import { Icon } from 'react-native-elements';
 import TimePicker from 'react-native-simple-time-picker';
 
 export default class ChooseItem extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      item_text: ''
+    };
+  }
+
   toChooseBudget() {
     this.props.navigation.navigate('ChooseBudget');
   }
@@ -44,11 +51,9 @@ export default class ChooseItem extends React.Component {
 
 
   handleInputChange = (text) => {
-      this.setState({
-        text: text,
-      });
       global.item = text;
   }
+
 
   render() {
     return (
@@ -71,16 +76,13 @@ export default class ChooseItem extends React.Component {
               <TextInput
               style={styles.textBox}
               onChangeText={this.handleInputChange}
-              value={this.state.text}
+              value={this.state.item_text}
               />
             </View>
             <TouchableOpacity onPress={() => this.toChooseBudget()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 25}]}>
               <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 30, color: 'white'}}>Continue</Text>
             </TouchableOpacity>
-
         </View>
-
-
       </View>
     )
   }

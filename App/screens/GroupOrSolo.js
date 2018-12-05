@@ -41,6 +41,7 @@ export default class GroupOrSolo extends React.Component {
               </TouchableOpacity>
             <TouchableOpacity onPress={() => this.toHuntOrSave()} style={[styles.button, styles.buttonShadow, {display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly', width: '90%', height: '30%', backgroundColor: '#f3c677', borderRadius: 15, marginTop: 25}]}>
               <Text style={{textAlign: 'center', fontSize: 60, color: 'black'}}>Solo</Text>
+              <Icon name='arrow-forward' size={40} />
             </TouchableOpacity>
           </View>
     )
