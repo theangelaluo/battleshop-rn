@@ -23,7 +23,7 @@ import CountDown from 'react-native-countdown-component';
 import { Icon } from 'react-native-elements';
 import { Provider } from 'react-redux'
 
-// import firebaseBackend from '../config/firebase';
+import Firebase from '../config/firebase';
 
 //     setTimeout(() => {
 //       if (this._isMounted === true) {
@@ -115,14 +115,14 @@ export default class CompeteScreen extends React.Component {
   //     _id: firebaseBackend.getUid(),
   //   };
   // }
-  // onSend(messages = []) {
-  //   firebaseBackend.sendMessage
-  //    this.setState((previousState) => {
-  //      return {
-  //        messages: GiftedChat.append(previousState.messages, messages),
-  //      };
-  //    });
-  //  }
+  onSend(messages = []) {
+    Firebase.sendMessage()
+     this.setState((previousState) => {
+       return {
+         messages: GiftedChat.append(previousState.messages, messages),
+       };
+     });
+   }
   // onReceive(text) {
   //  //firebaseBackend.shared.on(message =>
   //    this.setState((previousState) => {
@@ -177,6 +177,23 @@ export default class CompeteScreen extends React.Component {
             labelS={'SS'}
           />
         </View>
+              <GiftedChat
+                messages={this.state.messages}
+                onSend={Firebase.shared.send}
+                //loadEarlier={this.state.loadEarlier}
+              //  onLoadEarlier={this.onLoadEarlier}
+                //isLoadingEarlier={this.state.isLoadingEarlier}
+
+                user={{
+                  _id: 1, // sent messages should have same user._id
+                }}
+
+              //  renderActions={this.renderCustomActions}
+                renderBubble={this.renderBubble}
+                //renderSystemMessage={this.renderSystemMessage}
+                //renderCustomView={this.renderCustomView}
+                //renderFooter={this.renderFooter}
+              />
       </View>
     )
   }
@@ -187,15 +204,15 @@ export default class CompeteScreen extends React.Component {
   //       />
 componentDidMount() {
   this._isMounted = true;
-    // firebaseBackend.sendMessage(message =>
-    //   this.setState(previousState => ({
-    //     messages: GiftedChat.append(previousState.messages, message),
-    //   }))
-    // );
+    Firebase.shared.on(message =>
+      this.setState(previousState => ({
+        messages: GiftedChat.append(previousState.messages, message),
+      }))
+    );
   }
 
 componentWillUnmount() {
-    //firebaseBackend.shared.off();
+    Firebase.shared.off();
     this._isMounted = false;
   }
 }

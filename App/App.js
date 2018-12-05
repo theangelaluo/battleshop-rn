@@ -91,21 +91,19 @@ const CompeteStack = createStackNavigator({
 const bottomTabNavigator = createBottomTabNavigator({
   Profile: {
     screen: Profile,
-    defaultNavigationOptions: ({ navigation }) => ({
-      headerTitle: <Header/>,
-      headerRight: (
-        <TouchableOpacity style={{paddingRight: 20}} onPress={() => navigation.navigate('Login')}>
-          <Image source={require('../img/ic_exit_to_app.png')}/>
-        </TouchableOpacity>
-      ),
-    }),
-    navigationOptions: {
+    navigationOptions: ({ navigation }) => ({
+        headerTitle: <Header/>,
+        headerRight: (
+          <TouchableOpacity style={{paddingRight: 20}} onPress={() => navigation.navigate('Login')}>
+            <Image source={require('../img/ic_exit_to_app.png')}/>
+          </TouchableOpacity>
+        ),
       tabBarLabel: 'Profile',
       tabBarIcon: ({ tintColor }) => <Image source={require('../img/Profile.png')} />
-    },
+    }),
   },
   Compete: {
-    screen: CompeteStack, // Replaced Feed with FeedStack
+    screen: CompeteStack,
     navigationOptions: {
       tabBarLabel: 'Compete',
       tabBarIcon: ({ tintColor }) => <Image source={require('../img/Compete.png')} />
@@ -113,7 +111,9 @@ const bottomTabNavigator = createBottomTabNavigator({
   },
   Rewards: {
     screen: Rewards,
-    defaultNavigationOptions: ({ navigation }) => ({
+    navigationOptions: ({ navigation }) => ({
+      tabBarLabel: 'Rewards',
+      tabBarIcon: ({ tintColor }) => <Image source={require('../img/Rewards.png')} />,
       headerTitle: <Header/>,
       headerRight: (
         <TouchableOpacity style={{paddingRight: 20}} onPress={() => navigation.navigate('Login')}>
@@ -121,10 +121,6 @@ const bottomTabNavigator = createBottomTabNavigator({
         </TouchableOpacity>
       ),
     }),
-    navigationOptions: {
-      tabBarLabel: 'Rewards',
-      tabBarIcon: ({ tintColor }) => <Image source={require('../img/Rewards.png')} />
-    }
   }
 
 }, {
