@@ -174,7 +174,7 @@ itemButton: {
     backgroundColor: 'black'
   },
   progressBar:{
-    bottom: 20,
+    bottom: 15,
     position: 'absolute'
   }
 });

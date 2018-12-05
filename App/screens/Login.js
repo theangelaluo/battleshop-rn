@@ -15,8 +15,8 @@ import {
 } from 'react-native';
 
 import { Icon } from 'react-native-elements';
-
 import TimePicker from 'react-native-simple-time-picker';
+import Onboarding from 'react-native-onboarding-swiper';
 
 //var FBLoginButton = require('./FBLoginButton');
 
