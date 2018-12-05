@@ -24,6 +24,23 @@ export default class ChooseItem extends React.Component {
     this.state = {
       item_text: ''
     };
+    // reset
+    global.item = '';
+  }
+
+  press() {
+    if (global.item.length === 0) {
+      Alert.alert(
+      'Battleshop Says',
+      'Please select an item or enter your own custom input.',
+      [
+        {text: 'OK'},
+      ],
+      {cancelable: false}
+      )
+    } else {
+      this.props.navigation.navigate('ChooseBudget');
+    }
   }
 
   toChooseBudget() {
@@ -80,7 +97,7 @@ export default class ChooseItem extends React.Component {
               value={this.state.item_text}
               />
             </View>
-            <TouchableOpacity onPress={() => this.toChooseBudget()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 25}]}>
+            <TouchableOpacity onPress={() => this.press()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 25}]}>
               <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 30, color: 'white'}}>Continue</Text>
             </TouchableOpacity>
             <View style={styles.progressBar}>
