@@ -16,7 +16,8 @@ import {
 
 import { Icon } from 'react-native-elements';
 import TimePicker from 'react-native-simple-time-picker';
-import Tutorial from './Tutorial.js'
+// import Tutorial from './Tutorial.js'
+import Onboarding from 'react-native-onboarding-swiper';
 
 //var FBLoginButton = require('./FBLoginButton');
 
@@ -82,8 +83,6 @@ import { AccessToken, LoginManager } from 'react-native-fbsdk';
 //   }
 // }
 
-
-
 export default class Login extends React.Component {
   constructor() {
     super();
@@ -94,10 +93,75 @@ export default class Login extends React.Component {
     tabBarVisible: false,
   };
 
+  loginActual() {
+    this.props.navigation.navigate('Compete');
+  }
+
   _renderTutorial() {
        if (this.state.showTutorial) {
-           return (  
-               <Tutorial></Tutorial>
+          //this.props.navigation.navigate("TutorialStack");
+           return (
+             <View style={{display: 'flex', flex: 1, height: '100%', width: '100%'}}>
+               <Onboarding style={{borderWidth: 2, borderColor: "blue"}}
+                 showDone={false}
+                 onSkip={() => this.loginActual()}
+                 pages={[
+                   {
+                     title: 'Hey!',
+                     subtitle: 'Welcome to Battleshop! This is a tutorial to get you started.',
+                     backgroundColor: '#F9564F',
+                     image: (
+                       <Icon
+                         name="hand-peace-o"
+                         type="font-awesome"
+                         size={100}
+                         color="white"
+                       />
+                     ),
+                   },
+                   {
+                     title: 'Send Messages',
+                     subtitle: 'You can reach everybody with us',
+                     backgroundColor: '#F9564F',
+                     image: (
+                       <Icon
+                         name="paper-plane-o"
+                         type="font-awesome"
+                         size={100}
+                         color="white"
+                       />
+                     ),
+                   },
+                   {
+                     title: 'Get Notified',
+                     subtitle: 'We will send you notification as soon as something happened',
+                     backgroundColor: '#F9564F',
+                     image: (
+                       <Icon name="bell-o" type="font-awesome" size={100} color="white" />
+                     ),
+                   },
+                   {
+                     title: "That's Enough",
+                     subtitle: (
+                       <Button
+                         title={'Get Started'}
+                         containerViewStyle={{ marginTop: 20 }}
+                         backgroundColor={'white'}
+                         borderRadius={5}
+                         textStyle={{ color: '#003c8f' }}
+                         onPress={() => {
+                           this.loginActual();
+                         }}
+                       />
+                     ),
+                     backgroundColor: '#F9564F',
+                     image: (
+                       <Icon name="rocket" type="font-awesome" size={100} color="white" />
+                     ),
+                   },
+                 ]}
+               />
+             </View>
            );
        } else return null;
    }
@@ -126,8 +190,10 @@ export default class Login extends React.Component {
      }else return null;
    }
 
-  loginActual() {
-    //this.props.navigation.navigate('Compete');
+  tutorialToggle(){
+    this.setState({
+      showTutorial: !this.state.showTutorial,
+    });
   }
 
   login(company) {
@@ -138,29 +204,21 @@ export default class Login extends React.Component {
     'This allows the app and website to share information about you.',
     [
       {text: 'Cancel', style: 'cancel'},
-      {text: 'OK', onPress: () => this.loginActual()},
+      {text: 'OK', onPress: () => this.tutorialToggle()},
     ],
     { cancelable: false }
     )
-    this.setState({
-      showTutorial: !this.state.showTutorial,
-    });
   }
 
   render() {
       return (
         <View style={styles.container}>
-          <View>
-            {this._renderTutorial()}
-          </View>
-          <View>
             {this._renderLoginScreen()}
-          </View>
+            {this._renderTutorial()}
         </View>
       );
     }
   }
-
 
   const styles = StyleSheet.create({
     container: {
