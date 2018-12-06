@@ -16,6 +16,9 @@ import {
 
 import { Icon } from 'react-native-elements';
 
+import Confetti from 'react-native-confetti';
+import MakeItRain from "react-native-make-it-rain";
+
 import TimePicker from 'react-native-simple-time-picker';
 
 import {styles} from '../styles.js';
@@ -25,6 +28,21 @@ export default class ChallengeComplete extends React.Component {
     headerLeft: null
   }
 
+  componentDidMount(){
+    if (this._confettiView) {
+      this._confettiView.startConfetti();
+    }
+  }
+
+  componentWillUnmount () {
+    if (this._confettiView)
+    {
+        this._confettiView.stopConfetti();
+    }
+  }
+
+
+
   toRecentChallenges() {
     global.sent_challenge = false;
     this.props.navigation.navigate("RecentChallenges");
@@ -32,7 +50,10 @@ export default class ChallengeComplete extends React.Component {
 
   render() {
     return (
+
       <View style={{flex: 1, backgroundColor: '#F9564F', alignItems: 'center'}}>
+        <Confetti confettiCount={10000000} untilStopped={true} ref={(node)=> this._confettiView = node}/>
+        <MakeItRain numMoneys={20} moneyDimensions={{width: 100, height: 50}}/>
         <Text style={{color: "white", fontSize: 35, marginTop: 20, fontWeight: 'bold'}}>Battle Complete!</Text>
         <View style={{marginTop: 15, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
           <Image source={require('../../img/Rachel-Rouhana-Profile-Pic-Square.jpg')} style={{borderRadius: 150/2, width: 150, height: 150, resizeMode: 'contain'}}/>
