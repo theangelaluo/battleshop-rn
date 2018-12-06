@@ -192,7 +192,6 @@ const reward_styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: "center",
     backgroundColor: '#F2C57D',
-    //marginTop: 5,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 0 },
     shadowOpacity: 0.8,
@@ -202,7 +201,7 @@ const reward_styles = StyleSheet.create({
     shadowRadius: 1,
     shadowOffset: {width: 2, height: 2},
     borderRadius: 15
-  }
+  },
 });
 
 module.exports = Rewards;

@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native'
+import { material } from 'react-native-typography'
 
 const styles = StyleSheet.create({
   container: {
