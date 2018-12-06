@@ -158,6 +158,9 @@ export default class CompeteScreen extends React.Component {
     );
   }
 
+  endChallenge() {
+    this.props.navigation.navigate('ChallengeComplete');
+  }
 
   render() {
     const { navigation } = this.props;
@@ -177,6 +180,9 @@ export default class CompeteScreen extends React.Component {
             labelS={'SS'}
           />
         </View>
+        <TouchableOpacity onPress={() => this.endChallenge()} style={[styles.button, {marginTop: 70, backgroundColor: '#ffffff', borderRadius: 2}]}>
+          <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 20, color: 'black'}}>End Challenge</Text>
+        </TouchableOpacity>
       </View>
     )
   }
