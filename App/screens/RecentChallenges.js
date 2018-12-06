@@ -177,9 +177,11 @@ export default class RecentChallenges extends React.Component {
 
   _renderButton3() {
     return(
-      <TouchableOpacity style={styles.itemButton} onPress={this.selectedSecond.bind(this)} >
+      <TouchableOpacity onPress={this.selectedSecond.bind(this)} >
+      <View style={styles.itemButton} >
         <Text style={{textAlign: 'center', fontSize: 24, width: '95%'}}>SAVE vs. Barry</Text>
         <Text style={{textAlign: 'center', fontSize: 16, width: '95%'}}>Item: Shoes; Budget: $75; Time: 30 Minutes</Text>
+        </View>
       </TouchableOpacity>
     )
   }
@@ -218,9 +220,7 @@ export default class RecentChallenges extends React.Component {
     )
   }
 }
-<<<<<<< HEAD
 
-=======
             //
             // <TouchableOpacity style={styles.itemButton} onPress={this.selectedFirst.bind(this)}>
             //   <Text style={{textAlign: 'center', fontSize: 24}}>SAVE vs. Alice</Text>
@@ -238,5 +238,5 @@ export default class RecentChallenges extends React.Component {
             //   <Text style={{textAlign: 'center', fontSize: 24}}>SAVE vs. Clark</Text>
             //   <Text style={{textAlign: 'center', fontSize: 16}}>Item: Glasses; Budget: $70; Time: 1.5 Hours</Text>
             // </TouchableOpacity>
->>>>>>> ec4e98c4e224b1c16ef4b780738c835344d29479
+
 module.exports = RecentChallenges;
