@@ -157,21 +157,26 @@ export default class RecentChallenges extends React.Component {
 
   _renderButton1() {
     return(
-      <TouchableOpacity style={styles.itemButton}  onPress={this.selectedFirst.bind(this)} >
+      <TouchableOpacity onPress={this.selectedFirst.bind(this)} >
+      <View style={styles.itemButton} >
         <Text style={{textAlign: 'center', fontSize: 24}}>SAVE vs. Alice</Text>
         <Text style={{textAlign: 'center', fontSize: 16, width: '95%'}}>Item: Dress; Budget: $50; Time: 1 Hour</Text>
+        </View>
       </TouchableOpacity>
+
     )
   }
 
   _renderButton2() {
     return(
       // I switched the order, so that's why I'm calling selectedThird rather than selectedSecond
-      <TouchableOpacity style={styles.itemButton} onPress={this.selectedThird.bind(this)} >
+      <TouchableOpacity onPress={this.selectedThird.bind(this)} >
+      <View style={styles.itemButton} >
         <Text style={{textAlign: 'center', fontSize: 24, width: '95%'}}>SAVE vs. Yanyan</Text>
         <Text style={{textAlign: 'center', fontSize: 16, width: '95%'}}>Item: Blouse; Budget: $60; Time: 45 Minutes</Text>
-
+      </View>
       </TouchableOpacity>
+
     )
   }
 
@@ -181,16 +186,18 @@ export default class RecentChallenges extends React.Component {
       <View style={styles.itemButton} >
         <Text style={{textAlign: 'center', fontSize: 24, width: '95%'}}>SAVE vs. Barry</Text>
         <Text style={{textAlign: 'center', fontSize: 16, width: '95%'}}>Item: Shoes; Budget: $75; Time: 30 Minutes</Text>
-        </View>
+      </View>
       </TouchableOpacity>
     )
   }
 
   _renderButton4() {
     return(
-      <TouchableOpacity style={styles.itemButton} onPress={this.selectedFourth.bind(this)} >
+      <TouchableOpacity onPress={this.selectedFourth.bind(this)} >
+        <View style={styles.itemButton} >
         <Text style={{textAlign: 'center', fontSize: 24, width: '95%'}}>SAVE vs. Clark</Text>
-           <Text style={{textAlign: 'center', fontSize: 16}}>Item: Glasses; Budget: $70; Time: 1.5 Hours</Text>
+           <Text style={{textAlign: 'center', fontSize: 16, width: '95%'}}>Item: Glasses; Budget: $70; Time: 1.5 Hours</Text>
+           </View>
       </TouchableOpacity>
     )
   }
