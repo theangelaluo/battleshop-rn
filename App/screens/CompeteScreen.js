@@ -21,6 +21,7 @@ import { Icon } from 'react-native-elements';
 import { Provider } from 'react-redux';
 import CustomActions from './CustomActions';
 var CompeteStatusBar = require("../components/CompeteStatusBar");
+console.disableYellowBox = true;
 
 // import firebaseBackend from '../config/firebase';
 
@@ -43,7 +44,8 @@ export default class CompeteScreen extends React.Component {
    this.onReceive = this.onReceive.bind(this);
    this.renderCustomActions = this.renderCustomActions.bind(this);
    this.renderBubble = this.renderBubble.bind(this);
-   // //this.renderSystemMessage = this.renderSystemMessage.bind(this);
+   // this.answerDemo = this.answerDemo.bind(this);
+   // this.renderSystemMessage = this.renderSystemMessage.bind(this);
    //
    this._isAlright = null;
  }
@@ -54,7 +56,14 @@ export default class CompeteScreen extends React.Component {
   //     _id: firebaseBackend.getUid(),
   //   };
   // }
-  onSend(messages = []) {
+
+  // checkForHumanMessages(){
+  //   if(this.state.numUserMessages == 1){
+  //     this.answerDemo(this.state.messages);
+  //   }
+  // }
+
+  onSend(messages = [], callback){
     // firebaseBackend.sendMessage()
     this.setState((previousState) => {
      return {
@@ -66,54 +75,58 @@ export default class CompeteScreen extends React.Component {
      //     messages: GiftedChat.append(previousState.messages, messages),
      //   };
      // });
+     callback();
      Keyboard.dismiss();
    }
-   answerDemo(messages) {
-     if (messages.length > 0) {
-       if ((messages[0].image || messages[0].length > 0) || !this._isAlright) {
-         this.setState((previousState) => {
-           return {
-             typingText: 'React Native is typing'
-           };
-         });
-       }
-     }
 
-     setTimeout(() => {
-       if (this._isMounted === true) {
-         if (messages.length > 0) {
-           if (messages[0].image) {
-             this.onReceive('Nice picture!');
-           } else {
-             if (!this._isAlright) {
-               this._isAlright = true;
-               this.onReceive('Looks like a winner!');
-             }
-           }
-         }
-       }
+   // answerDemo(messages) {
+   //   console.log("hello I made it");
 
-       this.setState((previousState) => {
-         return {
-           typingText: null,
-         };
-       });
-     }, 1000);
-   }
+     // if (messages.length > 0) {
+     //   if ((messages[0].image || messages[0].length > 0) || !this._isAlright) {
+         // this.setState((previousState) => {
+         //   return {
+         //     typingText: 'React Native is typing'
+         //   };
+         // });
+     //   }
+     // }
+
+     // setTimeout(() => {
+     //   if (this._isMounted === true) {
+     //     if (messages.length > 0) {
+     //       if (messages[0].image) {
+     //         this.onReceive('Nice picture!');
+     //       } else {
+     //         if (!this._isAlright) {
+     //           this._isAlright = true;
+     //           this.onReceive('Looks like a winner!');
+     //         }
+     //       }
+     //     }
+     //   }
+
+       // this.setState((previousState) => {
+       //   return {
+       //     typingText: null,
+       //   };
+       // });
+     // }, 1000);
+   // }
    onReceive(text) {
     //firebaseBackend.shared.on(message =>
       this.setState((previousState) => {
         return {
           messages: GiftedChat.append(previousState.messages, {
             _id: Math.round(Math.random() * 1000000),
-            text: text,
+            text: "Hey, I found one for $100!",
             createdAt: new Date(),
             user: {
               _id: 2,
-              name: global.oppponents_arr[0],
+              name: 'Opponent',
               //avatar: '../../img/Rachel-Rouhana-Profile-Pic-Square.jpg',
             },
-            image: (url)
+            image: ('../../img/avatar.jpg')
           }),
         }
       }
@@ -196,7 +209,7 @@ export default class CompeteScreen extends React.Component {
         <GiftedChat
           bottomOffset={56}
           messages={this.state.messages}
-          onSend={(messages) => this.onSend(messages)}
+          onSend={(messages) => this.onSend(messages, this.onReceive)}
           renderActions={this.renderCustomActions}
           user={{
             _id: 1, // sent messages should have same user._id
