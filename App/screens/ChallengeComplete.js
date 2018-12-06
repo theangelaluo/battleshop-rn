@@ -22,9 +22,9 @@ export default class ChallengeComplete extends React.Component {
   static navigationOptions = {
     headerLeft: null
   }
-  
+
   toRecentChallenges() {
-    global.sent_challenge = false; 
+    global.sent_challenge = false;
     this.props.navigation.navigate("RecentChallenges");
   }
 
@@ -38,12 +38,12 @@ export default class ChallengeComplete extends React.Component {
           <Text style={{color: "white", fontSize: 32, fontWeight: 'bold', marginTop: 10}}>You won!</Text>
           <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', marginTop: 25}}>
             <Image source={require('../../img/swords.png')} style={{resizeMode: 'contain', marginRight: 20}}/>
-            <Text style={{color: "white", fontSize: 30, fontWeight: 'bold'}}>+{global.xp}</Text>
+            <Text style={{color: "white", fontSize: 30, fontWeight: 'bold'}}>+50</Text>
             <Text style={{color: "white", fontSize: 30}}> XP</Text>
           </View>
           <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', marginTop: 20}}>
             <Image source={require('../../img/coins.png')} style={{resizeMode: 'contain', marginRight: 20}}/>
-            <Text style={{color: "white", fontSize: 30, fontWeight: 'bold'}}>+{global.coins}</Text>
+            <Text style={{color: "white", fontSize: 30, fontWeight: 'bold'}}>+100</Text>
             <Text style={{color: "white", fontSize: 30}}> COINS</Text>
           </View>
           <TouchableOpacity onPress={() => this.toRecentChallenges()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 25}]}>

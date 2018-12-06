@@ -19,6 +19,10 @@ import TimePicker from 'react-native-simple-time-picker';
 import * as Progress from 'react-native-progress';
 
 export default class CompeteConfirmation extends React.Component {
+  static navigationOptions = {
+    headerLeft: null
+  }
+  
   constructor() {
     super();
     this.state = {showHunt: false};

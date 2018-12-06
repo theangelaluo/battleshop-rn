@@ -19,6 +19,10 @@ import TimePicker from 'react-native-simple-time-picker';
 import CountDown from 'react-native-countdown-component';
 
 export default class ChallengeSent extends React.Component {
+  static navigationOptions = {
+    headerLeft: null
+  }
+
   toCompete() {
     this.props.navigation.navigate('CompeteConfirmation');
   }
@@ -152,6 +156,16 @@ itemButton: {
     fontSize: 30,
     fontWeight: 'bold',
     color: '#575757',
+  },
+  shadow: {
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.8,
+    shadowRadius: 1,
+    elevation: 1,
+    shadowColor:'black',
+    shadowRadius: 1,
+    shadowOffset: {width: 4, height: 4},
   },
   opponent: {
     paddingRight: 20,
