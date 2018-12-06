@@ -35,6 +35,7 @@ var CompeteScreen = require("./screens/CompeteScreen");
 var Tutorial = require("./screens/Tutorial");
 var RecentChallenges = require("./screens/RecentChallenges");
 var CompeteConfirmation = require("./screens/CompeteConfirmation");
+var ChallengeComplete = require("./screens/ChallengeComplete");
 
 import {
   createBottomTabNavigator,
@@ -89,6 +90,9 @@ const CompeteStack = createStackNavigator({
     CompeteScreen: {
       screen: CompeteScreen
     },
+    ChallengeComplete: {
+      screen: ChallengeComplete
+    }
 
 },{
   defaultNavigationOptions: ({ navigation }) => ({
@@ -105,29 +109,32 @@ const CompeteStack = createStackNavigator({
 const bottomTabNavigator = createBottomTabNavigator({
   Profile: {
     screen: Profile,
-    defaultNavigationOptions: ({ navigation }) => ({
-      headerTitle: <Header/>,
-      headerRight: (
-        <TouchableOpacity style={{paddingRight: 20}} onPress={() => navigation.navigate('Login')}>
-          <Image source={require('../img/ic_exit_to_app.png')}/>
-        </TouchableOpacity>
-      ),
-    }),
-    navigationOptions: {
+    navigationOptions: ({ navigation }) => ({
+        headerTitle: <Header/>,
+        headerRight: (
+          <TouchableOpacity style={{paddingRight: 20}} onPress={() => navigation.navigate('Login')}>
+            <Image source={require('../img/ic_exit_to_app.png')}/>
+          </TouchableOpacity>
+        ),
       tabBarLabel: 'Profile',
+      tabBarButtonComponent: TouchableOpacity,
       tabBarIcon: ({ tintColor }) => <Image source={require('../img/Profile.png')} />
-    },
+    }),
   },
   Compete: {
-    screen: CompeteStack, // Replaced Feed with FeedStack
+    screen: CompeteStack,
     navigationOptions: {
+      tabBarButtonComponent: TouchableOpacity,
       tabBarLabel: 'Compete',
       tabBarIcon: ({ tintColor }) => <Image source={require('../img/Compete.png')} />
     },
   },
   Rewards: {
     screen: Rewards,
-    defaultNavigationOptions: ({ navigation }) => ({
+    navigationOptions: ({ navigation }) => ({
+      tabBarLabel: 'Rewards',
+      tabBarButtonComponent: TouchableOpacity,
+      tabBarIcon: ({ tintColor }) => <Image source={require('../img/Rewards.png')} />,
       headerTitle: <Header/>,
       headerRight: (
         <TouchableOpacity style={{paddingRight: 20}} onPress={() => navigation.navigate('Login')}>
@@ -135,10 +142,6 @@ const bottomTabNavigator = createBottomTabNavigator({
         </TouchableOpacity>
       ),
     }),
-    navigationOptions: {
-      tabBarLabel: 'Rewards',
-      tabBarIcon: ({ tintColor }) => <Image source={require('../img/Rewards.png')} />
-    }
   }
 
 }, {
@@ -152,7 +155,8 @@ const bottomTabNavigator = createBottomTabNavigator({
 			showLabel: true,
 			showIcon: true,
 			pressColor: 'coral',
-			allowFontScaling: true
+			allowFontScaling: true,
+      activeBackgroundColor: '#E5E5E5'
 		}
 });
 

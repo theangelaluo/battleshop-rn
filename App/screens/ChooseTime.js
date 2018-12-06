@@ -72,18 +72,35 @@ if (global.hours === 0) {
     global.time_string += 'and ' + global.minutes + ' minutes ';
   }
 }
-      Alert.alert(
-        'Battleshop Says',
-        'You are about to send a SAVE challenge for ' + global.item + ' for ' + global.time_string +
-        'with a $' + global.budget + ' budget versus ' +
-        challenged_opponents + '.',
-      [
-        {text: 'Cancel', style: 'cancel'},
-        {text: 'OK', onPress: () => this.props.navigation.navigate('ChallengeSent')},
-        // {text: 'OK', onPress: () => this.loginActual()},
-      ],
-      { cancelable: false }
-      )
+
+if (global.duel_or_solo === "duel") {
+  Alert.alert(
+    'Battleshop Says',
+    'You are about to send a SAVE challenge for ' + global.item + ' for ' + global.time_string +
+    'with a $' + global.budget + ' budget versus ' +
+    challenged_opponents + '.',
+  [
+    {text: 'Cancel', style: 'cancel'},
+    {text: 'OK', onPress: () => this.props.navigation.navigate('ChallengeSent')},
+    // {text: 'OK', onPress: () => this.loginActual()},
+  ],
+  { cancelable: false }
+  )
+} else {
+  Alert.alert(
+    'Battleshop Says',
+    'You are about to send a SAVE challenge for ' + global.item + ' for ' + global.time_string +
+    'with a $' + global.budget + ' budget' +
+    challenged_opponents + '.',
+  [
+    {text: 'Cancel', style: 'cancel'},
+    {text: 'OK', onPress: () => this.props.navigation.navigate('CompeteConfirmation')},
+    // {text: 'OK', onPress: () => this.loginActual()},
+  ],
+  { cancelable: false }
+  )
+}
+
     }
   }
   state = {

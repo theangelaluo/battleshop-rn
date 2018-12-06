@@ -4,92 +4,24 @@ import {
   StyleSheet,
   View,
   Text,
-  Platform,
+  Keyboard,
   TouchableOpacity,
   KeyboardAvoidingView,
-  RefreshControl,
-  TextInput,
   ListView,
   Alert,
-  Button,
   Image,
   FlatList,
 } from 'react-native';
-import { Constants } from 'expo';
 
 import {GiftedChat, Actions, Bubble, SystemMessage} from 'react-native-gifted-chat';
 import CountDown from 'react-native-countdown-component';
 
 import { Icon } from 'react-native-elements';
 import { Provider } from 'react-redux';
-
+import CustomActions from './CustomActions';
 var CompeteStatusBar = require("../components/CompeteStatusBar");
 
 // import firebaseBackend from '../config/firebase';
-
-//     setTimeout(() => {
-//       if (this._isMounted === true) {
-//         this.setState((previousState) => {
-//           return {
-//             messages: GiftedChat.prepend(previousState.messages, require('./data/old_messages.js')),
-//             loadEarlier: false,
-//             isLoadingEarlier: false,
-//           };
-//         });
-//       }
-//     }, 1000); // simulating network
-//   }
-//
-//   answerDemo(messages) {
-//     if (messages.length > 0) {
-//       if ((messages[0].image || messages[0].location) || !this._isAlright) {
-//         this.setState((previousState) => {
-//           return {
-//             typingText: 'React Native is typing'
-//           };
-//         });
-//       }
-//     }
-//
-//     setTimeout(() => {
-//       if (this._isMounted === true) {
-//         if (messages.length > 0) {
-//           if (messages[0].image) {
-//             this.onReceive('Nice picture!');
-//           } else if (messages[0].location) {
-//             this.onReceive('My favorite place');
-//           } else {
-//             if (!this._isAlright) {
-//               this._isAlright = true;
-//               this.onReceive('Alright');
-//             }
-//           }
-//         }
-//       }
-//
-
-//   render() {
-//     return (
-//       <GiftedChat
-//         messages={this.state.messages}
-//         onSend={this.onSend}
-//         loadEarlier={this.state.loadEarlier}
-//         onLoadEarlier={this.onLoadEarlier}
-//         isLoadingEarlier={this.state.isLoadingEarlier}
-//
-//         user={{
-//           _id: 1, // sent messages should have same user._id
-//         }}
-//
-//         renderActions={this.renderCustomActions}
-//         renderBubble={this.renderBubble}
-//         renderSystemMessage={this.renderSystemMessage}
-//         renderCustomView={this.renderCustomView}
-//         renderFooter={this.renderFooter}
-//       />
-//     );
-//   }
-// }
 
 export default class CompeteScreen extends React.Component {
   constructor(props) {
@@ -104,8 +36,8 @@ export default class CompeteScreen extends React.Component {
    this._isMounted = false;
    // this.onSend = this.onSend.bind(this);
    // this.onReceive = this.onReceive.bind(this);
-   // //this.renderCustomActions = this.renderCustomActions.bind(this);
-   // this.renderBubble = this.renderBubble.bind(this);
+   this.renderCustomActions = this.renderCustomActions.bind(this);
+   this.renderBubble = this.renderBubble.bind(this);
    // //this.renderSystemMessage = this.renderSystemMessage.bind(this);
    //
    // this._isAlright = null;
@@ -117,14 +49,20 @@ export default class CompeteScreen extends React.Component {
   //     _id: firebaseBackend.getUid(),
   //   };
   // }
-  // onSend(messages = []) {
-  //   firebaseBackend.sendMessage
-  //    this.setState((previousState) => {
-  //      return {
-  //        messages: GiftedChat.append(previousState.messages, messages),
-  //      };
-  //    });
-  //  }
+  onSend(messages = []) {
+    // firebaseBackend.sendMessage()
+    this.setState((previousState) => {
+     return {
+       messages: GiftedChat.append(previousState.messages, messages),
+     };
+   });
+     // this.setState((previousState) => {
+     //   return {
+     //     messages: GiftedChat.append(previousState.messages, messages),
+     //   };
+     // });
+     Keyboard.dismiss();
+   }
   // onReceive(text) {
   //  //firebaseBackend.shared.on(message =>
   //    this.setState((previousState) => {
@@ -158,12 +96,40 @@ export default class CompeteScreen extends React.Component {
     );
   }
 
+  endChallenge() {
+    this.props.navigation.navigate('ChallengeComplete');
+  }
 
+  renderCustomActions(props) {
+      if (Platform.OS === 'ios') {
+        return (
+          <CustomActions
+            {...props}
+          />
+        );
+      }
+      const options = {
+        'Choose Image from Library': (props) => {
+          alert('option 1');
+        },
+        'Take Picture': (props) => {
+          alert('option 2');
+        },
+        'Cancel': () => {},
+      };
+      return (
+        <Actions
+          {...props}
+          options={options}
+        />
+      );
+    }
+    
   render() {
     const { navigation } = this.props;
     return (
-      <View>
-        <CompeteStatusBar></CompeteStatusBar>
+      <View style={{flex:1}}>
+        <CompeteStatusBar/>
         <View style={styles.countdown}>
           <CountDown
             until={global.hours * 60 * 60 + global.minutes * 60}
@@ -172,55 +138,52 @@ export default class CompeteScreen extends React.Component {
             digitBgColor={'#F8F8F8'}
             digitTxtColor={'#565656'}
             timeToShow={['H', 'M', 'S']}
-            labelM={'MM'}
-            labelH={'HH'}
-            labelS={'SS'}
+            labelM={'minutes'}
+            labelH={'hours'}
+            labelS={'seconds'}
           />
         </View>
-      </View>
+        <GiftedChat
+          bottomOffset={56}
+          messages={this.state.messages}
+          onSend={(messages) => this.onSend(messages)}
+          renderActions={this.renderCustomActions}
+          user={{
+            _id: 1, // sent messages should have same user._id
+          }}
+          renderBubble={this.renderBubble}
+        />
+          </View>
     )
   }
-  // <GiftedChat
-  //         messages={this.state.messages}
-  //         //onSend={firebaseBackend.sendMessage()}
-  //         user={this.user}
-  //       />
-componentDidMount() {
-  this._isMounted = true;
-    // firebaseBackend.sendMessage(message =>
-    //   this.setState(previousState => ({
-    //     messages: GiftedChat.append(previousState.messages, message),
-    //   }))
-    // );
-  }
+
+// componentDidMount() {
+//   this._isMounted = true;
+//     firebaseBackend.loadMessages((message) => {
+//       this.setState((previousState) => {
+//         return {
+//           messages: GiftedChat.append(previousState.messages, message),
+//         };
+//       });
+//     });
+//   }
 
 componentWillUnmount() {
-    //firebaseBackend.shared.off();
     this._isMounted = false;
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    height: '100%',
-    backgroundColor: 'white'
-  },
   competeStatus: {
-    flex: 1,
-    flexDirection: 'row',
     height: 90,
-    paddingTop: Constants.statusBarHeight + 64,
+    alignItems: 'center',
+    justifyContent: 'center',
+    //paddingTop: Constants.statusBarHeight + 64,
     backgroundColor: '#F65854',
   },
   countdown: {
-    flex: 1,
-    flexDirection: 'row',
     height: 100,
-    marginTop: 64,
-    backgroundColor: '#F8F8F8',
-    //alignContent: 'center',
+    backgroundColor: 'white',
     justifyContent: 'center',
   },
 });

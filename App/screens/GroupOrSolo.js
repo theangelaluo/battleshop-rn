@@ -46,7 +46,9 @@ export default class GroupOrSolo extends React.Component {
               <Text style={{textAlign: 'center', fontSize: 60, color: 'black'}}>Solo</Text>
               <Icon name='arrow-forward' size={40} />
             </TouchableOpacity>
-
+            <TouchableOpacity onPress={() => this.toCompete()} style={[styles.button, styles.buttonShadow, {display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly', width: '90%', height: '10%', backgroundColor: '#f3c677', borderRadius: 15, marginTop: 25}]}>
+              <Text style={{textAlign: 'center', fontSize: 60, color: 'black'}}>Compete</Text>
+            </TouchableOpacity>
             <View style={styles.progressBar}>
               <Progress.Bar progress={0.3} width={300} progress={0} color={'rgba(123, 30, 122, 1)'}/>
             </View>
