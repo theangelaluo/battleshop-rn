@@ -29,10 +29,10 @@ export default class ChallengeSent extends React.Component {
     return (
       <View style={{flex: 1, backgroundColor: '#F9564F', alignItems: 'center', padding: 15}}>
         <Text style={{marginTop: 20, fontSize: 30, color: 'white', textAlign: 'center'}}>
-          Your opponent has 5 minutes to accept the challenge, or it will be cancelled.
+          {global.opponents_arr[0]} has 5 minutes to accept the challenge, or it will be cancelled.
         </Text>
         <Text style={{marginTop: 20, fontSize: 30, color: 'white', textAlign: 'center'}}>
-          We will let you know when your opponent accepts the challenge.
+          We will let you know when {global.opponents_arr[0]} accepts the challenge.
         </Text>
         <TouchableOpacity onPress={() => this.backToRecentChallenges()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 10}]}>
           <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 20, color: 'white'}}>Back to Home</Text>
@@ -46,7 +46,7 @@ export default class ChallengeSent extends React.Component {
               'Battleshop Says',
               global.opponents_arr[0] + ' accepted! Ready to start the challenge?',
               [
-              {text: 'Cancel', style: 'cancel'},
+              {text: 'Cancel', style: 'cancel', onPress: () => this.backToRecentChallenges()},
               {text: 'OK', onPress: () => this.toCompete()},
               ],
               { cancelable: false }
