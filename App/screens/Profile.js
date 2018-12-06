@@ -18,6 +18,9 @@ import { Icon } from 'react-native-elements';
 
 import TimePicker from 'react-native-simple-time-picker';
 
+var Header = require("../Header")
+
+
 export default class Profile extends React.Component {
   render() {
     return (
