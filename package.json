@@ -8,13 +8,18 @@
     "ios": "expo start --ios",
     "eject": "expo eject"
   },
+  "rnpm": {
+    "assets": [
+      "assets/fonts/TittiliumWeb"
+    ]
+  },
   "dependencies": {
     "@expo/vector-icons": "^8.0.0",
     "@pusher/chatkit": "^0.7.18",
     "@shoutem/ui": "^0.23.9",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
-    "expo": "^31.0.2",
+    "expo": "^31.0.6",
     "express": "^4.16.4",
     "prop-types": "^15.6.2",
     "react": "16.5.0",

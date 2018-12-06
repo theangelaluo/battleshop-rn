@@ -211,9 +211,9 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.8,
     shadowRadius: 1,
     elevation: 1,
-    shadowColor:'black',
+    shadowColor:'#202020',
     shadowRadius: 1,
-    shadowOffset: {width: 4, height: 4},
+    shadowOffset: {width: 2, height: 2},
     borderRadius: 15
    },
     button: {
@@ -264,9 +264,9 @@ const styles = StyleSheet.create({
       shadowOpacity: 0.8,
       shadowRadius: 1,
       elevation: 1,
-      shadowColor:'black',
+      shadowColor:'#202020',
       shadowRadius: 1,
-      shadowOffset: {width: 4, height: 4},
+      shadowOffset: {width: 2, height: 2},
     },
     header: {
       fontSize: 36,
