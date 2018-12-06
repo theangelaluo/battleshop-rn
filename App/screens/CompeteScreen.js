@@ -105,6 +105,19 @@ export default class CompeteScreen extends React.Component {
     return (
       <View style={{flex:1}}>
         <CompeteStatusBar/>
+        <View style={styles.countdown}>
+          <CountDown
+            until={global.hours * 60 * 60 + global.minutes * 60}
+            size={30}
+            onFinish={() => Alert.alert('Challenge Over!', "You're out of time. X has won this challenge.")}
+            digitBgColor={'#F8F8F8'}
+            digitTxtColor={'#565656'}
+            timeToShow={['H', 'M', 'S']}
+            labelM={'minutes'}
+            labelH={'hours'}
+            labelS={'seconds'}
+          />
+        </View>
         <GiftedChat
           bottomOffset={56}
           messages={this.state.messages}
