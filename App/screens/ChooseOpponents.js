@@ -31,7 +31,6 @@ class Opponent extends React.Component {
     // if the button is going from unclicked to clicked
     if (!this.state.clicked) {
       global.opponents_arr.push(item);
-      console.log(global.opponents_arr);
       this.setState({
         color: 'white',
         clicked: true
@@ -72,7 +71,7 @@ export default class ChooseOpponents extends React.Component {
       'John Klickman', 'Alice Vera', 'Jason Brown']),
       dataSource2: ds.cloneWithRows([ 'Alice Vera', 'Angela Luo', 'Barry Allen', 'Bruce Wayne',
       'Emily Hu', 'Francesca Colombo','Jason Brown', 'John Klickman','Kara Danvers',
-      'Logan Pearce', 'Melinda Vandersteen',
+      'Logan Pearce', 'Michael Cooper', 'Melinda Vandersteen',
       'Peter Parker', 'Tony Stark', 'Xiajang Wang', 'Yanyan Tong'
       ]),
     };
