@@ -35,10 +35,29 @@ export default class HuntOrSave extends React.Component {
   }
 
   huntTutorial() {
-
+    Alert.alert(
+    'HUNT Gameplay:',
+    "\n SETUP: Create a collaborative shopping list and add a time limit. \n \n" +
+    "HOW TO WIN: For each item you find, you earn 10 points. The player who finds the most items wins 100 coins!",
+    [
+      {text: 'OK'},
+    ],
+    {cancelable: false}
+    )
   }
 
   saveTutorial() {
+
+    Alert.alert(
+      'SAVE Gameplay:',
+      //  "Compete with friends to find the best deal. + \n" +
+        "\n SETUP: Add the type of item you want to find, your budget, and time limit. \n \n" +
+        "HOW TO WIN: The player who finds the cheapest item within the time limit wins 100 coins!",
+      [
+        {text: 'OK'},
+      ],
+      {cancelable: false}
+    )
 
   }
 
