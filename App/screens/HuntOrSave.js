@@ -65,7 +65,7 @@ export default class HuntOrSave extends React.Component {
 
   }
 
-  unlockMe() {       
+  unlockMe() {
     Alert.alert(
     'Battleshop Says',
     'This Battleshop game is locked. Play more to unlock this challenge!',
@@ -98,7 +98,7 @@ export default class HuntOrSave extends React.Component {
         </View>
       </TouchableOpacity>
       <View style={{display: 'flex', alignSelf: 'flex-end', position: "absolute"}}>
-        <TouchableOpacity onPress={()=>this.huntTutorial()} style={{display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: "white", height: 50, width: 50, borderRadius: 25}}>
+        <TouchableOpacity onPress={()=>this.huntTutorial()} style={[styles.shadow, {display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: "white", height: 50, width: 50, borderRadius: 25}]}>
           <Text style={{fontSize: 30, fontWeight: "bold", color: "#696969"}}>i</Text>
         </TouchableOpacity>
       </View>
@@ -116,7 +116,7 @@ export default class HuntOrSave extends React.Component {
         </View>
       </TouchableOpacity>
       <View style={{display: 'flex', alignSelf: 'flex-end', position: "absolute"}}>
-        <TouchableOpacity onPress={()=>this.saveTutorial()} style={{display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: "white", height: 50, width: 50, borderRadius: 25}}>
+        <TouchableOpacity onPress={()=>this.saveTutorial()} style={[styles.shadow, {display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: "white", height: 50, width: 50, borderRadius: 25}]}>
           <Text style={{fontSize: 30, fontWeight: "bold", color: "#696969"}}>i</Text>
         </TouchableOpacity>
       </View>
@@ -214,9 +214,9 @@ itemButton: {
     shadowOpacity: 0.8,
     shadowRadius: 1,
     elevation: 1,
-    shadowColor:'black',
+    shadowColor:'#202020',
     shadowRadius: 1,
-    shadowOffset: {width: 4, height: 4},
+    shadowOffset: {width: 2, height: 2},
   },
   header: {
     fontSize: 36,

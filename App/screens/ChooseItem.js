@@ -104,7 +104,7 @@ export default class ChooseItem extends React.Component {
   render() {
     return (
       <View style = {{flex: 1, backgroundColor: '#F9564F'}}>
-        <Text style={{margin: 30, color: "white", fontWeight: 'bold', textAlign: 'center', fontSize: 36}}>Choose Your Item</Text>
+        <Text style={{marginTop: 30, color: "white", fontWeight: 'bold', textAlign: 'center', fontSize: 36}}>Choose Your Item</Text>
         <View style={styles.itemsContainer}>
             <TouchableOpacity style={[styles.itemButton, {backgroundColor: this.state.dress_color}]} onPress={this.selectedDress.bind(this)}>
               <Text style={{textAlign: 'center', fontSize: 24}}>Dress</Text>
@@ -118,7 +118,7 @@ export default class ChooseItem extends React.Component {
             <TouchableOpacity style={[styles.itemButton, {backgroundColor: this.state.pants_color}]} onPress={this.selectedPants.bind(this)}>
               <Text style={{textAlign: 'center', fontSize: 24}}>Pants</Text>
             </TouchableOpacity>
-            <View style={styles.textBoxSurroundings}>
+            <View style={[styles.textBoxSurroundings, {marginTop: 20}]}>
               <TextInput
               style={styles.textBox}
               onChangeText={this.handleInputChange}
@@ -166,9 +166,9 @@ itemButton: {
   shadowOpacity: 0.8,
   shadowRadius: 1,
   elevation: 1,
-  shadowColor:'black',
+  shadowColor:'#202020',
   shadowRadius: 1,
-  shadowOffset: {width: 4, height: 4},
+  shadowOffset: {width: 2, height: 2},
   borderRadius: 15
  },
   button: {
@@ -219,9 +219,9 @@ itemButton: {
     shadowOpacity: 0.8,
     shadowRadius: 1,
     elevation: 1,
-    shadowColor:'black',
+    shadowColor:'#202020',
     shadowRadius: 1,
-    shadowOffset: {width: 4, height: 4},
+    shadowOffset: {width: 2, height: 2},
   },
   header: {
     fontSize: 36,
