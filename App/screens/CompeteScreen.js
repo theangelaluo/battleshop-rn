@@ -11,6 +11,7 @@ import {
   Alert,
   Image,
   FlatList,
+  Platform,
 } from 'react-native';
 
 import {GiftedChat, Actions, Bubble, SystemMessage} from 'react-native-gifted-chat';
@@ -124,7 +125,7 @@ export default class CompeteScreen extends React.Component {
         />
       );
     }
-    
+
   render() {
     const { navigation } = this.props;
     return (
