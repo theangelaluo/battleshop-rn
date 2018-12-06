@@ -20,7 +20,6 @@ import * as Progress from 'react-native-progress';
 import CountDown from 'react-native-countdown-component';
 
 export default class RecentChallenges extends React.Component {
-
   toChallengeSent() {
     this.props.navigation.navigate('ChallengeSent');
   }
@@ -46,6 +45,35 @@ export default class RecentChallenges extends React.Component {
        this.props.navigation.navigate('GroupOrSolo');
     }
   }
+
+  // _renderCountdown() {
+  //   if (global.sent_challenge) {
+  //     return (
+  //       <CountDown
+  //         // Fake opponent accepting the challenge
+  //         until={7}
+  //         timeToShow={[S]}
+  //         onFinish={this.fakeInteraction()}
+  //       />
+  //     );
+  //   }
+  // }
+
+  // fakeInteraction() {
+    // console.log("sent challenge in Fake Interaction: " + global.sent_challenge)
+    // if (global.sent_challenge) {
+    //   console.log('made it here? ');
+    //   Alert.alert(
+    //     'Battleshop Says',
+    //     global.opponents_arr[0] + ' accepted! Ready to start the challenge?',
+    //     [
+    //       {text: 'Cancel', style: 'cancel'},
+    //       {text: 'OK', onPress: () => this.toCompete()},
+    //     ],
+    //     {cancelable: false }
+    // )}
+
+  // }
 
   reset() {
     global.opponents_arr = [];
@@ -118,21 +146,7 @@ export default class RecentChallenges extends React.Component {
     }
   }
 
-  fakeInteraction() {
-    console.log("sent challenge in Fake Interaction: " + global.sent_challenge)
-    if (global.sent_challenge) {
-      console.log('made it here? ');
-      Alert.alert(
-        'Battleshop Says',
-        global.opponents_arr[0] + ' accepted! Ready to start the challenge?',
-        [
-          {text: 'Cancel', style: 'cancel'},
-          {text: 'OK', onPress: () => this.toCompete()},
-        ],
-        {cancelable: false }
-    )}
 
-  }
   render() {
     return (
       <View style = {{flex: 1, backgroundColor: '#F9564F'}}>
@@ -158,14 +172,6 @@ export default class RecentChallenges extends React.Component {
               <Text style={{textAlign: 'center', fontSize: 24}}>SAVE vs. Clark</Text>
               <Text style={{textAlign: 'center', fontSize: 16}}>Item: Glasses; Budget: $70; Time: 1.5 Hours</Text>
             </TouchableOpacity>
-        </View>
-        <View style={styles.countdown}>
-          <CountDown
-            // Fake opponent accepting the challenge
-            until={7}
-            timeToShow={[]}
-            onFinish={this.fakeInteraction()}
-          />
         </View>
       </View>
     )

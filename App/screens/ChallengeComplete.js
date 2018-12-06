@@ -20,6 +20,7 @@ import TimePicker from 'react-native-simple-time-picker';
 
 export default class ChallengeComplete extends React.Component {
   toRecentChallenges() {
+    global.sent_challenge = false; 
     this.props.navigation.navigate("RecentChallenges");
   }
 

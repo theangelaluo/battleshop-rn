@@ -19,13 +19,24 @@ import TimePicker from 'react-native-simple-time-picker';
 import CountDown from 'react-native-countdown-component';
 
 export default class ChallengeSent extends React.Component {
-  backToRecentChallenges() {
-    this.props.navigation.navigate('RecentChallenges');
-    global.sent_challenge = true; 
-  }
   toCompete() {
     this.props.navigation.navigate('CompeteConfirmation');
   }
+
+  backToRecentChallenges() {
+    this.props.navigation.navigate('RecentChallenges');
+    global.sent_challenge = true;
+      Alert.alert(
+        'Battleshop Says',
+        global.opponents_arr[0] + ' accepted! Ready to start the challenge?',
+        [
+          {text: 'Cancel', style: 'cancel'},
+          {text: 'OK', onPress: () => this.toCompete()},
+        ],
+        {cancelable: false }
+    )
+  }
+
   render() {
     return (
       <View style={{flex: 1, backgroundColor: '#F9564F', alignItems: 'center', padding: 15}}>
@@ -41,7 +52,7 @@ export default class ChallengeSent extends React.Component {
         <View style={styles.countdown}>
           <CountDown
             // Fake opponent accepting the challenge
-            until={7}
+            until={5}
             timeToShow={[]}
             onFinish={() => Alert.alert(
               'Battleshop Says',
