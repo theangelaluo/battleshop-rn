@@ -22,7 +22,11 @@ export default class ChooseItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      item_text: ''
+      item_text: '',
+      dress_color: '#F2C57D',
+      shirt_color: '#F2C57D',
+      jacket_color: '#F2C57D',
+      pants_color: '#F2C57D'
     };
     // reset
     global.item = '';
@@ -49,22 +53,46 @@ export default class ChooseItem extends React.Component {
 
   selectedDress() {
     global.item = 'a dress';
-    this.toChooseBudget();
+    this.setState({
+      dress_color: 'white',
+      shirt_color: '#F2C57D',
+      jacket_color: '#F2C57D',
+      pants_color: '#F2C57D'
+    });
+  //  this.toChooseBudget();
   }
 
   selectedShirt() {
     global.item = 'a shirt';
-    this.toChooseBudget();
+    this.setState({
+      dress_color: '#F2C57D',
+      shirt_color: 'white',
+      jacket_color: '#F2C57D',
+      pants_color: '#F2C57D'
+    })
+  //  this.toChooseBudget();
   }
 
   selectedJacket() {
     global.item = 'a jacket';
-    this.toChooseBudget();
+    this.setState({
+      dress_color: '#F2C57D',
+      shirt_color: '#F2C57D',
+      jacket_color: 'white',
+      pants_color: '#F2C57D'
+    })
+  //  this.toChooseBudget();
   }
 
   selectedPants() {
     global.item = 'pants';
-    this.toChooseBudget();
+    this.setState({
+      dress_color: '#F2C57D',
+      shirt_color: '#F2C57D',
+      jacket_color: '#F2C57D',
+      pants_color: 'white'
+    })
+  //  this.toChooseBudget();
   }
 
 
@@ -78,16 +106,16 @@ export default class ChooseItem extends React.Component {
       <View style = {{flex: 1, backgroundColor: '#F9564F'}}>
         <Text style={{margin: 30, color: "white", fontWeight: 'bold', textAlign: 'center', fontSize: 36}}>Choose Your Item</Text>
         <View style={styles.itemsContainer}>
-            <TouchableOpacity style={styles.itemButton} onPress={this.selectedDress.bind(this)}>
+            <TouchableOpacity style={[styles.itemButton, {backgroundColor: this.state.dress_color}]} onPress={this.selectedDress.bind(this)}>
               <Text style={{textAlign: 'center', fontSize: 24}}>Dress</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.itemButton} onPress={this.selectedShirt.bind(this)}>
+            <TouchableOpacity style={[styles.itemButton, {backgroundColor: this.state.shirt_color}]} onPress={this.selectedShirt.bind(this)}>
               <Text style={{textAlign: 'center', fontSize: 24}}>Shirt</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.itemButton} onPress={this.selectedJacket.bind(this)}>
+            <TouchableOpacity style={[styles.itemButton, {backgroundColor: this.state.jacket_color}]} onPress={this.selectedJacket.bind(this)}>
               <Text style={{textAlign: 'center', fontSize: 24}}>Jacket</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.itemButton} onPress={this.selectedPants.bind(this)}>
+            <TouchableOpacity style={[styles.itemButton, {backgroundColor: this.state.pants_color}]} onPress={this.selectedPants.bind(this)}>
               <Text style={{textAlign: 'center', fontSize: 24}}>Pants</Text>
             </TouchableOpacity>
             <View style={styles.textBoxSurroundings}>
@@ -131,7 +159,7 @@ itemButton: {
   margin: '3%',
   justifyContent: 'center',
   alignItems: "center",
-  backgroundColor: '#F2C57D',
+  // backgroundColor: '#F2C57D',
   //marginTop: 5,
   shadowColor: '#000',
   shadowOffset: { width: 0, height: 0 },
