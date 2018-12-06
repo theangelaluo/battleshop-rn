@@ -29,18 +29,38 @@ export default class CompeteStatusBar extends React.Component {
     this.state = {showWinner: false};
   }
 
+  _showWinner(){
+    if(this.state.showWinner){
+      return (<Image source={require('../../img/Rewards.png')} style={{width: '15%', height: '15%', resizeMode: 'contain'}}/>);
+    }
+  }
+
   render() {
-    return (
-      <View style = {{backgroundColor: '#F65854'}}>
-        <Text style={styles.statusText}>{global.opponents_arr[0]}</Text>
-        <Text style={styles.statusText}>vs.</Text>
-        <Text style={styles.statusText}>You</Text>
+    return(
+      <View style = {styles.bar}>
+        <Image source={require('../../img/avatar.jpg')} style={{width: 100, height: 60, resizeMode: 'contain'}}/>
+        <Text style={styles.nameText}>{global.opponents_arr[0]} </Text>
+        <Text style={styles.statusText}> vs. </Text>
+        <Text style={styles.nameText}> You    </Text>
+        {this._showWinner()}
+        <Image source={require('../../img/Rachel-Rouhana-Profile-Pic-Square.jpg')} style={{width: 60, height: 100, resizeMode: 'contain'}}/>
       </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
+  bar:{
+    flexDirection: 'row',
+    backgroundColor: '#F65854',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  nameText:{
+    color: 'white',
+    fontSize: 15,
+    fontWeight:'bold'
+  },
   statusText: {
     color: 'white'
   }
