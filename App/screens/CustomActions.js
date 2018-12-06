@@ -83,7 +83,8 @@ export default class CustomActions extends React.Component {
           this.setModalVisible(true);
           break;
         case 1:
-        this.setCameraVisible(true);
+          this.setCameraVisible(true);
+          break;
         default:
       }
     });
@@ -98,11 +99,6 @@ export default class CustomActions extends React.Component {
       <NavBar style={{
           backgroundColor: '#FFF'
       }}>
-      <NavTitle style={{
-        color: '#000'
-      }}>
-        {'Camera Roll'}
-      </NavTitle>
       <NavButton onPress={() => {
         this.setModalVisible(false);
       }}>
@@ -112,6 +108,11 @@ export default class CustomActions extends React.Component {
           {'Cancel'}
         </NavButtonText>
       </NavButton>
+      <NavTitle style={{
+        color: '#000'
+      }}>
+        {'Camera Roll'}
+      </NavTitle>
         <NavButton onPress={() => {
           this.setModalVisible(false);
           const images = this.getImages().map((image) => {
@@ -131,34 +132,34 @@ export default class CustomActions extends React.Component {
             );
   }
 
-    renderTopBar = () =>
-      <View
-        style={styles.topBar}>
-        <TouchableOpacity style={styles.toggleButton} onPress={this.toggleFacing}>
-          <Ionicons name="ios-reverse-camera" size={32} color="white" />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.toggleButton} onPress={this.toggleFlash}>
-          <MaterialIcons name={flashIcons[this.state.flash]} size={32} color="white" />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.toggleButton}>
-        </TouchableOpacity>
-      </View>
-
-    renderBottomBar = () =>
-      <View
-        style={styles.bottomBar}>
-        <View style={{ flex: 0.4, alignItems: 'center', justifyContent: 'center'}}>
-          <TouchableOpacity
-            onPress={() => {
-                const data = await this.camera.takePictureAsync();
-                this.setState({ path: data.uri });
-                this.setCameraVisible(false);
-              }
-            }
-            >
-          </TouchableOpacity>
-        </View>
-      </View>
+    // renderTopBar = () =>
+    //   <View
+    //     style={styles.topBar}>
+    //     <TouchableOpacity style={styles.toggleButton} onPress={this.toggleFacing}>
+    //       <Ionicons name="ios-reverse-camera" size={32} color="white" />
+    //     </TouchableOpacity>
+    //     <TouchableOpacity style={styles.toggleButton} onPress={this.toggleFlash}>
+    //       <MaterialIcons name={flashIcons[this.state.flash]} size={32} color="white" />
+    //     </TouchableOpacity>
+    //     <TouchableOpacity style={styles.toggleButton}>
+    //     </TouchableOpacity>
+    //   </View>
+    //
+    // renderBottomBar = () =>
+    //   <View
+    //     style={styles.bottomBar}>
+    //     <View style={{ flex: 0.4, alignItems: 'center', justifyContent: 'center'}}>
+    //       <TouchableOpacity
+    //         onPress={() => {
+    //             const data = await this.camera.takePictureAsync();
+    //             this.setState({ path: data.uri });
+    //             this.setCameraVisible(false);
+    //           }
+    //         }
+    //         >
+    //       </TouchableOpacity>
+    //     </View>
+    //   </View>
 
   renderIcon() {
     return (
@@ -182,23 +183,23 @@ export default class CustomActions extends React.Component {
 //     </Text>
 //   </View>
 // );
-  renderCamera = () =>
-     (
-       <View style={{flex:1}}>
-         <Camera
-           ref={ref => {
-             this.camera = ref;
-           }}
-           style={styles.camera}
-           type={this.state.type}
-           flashMode={this.state.flash}
-           autoFocus={this.state.autoFocus}
-           >
-           {this.renderTopBar()}
-           {this.renderBottomBar()}
-         </Camera>
-       </View>
-     );
+  // renderCamera = () =>
+  //    (
+  //      <View style={{flex:1}}>
+  //        <Camera
+  //          ref={ref => {
+  //            this.camera = ref;
+  //          }}
+  //          style={styles.camera}
+  //          type={this.state.type}
+  //          flashMode={this.state.flash}
+  //          autoFocus={this.state.autoFocus}
+  //          >
+  //          {this.renderTopBar()}
+  //          {this.renderBottomBar()}
+  //        </Camera>
+  //      </View>
+  //    );
   render() {
     return (
       <TouchableOpacity

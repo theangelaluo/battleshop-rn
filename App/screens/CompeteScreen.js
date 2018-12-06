@@ -18,7 +18,7 @@ import CountDown from 'react-native-countdown-component';
 
 import { Icon } from 'react-native-elements';
 import { Provider } from 'react-redux';
-
+import CustomActions from './CustomActions';
 var CompeteStatusBar = require("../components/CompeteStatusBar");
 
 // import firebaseBackend from '../config/firebase';
@@ -36,7 +36,7 @@ export default class CompeteScreen extends React.Component {
    this._isMounted = false;
    // this.onSend = this.onSend.bind(this);
    // this.onReceive = this.onReceive.bind(this);
-   // //this.renderCustomActions = this.renderCustomActions.bind(this);
+   this.renderCustomActions = this.renderCustomActions.bind(this);
    this.renderBubble = this.renderBubble.bind(this);
    // //this.renderSystemMessage = this.renderSystemMessage.bind(this);
    //
@@ -100,6 +100,31 @@ export default class CompeteScreen extends React.Component {
     this.props.navigation.navigate('ChallengeComplete');
   }
 
+  renderCustomActions(props) {
+      if (Platform.OS === 'ios') {
+        return (
+          <CustomActions
+            {...props}
+          />
+        );
+      }
+      const options = {
+        'Choose Image from Library': (props) => {
+          alert('option 1');
+        },
+        'Take Picture': (props) => {
+          alert('option 2');
+        },
+        'Cancel': () => {},
+      };
+      return (
+        <Actions
+          {...props}
+          options={options}
+        />
+      );
+    }
+    
   render() {
     const { navigation } = this.props;
     return (
