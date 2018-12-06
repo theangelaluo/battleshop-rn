@@ -160,7 +160,7 @@ export default class Rewards extends React.Component {
     return (
       <View style={{flex: 1, backgroundColor: '#F9564F', alignItems: 'center', justifyContent: "center"}}>
           <View style={{marginTop: 20, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-          <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 20}}>
+          <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 10}}>
             <Image source={require('../../img/coins.png')} style={{resizeMode: 'contain', marginRight: 20}}/>
             <Text style={{color: "white", fontSize: 35, fontWeight: 'bold'}}>{global.coins}</Text>
             <Text style={{color: "white", fontSize: 35}}> COINS</Text>

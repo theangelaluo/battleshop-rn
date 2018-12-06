@@ -28,17 +28,8 @@ export default class ChallengeSent extends React.Component {
   }
 
   backToRecentChallenges() {
-    this.props.navigation.navigate('RecentChallenges');
     global.sent_challenge = true;
-      Alert.alert(
-        'Battleshop Says',
-        global.opponents_arr[0] + ' accepted! Ready to start the challenge?',
-        [
-          {text: 'Cancel', style: 'cancel'},
-          {text: 'OK', onPress: () => this.toCompete()},
-        ],
-        {cancelable: false }
-    )
+    this.props.navigation.navigate('RecentChallenges');
   }
 
   render() {
@@ -163,9 +154,9 @@ itemButton: {
     shadowOpacity: 0.8,
     shadowRadius: 1,
     elevation: 1,
-    shadowColor:'black',
+    shadowColor:'#202020',
     shadowRadius: 1,
-    shadowOffset: {width: 4, height: 4},
+    shadowOffset: {width: 2, height: 2},
   },
   opponent: {
     paddingRight: 20,

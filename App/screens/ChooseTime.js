@@ -123,7 +123,7 @@ if (global.duel_or_solo === "duel") {
         <Text style={{fontSize: 36, color: "white", fontWeight: 'bold', marginTop: 30}}>Choose Time</Text>
         <Text style={{fontSize: 30, color: 'white', margin: 15}}>{selectedHours} hr : {selectedMinutes} min</Text>
         <View style={styles.yellowContainer}>
-        <View style={{backgroundColor: 'white', padding: 15, display: 'flex', width: '93%', height: '93%'}}>
+        <View style={{backgroundColor: 'white', padding: 15, display: 'flex', width: '93%', height: '90%'}}>
           <TimePicker
             selectedHours={selectedHours}
             //initial Hours value
@@ -133,7 +133,7 @@ if (global.duel_or_solo === "duel") {
           />
           </View>
         </View>
-        <TouchableOpacity onPress={() => this.toChallengeSent()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 25}]}>
+        <TouchableOpacity onPress={() => this.toChallengeSent()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 15}]}>
           <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 30, color: 'white'}}>Send Challenge</Text>
         </TouchableOpacity>
         <View style={styles.progressBar}>
@@ -226,9 +226,9 @@ itemButton: {
     shadowOpacity: 0.8,
     shadowRadius: 1,
     elevation: 1,
-    shadowColor:'black',
+    shadowColor:'#202020',
     shadowRadius: 1,
-    shadowOffset: {width: 4, height: 4},
+    shadowOffset: {width: 2, height: 2},
   },
   header: {
     fontSize: 36,
