@@ -15,8 +15,8 @@ import {
 } from 'react-native';
 
 import { Icon } from 'react-native-elements';
-
 import TimePicker from 'react-native-simple-time-picker';
+import * as Progress from 'react-native-progress';
 
 export default class HuntOrSave extends React.Component {
   constructor(props) {
@@ -56,6 +56,9 @@ export default class HuntOrSave extends React.Component {
           </View>
           <Text>Shop within your budget</Text>
         </TouchableOpacity>
+        <View style={styles.progressBar}>
+          <Progress.Bar progress={0.3} width={300} progress={0.2} color={'rgba(123, 30, 122, 1)'}/>
+        </View>
       </View>
     )
   }
@@ -169,6 +172,10 @@ itemButton: {
     flex: 1,
     height: StyleSheet.hairlineWidth,
     backgroundColor: 'black'
+  },
+  progressBar:{
+    bottom: 15,
+    position: 'absolute'
   }
 });
 
