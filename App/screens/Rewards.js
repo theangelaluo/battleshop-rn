@@ -154,7 +154,7 @@ export default class Rewards extends React.Component {
 
   render() {
     return (
-      <View style={{flex: 1, backgroundColor: '#F9564F', alignItems: 'center'}}>
+      <View style={{flex: 1, backgroundColor: '#F9564F', alignItems: 'center', justifyContent: "center"}}>
           <View style={{marginTop: 20, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
           <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 20}}>
             <Image source={require('../../img/coins.png')} style={{resizeMode: 'contain', marginRight: 20}}/>
@@ -165,12 +165,14 @@ export default class Rewards extends React.Component {
             <Text style={{color: "white", fontSize: 20, marginTop: 10, fontWeight: 'bold'}}>Click to redeem!</Text>
 
           </View>
-        <ScrollView>
+
+            <ScrollView contentContainerStyle={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
               {this._renderButton1()}
               {this._renderButton2()}
               {this._renderButton3()}
               {this._renderButton4()}
-        </ScrollView>
+            </ScrollView>
+
       </View>
     )
   }

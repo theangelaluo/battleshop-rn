@@ -25,11 +25,21 @@ export default class HuntOrSave extends React.Component {
       item_text: ''
     };
   }
+
   toChooseItem() { //TODO:temporary navigation, delete before commit
     this.props.navigation.navigate('ChooseItem');
   }
+
   toHunt() {
     //todo: hunt not implemented yet!
+  }
+
+  huntTutorial() {
+
+  }
+
+  saveTutorial() {
+
   }
 
   handleInputChange = (text) => {
@@ -42,23 +52,47 @@ export default class HuntOrSave extends React.Component {
   render() {
     return (
       <View style={{backgroundColor: '#F9564F', width: '100%', height: '100%', display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <TouchableOpacity onPress={() => this.toHunt()} style={[styles.button, styles.buttonShadow, {display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly', width: '90%', height: '30%', backgroundColor: "#f3c677", borderRadius: 15, marginBottom: 25,}]}>
+
+    <View style={{width: '95%', height: '30%', display: 'flex', alignItems: 'center', marginBottom: 25,}}>
+      <TouchableOpacity onPress={() => this.toHunt()} style={[styles.button, styles.buttonShadow, {display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly', width: '95%', height: '95%', backgroundColor: "#f3c677", borderRadius: 15, }]}>
+        <View style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly'}}>
           <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly'}}>
             <Text style={{fontSize: 60, color: 'black'}}>Hunt </Text>
             <Icon name='arrow-forward' size={40} />
           </View>
           <Text>Get the items you need in the time you have</Text>
-          </TouchableOpacity>
-        <TouchableOpacity onPress={() => this.toChooseItem()} style={[styles.button, styles.buttonShadow, {display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly', width: '90%', height: '30%', backgroundColor: '#f3c677', borderRadius: 15, marginTop: 25}]}>
+        </View>
+      </TouchableOpacity>
+      <View style={{display: 'flex', alignSelf: 'flex-end', position: "absolute"}}>
+        <TouchableOpacity onPress={()=>this.huntTutorial()} style={{display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: "white", height: 30, width: 30, borderRadius: 20}}>
+          <Text style={{fontSize: 20, fontWeight: "bold", color: "#696969"}}>i</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+
+
+    <View style={{width: '95%', height: '30%', display: 'flex', alignItems: 'center', marginBottom: 25,}}>
+      <TouchableOpacity onPress={() => this.toChooseItem()} style={[styles.button, styles.buttonShadow, {display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly', width: '95%', height: '95%', backgroundColor: "#f3c677", borderRadius: 15, }]}>
+        <View style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly'}}>
           <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly'}}>
-            <Text style={{textAlign: 'center', fontSize: 60, color: 'black'}}>Save </Text>
+            <Text style={{fontSize: 60, color: 'black'}}>Save </Text>
             <Icon name='arrow-forward' size={40} />
           </View>
           <Text>Shop within your budget</Text>
+        </View>
+      </TouchableOpacity>
+      <View style={{display: 'flex', alignSelf: 'flex-end', position: "absolute"}}>
+        <TouchableOpacity onPress={()=>this.saveTutorial()} style={{display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: "white", height: 30, width: 30, borderRadius: 20}}>
+          <Text style={{fontSize: 20, fontWeight: "bold", color: "#696969"}}>i</Text>
         </TouchableOpacity>
+      </View>
+    </View>
+
         <View style={styles.progressBar}>
           <Progress.Bar progress={0.3} width={300} progress={0.2} color={'rgba(123, 30, 122, 1)'}/>
         </View>
+
+
       </View>
     )
   }

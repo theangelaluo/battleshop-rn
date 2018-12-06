@@ -49,7 +49,7 @@ export default class App extends React.Component {
 const AuthenticationNavigator = createStackNavigator({
   Login: {
     screen: Login
-  },
+  }
 });
 
 const CompeteStack = createStackNavigator({
