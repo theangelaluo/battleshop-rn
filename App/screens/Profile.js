@@ -25,7 +25,7 @@ export default class Profile extends React.Component {
   render() {
     return (
       <View style={{flex: 1, backgroundColor: '#F9564F', alignItems: 'center'}}>
-        <View style={{marginTop: 75, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+        <View style={{marginTop: 35, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
           <Image source={require('../../img/Rachel-Rouhana-Profile-Pic-Square.jpg')} style={{borderRadius: 200/2, width: 200, height: 200, resizeMode: 'contain'}}/>
           <Text style={{color: "white", fontSize: 35, marginTop: 20, fontWeight: 'bold'}}>Molly Adams</Text>
           <Text style={{color: "white", fontSize: 25, marginTop: 10}}>Level 2</Text>

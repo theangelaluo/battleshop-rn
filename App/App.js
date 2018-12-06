@@ -64,6 +64,38 @@ const AuthenticationNavigator = createStackNavigator({
   }
  });
 
+ const ProfileStack = createStackNavigator({
+   Profile: {
+     screen: Profile,
+   },
+ }, {
+   defaultNavigationOptions: ({ navigation }) => ({
+     headerTitle: <Header/>,
+     headerRight: (
+       <TouchableOpacity style={{paddingRight: 20}} onPress={() => navigation.navigate('Login')}>
+         <Image source={require('../img/ic_exit_to_app.png')}/>
+       </TouchableOpacity>
+     ),
+   }
+  )
+});
+
+  const RewardsStack = createStackNavigator({
+    Rewards: {
+      screen: Rewards,
+    },
+  }, {
+    defaultNavigationOptions: ({ navigation }) => ({
+      headerTitle: <Header/>,
+      headerRight: (
+        <TouchableOpacity style={{paddingRight: 20}} onPress={() => navigation.navigate('Login')}>
+          <Image source={require('../img/ic_exit_to_app.png')}/>
+        </TouchableOpacity>
+      ),
+    }
+  )
+});
+
 const CompeteStack = createStackNavigator({
     RecentChallenges: {
       screen: RecentChallenges
@@ -113,7 +145,7 @@ const CompeteStack = createStackNavigator({
 
 const bottomTabNavigator = createBottomTabNavigator({
   Profile: {
-    screen: Profile,
+    screen: ProfileStack,
     navigationOptions: ({ navigation }) => ({
         headerTitle: <Header/>,
         headerRight: (
@@ -135,7 +167,7 @@ const bottomTabNavigator = createBottomTabNavigator({
     },
   },
   Rewards: {
-    screen: Rewards,
+    screen: RewardsStack,
     navigationOptions: ({ navigation }) => ({
       tabBarLabel: 'Rewards',
       tabBarButtonComponent: TouchableOpacity,
