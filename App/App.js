@@ -156,12 +156,12 @@ const bottomTabNavigator = createBottomTabNavigator({
 		lazy: true,
 		order: ["Profile", "Compete", "Rewards"],
 		tabBarOptions: {
-			activeTintColor: 'coral',
+			activeTintColor: 'black',
 			showLabel: true,
 			showIcon: true,
-			pressColor: 'coral',
+			pressColor: 'black',
 			allowFontScaling: true,
-      activeBackgroundColor: '#E5E5E5'
+      activeBackgroundColor: '#C0C0C0'
 		},
 });
 
