@@ -18,8 +18,8 @@ import { Icon } from 'react-native-elements';
 import TimePicker from 'react-native-simple-time-picker';
 
 export default class ChallengeSent extends React.Component {
-  backToGroupOrSolo() {
-    this.props.navigation.navigate('GroupOrSolo');
+  backToRecentChallenges() {
+    this.props.navigation.navigate('RecentChallenges');
   }
   toCompete() {
     // TODO: COMMENT THIS OUT
@@ -36,7 +36,7 @@ export default class ChallengeSent extends React.Component {
         <Text style={{marginTop: 20, fontSize: 30, color: 'white', textAlign: 'center'}}>
           We will send you a notification when your opponent accepts.
         </Text>
-        <TouchableOpacity onPress={() => this.backToGroupOrSolo()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 10}]}>
+        <TouchableOpacity onPress={() => this.backToRecentChallenges()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 10}]}>
           <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 20, color: 'white'}}>Back to Home</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => this.toCompete()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 10}]}>

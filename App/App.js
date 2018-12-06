@@ -54,6 +54,9 @@ const AuthenticationNavigator = createStackNavigator({
 });
 
 const CompeteStack = createStackNavigator({
+  RecentChallenges: {
+    screen: RecentChallenges
+  },
     GroupOrSolo: {
         screen: GroupOrSolo
       },
@@ -78,9 +81,7 @@ const CompeteStack = createStackNavigator({
     CompeteScreen: {
       screen: CompeteScreen
     },
-    RecentChallenges: {
-      screen: RecentChallenges
-    }
+
 },{
   defaultNavigationOptions: ({ navigation }) => ({
     headerTitle: <Header/>,
@@ -89,7 +90,8 @@ const CompeteStack = createStackNavigator({
         <Image source={require('../img/ic_exit_to_app.png')}/>
       </TouchableOpacity>
     ),
-  })
+  }),
+
 });
 
 const bottomTabNavigator = createBottomTabNavigator({

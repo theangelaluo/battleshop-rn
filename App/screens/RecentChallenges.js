@@ -25,7 +25,7 @@ export default class RecentChallenges extends React.Component {
   }
 
   toNewChallenge() {
-    this.props.navigation.navigate('ChooseOpponents');
+    this.props.navigation.navigate('GroupOrSolo');
   }
 
   selectedFirst() {
