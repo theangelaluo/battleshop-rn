@@ -96,6 +96,9 @@ export default class CompeteScreen extends React.Component {
     );
   }
 
+  endChallenge() {
+    this.props.navigation.navigate('ChallengeComplete');
+  }
 
   render() {
     const { navigation } = this.props;
