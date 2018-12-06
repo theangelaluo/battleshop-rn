@@ -34,6 +34,7 @@ export default class RecentChallenges extends React.Component {
     global.item = 'a dress';
     global.budget = 50;
     global.hours = 1;
+    global.time_string = '1 hour';
     global.duel_or_solo = "duel";
     global.hunt_or_save = "save";
     this.toChallengeSent();
@@ -42,9 +43,10 @@ export default class RecentChallenges extends React.Component {
   selectedSecond() {
     global.opponents_arr = [];
     global.opponents_arr.push('Barry Allen');
-    global.item = 'a mask';
+    global.item = 'tennis shoes';
     global.budget = 75;
     global.minutes = 30;
+    global.time_string = global.minutes + ' minutes';
     global.duel_or_solo = "duel";
     global.hunt_or_save = "save";
     this.toChallengeSent();
@@ -56,6 +58,7 @@ export default class RecentChallenges extends React.Component {
     global.item = 'a blouse';
     global.budget = 60;
     global.minutes = 45;
+    global.time_string = global.minutes + ' minutes';
     global.duel_or_solo = "duel";
     global.hunt_or_save = "save";
     this.toChallengeSent();
@@ -64,10 +67,11 @@ export default class RecentChallenges extends React.Component {
   selectedFourth() {
     global.opponents_arr = [];
     global.opponents_arr.push('Clark Kent');
-    global.item = 'a cape';
+    global.item = 'glasses';
     global.budget = 100;
     global.hours = 1;
     global.minutes = 30;
+    global.time_string = '1 hour and ' + global.minutes + ' minutes';
     global.duel_or_solo = "duel";
     global.hunt_or_save = "save";
     this.toChallengeSent();
@@ -95,7 +99,7 @@ export default class RecentChallenges extends React.Component {
             </TouchableOpacity>
             <TouchableOpacity style={styles.itemButton} onPress={this.selectedSecond.bind(this)}>
               <Text style={{textAlign: 'center', fontSize: 24}}>SAVE vs. Barry</Text>
-              <Text style={{textAlign: 'center', fontSize: 16}}>Item: Mask; Budget: $75; Time: 30 Minutes</Text>
+              <Text style={{textAlign: 'center', fontSize: 16}}>Item: Shoes; Budget: $75; Time: 30 Minutes</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.itemButton} onPress={this.selectedThird.bind(this)}>
               <Text style={{textAlign: 'center', fontSize: 24}}>SAVE vs. Yanyan</Text>
@@ -103,7 +107,7 @@ export default class RecentChallenges extends React.Component {
             </TouchableOpacity>
             <TouchableOpacity style={styles.itemButton} onPress={this.selectedFourth.bind(this)}>
               <Text style={{textAlign: 'center', fontSize: 24}}>SAVE vs. Clark</Text>
-              <Text style={{textAlign: 'center', fontSize: 16}}>Item: Cape; Budget: $70; Time: 1.5 Hours</Text>
+              <Text style={{textAlign: 'center', fontSize: 16}}>Item: Glasses; Budget: $70; Time: 1.5 Hours</Text>
             </TouchableOpacity>
         </View>
       </View>

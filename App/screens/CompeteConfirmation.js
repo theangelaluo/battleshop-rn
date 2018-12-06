@@ -34,7 +34,7 @@ export default class CompeteConfirmation extends React.Component {
             <View>
               <Text style={{marginTop: 30, marginLeft: 30, marginRight: 30, marginBottom: 15, color: "white", fontWeight: 'bold', textAlign: 'center', fontSize: 18}}>For SAVE, you will be searching for {global.item}. Your job is to look for the cheapest one IN THE STORE within the time limit.</Text>
               <Text style={{marginTop: 30, marginLeft: 30, marginRight: 30, marginBottom: 15, color: "white", fontWeight: 'bold', textAlign: 'center', fontSize: 18}}>As you find good candidates, send a picture to the chat.</Text>
-              <Text style={{marginTop: 30, marginLeft: 30, marginRight: 30, marginBottom: 15, color: "white", fontWeight: 'bold', textAlign: 'center', fontSize: 18}}>At the end of {global.hours} hours and {global.minutes} minutes, the person who found the item with lowest price will win!</Text>
+              <Text style={{marginTop: 30, marginLeft: 30, marginRight: 30, marginBottom: 15, color: "white", fontWeight: 'bold', textAlign: 'center', fontSize: 18}}>At the end of {global.time_string}, the person who found the item with lowest price will win!</Text>
             </View>
          );
      }
