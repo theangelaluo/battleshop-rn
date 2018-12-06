@@ -23,6 +23,8 @@ import * as Progress from 'react-native-progress';
 import CountDown from 'react-native-countdown-component';
 import {styles} from '../styles.js';
 
+var selected_recent = false; // bool for correct behavior if you send more than one challenge atta time
+
 export default class RecentChallenges extends React.Component {
   // componentDidMount() {
   //   Font.loadAsync({
@@ -40,51 +42,24 @@ export default class RecentChallenges extends React.Component {
   }
 
   toNewChallenge() {
-    console.log("sent challenge in New Challenge: " + global.sent_challenge)
     if (global.sent_challenge) {
-      Alert.alert (
-      'Battleshop Says',
-      'You can only send one challenge at a time. You must cancel your current challenge ' +
-      'before starting a new one. Do you want to cancel the current challenge? ',
-    [
-      {text: 'No', style: 'cancel'},
-      {text: 'Yes', onPress: () => this.reset()},
-      // {text: 'OK', onPress: () => this.loginActual()},
-    ],
-    { cancelable: false })
+      this.oneAttaTime();
     } else {
        this.props.navigation.navigate('GroupOrSolo');
     }
   }
 
-  // _renderCountdown() {
-  //   if (global.sent_challenge) {
-  //     return (
-  //       <CountDown
-  //         // Fake opponent accepting the challenge
-  //         until={7}
-  //         timeToShow={[S]}
-  //         onFinish={this.fakeInteraction()}
-  //       />
-  //     );
-  //   }
-  // }
-
-  // fakeInteraction() {
-    // console.log("sent challenge in Fake Interaction: " + global.sent_challenge)
-    // if (global.sent_challenge) {
-    //   console.log('made it here? ');
-    //   Alert.alert(
-    //     'Battleshop Says',
-    //     global.opponents_arr[0] + ' accepted! Ready to start the challenge?',
-    //     [
-    //       {text: 'Cancel', style: 'cancel'},
-    //       {text: 'OK', onPress: () => this.toCompete()},
-    //     ],
-    //     {cancelable: false }
-    // )}
-
-  // }
+  oneAttaTime() {
+    Alert.alert (
+    'Battleshop Says',
+    'You can only send one challenge at a time. You must cancel your current challenge ' +
+    'before starting a new one. Do you want to cancel the current challenge? ',
+    [
+    {text: 'No', style: 'cancel'},
+    {text: 'Yes', onPress: () => this.reset()},
+    ],
+    { cancelable: false })
+  }
 
   reset() {
     global.opponents_arr = [];
@@ -94,10 +69,15 @@ export default class RecentChallenges extends React.Component {
     global.minutes = 0;
     global.time_string = '';
     global.sent_challenge = false;
-    this.props.navigation.navigate('GroupOrSolo');
+    if (!selected_recent) {
+        this.props.navigation.navigate('GroupOrSolo');
+    }
   }
 
   selectedFirst() {
+    if (global.sent_challenge) {
+      this.oneAttaTime();
+    } else {
     global.opponents_arr = [];
     global.opponents_arr.push('Alice Vera');
     global.item = 'a dress';
@@ -107,10 +87,15 @@ export default class RecentChallenges extends React.Component {
     global.duel_or_solo = "duel";
     global.hunt_or_save = "save";
     global.sent_challenge = true;
+    selected_recent = true;
     this.toChallengeSent();
+    }
   }
 
   selectedSecond() {
+    if (global.sent_challenge) {
+      this.oneAttaTime();
+    } else {
     global.opponents_arr = [];
     global.opponents_arr.push('Barry Allen');
     global.item = 'tennis shoes';
@@ -120,10 +105,15 @@ export default class RecentChallenges extends React.Component {
     global.duel_or_solo = "duel";
     global.hunt_or_save = "save";
     global.sent_challenge = true;
+    selected_recent = true;
     this.toChallengeSent();
+    }
   }
 
   selectedThird() {
+    if (global.sent_challenge) {
+      this.oneAttaTime();
+    } else {
     global.opponents_arr = [];
     global.opponents_arr.push('Yanyan Tong');
     global.item = 'a blouse';
@@ -133,10 +123,15 @@ export default class RecentChallenges extends React.Component {
     global.duel_or_solo = "duel";
     global.hunt_or_save = "save";
     global.sent_challenge = true;
+    selected_recent = true;
     this.toChallengeSent();
+    }
   }
 
   selectedFourth() {
+    if (global.sent_challenge) {
+      this.oneAttaTime();
+    } else {
     global.opponents_arr = [];
     global.opponents_arr.push('Clark Kent');
     global.item = 'glasses';
@@ -147,7 +142,9 @@ export default class RecentChallenges extends React.Component {
     global.duel_or_solo = "duel";
     global.hunt_or_save = "save";
     global.sent_challenge = true;
+    selected_recent = true;
     this.toChallengeSent();
+    }
   }
 
   toCurrentGame(){
@@ -160,32 +157,38 @@ export default class RecentChallenges extends React.Component {
 
   _renderButton1() {
     return(
-      <TouchableOpacity style={styles.itemButton} >
+      <TouchableOpacity style={styles.itemButton}  onPress={this.selectedFirst.bind(this)} >
         <Text style={{textAlign: 'center', fontSize: 24}}>SAVE vs. Alice</Text>
+        <Text style={{textAlign: 'center', fontSize: 16, width: '95%'}}>Item: Dress; Budget: $50; Time: 1 Hour</Text>
       </TouchableOpacity>
     )
   }
 
   _renderButton2() {
     return(
-      <TouchableOpacity style={styles.itemButton} >
-        <Text style={{textAlign: 'center', fontSize: 24, width: '95%'}}>SAVE vs. Alice</Text>
+      // I switched the order, so that's why I'm calling selectedThird rather than selectedSecond
+      <TouchableOpacity style={styles.itemButton} onPress={this.selectedThird.bind(this)} >
+        <Text style={{textAlign: 'center', fontSize: 24, width: '95%'}}>SAVE vs. Yanyan</Text>
+        <Text style={{textAlign: 'center', fontSize: 16, width: '95%'}}>Item: Blouse; Budget: $60; Time: 45 Minutes</Text>
+
       </TouchableOpacity>
     )
   }
 
   _renderButton3() {
     return(
-      <TouchableOpacity style={styles.itemButton} >
-        <Text style={{textAlign: 'center', fontSize: 24, width: '95%'}}>SAVE vs. Alice</Text>
+      <TouchableOpacity style={styles.itemButton} onPress={this.selectedSecond.bind(this)} >
+        <Text style={{textAlign: 'center', fontSize: 24, width: '95%'}}>SAVE vs. Barry</Text>
+        <Text style={{textAlign: 'center', fontSize: 16, width: '95%'}}>Item: Shoes; Budget: $75; Time: 30 Minutes</Text>
       </TouchableOpacity>
     )
   }
 
   _renderButton4() {
     return(
-      <TouchableOpacity style={styles.itemButton} >
-        <Text style={{textAlign: 'center', fontSize: 24, width: '95%'}}>SAVE vs. Alice</Text>
+      <TouchableOpacity style={styles.itemButton} onPress={this.selectedFourth.bind(this)} >
+        <Text style={{textAlign: 'center', fontSize: 24, width: '95%'}}>SAVE vs. Clark</Text>
+           <Text style={{textAlign: 'center', fontSize: 16}}>Item: Glasses; Budget: $70; Time: 1.5 Hours</Text>
       </TouchableOpacity>
     )
   }
@@ -215,5 +218,25 @@ export default class RecentChallenges extends React.Component {
     )
   }
 }
+<<<<<<< HEAD
 
+=======
+            //
+            // <TouchableOpacity style={styles.itemButton} onPress={this.selectedFirst.bind(this)}>
+            //   <Text style={{textAlign: 'center', fontSize: 24}}>SAVE vs. Alice</Text>
+            //   <Text style={{textAlign: 'center', fontSize: 16}}>Item: Dress; Budget: $50; Time: 1 Hour</Text>
+            // </TouchableOpacity>
+            // <TouchableOpacity style={styles.itemButton} onPress={this.selectedSecond.bind(this)}>
+            //   <Text style={{textAlign: 'center', fontSize: 24}}>SAVE vs. Barry</Text>
+            //   <Text style={{textAlign: 'center', fontSize: 16}}>Item: Shoes; Budget: $75; Time: 30 Minutes</Text>
+            // </TouchableOpacity>
+            // <TouchableOpacity style={styles.itemButton} onPress={this.selectedThird.bind(this)}>
+            //   <Text style={{textAlign: 'center', fontSize: 24}}>SAVE vs. Yanyan</Text>
+            //   <Text style={{textAlign: 'center', fontSize: 16}}>Item: Blouse; Budget: $60; Time: 45 Minutes</Text>
+            // </TouchableOpacity>
+            // <TouchableOpacity style={styles.itemButton} onPress={this.selectedFourth.bind(this)}>
+            //   <Text style={{textAlign: 'center', fontSize: 24}}>SAVE vs. Clark</Text>
+            //   <Text style={{textAlign: 'center', fontSize: 16}}>Item: Glasses; Budget: $70; Time: 1.5 Hours</Text>
+            // </TouchableOpacity>
+>>>>>>> ec4e98c4e224b1c16ef4b780738c835344d29479
 module.exports = RecentChallenges;
