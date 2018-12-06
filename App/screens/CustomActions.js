@@ -21,19 +21,19 @@ import { Constants, Camera, Permissions } from 'expo';
 import NavBar, { NavButton, NavButtonText, NavTitle } from 'react-native-nav';
 import isIPhoneX from 'react-native-is-iphonex';
 
-// const flashModeOrder = {
-//   off: 'on',
-//   on: 'auto',
-//   auto: 'torch',
-//   torch: 'off',
-// };
-//
-// const flashIcons = {
-//   off: 'flash-off',
-//   on: 'flash-on',
-//   auto: 'flash-auto',
-//   torch: 'highlight'
-// };
+const flashModeOrder = {
+  off: 'on',
+  on: 'auto',
+  auto: 'torch',
+  torch: 'off',
+};
+
+const flashIcons = {
+  off: 'flash-off',
+  on: 'flash-on',
+  auto: 'flash-auto',
+  torch: 'highlight'
+};
 
 export default class CustomActions extends React.Component {
   constructor(props) {
@@ -131,35 +131,47 @@ export default class CustomActions extends React.Component {
 
             );
   }
+  toggleFacing = () => this.setState({ type: this.state.type === 'back' ? 'front' : 'back' });
 
-    // renderTopBar = () =>
-    //   <View
-    //     style={styles.topBar}>
-    //     <TouchableOpacity style={styles.toggleButton} onPress={this.toggleFacing}>
-    //       <Ionicons name="ios-reverse-camera" size={32} color="white" />
-    //     </TouchableOpacity>
-    //     <TouchableOpacity style={styles.toggleButton} onPress={this.toggleFlash}>
-    //       <MaterialIcons name={flashIcons[this.state.flash]} size={32} color="white" />
-    //     </TouchableOpacity>
-    //     <TouchableOpacity style={styles.toggleButton}>
-    //     </TouchableOpacity>
-    //   </View>
-    //
-    // renderBottomBar = () =>
-    //   <View
-    //     style={styles.bottomBar}>
-    //     <View style={{ flex: 0.4, alignItems: 'center', justifyContent: 'center'}}>
-    //       <TouchableOpacity
-    //         onPress={() => {
-    //             const data = await this.camera.takePictureAsync();
+  takePicture = async () => {
+    try {
+      const data = await this.camera.takePictureAsync();
+      this.setState({ path: data.uri });
+      // this.props.updateImage(data.uri);
+      console.log('Path to image: ' + data.uri);
+    } catch (err) {
+      console.log('err: ', err);
+    }
+  };
+    renderTopBar = () =>
+      <View
+        style={styles.topBar}>
+        <TouchableOpacity style={styles.toggleButton} onPress={this.toggleFacing}>
+          <Ionicons name="ios-reverse-camera" size={32} color="white" />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.toggleButton} onPress={this.toggleFlash}>
+          <MaterialIcons name={flashIcons[this.state.flash]} size={32} color="white" />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.toggleButton}>
+        </TouchableOpacity>
+      </View>
+
+    renderBottomBar = () =>
+      <View
+        style={styles.bottomBar}>
+        <View style={{ flex: 0.4}}>
+          <TouchableOpacity
+            onPress={() => {
+              this.takePicture()
+                //const data = await this.camera.takePictureAsync();
     //             this.setState({ path: data.uri });
-    //             this.setCameraVisible(false);
-    //           }
-    //         }
-    //         >
-    //       </TouchableOpacity>
-    //     </View>
-    //   </View>
+              }
+            }>
+            <Ionicons name="ios-radio-button-on" size={70} color="white" />
+
+          </TouchableOpacity>
+        </View>
+      </View>
 
   renderIcon() {
     return (
@@ -169,37 +181,39 @@ export default class CustomActions extends React.Component {
     );
   }
 
-//   renderPreview = () =>
-//   (
-//   <View>
-//     <Image
-//       source={{ uri: this.state.path }}
-//       style={styles.preview}
-//     />
-//     <Text
-//       style={styles.cancel}
-//       onPress={() => this.setState({ path: null })}
-//     >Cancel
-//     </Text>
-//   </View>
-// );
-  // renderCamera = () =>
-  //    (
-  //      <View style={{flex:1}}>
-  //        <Camera
-  //          ref={ref => {
-  //            this.camera = ref;
-  //          }}
-  //          style={styles.camera}
-  //          type={this.state.type}
-  //          flashMode={this.state.flash}
-  //          autoFocus={this.state.autoFocus}
-  //          >
-  //          {this.renderTopBar()}
-  //          {this.renderBottomBar()}
-  //        </Camera>
-  //      </View>
-  //    );
+  renderPreview = () =>
+  (
+  <View style={{flex:1}}>
+    <Image
+      source={{ uri: this.state.path }}
+      //style={styles.preview}
+    />
+  </View>
+);
+  renderCamera = () =>
+     (
+       <View style={{flex:1}}>
+         <Camera
+           ref={ref => {
+             this.camera = ref;
+           }}
+           style={styles.camera}
+           type={this.state.type}
+           flashMode={this.state.flash}
+           autoFocus={this.state.autoFocus}
+           >
+           {this.renderTopBar()}
+           {this.renderBottomBar()}
+         </Camera>
+       </View>
+     );
+  // renderCameraScreen() {
+  //   if(this.state.path) {
+  //       return {renderPreview()};
+  //   } else {
+  //     return {this.renderCamera()};
+  //   }
+  // }
   render() {
     return (
       <TouchableOpacity
@@ -222,21 +236,22 @@ export default class CustomActions extends React.Component {
             selected={[]}
           />
         </Modal>
+        <Modal
+          animationType={'slide'}
+          transparent={false}
+          visible={this.state.cameraVisible}
+          onRequestClose={() => {
+            this.setCameraVisible(false);
+          }}
+        >
+        {this.state.path ? this.renderPreview() : this.renderCamera()}
+        </Modal>
         {this.renderIcon()}
       </TouchableOpacity>
     );
   }
 }
-// <Modal
-//   animationType={'slide'}
-//   transparent={false}
-//   visible={this.state.cameraVisible}
-//   onRequestClose={() => {
-//     this.setCameraVisible(false);
-//   }}
-// >
-// {this.state.path ? this.renderPreview() : this.renderCamera()}
-// </Modal>
+
 const styles = StyleSheet.create({
   container: {
     width: 26,

@@ -34,13 +34,13 @@ export default class CompeteScreen extends React.Component {
    };
 
    this._isMounted = false;
-   // this.onSend = this.onSend.bind(this);
-   // this.onReceive = this.onReceive.bind(this);
+   this.onSend = this.onSend.bind(this);
+   this.onReceive = this.onReceive.bind(this);
    this.renderCustomActions = this.renderCustomActions.bind(this);
    this.renderBubble = this.renderBubble.bind(this);
    // //this.renderSystemMessage = this.renderSystemMessage.bind(this);
    //
-   // this._isAlright = null;
+   this._isAlright = null;
  }
 
   // get user() {
@@ -63,25 +63,67 @@ export default class CompeteScreen extends React.Component {
      // });
      Keyboard.dismiss();
    }
-  // onReceive(text) {
-  //  //firebaseBackend.shared.on(message =>
-  //    this.setState((previousState) => {
-  //      return {
-  //        messages: GiftedChat.append(previousState.messages, {
-  //          _id: Math.round(Math.random() * 1000000),
-  //          text: text,
-  //          createdAt: new Date(),
-  //          user: {
-  //            _id: 2,
-  //            name: global.oppponents_arr[0],
-  //            // avatar: 'https://facebook.github.io/react/img/logo_og.png',
-  //          },
-  //        }),
-  //      }
-  //    }
-  //  //)
-  //  )
-  // }
+   answerDemo(messages) {
+     if (messages.length > 0) {
+       if ((messages[0].image || messages[0].length > 0) || !this._isAlright) {
+         this.setState((previousState) => {
+           return {
+             typingText: 'React Native is typing'
+           };
+         });
+       }
+     }
+
+     setTimeout(() => {
+       if (this._isMounted === true) {
+         if (messages.length > 0) {
+           if (messages[0].image) {
+             this.onReceive('Nice picture!');
+           } else {
+             if (!this._isAlright) {
+               this._isAlright = true;
+               this.onReceive('Looks like a winner!');
+             }
+           }
+         }
+       }
+
+       this.setState((previousState) => {
+         return {
+           typingText: null,
+         };
+       });
+     }, 1000);
+   }
+   onReceive(text) {
+    //firebaseBackend.shared.on(message =>
+      this.setState((previousState) => {
+        return {
+          messages: GiftedChat.append(previousState.messages, {
+            _id: Math.round(Math.random() * 1000000),
+            text: text,
+            createdAt: new Date(),
+            user: {
+              _id: 2,
+              name: global.oppponents_arr[0],
+              //avatar: '../../img/Rachel-Rouhana-Profile-Pic-Square.jpg',
+            },
+            image: (url)
+          }),
+        }
+      }
+    //)
+    )
+   }
+
+   messageIdGenerator() {
+       // generates uuid.
+       return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, c => {
+           let r = (Math.random() * 16) | 0,
+               v = c == "x" ? r : (r & 0x3) | 0x8;
+           return v.toString(16);
+       });
+   }
 
   renderBubble(props) {
     return (
@@ -124,7 +166,7 @@ export default class CompeteScreen extends React.Component {
         />
       );
     }
-    
+
   render() {
     const { navigation } = this.props;
     return (
