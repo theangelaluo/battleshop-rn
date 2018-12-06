@@ -20,6 +20,8 @@ import * as Progress from 'react-native-progress';
 import CountDown from 'react-native-countdown-component';
 import {styles} from '../styles.js';
 
+var selected_recent = false; // bool for correct behavior if you send more than one challenge atta time
+
 export default class RecentChallenges extends React.Component {
   toChallengeSent() {
     this.props.navigation.navigate('ChallengeSent');
@@ -30,51 +32,24 @@ export default class RecentChallenges extends React.Component {
   }
 
   toNewChallenge() {
-    console.log("sent challenge in New Challenge: " + global.sent_challenge)
     if (global.sent_challenge) {
-      Alert.alert (
-      'Battleshop Says',
-      'You can only send one challenge at a time. You must cancel your current challenge ' +
-      'before starting a new one. Do you want to cancel the current challenge? ',
-    [
-      {text: 'No', style: 'cancel'},
-      {text: 'Yes', onPress: () => this.reset()},
-      // {text: 'OK', onPress: () => this.loginActual()},
-    ],
-    { cancelable: false })
+      oneAttaTime();
     } else {
        this.props.navigation.navigate('GroupOrSolo');
     }
   }
 
-  // _renderCountdown() {
-  //   if (global.sent_challenge) {
-  //     return (
-  //       <CountDown
-  //         // Fake opponent accepting the challenge
-  //         until={7}
-  //         timeToShow={[S]}
-  //         onFinish={this.fakeInteraction()}
-  //       />
-  //     );
-  //   }
-  // }
-
-  // fakeInteraction() {
-    // console.log("sent challenge in Fake Interaction: " + global.sent_challenge)
-    // if (global.sent_challenge) {
-    //   console.log('made it here? ');
-    //   Alert.alert(
-    //     'Battleshop Says',
-    //     global.opponents_arr[0] + ' accepted! Ready to start the challenge?',
-    //     [
-    //       {text: 'Cancel', style: 'cancel'},
-    //       {text: 'OK', onPress: () => this.toCompete()},
-    //     ],
-    //     {cancelable: false }
-    // )}
-
-  // }
+  oneAttaTime() {
+    Alert.alert (
+    'Battleshop Says',
+    'You can only send one challenge at a time. You must cancel your current challenge ' +
+    'before starting a new one. Do you want to cancel the current challenge? ',
+    [
+    {text: 'No', style: 'cancel'},
+    {text: 'Yes', onPress: () => this.reset()},
+    ],
+    { cancelable: false }) 
+  }
 
   reset() {
     global.opponents_arr = [];
@@ -84,10 +59,15 @@ export default class RecentChallenges extends React.Component {
     global.minutes = 0;
     global.time_string = '';
     global.sent_challenge = false;
-    this.props.navigation.navigate('GroupOrSolo');
+    if (!selected_recent) {
+        this.props.navigation.navigate('GroupOrSolo');
+    }
   }
 
   selectedFirst() {
+    if (global.sent_challenge) {
+      this.oneAttaTime();
+    } else {
     global.opponents_arr = [];
     global.opponents_arr.push('Alice Vera');
     global.item = 'a dress';
@@ -97,10 +77,15 @@ export default class RecentChallenges extends React.Component {
     global.duel_or_solo = "duel";
     global.hunt_or_save = "save";
     global.sent_challenge = true;
+    selected_recent = true;
     this.toChallengeSent();
+    }
   }
 
   selectedSecond() {
+    if (global.sent_challenge) {
+      this.oneAttaTime();
+    } else {
     global.opponents_arr = [];
     global.opponents_arr.push('Barry Allen');
     global.item = 'tennis shoes';
@@ -110,10 +95,15 @@ export default class RecentChallenges extends React.Component {
     global.duel_or_solo = "duel";
     global.hunt_or_save = "save";
     global.sent_challenge = true;
+    selected_recent = true;
     this.toChallengeSent();
+    }
   }
 
   selectedThird() {
+    if (global.sent_challenge) {
+      this.oneAttaTime();
+    } else {
     global.opponents_arr = [];
     global.opponents_arr.push('Yanyan Tong');
     global.item = 'a blouse';
@@ -123,10 +113,15 @@ export default class RecentChallenges extends React.Component {
     global.duel_or_solo = "duel";
     global.hunt_or_save = "save";
     global.sent_challenge = true;
+    selected_recent = true;
     this.toChallengeSent();
+    }
   }
 
   selectedFourth() {
+    if (global.sent_challenge) {
+      this.oneAttaTime();
+    } else {
     global.opponents_arr = [];
     global.opponents_arr.push('Clark Kent');
     global.item = 'glasses';
@@ -137,7 +132,9 @@ export default class RecentChallenges extends React.Component {
     global.duel_or_solo = "duel";
     global.hunt_or_save = "save";
     global.sent_challenge = true;
+    selected_recent = true;
     this.toChallengeSent();
+    }
   }
 
   toCurrentGame(){
