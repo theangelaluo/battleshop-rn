@@ -46,6 +46,8 @@ export default class HuntOrSave extends React.Component {
     )
   }
 
+
+
   saveTutorial() {
 
     Alert.alert(

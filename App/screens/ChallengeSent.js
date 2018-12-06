@@ -22,6 +22,12 @@ export default class ChallengeSent extends React.Component {
     this.props.navigation.navigate('GroupOrSolo');
   }
   toCompete() {
+    // TODO: COMMENT THIS OUT
+    console.log("opponent: " + global.opponents_arr[0]);
+    console.log("item: " + global.item);
+    console.log("budget: " + global.budget);
+    console.log("hours: " + global.hours);
+    console.log("minutes: " + global.minutes);
     this.props.navigation.navigate('CompeteScreen');
   }
   render() {

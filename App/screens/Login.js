@@ -95,7 +95,7 @@ export default class Login extends React.Component {
   };
 
   loginActual() {
-    this.props.navigation.navigate('Compete');
+    this.props.navigation.navigate('RecentChallenges');
   }
 
   _renderTutorial() {

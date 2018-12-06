@@ -32,6 +32,7 @@ var HuntOrSave = require("./screens/HuntOrSave");
 var ChooseTime = require("./screens/ChooseTime");
 var ChooseItem = require("./screens/ChooseItem");
 var CompeteScreen = require("./screens/CompeteScreen");
+var RecentChallenges = require("./screens/RecentChallenges");
 
 import {
   createBottomTabNavigator,
@@ -77,6 +78,9 @@ const CompeteStack = createStackNavigator({
     CompeteScreen: {
       screen: CompeteScreen
     },
+    RecentChallenges: {
+      screen: RecentChallenges
+    }
 },{
   defaultNavigationOptions: ({ navigation }) => ({
     headerTitle: <Header/>,
