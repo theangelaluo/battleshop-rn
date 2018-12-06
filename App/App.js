@@ -32,6 +32,7 @@ var HuntOrSave = require("./screens/HuntOrSave");
 var ChooseTime = require("./screens/ChooseTime");
 var ChooseItem = require("./screens/ChooseItem");
 var CompeteScreen = require("./screens/CompeteScreen");
+var Tutorial = require("./screens/Tutorial");
 
 import {
   createBottomTabNavigator,
@@ -49,6 +50,9 @@ export default class App extends React.Component {
 const AuthenticationNavigator = createStackNavigator({
   Login: {
     screen: Login
+  },
+  Tutorial:{
+    screen: Tutorial
   }
 });
 

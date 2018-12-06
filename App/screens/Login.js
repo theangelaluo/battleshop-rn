@@ -87,134 +87,19 @@ import { AccessToken, LoginManager } from 'react-native-fbsdk';
 export default class Login extends React.Component {
   constructor() {
     super();
-    this.state = { showTutorial: false};
   }
 
   static navigationOptions = {
     tabBarVisible: false,
   };
 
-  loginActual() {
-    this.props.navigation.navigate('Compete');
-  }
-
-  _renderTutorial() {
-       if (this.state.showTutorial) {
-          //this.props.navigation.navigate("TutorialStack");
-           return (
-             <View style={{display: 'flex', flex: 1, height: '100%', width: '100%'}}>
-               <Onboarding style={{borderWidth: 2, borderColor: "blue"}}
-                 showDone={false}
-                 onSkip={() => this.loginActual()}
-                 pages={[
-                   {
-                     title: 'Welcome to Battleshop!',
-                     subtitle: 'We\'re here to bring friends and family togther and help you accomplish your shopping goals. This tutorial will get you started.',
-                     backgroundColor: '#F9564F',
-                     image: (
-                       <Icon
-                         name="shopping-cart"
-                         type="font-awesome"
-                         size={100}
-                         color="white"
-                       />
-                     ),
-                   },
-                   {
-                     title: 'Create Challenges',
-                     subtitle: 'Turn your shopping list into a game. Choose \'Solo\' to play by yourself and \'Duel\' to invite a friend.',
-                     backgroundColor: '#F9564F',
-                     image: (
-                       <Icon
-                         name="gamepad"
-                         type="font-awesome"
-                         size={100}
-                         color="white"
-                       />
-                     ),
-                   },
-                   {
-                     title: 'Customize Your Experience',
-                     subtitle: 'Choose \'Hunt\' to input a shopping list. Choose \'Save\' to look for one item. Don\'t forget to set a budget and time frame!',
-                     backgroundColor: '#F9564F',
-                     image: (
-                       <Icon name="tasks" type="font-awesome" size={100} color="white" />
-                     ),
-                   },
-                   {
-                     title: 'Get Rewarded for Playing',
-                     subtitle: 'The more you play, the more you earn. Check out the Rewards tab to see what you can redeem.',
-                     backgroundColor: '#F9564F',
-                     image: (
-                       <Icon name="trophy" type="font-awesome" size={100} color="white" />
-                     ),
-                   },
-                   {
-                     title: "Ready to Battleshop?",
-                     subtitle:(
-                         <Button
-                           title={'Get Started'}
-                           containerViewStyle={{ marginTop: 20 }}
-                           backgroundColor={'white'}
-                           borderRadius={5}
-                           textStyle={{ color: '#003c8f' }}
-                           onPress={() => {
-                             this.loginActual();
-                             StatusBar.setBarStyle('default');
-                           }}
-                         />
-                     ),
-                     backgroundColor: '#F9564F',
-                     image: (
-                       <Icon name="rocket" type="font-awesome" size={100} color="white" />
-                     ),
-                   },
-                 ]}
-               />
-             </View>
-           );
-       } else return null;
-   }
-
-   _renderLoginScreen(){
-     if(!this.state.showTutorial){
-       return(
-         <View>
-           <View style={{ display:'flex', alignItems: 'center', width: '100%', height: 150, marginTop: 5, marginBottom: 0}}>
-             <Image source={require('../../img/battleshop-svg.png')} style={{flex: 1, width: '200%', height: '200%', resizeMode: 'contain'}}/>
-           </View>
-           <View style={{ display:'flex', alignItems: 'center', width: '100%', height: 150, marginTop: 0, marginBottom: 0}}>
-             <Image source={require('../../img/Battleshop-name.png')} style={{flex: 1, width: '50%', height: '50%', resizeMode: 'contain'}}/>
-           </View>
-           <Text></Text>
-           <View style={{display: 'flex', flexDirection: 'column', marginTop: 10}}>
-             <TouchableOpacity onPress={() => this.login('Facebook.com')} style={[styles.button, {backgroundColor: "#2553B4", borderRadius: 2}]}>
-               <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 20, color: 'white'}}>Login with Facebook</Text>
-               </TouchableOpacity>
-               <TouchableOpacity onPress={() => this.login('Google.com')} style={[styles.button, {backgroundColor: '#ffffff', borderRadius: 2}]}>
-               <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 20, color: 'black'}}>Login with Google</Text>
-               </TouchableOpacity>
-           </View>
-         </View>
-       );
-     }else return null;
-   }
-
-  tutorialToggle(){
-    this.setState({
-      showTutorial: !this.state.showTutorial,
-    });
-  }
-
   login(company) {
-    //this.props.navigation.navigate('Compete');
-  //  createAppContainer(NavBar);
     Alert.alert(
     '"Battleshop" Wants to Use "' + company + '" to Sign In',
     'This allows the app and website to share information about you.',
     [
       {text: 'Cancel', style: 'cancel'},
-      {text: 'OK', onPress: () => this.tutorialToggle()},
+      {text: 'OK', onPress: () => this.props.navigation.navigate('Tutorial')},
     ],
     { cancelable: false }
     )
@@ -222,10 +107,23 @@ export default class Login extends React.Component {
 
   render() {
       return (
-        <View style={styles.container}>
-            {this._renderLoginScreen()}
-            {this._renderTutorial()}
-        </View>
+          <View style={styles.container}>
+             <View style={{ display:'flex', alignItems: 'center', width: '100%', height: 150, marginTop: 5, marginBottom: 0}}>
+               <Image source={require('../../img/battleshop-svg.png')} style={{flex: 1, width: '200%', height: '200%', resizeMode: 'contain'}}/>
+             </View>
+             <View style={{ display:'flex', alignItems: 'center', width: '100%', height: 150, marginTop: 0, marginBottom: 0}}>
+               <Image source={require('../../img/Battleshop-name.png')} style={{flex: 1, width: '50%', height: '50%', resizeMode: 'contain'}}/>
+             </View>
+             <Text></Text>
+             <View style={{display: 'flex', flexDirection: 'column', marginTop: 10}}>
+               <TouchableOpacity onPress={() => this.login('Facebook.com')} style={[styles.button, {backgroundColor: "#2553B4", borderRadius: 2}]}>
+                 <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 20, color: 'white'}}>Login with Facebook</Text>
+                 </TouchableOpacity>
+                 <TouchableOpacity onPress={() => this.login('Google.com')} style={[styles.button, {backgroundColor: '#ffffff', borderRadius: 2}]}>
+                 <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 20, color: 'black'}}>Login with Google</Text>
+                 </TouchableOpacity>
+             </View>
+           </View>
       );
     }
   }
