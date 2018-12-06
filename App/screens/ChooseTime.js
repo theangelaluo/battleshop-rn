@@ -31,7 +31,7 @@ export default class ChooseTime extends React.Component {
       {cancelable: false}
       )
     } else {
-
+      global.sent_challenge = true; 
       var challenged_opponents = '';
       if (global.opponents_arr.length === 1) {
         challenged_opponents = global.opponents_arr[0];

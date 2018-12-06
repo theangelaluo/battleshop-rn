@@ -25,7 +25,30 @@ export default class RecentChallenges extends React.Component {
   }
 
   toNewChallenge() {
-    this.props.navigation.navigate('GroupOrSolo');
+    if (global.sent_challenge) {
+      Alert.alert (
+      'Battleshop Says',
+      'You can only send one challenge at a time. You must cancel your current challenge ' +
+      'before starting a new one. Do you want to cancel the current challenge? ',
+    [
+      {text: 'No', style: 'cancel'},
+      {text: 'Yes', onPress: () => this.reset()},
+      // {text: 'OK', onPress: () => this.loginActual()},
+    ],
+    { cancelable: false })
+    } else {
+       this.props.navigation.navigate('GroupOrSolo');
+    }
+  }
+
+  reset() {
+    global.opponents_arr = [];
+    global.item = '';
+    global.budget = -1;
+    global.hours = 0;
+    global.minutes = 0;
+    global.time_string = '';
+    global.sent_challenge = false;
   }
 
   selectedFirst() {
@@ -37,6 +60,7 @@ export default class RecentChallenges extends React.Component {
     global.time_string = '1 hour';
     global.duel_or_solo = "duel";
     global.hunt_or_save = "save";
+    global.sent_challenge = true;
     this.toChallengeSent();
   }
 
@@ -49,6 +73,7 @@ export default class RecentChallenges extends React.Component {
     global.time_string = global.minutes + ' minutes';
     global.duel_or_solo = "duel";
     global.hunt_or_save = "save";
+    global.sent_challenge = true;
     this.toChallengeSent();
   }
 
@@ -61,6 +86,7 @@ export default class RecentChallenges extends React.Component {
     global.time_string = global.minutes + ' minutes';
     global.duel_or_solo = "duel";
     global.hunt_or_save = "save";
+    global.sent_challenge = true;
     this.toChallengeSent();
   }
 
@@ -74,6 +100,7 @@ export default class RecentChallenges extends React.Component {
     global.time_string = '1 hour and ' + global.minutes + ' minutes';
     global.duel_or_solo = "duel";
     global.hunt_or_save = "save";
+    global.sent_challenge = true;
     this.toChallengeSent();
   }
 
