@@ -11,6 +11,7 @@ import {
   Alert,
   Image,
   FlatList,
+  Platform,
 } from 'react-native';
 
 import {GiftedChat, Actions, Bubble, SystemMessage} from 'react-native-gifted-chat';
@@ -184,6 +185,9 @@ export default class CompeteScreen extends React.Component {
             labelH={'hours'}
             labelS={'seconds'}
           />
+          <TouchableOpacity onPress={() => this.endChallenge()} style={[styles.button, {backgroundColor: '#ffffff', borderRadius: 2, borderColor: 'black'}]}>
+              <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 20, color: 'black', fontWeight: 'bold'}}>End Challenge</Text>
+          </TouchableOpacity>
         </View>
         <GiftedChat
           bottomOffset={56}
