@@ -17,6 +17,7 @@ import {
 import { Icon } from 'react-native-elements';
 import TimePicker from 'react-native-simple-time-picker';
 import * as Progress from 'react-native-progress';
+import CountDown from 'react-native-countdown-component';
 
 export default class RecentChallenges extends React.Component {
 
@@ -24,7 +25,12 @@ export default class RecentChallenges extends React.Component {
     this.props.navigation.navigate('ChallengeSent');
   }
 
+  toCompete() {
+    this.props.navigation.navigate('CompeteConfirmation');
+  }
+
   toNewChallenge() {
+    console.log("sent challenge in New Challenge: " + global.sent_challenge)
     if (global.sent_challenge) {
       Alert.alert (
       'Battleshop Says',
@@ -111,6 +117,22 @@ export default class RecentChallenges extends React.Component {
       this.props.navigation.navigate('CompeteConfirmation');
     }
   }
+
+  fakeInteraction() {
+    console.log("sent challenge in Fake Interaction: " + global.sent_challenge)
+    if (global.sent_challenge) {
+      console.log('made it here? ');
+      Alert.alert(
+        'Battleshop Says',
+        global.opponents_arr[0] + ' accepted! Ready to start the challenge?',
+        [
+          {text: 'Cancel', style: 'cancel'},
+          {text: 'OK', onPress: () => this.toCompete()},
+        ],
+        {cancelable: false }
+    )}
+
+  }
   render() {
     return (
       <View style = {{flex: 1, backgroundColor: '#F9564F'}}>
@@ -136,6 +158,14 @@ export default class RecentChallenges extends React.Component {
               <Text style={{textAlign: 'center', fontSize: 24}}>SAVE vs. Clark</Text>
               <Text style={{textAlign: 'center', fontSize: 16}}>Item: Glasses; Budget: $70; Time: 1.5 Hours</Text>
             </TouchableOpacity>
+        </View>
+        <View style={styles.countdown}>
+          <CountDown
+            // Fake opponent accepting the challenge
+            until={7}
+            timeToShow={[]}
+            onFinish={this.fakeInteraction()}
+          />
         </View>
       </View>
     )

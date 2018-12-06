@@ -21,6 +21,7 @@ import CountDown from 'react-native-countdown-component';
 export default class ChallengeSent extends React.Component {
   backToRecentChallenges() {
     this.props.navigation.navigate('RecentChallenges');
+    global.sent_challenge = true; 
   }
   toCompete() {
     this.props.navigation.navigate('CompeteConfirmation');
