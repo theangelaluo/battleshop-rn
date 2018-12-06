@@ -21,6 +21,7 @@ import { Icon } from 'react-native-elements';
 import TimePicker from 'react-native-simple-time-picker';
 import * as Progress from 'react-native-progress';
 import CountDown from 'react-native-countdown-component';
+import {styles} from '../styles.js';
 
 export default class RecentChallenges extends React.Component {
   // componentDidMount() {
@@ -93,6 +94,7 @@ export default class RecentChallenges extends React.Component {
     global.minutes = 0;
     global.time_string = '';
     global.sent_challenge = false;
+    this.props.navigation.navigate('GroupOrSolo');
   }
 
   selectedFirst() {
@@ -214,6 +216,7 @@ export default class RecentChallenges extends React.Component {
   }
 }
 
+<<<<<<< HEAD
 
 
 
@@ -351,4 +354,6 @@ itemButton: {
   }
 });
 
+=======
+>>>>>>> 81842111b93f1f67b06e807129cd70af899f119e
 module.exports = RecentChallenges;

@@ -19,6 +19,8 @@ import { Icon } from 'react-native-elements';
 
 import TimePicker from 'react-native-simple-time-picker';
 
+import {styles} from '../styles.js';
+
 export default class Rewards extends React.Component {
   constructor() {
     super();
@@ -111,7 +113,7 @@ export default class Rewards extends React.Component {
   _renderButton1() {
        if (this.state.showReward1) {
            return (
-               <TouchableOpacity style={styles.itemButton} onPress={this.selectedReward1.bind(this)}>
+               <TouchableOpacity style={reward_styles.itemButton} onPress={this.selectedReward1.bind(this)}>
                  <Text style={{textAlign: 'center', fontSize: 24}}>Nuggets at Chick-fil-a: 100 coins</Text>
                </TouchableOpacity>
            );
@@ -123,7 +125,7 @@ export default class Rewards extends React.Component {
    _renderButton2() {
         if (this.state.showReward2) {
             return (
-                <TouchableOpacity style={styles.itemButton} onPress={this.selectedReward2.bind(this)}>
+                <TouchableOpacity style={reward_styles.itemButton} onPress={this.selectedReward2.bind(this)}>
                   <Text style={{textAlign: 'center', fontSize: 24}}>Dessert at Red Lobster: 200 coins</Text>
                 </TouchableOpacity>
             );
@@ -135,7 +137,7 @@ export default class Rewards extends React.Component {
     _renderButton3() {
          if (this.state.showReward3) {
              return (
-                 <TouchableOpacity style={styles.itemButton} onPress={this.selectedReward3.bind(this)}>
+                 <TouchableOpacity style={reward_styles.itemButton} onPress={this.selectedReward3.bind(this)}>
                    <Text style={{textAlign: 'center', fontSize: 24}}>10% off at Nike: 300 coins</Text>
                  </TouchableOpacity>
              );
@@ -147,7 +149,7 @@ export default class Rewards extends React.Component {
      _renderButton4() {
           if (this.state.showReward4) {
               return (
-                  <TouchableOpacity style={styles.itemButton} onPress={this.selectedReward4.bind(this)}>
+                  <TouchableOpacity style={reward_styles.itemButton} onPress={this.selectedReward4.bind(this)}>
                     <Text style={{textAlign: 'center', fontSize: 24}}>15% off at Macy's: 400 coins</Text>
                   </TouchableOpacity>
               );
@@ -182,22 +184,7 @@ export default class Rewards extends React.Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F9564F',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  itemsContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    margin: 10,
-//  paddingVertical: '10%',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    alignItems: "center"
-  },
+const reward_styles = StyleSheet.create({
   itemButton: {
     width: '80%',
     height: 100,
@@ -215,6 +202,7 @@ const styles = StyleSheet.create({
     shadowRadius: 1,
     shadowOffset: {width: 2, height: 2},
     borderRadius: 15
+<<<<<<< HEAD
    },
     button: {
   //alignSelf: 'stretch',
@@ -291,6 +279,9 @@ const styles = StyleSheet.create({
       height: StyleSheet.hairlineWidth,
       backgroundColor: 'black'
     }
+=======
+   }
+>>>>>>> 81842111b93f1f67b06e807129cd70af899f119e
 });
 
 module.exports = Rewards;
