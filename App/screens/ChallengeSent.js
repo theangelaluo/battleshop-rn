@@ -16,26 +16,44 @@ import {
 
 import { Icon } from 'react-native-elements';
 import TimePicker from 'react-native-simple-time-picker';
+import CountDown from 'react-native-countdown-component';
 
 export default class ChallengeSent extends React.Component {
-  backToGroupOrSolo() {
-    this.props.navigation.navigate('GroupOrSolo');
+  backToRecentChallenges() {
+    this.props.navigation.navigate('RecentChallenges');
   }
   toCompete() {
-    this.props.navigation.navigate('CompeteScreen');
+    this.props.navigation.navigate('CompeteConfirmation');
   }
   render() {
     return (
       <View style={{flex: 1, backgroundColor: '#F9564F', alignItems: 'center', padding: 15}}>
         <Text style={{marginTop: 20, fontSize: 30, color: 'white', textAlign: 'center'}}>
-          We will send you a notification when your opponent accepts.
+          {global.opponents_arr[0]} has 5 minutes to accept the challenge, or it will be cancelled.
         </Text>
-        <TouchableOpacity onPress={() => this.backToGroupOrSolo()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 10}]}>
+        <Text style={{marginTop: 20, fontSize: 30, color: 'white', textAlign: 'center'}}>
+          We will let you know when {global.opponents_arr[0]} accepts the challenge.
+        </Text>
+        <TouchableOpacity onPress={() => this.backToRecentChallenges()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 10}]}>
           <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 20, color: 'white'}}>Back to Home</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => this.toCompete()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 10}]}>
-          <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 20, color: 'white'}}>Compete</Text>
-        </TouchableOpacity>
+        <View style={styles.countdown}>
+          <CountDown
+            // Fake opponent accepting the challenge
+            until={7}
+            timeToShow={[]}
+            onFinish={() => Alert.alert(
+              'Battleshop Says',
+              global.opponents_arr[0] + ' accepted! Ready to start the challenge?',
+              [
+              {text: 'Cancel', style: 'cancel', onPress: () => this.backToRecentChallenges()},
+              {text: 'OK', onPress: () => this.toCompete()},
+              ],
+              { cancelable: false }
+            )}
+          />
+        </View>
+
       </View>
     )
   }

@@ -18,14 +18,11 @@ import {GiftedChat, Actions, Bubble, SystemMessage} from 'react-native-gifted-ch
 import CountDown from 'react-native-countdown-component';
 
 import { Icon } from 'react-native-elements';
-import { Provider } from 'react-redux'
-import {
-  createBottomTabNavigator,
-  createStackNavigator,
-  createAppContainer,
-  createSwitchNavigator,
-} from 'react-navigation';
-import firebaseBackend from '../config/firebase';
+import { Provider } from 'react-redux';
+
+var CompeteStatusBar = require("../components/CompeteStatusBar");
+
+// import firebaseBackend from '../config/firebase';
 
 //     setTimeout(() => {
 //       if (this._isMounted === true) {
@@ -172,10 +169,15 @@ export default class CompeteScreen extends React.Component {
   render() {
     const { navigation } = this.props;
     return (
+<<<<<<< HEAD
       <View style={{flex:1}}>
         <View style={styles.competeStatus}>
           <Text style={{color: 'white', fontSize: 30}}>You are battleshopping</Text>
         </View>
+=======
+      <View>
+        <CompeteStatusBar></CompeteStatusBar>
+>>>>>>> 7064b0be81d08f9786ba379ebb4c857c9110efde
         <View style={styles.countdown}>
           <CountDown
             until={global.hours * 60 * 60 + global.minutes * 60}

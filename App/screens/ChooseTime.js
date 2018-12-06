@@ -48,34 +48,34 @@ export default class ChooseTime extends React.Component {
       }
 
       // Format time string
-var time_string = '';
+global.time_string = ''; // Reset
 if (global.hours === 0) {
   if (global.minutes === 1) {
-    time_string += '1 minute ';
+    global.time_string += '1 minute ';
   } else {
-    time_string += global.minutes + ' minutes ';
+    global.time_string += global.minutes + ' minutes ';
   }
 } else if (global.minutes === 0) {
   if (global.hours  === 1) {
-    time_string += '1 hour ';
+    global.time_string += '1 hour ';
   } else {
-    time_string += global.hours  + ' hours ';
+    global.time_string += global.hours  + ' hours ';
   }
 } else {
   if (global.hours  === 1) {
-    time_string += '1 hour ';
+    global.time_string += '1 hour ';
   } else {
-    time_string += global.hours  + ' hours ';
+    global.time_string += global.hours  + ' hours ';
   }
   if (global.minutes === 1) {
-    time_string += 'and 1 minute ';
+    global.time_string += 'and 1 minute ';
   } else {
-    time_string += 'and ' + global.minutes + ' minutes ';
+    global.time_string += 'and ' + global.minutes + ' minutes ';
   }
 }
       Alert.alert(
         'Battleshop Says',
-        'You are about to send a SAVE challenge for ' + global.item + ' for ' + time_string +
+        'You are about to send a SAVE challenge for ' + global.item + ' for ' + global.time_string +
         'with a $' + global.budget + ' budget versus ' +
         challenged_opponents + '.',
       [

@@ -18,92 +18,53 @@ import { Icon } from 'react-native-elements';
 import TimePicker from 'react-native-simple-time-picker';
 import * as Progress from 'react-native-progress';
 
-export default class ChooseItem extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      item_text: ''
-    };
-    // reset
-    global.item = '';
+export default class CompeteConfirmation extends React.Component {
+  constructor() {
+    super();
+    this.state = {showHunt: false};
   }
 
-  press() {
-    if (global.item.length === 0) {
-      Alert.alert(
-      'Battleshop Says',
-      'Please select an item or enter your own custom input.',
-      [
-        {text: 'OK'},
-      ],
-      {cancelable: false}
-      )
-    } else {
-      this.props.navigation.navigate('ChooseBudget');
+  _renderInstructions(isHunt) {
+       if (isHunt) {
+           return (
+              <Text style={{marginTop: 30, marginLeft: 30, marginRight: 30, marginBottom: 15, color: "white", fontWeight: 'bold', textAlign: 'center', fontSize: 20}}>For HUNT, you will be shown a shopping list. Your job is to check off as many items as possible by shopping within the store.</Text>
+           );
+       } else{
+         return(
+            <View>
+              <Text style={{marginTop: 30, marginLeft: 30, marginRight: 30, marginBottom: 15, color: "white", fontWeight: 'bold', textAlign: 'center', fontSize: 18}}>For SAVE, you will be searching for {global.item}. Your job is to look for the cheapest one IN THE STORE within the time limit.</Text>
+              <Text style={{marginTop: 30, marginLeft: 30, marginRight: 30, marginBottom: 15, color: "white", fontWeight: 'bold', textAlign: 'center', fontSize: 18}}>As you find good candidates, send a picture to the chat.</Text>
+              <Text style={{marginTop: 30, marginLeft: 30, marginRight: 30, marginBottom: 15, color: "white", fontWeight: 'bold', textAlign: 'center', fontSize: 18}}>At the end of {global.time_string}, the person who found the item with lowest price will win!</Text>
+            </View>
+         );
+     }
+   }
+
+  _renderOpponent(isDuel) {
+       if (isDuel) {
+           return (
+              <Text style={{marginTop: 30, marginLeft: 30, marginRight: 30, marginBottom: 15, color: "white", fontWeight: 'bold', textAlign: 'center', fontSize: 28}}>You're about to start a "{global.hunt_or_save}" {global.duel_or_solo} with {global.opponents_arr[0]}!</Text>
+           );
+       } else{
+         return(
+              <Text style={{marginTop: 30, marginLeft: 30, marginRight: 30, marginBottom: 15, color: "white", fontWeight: 'bold', textAlign: 'center', fontSize: 28}}>You're about to start a "{global.hunt_or_save}" {global.duel_or_solo}!</Text>
+         );
+       }
+   }
+
+   startChallenge() {
+      this.props.navigation.navigate('CompeteScreen');
     }
-  }
-
-  toChooseBudget() {
-    this.props.navigation.navigate('ChooseBudget');
-  }
-
-  selectedDress() {
-    global.item = 'a dress';
-    this.toChooseBudget();
-  }
-
-  selectedShirt() {
-    global.item = 'a shirt';
-    this.toChooseBudget();
-  }
-
-  selectedJacket() {
-    global.item = 'a jacket';
-    this.toChooseBudget();
-  }
-
-  selectedPants() {
-    global.item = 'pants';
-    this.toChooseBudget();
-  }
-
-
-  handleInputChange = (text) => {
-      global.item = text;
-  }
-
 
   render() {
     return (
       <View style = {{flex: 1, backgroundColor: '#F9564F'}}>
-        <Text style={{margin: 30, color: "white", fontWeight: 'bold', textAlign: 'center', fontSize: 36}}>Choose Your Item</Text>
-        <View style={styles.itemsContainer}>
-            <TouchableOpacity style={styles.itemButton} onPress={this.selectedDress.bind(this)}>
-              <Text style={{textAlign: 'center', fontSize: 24}}>Dress</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.itemButton} onPress={this.selectedShirt.bind(this)}>
-              <Text style={{textAlign: 'center', fontSize: 24}}>Shirt</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.itemButton} onPress={this.selectedJacket.bind(this)}>
-              <Text style={{textAlign: 'center', fontSize: 24}}>Jacket</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.itemButton} onPress={this.selectedPants.bind(this)}>
-              <Text style={{textAlign: 'center', fontSize: 24}}>Pants</Text>
-            </TouchableOpacity>
-            <View style={styles.textBoxSurroundings}>
-              <TextInput
-              style={styles.textBox}
-              onChangeText={this.handleInputChange}
-              value={this.state.item_text}
-              />
-            </View>
-            <TouchableOpacity onPress={() => this.press()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 25}]}>
-              <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 30, color: 'white'}}>Continue</Text>
-            </TouchableOpacity>
-            <View style={styles.progressBar}>
-              <Progress.Bar progress={0.3} width={300} progress={0.5} color={'rgba(123, 30, 122, 1)'}/>
-            </View>
-        </View>
+
+        {this._renderOpponent(global.duel_or_solo == "duel")}
+        {this._renderInstructions(global.hunt_or_save == "hunt")}
+        <TouchableOpacity onPress={() => this.startChallenge()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 10}]}>
+          <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 20, color: 'white'}}>Start Challenge!</Text>
+        </TouchableOpacity>
       </View>
     )
   }
@@ -224,4 +185,4 @@ itemButton: {
   }
 });
 
-module.exports = ChooseItem;
+module.exports = CompeteConfirmation;

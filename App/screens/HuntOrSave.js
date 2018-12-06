@@ -25,11 +25,44 @@ export default class HuntOrSave extends React.Component {
       item_text: ''
     };
   }
+
   toChooseItem() { //TODO:temporary navigation, delete before commit
     this.props.navigation.navigate('ChooseItem');
+    global.hunt_or_save = "save";
   }
+
   toHunt() {
     //todo: hunt not implemented yet!
+    global.hunt_or_save = "hunt";
+  }
+
+  huntTutorial() {
+    Alert.alert(
+    'HUNT Gameplay:',
+    "\n SETUP: Create a collaborative shopping list and add a time limit. \n \n" +
+    "HOW TO WIN: For each item you find, you earn 10 points. The player who finds the most items wins 100 coins!",
+    [
+      {text: 'OK'},
+    ],
+    {cancelable: false}
+    )
+  }
+
+
+
+  saveTutorial() {
+
+    Alert.alert(
+      'SAVE Gameplay:',
+      //  "Compete with friends to find the best deal. + \n" +
+        "\n SETUP: Add the type of item you want to find, your budget, and time limit. \n \n" +
+        "HOW TO WIN: The player who finds the cheapest item within the time limit wins 100 coins!",
+      [
+        {text: 'OK'},
+      ],
+      {cancelable: false}
+    )
+
   }
 
   handleInputChange = (text) => {
@@ -42,23 +75,47 @@ export default class HuntOrSave extends React.Component {
   render() {
     return (
       <View style={{backgroundColor: '#F9564F', width: '100%', height: '100%', display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <TouchableOpacity onPress={() => this.toHunt()} style={[styles.button, styles.buttonShadow, {display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly', width: '90%', height: '30%', backgroundColor: "#f3c677", borderRadius: 15, marginBottom: 25,}]}>
+
+    <View style={{width: '95%', height: '30%', display: 'flex', alignItems: 'center', marginBottom: 25,}}>
+      <TouchableOpacity onPress={() => this.toHunt()} style={[styles.button, styles.buttonShadow, {display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly', width: '95%', height: '95%', backgroundColor: "#f3c677", borderRadius: 15, }]}>
+        <View style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly'}}>
           <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly'}}>
             <Text style={{fontSize: 60, color: 'black'}}>Hunt </Text>
             <Icon name='arrow-forward' size={40} />
           </View>
           <Text>Get the items you need in the time you have</Text>
-          </TouchableOpacity>
-        <TouchableOpacity onPress={() => this.toChooseItem()} style={[styles.button, styles.buttonShadow, {display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly', width: '90%', height: '30%', backgroundColor: '#f3c677', borderRadius: 15, marginTop: 25}]}>
+        </View>
+      </TouchableOpacity>
+      <View style={{display: 'flex', alignSelf: 'flex-end', position: "absolute"}}>
+        <TouchableOpacity onPress={()=>this.huntTutorial()} style={{display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: "white", height: 50, width: 50, borderRadius: 25}}>
+          <Text style={{fontSize: 30, fontWeight: "bold", color: "#696969"}}>i</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+
+
+    <View style={{width: '95%', height: '30%', display: 'flex', alignItems: 'center', marginBottom: 25,}}>
+      <TouchableOpacity onPress={() => this.toChooseItem()} style={[styles.button, styles.buttonShadow, {display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly', width: '95%', height: '95%', backgroundColor: "#f3c677", borderRadius: 15, }]}>
+        <View style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly'}}>
           <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly'}}>
-            <Text style={{textAlign: 'center', fontSize: 60, color: 'black'}}>Save </Text>
+            <Text style={{fontSize: 60, color: 'black'}}>Save </Text>
             <Icon name='arrow-forward' size={40} />
           </View>
           <Text>Shop within your budget</Text>
+        </View>
+      </TouchableOpacity>
+      <View style={{display: 'flex', alignSelf: 'flex-end', position: "absolute"}}>
+        <TouchableOpacity onPress={()=>this.saveTutorial()} style={{display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: "white", height: 50, width: 50, borderRadius: 25}}>
+          <Text style={{fontSize: 30, fontWeight: "bold", color: "#696969"}}>i</Text>
         </TouchableOpacity>
+      </View>
+    </View>
+
         <View style={styles.progressBar}>
           <Progress.Bar progress={0.3} width={300} progress={0.2} color={'rgba(123, 30, 122, 1)'}/>
         </View>
+
+
       </View>
     )
   }
