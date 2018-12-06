@@ -80,15 +80,11 @@ export default class RecentChallenges extends React.Component {
       this.props.navigation.navigate('CompeteConfirmation');
     }
   }
-
   render() {
     return (
       <View style = {{flex: 1, backgroundColor: '#F9564F'}}>
         <Text style={{marginTop: 30, marginLeft: 30, marginRight: 30, marginBottom: 15, color: "white", fontWeight: 'bold', textAlign: 'center', fontSize: 36}}>Compete Page</Text>
         <View style={styles.itemsContainer}>
-        <TouchableOpacity onPress={() => this.toCurrentGame()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 25}]}>
-          <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 20, color: 'white'}}>To Current Game</Text>
-        </TouchableOpacity>
         <TouchableOpacity onPress={() => this.toNewChallenge()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 25}]}>
           <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 20, color: 'white'}}>New Challenge</Text>
         </TouchableOpacity>
