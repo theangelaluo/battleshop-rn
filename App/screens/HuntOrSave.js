@@ -65,6 +65,17 @@ export default class HuntOrSave extends React.Component {
 
   }
 
+  unlockMe() {       
+    Alert.alert(
+    'Battleshop Says',
+    'This Battleshop game is locked. Play more to unlock this challenge!',
+    [
+      {text: 'OK'},
+    ],
+    {cancelable: false}
+    )
+  }
+
   handleInputChange = (text) => {
       this.setState({
         item_text: text,
@@ -77,7 +88,7 @@ export default class HuntOrSave extends React.Component {
       <View style={{backgroundColor: '#F9564F', width: '100%', height: '100%', display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'center', alignItems: 'center'}}>
 
     <View style={{width: '95%', height: '30%', display: 'flex', alignItems: 'center', marginBottom: 25,}}>
-      <TouchableOpacity onPress={() => this.toHunt()} style={[styles.button, styles.buttonShadow, {display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly', width: '95%', height: '95%', backgroundColor: "#f3c677", borderRadius: 15, }]}>
+      <TouchableOpacity onPress={() => this.unlockMe()} style={[styles.button, styles.buttonShadow, {display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly', width: '95%', height: '95%', backgroundColor: "#f3c677", borderRadius: 15, }]}>
         <View style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly'}}>
           <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly'}}>
             <Text style={{fontSize: 60, color: 'black'}}>Hunt </Text>
