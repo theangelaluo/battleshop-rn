@@ -34,6 +34,8 @@ export default class RecentChallenges extends React.Component {
     global.item = 'a dress';
     global.budget = 50;
     global.hours = 1;
+    global.duel_or_solo = "duel";
+    global.hunt_or_save = "save";
     this.toChallengeSent();
   }
 
@@ -43,6 +45,8 @@ export default class RecentChallenges extends React.Component {
     global.item = 'a mask';
     global.budget = 75;
     global.minutes = 30;
+    global.duel_or_solo = "duel";
+    global.hunt_or_save = "save";
     this.toChallengeSent();
   }
 
@@ -52,6 +56,8 @@ export default class RecentChallenges extends React.Component {
     global.item = 'a blouse';
     global.budget = 60;
     global.minutes = 45;
+    global.duel_or_solo = "duel";
+    global.hunt_or_save = "save";
     this.toChallengeSent();
   }
 
@@ -62,19 +68,27 @@ export default class RecentChallenges extends React.Component {
     global.budget = 100;
     global.hours = 1;
     global.minutes = 30;
+    global.duel_or_solo = "duel";
+    global.hunt_or_save = "save";
     this.toChallengeSent();
   }
 
+  toCurrentGame(){
+    this.props.navigation.navigate('CompeteConfirmation');
+  }
 
   render() {
     return (
       <View style = {{flex: 1, backgroundColor: '#F9564F'}}>
         <Text style={{marginTop: 30, marginLeft: 30, marginRight: 30, marginBottom: 15, color: "white", fontWeight: 'bold', textAlign: 'center', fontSize: 36}}>Compete Page</Text>
         <View style={styles.itemsContainer}>
+        <TouchableOpacity onPress={() => this.toCurrentGame()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 25}]}>
+          <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 20, color: 'white'}}>To Current Game</Text>
+        </TouchableOpacity>
         <TouchableOpacity onPress={() => this.toNewChallenge()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 25}]}>
           <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 20, color: 'white'}}>New Challenge</Text>
         </TouchableOpacity>
-                <Text style={{margin: 30, color: "white", fontWeight: 'bold', textAlign: 'center', fontSize: 20}}>Recent Challenges</Text>
+            <Text style={{margin: 30, color: "white", fontWeight: 'bold', textAlign: 'center', fontSize: 20}}>Recent Challenges</Text>
             <TouchableOpacity style={styles.itemButton} onPress={this.selectedFirst.bind(this)}>
               <Text style={{textAlign: 'center', fontSize: 24}}>SAVE vs. Alice</Text>
               <Text style={{textAlign: 'center', fontSize: 16}}>Item: Dress; Budget: $50; Time: 1 Hour</Text>
@@ -91,7 +105,6 @@ export default class RecentChallenges extends React.Component {
               <Text style={{textAlign: 'center', fontSize: 24}}>SAVE vs. Clark</Text>
               <Text style={{textAlign: 'center', fontSize: 16}}>Item: Cape; Budget: $70; Time: 1.5 Hours</Text>
             </TouchableOpacity>
-
         </View>
       </View>
     )

@@ -28,10 +28,12 @@ export default class HuntOrSave extends React.Component {
 
   toChooseItem() { //TODO:temporary navigation, delete before commit
     this.props.navigation.navigate('ChooseItem');
+    global.hunt_or_save = "save";
   }
 
   toHunt() {
     //todo: hunt not implemented yet!
+    global.hunt_or_save = "hunt";
   }
 
   huntTutorial() {

@@ -22,7 +22,7 @@ import TimePicker from 'react-native-simple-time-picker';
 export default class Rewards extends React.Component {
   constructor() {
     super();
-    this.state = { showReward1: true, showReward2: true, showReward3: true, showReward4: true, numCoins: 2600};
+    this.state = { showReward1: true, showReward2: true, showReward3: true, showReward4: true};
   }
 
   basicAlert() {
@@ -38,8 +38,9 @@ export default class Rewards extends React.Component {
       {text: 'OK', onPress: () => {
         this.setState({
           showReward1: !this.state.showReward1,
-          numCoins: this.state.numCoins-100
         });
+        global.coins-=100;
+        this.forceUpdate();
       }
     },
     ],
@@ -57,8 +58,9 @@ export default class Rewards extends React.Component {
       {text: 'OK', onPress: () => {
         this.setState({
           showReward2: !this.state.showReward2,
-          numCoins: this.state.numCoins-200
         });
+        global.coins-=200;
+        this.forceUpdate();
       }
     },
     ],
@@ -76,8 +78,9 @@ export default class Rewards extends React.Component {
       {text: 'OK', onPress: () => {
         this.setState({
           showReward3: !this.state.showReward3,
-          numCoins: this.state.numCoins-300
         });
+        global.coins-=300;
+        this.forceUpdate();
       }
     },
     ],
@@ -95,8 +98,9 @@ export default class Rewards extends React.Component {
       {text: 'OK', onPress: () => {
         this.setState({
           showReward4: !this.state.showReward4,
-          numCoins: this.state.numCoins-400
         });
+        global.coins-=400;
+        this.forceUpdate();
       }
     },
     ],
@@ -158,7 +162,7 @@ export default class Rewards extends React.Component {
           <View style={{marginTop: 20, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
           <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 20}}>
             <Image source={require('../../img/coins.png')} style={{resizeMode: 'contain', marginRight: 20}}/>
-            <Text style={{color: "white", fontSize: 35, fontWeight: 'bold'}}>{String(this.state.numCoins)}</Text>
+            <Text style={{color: "white", fontSize: 35, fontWeight: 'bold'}}>{global.coins}</Text>
             <Text style={{color: "white", fontSize: 35}}> COINS</Text>
           </View>
             <Text style={{color: "white", fontSize: 35, marginTop: 20, fontWeight: 'bold'}}>Available Rewards</Text>

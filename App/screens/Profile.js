@@ -28,12 +28,12 @@ export default class Profile extends React.Component {
           <Text style={{color: "white", fontSize: 25, marginTop: 10}}>Level 2</Text>
           <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', marginTop: 50}}>
             <Image source={require('../../img/swords.png')} style={{resizeMode: 'contain', marginRight: 20}}/>
-            <Text style={{color: "white", fontSize: 35, fontWeight: 'bold'}}>1060</Text>
+            <Text style={{color: "white", fontSize: 35, fontWeight: 'bold'}}>{global.xp}</Text>
             <Text style={{color: "white", fontSize: 35}}> XP</Text>
           </View>
           <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', marginTop: 20}}>
             <Image source={require('../../img/coins.png')} style={{resizeMode: 'contain', marginRight: 20}}/>
-            <Text style={{color: "white", fontSize: 35, fontWeight: 'bold'}}>2600</Text>
+            <Text style={{color: "white", fontSize: 35, fontWeight: 'bold'}}>{global.coins}</Text>
             <Text style={{color: "white", fontSize: 35}}> COINS</Text>
           </View>
         </View>

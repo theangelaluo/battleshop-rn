@@ -34,7 +34,7 @@ var ChooseItem = require("./screens/ChooseItem");
 var CompeteScreen = require("./screens/CompeteScreen");
 var Tutorial = require("./screens/Tutorial");
 var RecentChallenges = require("./screens/RecentChallenges");
-
+var CompeteConfirmation = require("./screens/CompeteConfirmation");
 
 import {
   createBottomTabNavigator,
@@ -82,6 +82,9 @@ const CompeteStack = createStackNavigator({
     },
     ChallengeSent: {
       screen: ChallengeSent
+    },
+    CompeteConfirmation: {
+      screen: CompeteConfirmation
     },
     CompeteScreen: {
       screen: CompeteScreen

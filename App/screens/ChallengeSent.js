@@ -28,7 +28,7 @@ export default class ChallengeSent extends React.Component {
     console.log("budget: " + global.budget);
     console.log("hours: " + global.hours);
     console.log("minutes: " + global.minutes);
-    this.props.navigation.navigate('CompeteScreen');
+    this.props.navigation.navigate('CompeteConfirmation');
   }
   render() {
     return (
