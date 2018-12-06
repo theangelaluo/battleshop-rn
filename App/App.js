@@ -113,13 +113,14 @@ const bottomTabNavigator = createBottomTabNavigator({
           </TouchableOpacity>
         ),
       tabBarLabel: 'Profile',
+      tabBarButtonComponent: TouchableOpacity,
       tabBarIcon: ({ tintColor }) => <Image source={require('../img/Profile.png')} />
     }),
   },
   Compete: {
     screen: CompeteStack,
     navigationOptions: {
-      //tabBarVisible: false,
+      tabBarButtonComponent: TouchableOpacity,
       tabBarLabel: 'Compete',
       tabBarIcon: ({ tintColor }) => <Image source={require('../img/Compete.png')} />
     },
@@ -128,6 +129,7 @@ const bottomTabNavigator = createBottomTabNavigator({
     screen: Rewards,
     navigationOptions: ({ navigation }) => ({
       tabBarLabel: 'Rewards',
+      tabBarButtonComponent: TouchableOpacity,
       tabBarIcon: ({ tintColor }) => <Image source={require('../img/Rewards.png')} />,
       headerTitle: <Header/>,
       headerRight: (
@@ -149,7 +151,8 @@ const bottomTabNavigator = createBottomTabNavigator({
 			showLabel: true,
 			showIcon: true,
 			pressColor: 'coral',
-			allowFontScaling: true
+			allowFontScaling: true,
+      activeBackgroundColor: '#E5E5E5'
 		}
 });
 

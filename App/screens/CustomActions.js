@@ -140,8 +140,7 @@ export default class CustomActions extends React.Component {
         <TouchableOpacity style={styles.toggleButton} onPress={this.toggleFlash}>
           <MaterialIcons name={flashIcons[this.state.flash]} size={32} color="white" />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.toggleButton} onPress={this.toggleFocus}>
-          <Text style={[styles.autoFocusLabel, { color: this.state.autoFocus === 'on' ? "white" : "#6b6b6b" }]}>AF</Text>
+        <TouchableOpacity style={styles.toggleButton}>
         </TouchableOpacity>
       </View>
 
@@ -169,19 +168,20 @@ export default class CustomActions extends React.Component {
     );
   }
 
-  renderPreview = () =>
-  <View>
-    <Image
-      source={{ uri: this.state.path }}
-      style={styles.preview}
-    />
-    <Text
-      style={styles.cancel}
-      onPress={() => this.setState({ path: null })}
-    >Cancel
-    </Text>
-  </View>
-
+//   renderPreview = () =>
+//   (
+//   <View>
+//     <Image
+//       source={{ uri: this.state.path }}
+//       style={styles.preview}
+//     />
+//     <Text
+//       style={styles.cancel}
+//       onPress={() => this.setState({ path: null })}
+//     >Cancel
+//     </Text>
+//   </View>
+// );
   renderCamera = () =>
      (
        <View style={{flex:1}}>
