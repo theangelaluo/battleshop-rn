@@ -38,10 +38,8 @@ class Opponent extends React.Component {
       })
     } else {
       // Find the index position of then opponent, then remove one element from that position
-      console.log("before splice: " + global.opponents_arr);
       var index = global.opponents_arr.indexOf(item)
       global.opponents_arr.splice(index, 1);
-      console.log("after splice: " + global.opponents_arr);
       this.setState({
         color: '#F2C57D',
         clicked: false

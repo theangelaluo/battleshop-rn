@@ -33,6 +33,8 @@ var ChooseTime = require("./screens/ChooseTime");
 var ChooseItem = require("./screens/ChooseItem");
 var CompeteScreen = require("./screens/CompeteScreen");
 var Tutorial = require("./screens/Tutorial");
+var RecentChallenges = require("./screens/RecentChallenges");
+
 
 import {
   createBottomTabNavigator,
@@ -57,6 +59,9 @@ const AuthenticationNavigator = createStackNavigator({
 });
 
 const CompeteStack = createStackNavigator({
+    RecentChallenges: {
+      screen: RecentChallenges
+    },
     GroupOrSolo: {
         screen: GroupOrSolo
       },
@@ -81,6 +86,7 @@ const CompeteStack = createStackNavigator({
     CompeteScreen: {
       screen: CompeteScreen
     },
+
 },{
   defaultNavigationOptions: ({ navigation }) => ({
     headerTitle: <Header/>,
@@ -89,7 +95,8 @@ const CompeteStack = createStackNavigator({
         <Image source={require('../img/ic_exit_to_app.png')}/>
       </TouchableOpacity>
     ),
-  })
+  }),
+
 });
 
 const bottomTabNavigator = createBottomTabNavigator({

@@ -46,6 +46,8 @@ export default class HuntOrSave extends React.Component {
     )
   }
 
+
+
   saveTutorial() {
 
     Alert.alert(
@@ -83,8 +85,8 @@ export default class HuntOrSave extends React.Component {
         </View>
       </TouchableOpacity>
       <View style={{display: 'flex', alignSelf: 'flex-end', position: "absolute"}}>
-        <TouchableOpacity onPress={()=>this.huntTutorial()} style={{display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: "white", height: 30, width: 30, borderRadius: 20}}>
-          <Text style={{fontSize: 20, fontWeight: "bold", color: "#696969"}}>i</Text>
+        <TouchableOpacity onPress={()=>this.huntTutorial()} style={{display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: "white", height: 50, width: 50, borderRadius: 25}}>
+          <Text style={{fontSize: 30, fontWeight: "bold", color: "#696969"}}>i</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -101,8 +103,8 @@ export default class HuntOrSave extends React.Component {
         </View>
       </TouchableOpacity>
       <View style={{display: 'flex', alignSelf: 'flex-end', position: "absolute"}}>
-        <TouchableOpacity onPress={()=>this.saveTutorial()} style={{display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: "white", height: 30, width: 30, borderRadius: 20}}>
-          <Text style={{fontSize: 20, fontWeight: "bold", color: "#696969"}}>i</Text>
+        <TouchableOpacity onPress={()=>this.saveTutorial()} style={{display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: "white", height: 50, width: 50, borderRadius: 25}}>
+          <Text style={{fontSize: 30, fontWeight: "bold", color: "#696969"}}>i</Text>
         </TouchableOpacity>
       </View>
     </View>

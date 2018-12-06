@@ -33,7 +33,7 @@ export default class Tutorial extends React.Component {
   };
 
   loginActual() {
-    this.props.navigation.navigate('Compete');
+    this.props.navigation.navigate('RecentChallenges');
   }
 
   render() {
