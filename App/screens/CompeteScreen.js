@@ -25,6 +25,10 @@ var CompeteStatusBar = require("../components/CompeteStatusBar");
 // import firebaseBackend from '../config/firebase';
 
 export default class CompeteScreen extends React.Component {
+  static navigationOptions = {
+    headerLeft: null
+  }
+
   constructor(props) {
    super(props);
 

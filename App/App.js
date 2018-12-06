@@ -52,12 +52,17 @@ export default class App extends React.Component {
 
 const AuthenticationNavigator = createStackNavigator({
   Login: {
-    screen: Login
+    screen: Login,
   },
   Tutorial:{
     screen: Tutorial
+  },
+}, {
+  headerMode: 'none',
+  navigationOptions: {
+    headerVisible: false,
   }
-});
+ });
 
 const CompeteStack = createStackNavigator({
     RecentChallenges: {
@@ -157,7 +162,7 @@ const bottomTabNavigator = createBottomTabNavigator({
 			pressColor: 'coral',
 			allowFontScaling: true,
       activeBackgroundColor: '#E5E5E5'
-		}
+		},
 });
 
 const AppNavigator = createSwitchNavigator({
