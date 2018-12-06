@@ -74,7 +74,11 @@ export default class RecentChallenges extends React.Component {
   }
 
   toCurrentGame(){
-    this.props.navigation.navigate('CompeteConfirmation');
+    if(!global.opponents_arr[0]){
+      alert("No game currently in progress!");
+    }else{
+      this.props.navigation.navigate('CompeteConfirmation');
+    }
   }
 
   render() {

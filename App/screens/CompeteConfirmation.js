@@ -52,9 +52,8 @@ export default class CompeteConfirmation extends React.Component {
        }
    }
 
-
-   startChallenge(isDuel) {
-      this.props.navigation.navigate('Compete');
+   startChallenge() {
+      this.props.navigation.navigate('CompeteScreen');
     }
 
   render() {
