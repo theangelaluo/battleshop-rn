@@ -131,11 +131,10 @@ export default class ChooseItem extends React.Component {
             <TouchableOpacity onPress={() => this.press()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 25}]}>
               <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 30, color: 'white'}}>Continue</Text>
             </TouchableOpacity>
-            <View style={styles.progressBar}>
+          </ScrollView>
+            <View style={{...styles.progressBar, left:'10%'}}>
               <Progress.Bar progress={0.3} width={300} progress={0.5} color={'rgba(123, 30, 122, 1)'}/>
             </View>
-        </ScrollView>
-
       </View>
     )
   }

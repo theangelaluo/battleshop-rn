@@ -139,7 +139,9 @@ itemButton: {
   },
   progressBar:{
     bottom: 15,
-    position: 'absolute'
+    position: 'absolute',
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 });
 
