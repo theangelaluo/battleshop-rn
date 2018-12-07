@@ -109,35 +109,37 @@ export default class ChooseItem extends React.Component {
 
   render() {
     return (
-      <View style = {{flex: 1, backgroundColor: '#F9564F', height:'90%'}}>
+      <View style = {{flex: 1, backgroundColor: '#F9564F',}}>
         <Text style={{marginTop: 30, color: "white", fontWeight: 'bold', textAlign: 'center', fontSize: 36}}>Choose Your Item</Text>
         <View style={{height: '70%'}}>
-        <ScrollView contentContainerStyle={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-            <TouchableOpacity style={[styles.itemButton, {backgroundColor: this.state.dress_color}]} onPress={this.selectedDress.bind(this)}>
-              <Text style={{textAlign: 'center', fontSize: 24}}>Dress</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={[styles.itemButton, {backgroundColor: this.state.shirt_color}]} onPress={this.selectedShirt.bind(this)}>
-              <Text style={{textAlign: 'center', fontSize: 24}}>Shirt</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={[styles.itemButton, {backgroundColor: this.state.jacket_color}]} onPress={this.selectedJacket.bind(this)}>
-              <Text style={{textAlign: 'center', fontSize: 24}}>Jacket</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={[styles.itemButton, {backgroundColor: this.state.pants_color}]} onPress={this.selectedPants.bind(this)}>
-              <Text style={{textAlign: 'center', fontSize: 24}}>Pants</Text>
-            </TouchableOpacity>
-            <View style={[styles.textBoxSurroundings, {marginTop: 20}]}>
-              <TextInput
-              style={styles.textBox}
-              onChangeText={this.handleInputChange}
-              value={this.state.item_text}
-              />
+        <View style ={{height: '90%'}}>
+          <ScrollView contentContainerStyle={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+              <TouchableOpacity style={[styles.itemButton, {backgroundColor: this.state.dress_color}]} onPress={this.selectedDress.bind(this)}>
+                <Text style={{textAlign: 'center', fontSize: 24}}>Dress</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={[styles.itemButton, {backgroundColor: this.state.shirt_color}]} onPress={this.selectedShirt.bind(this)}>
+                <Text style={{textAlign: 'center', fontSize: 24}}>Shirt</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={[styles.itemButton, {backgroundColor: this.state.jacket_color}]} onPress={this.selectedJacket.bind(this)}>
+                <Text style={{textAlign: 'center', fontSize: 24}}>Jacket</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={[styles.itemButton, {backgroundColor: this.state.pants_color}]} onPress={this.selectedPants.bind(this)}>
+                <Text style={{textAlign: 'center', fontSize: 24}}>Pants</Text>
+              </TouchableOpacity>
+              <View style={[styles.textBoxSurroundings, {marginTop: 20}]}>
+                <TextInput
+                style={styles.textBox}
+                onChangeText={this.handleInputChange}
+                value={this.state.item_text}
+                />
+              </View>
+            </ScrollView>
             </View>
-          </ScrollView>
-          </View>
-            <TouchableOpacity onPress={() => this.press()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 25, marginBottom: 25}]}>
-              <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 30, color: 'white'}}>Continue</Text>
-            </TouchableOpacity>
-            <View style={{...styles.progressBar, left:'10%', marginBottom: 10,}}>
+              <TouchableOpacity onPress={() => this.press()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 25, marginBottom: 25}]}>
+                <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 30, color: 'white'}}>Continue</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={{...styles.progressBar, left:'10%'}}>
               <Progress.Bar progress={0.3} width={300} progress={0.5} color={'rgba(123, 30, 122, 1)'}/>
             </View>
       </View>
