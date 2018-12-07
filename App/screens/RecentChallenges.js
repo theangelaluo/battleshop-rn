@@ -159,11 +159,10 @@ export default class RecentChallenges extends React.Component {
     return(
       <TouchableOpacity onPress={this.selectedFirst.bind(this)} >
       <View style={styles.itemButton} >
-        <Text style={{textAlign: 'center', fontSize: 24, width: '95%', borderTop: 0.5, borderBottom: 0.2}}>SAVE vs. Alice</Text>
-        <Text style={{textAlign: 'center', fontSize: 16, width: '95%', borderTop: 0.2}}>Item: Dress; Budget: $50; Time: 1 Hour</Text>
+        <Text style={{...styles.H2FontBlackUnbold, textAlign: 'center', fontSize: 24, width: '95%', borderTop: 0.5, borderBottom: 0.2}}>SAVE vs. Alice</Text>
+        <Text style={{...styles.H2FontBlackUnbold, textAlign: 'center', fontSize: 16, width: '95%', borderTop: 0.2}}>Item: Dress; Budget: $50; Time: 1 Hour</Text>
         </View>
       </TouchableOpacity>
-
     )
   }
 
@@ -172,8 +171,8 @@ export default class RecentChallenges extends React.Component {
       // I switched the order, so that's why I'm calling selectedThird rather than selectedSecond
       <TouchableOpacity onPress={this.selectedThird.bind(this)} >
       <View style={styles.itemButton} >
-        <Text style={{textAlign: 'center', fontSize: 24, width: '95%', borderTop: 0.5, borderBottom: 0.2}}>SAVE vs Yanyan</Text>
-        <Text style={{textAlign: 'center', fontSize: 16, width: '95%', borderTop: 0.2}}>Item: Blouse; Budget: $60; Time: 45 Minutes</Text>
+        <Text style={{...styles.H2FontBlackUnbold, textAlign: 'center', fontSize: 24, width: '95%', borderTop: 0.5, borderBottom: 0.2}}>SAVE vs Yanyan</Text>
+        <Text style={{...styles.H2FontBlackUnbold, textAlign: 'center', fontSize: 16, width: '95%', borderTop: 0.2}}>Item: Blouse; Budget: $60; Time: 45 Minutes</Text>
       </View>
       </TouchableOpacity>
     )
@@ -183,8 +182,8 @@ export default class RecentChallenges extends React.Component {
     return(
       <TouchableOpacity onPress={this.selectedSecond.bind(this)} >
       <View style={styles.itemButton} >
-        <Text style={{textAlign: 'center', fontSize: 24, width: '95%', borderTop: 0.5, borderBottom: 0.2}}>SAVE vs Barry</Text>
-        <Text style={{textAlign: 'center', fontSize: 16, width: '95%', borderTop: 0.2}}>Item: Shoes; Budget: $75; Time: 30 Minutes</Text>
+        <Text style={{...styles.H2FontBlackUnbold, textAlign: 'center', fontSize: 24, width: '95%', borderTop: 0.5, borderBottom: 0.2}}>SAVE vs Barry</Text>
+        <Text style={{...styles.H2FontBlackUnbold, textAlign: 'center', fontSize: 16, width: '95%', borderTop: 0.2}}>Item: Shoes; Budget: $75; Time: 30 Minutes</Text>
       </View>
       </TouchableOpacity>
     )
@@ -194,8 +193,8 @@ export default class RecentChallenges extends React.Component {
     return(
       <TouchableOpacity onPress={this.selectedFourth.bind(this)} >
         <View style={styles.itemButton} >
-          <Text style={{textAlign: 'center', fontSize: 24, width: '95%', borderTop: 0.5, borderBottom: 0.2}}>SAVE vs. Clark</Text>
-          <Text style={{textAlign: 'center', fontSize: 16, width: '95%', borderTop: 0.2}}>Item: Glasses; Budget: $70; Time: 1.5 Hours</Text>
+          <Text style={{...styles.H2FontBlackUnbold, textAlign: 'center', fontSize: 24, width: '95%', borderTop: 0.5, borderBottom: 0.2}}>SAVE vs. Clark</Text>
+          <Text style={{...styles.H2FontBlackUnbold, textAlign: 'center', fontSize: 16, width: '95%', borderTop: 0.2}}>Item: Glasses; Budget: $70; Time: 1.5 Hours</Text>
         </View>
       </TouchableOpacity>
     )
