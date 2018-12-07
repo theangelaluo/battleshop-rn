@@ -61,11 +61,11 @@ const styles = StyleSheet.create({
     alignItems: "center"
 },
 itemButton: {
-  width: '40%',
-  height: 100,
+  width: 300,
+  height: 125,
   margin: '3%',
   justifyContent: 'center',
-  alignItems: "center",
+  alignItems: 'center',
   backgroundColor: '#F2C57D',
   //marginTop: 5,
   shadowColor: '#000',
@@ -76,7 +76,9 @@ itemButton: {
   shadowColor:'#202020',
   shadowRadius: 1,
   shadowOffset: {width: 2, height: 2},
-  borderRadius: 15
+  borderColor: "transparent",
+  borderWidth: 0,
+  borderRadius: 5
  },
   button: {
 //alignSelf: 'stretch',

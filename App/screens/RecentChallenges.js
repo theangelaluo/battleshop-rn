@@ -194,9 +194,9 @@ export default class RecentChallenges extends React.Component {
     return(
       <TouchableOpacity onPress={this.selectedFourth.bind(this)} >
         <View style={styles.itemButton} >
-        <Text style={{textAlign: 'center', fontSize: 24, width: '95%', borderTop: 0.5, borderBottom: 0.2}}>SAVE vs. Clark</Text>
-        <Text style={{textAlign: 'center', fontSize: 16, width: '95%', borderTop: 0.2}}>Item: Glasses; Budget: $70; Time: 1.5 Hours</Text>
-           </View>
+          <Text style={{textAlign: 'center', fontSize: 24, width: '95%', borderTop: 0.5, borderBottom: 0.2}}>SAVE vs. Clark</Text>
+          <Text style={{textAlign: 'center', fontSize: 16, width: '95%', borderTop: 0.2}}>Item: Glasses; Budget: $70; Time: 1.5 Hours</Text>
+        </View>
       </TouchableOpacity>
     )
   }
@@ -227,22 +227,5 @@ export default class RecentChallenges extends React.Component {
   }
 }
 
-            //
-            // <TouchableOpacity style={styles.itemButton} onPress={this.selectedFirst.bind(this)}>
-            //   <Text style={{textAlign: 'center', fontSize: 24}}>SAVE vs. Alice</Text>
-            //   <Text style={{textAlign: 'center', fontSize: 16}}>Item: Dress; Budget: $50; Time: 1 Hour</Text>
-            // </TouchableOpacity>
-            // <TouchableOpacity style={styles.itemButton} onPress={this.selectedSecond.bind(this)}>
-            //   <Text style={{textAlign: 'center', fontSize: 24}}>SAVE vs. Barry</Text>
-            //   <Text style={{textAlign: 'center', fontSize: 16}}>Item: Shoes; Budget: $75; Time: 30 Minutes</Text>
-            // </TouchableOpacity>
-            // <TouchableOpacity style={styles.itemButton} onPress={this.selectedThird.bind(this)}>
-            //   <Text style={{textAlign: 'center', fontSize: 24}}>SAVE vs. Yanyan</Text>
-            //   <Text style={{textAlign: 'center', fontSize: 16}}>Item: Blouse; Budget: $60; Time: 45 Minutes</Text>
-            // </TouchableOpacity>
-            // <TouchableOpacity style={styles.itemButton} onPress={this.selectedFourth.bind(this)}>
-            //   <Text style={{textAlign: 'center', fontSize: 24}}>SAVE vs. Clark</Text>
-            //   <Text style={{textAlign: 'center', fontSize: 16}}>Item: Glasses; Budget: $70; Time: 1.5 Hours</Text>
-            // </TouchableOpacity>
 
 module.exports = RecentChallenges;
