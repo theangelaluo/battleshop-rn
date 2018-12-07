@@ -157,10 +157,18 @@ export default class RecentChallenges extends React.Component {
 
   _renderButton1() {
     return(
-      <TouchableOpacity onPress={this.selectedFirst.bind(this)} >
-      <View style={[styles.itemButton, {display: 'flex', justifyContent: 'center', alignItems: 'center'}]} >
-        <Text style={{...styles.H2FontBlackUnbold, textAlign: 'center', fontSize: 24, width: '95%', borderBottom: 0.2}}>SAVE vs. Alice</Text>
-        <Text style={{...styles.H2FontBlackUnbold, textAlign: 'center', fontSize: 16, width: '95%',}}>Item: Dress; Budget: $50; Time: 1 Hour</Text>
+      <TouchableOpacity onPress={this.selectedFirst.bind(this)}>
+        <View style={{borderColor: "#D3D3D3", borderBottomWidth:1, paddingLeft: 15, paddingRight: 20, paddingTop: 10, paddingBottom: 10, backgroundColor: 'white', width: '100%', flexDirection: 'row', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+          <View style={{display: 'flex', flexDirection: 'row'}}>
+          <Image source={require('../../img/Alice.png')} style={{resizeMode: 'contain'}}/>
+          <View style={{marginLeft: 15, display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+            <Text style={{fontSize: 16, fontWeight: 'bold'}}>SAVE vs. Alice</Text>
+            <Text>Item: Dress</Text>
+            <Text>Budget: $50</Text>
+            <Text>Time: 1 hour</Text>
+          </View>
+          </View>
+          <Image source={require('../../img/Right_Arrow.png')} style={{resizeMode: 'contain'}}/>
         </View>
       </TouchableOpacity>
     )
@@ -169,32 +177,56 @@ export default class RecentChallenges extends React.Component {
   _renderButton2() {
     return(
       // I switched the order, so that's why I'm calling selectedThird rather than selectedSecond
-      <TouchableOpacity onPress={this.selectedThird.bind(this)} >
-      <View style={[styles.itemButton, {display: 'flex', justifyContent: 'center', alignItems: 'center'}]} >
-        <Text style={{...styles.H2FontBlackUnbold, textAlign: 'center', fontSize: 24, width: '95%',  borderBottom: 0.2}}>SAVE vs Yanyan</Text>
-        <Text style={{...styles.H2FontBlackUnbold, textAlign: 'center', fontSize: 16, width: '95%', }}>Item: Blouse; Budget: $60; Time: 45 Minutes</Text>
-      </View>
+      <TouchableOpacity onPress={this.selectedThird.bind(this)}>
+        <View style={{borderColor: "#D3D3D3", borderBottomWidth:1, paddingLeft: 15, paddingRight: 20, paddingTop: 10, paddingBottom: 10, backgroundColor: 'white', width: '100%', flexDirection: 'row', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+          <View style={{display: 'flex', flexDirection: 'row'}}>
+          <Image source={require('../../img/Alice.png')} style={{resizeMode: 'contain'}}/>
+          <View style={{marginLeft: 15, display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+            <Text style={{fontSize: 16, fontWeight: 'bold'}}>SAVE vs. Yanyan</Text>
+            <Text>Item: Blouse</Text>
+            <Text>Budget: $60</Text>
+            <Text>Time: 45 minutes</Text>
+          </View>
+          </View>
+          <Image source={require('../../img/Right_Arrow.png')} style={{resizeMode: 'contain'}}/>
+        </View>
       </TouchableOpacity>
     )
   }
 
   _renderButton3() {
     return(
-      <TouchableOpacity onPress={this.selectedSecond.bind(this)} >
-      <View style={[styles.itemButton, {display: 'flex', justifyContent: 'center', alignItems: 'center'}]} >
-        <Text style={{...styles.H2FontBlackUnbold, textAlign: 'center', fontSize: 24, width: '95%', borderBottom: 0.2}}>SAVE vs Barry</Text>
-        <Text style={{...styles.H2FontBlackUnbold, textAlign: 'center', fontSize: 16, width: '95%'}}>Item: Shoes; Budget: $75; Time: 30 Minutes</Text>
-      </View>
+      <TouchableOpacity onPress={this.selectedSecond.bind(this)}>
+        <View style={{borderColor: "#D3D3D3", borderBottomWidth:1, paddingLeft: 15, paddingRight: 20, paddingTop: 10, paddingBottom: 10, backgroundColor: 'white', width: '100%', flexDirection: 'row', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+          <View style={{display: 'flex', flexDirection: 'row'}}>
+          <Image source={require('../../img/Alice.png')} style={{resizeMode: 'contain'}}/>
+          <View style={{marginLeft: 15, display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+            <Text style={{fontSize: 16, fontWeight: 'bold'}}>SAVE vs. Barry</Text>
+            <Text>Item: Shoes</Text>
+            <Text>Budget: $75</Text>
+            <Text>Time: 30 minutes</Text>
+          </View>
+          </View>
+          <Image source={require('../../img/Right_Arrow.png')} style={{resizeMode: 'contain'}}/>
+        </View>
       </TouchableOpacity>
     )
   }
 
   _renderButton4() {
     return(
-      <TouchableOpacity onPress={this.selectedFourth.bind(this)} >
-        <View style={[styles.itemButton, {display: 'flex', justifyContent: 'center', alignItems: 'center'}]} >
-          <Text style={{...styles.H2FontBlackUnbold, textAlign: 'center', fontSize: 24, width: '95%', borderBottom: 0.2}}>SAVE vs. Clark</Text>
-          <Text style={{...styles.H2FontBlackUnbold, textAlign: 'center', fontSize: 16, width: '95%',}}>Item: Glasses; Budget: $70; Time: 1.5 Hours</Text>
+      <TouchableOpacity onPress={this.selectedFourth.bind(this)}>
+        <View style={{borderColor: "#D3D3D3", borderBottomWidth:1, paddingLeft: 15, paddingRight: 20, paddingTop: 10, paddingBottom: 10, backgroundColor: 'white', width: '100%', flexDirection: 'row', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+          <View style={{display: 'flex', flexDirection: 'row'}}>
+          <Image source={require('../../img/Alice.png')} style={{resizeMode: 'contain'}}/>
+          <View style={{marginLeft: 15, display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+            <Text style={{fontSize: 16, fontWeight: 'bold'}}>SAVE vs. Clark</Text>
+            <Text>Item: Glasses</Text>
+            <Text>Budget: $70</Text>
+            <Text>Time: 1.5 hours</Text>
+          </View>
+          </View>
+          <Image source={require('../../img/Right_Arrow.png')} style={{resizeMode: 'contain'}}/>
         </View>
       </TouchableOpacity>
     )
@@ -204,20 +236,24 @@ export default class RecentChallenges extends React.Component {
   render() {
     return (
       <View style = {{flex: 1, backgroundColor: '#F9564F'}}>
-        <Text style={{...styles.titleFont, marginTop: 30, marginLeft: 30, marginRight: 30, marginBottom: 15, textAlign: 'center'}}>Compete</Text>
+        <Text style={{...styles.titleFont, marginTop: 30, marginLeft: 30, marginRight: 30, marginBottom: 5, textAlign: 'center'}}>Compete</Text>
         <View style={styles.itemsContainer}>
-        <TouchableOpacity onPress={() => this.toNewChallenge()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 10}]}>
+        <TouchableOpacity onPress={() => this.toNewChallenge()} style={[styles.button, {backgroundColor: '#7B1E7A', paddingTop: 15, paddingBottom: 15}]}>
           <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', justifyContent: 'center', color: 'white', fontSize: 24}}>New Challenge</Text>
         </TouchableOpacity>
 
-          <View style={{display: 'flex', flexDirection: 'column', height: '70%'}}>
-            <Text style={{...styles.H2Font, marginBottom: 20, fontWeight: 'bold', textAlign: 'center'}}>Recent Challenges</Text>
-            <ScrollView contentContainerStyle={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+          <View style={{display: 'flex', flexDirection: 'column', height: '70%', width: '100%'}}>
+            <Text style={{...styles.H2Font, marginBottom: 5, marginTop: 20, fontWeight: 'bold', textAlign: 'left'}}>Recent Challenges</Text>
+
+            <View style={{height: '100%'}}>
+            <ScrollView contentContainerStyle={{width: '100%'}}>
               {this._renderButton1()}
               {this._renderButton2()}
               {this._renderButton3()}
               {this._renderButton4()}
             </ScrollView>
+            </View>
+
           </View>
 
         </View>
@@ -225,6 +261,8 @@ export default class RecentChallenges extends React.Component {
     )
   }
 }
+
+
 
 
 module.exports = RecentChallenges;
