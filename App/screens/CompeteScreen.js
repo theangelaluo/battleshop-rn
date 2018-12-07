@@ -172,9 +172,9 @@ export default class CompeteScreen extends React.Component {
         'Choose Image from Library': (props) => {
           alert('option 1');
         },
-        'Take Picture': (props) => {
-          alert('option 2');
-        },
+        // 'Take Picture': (props) => {
+        //   alert('option 2');
+        // },
         'Cancel': () => {},
       };
       return (
