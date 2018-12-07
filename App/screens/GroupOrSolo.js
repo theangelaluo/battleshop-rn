@@ -49,14 +49,14 @@ export default class GroupOrSolo extends React.Component {
     const { navigation } = this.props;
     return (
           <View style={{backgroundColor: '#F9564F', width: '100%', height: '100%', display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-            <TouchableOpacity onPress={() => this.toChooseOpponents()} style={[styles.button, styles.buttonShadow, {display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly', width: '90%', height: '30%', backgroundColor: "#f3c677", borderRadius: 15, marginBottom: 25,}]}>
-              <Text style={{fontSize: 60, color: 'black'}}>Duel</Text>
-              <Icon name='arrow-forward' size={40} />
+            <TouchableOpacity onPress={() => this.toChooseOpponents()} style={[styles.button, styles.buttonShadow, {display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly', width: '90%', height: '30%', backgroundColor: "#f3c677", marginBottom: 25,}]}>
+              <Text style={{fontSize: 70, color: 'black'}}>DUEL</Text>
+              <Image source={require('../../img/black-arrow-2.png')} style={{resizeMode: 'contain'}}/>
               </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => this.unlockMe()} style={[styles.button, styles.buttonShadow, {display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly', width: '90%', height: '30%', backgroundColor: '#f3c677', borderRadius: 15, marginTop: 25}]}>
-              <Text style={{textAlign: 'center', fontSize: 60, color: 'black'}}>Solo</Text>
-              <Icon name='arrow-forward' size={40} />
+            <TouchableOpacity onPress={() => this.unlockMe()} style={[styles.button, styles.buttonShadow, {display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly', width: '90%', height: '30%', backgroundColor: '#f3c677', marginTop: 25}]}>
+              <Text style={{textAlign: 'center', fontSize: 70, color: 'black'}}>SOLO</Text>
+              <Image source={require('../../img/black-arrow-2.png')} style={{resizeMode: 'contain'}}/>
             </TouchableOpacity>
             <View style={styles.progressBar}>
               <Progress.Bar progress={0.3} width={300} progress={0} color={'rgba(123, 30, 122, 1)'}/>

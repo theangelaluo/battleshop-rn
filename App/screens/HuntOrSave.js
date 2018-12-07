@@ -18,7 +18,7 @@ import { Icon } from 'react-native-elements';
 import TimePicker from 'react-native-simple-time-picker';
 import * as Progress from 'react-native-progress';
 
-import {styles} from '../styles.js'; 
+import {styles} from '../styles.js';
 
 export default class HuntOrSave extends React.Component {
   constructor(props) {
@@ -90,11 +90,11 @@ export default class HuntOrSave extends React.Component {
       <View style={{backgroundColor: '#F9564F', width: '100%', height: '100%', display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'center', alignItems: 'center'}}>
 
     <View style={{width: '95%', height: '30%', display: 'flex', alignItems: 'center', marginBottom: 25,}}>
-      <TouchableOpacity onPress={() => this.unlockMe()} style={[styles.button, styles.buttonShadow, {display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly', width: '95%', height: '95%', backgroundColor: "#f3c677", borderRadius: 15, }]}>
+      <TouchableOpacity onPress={() => this.unlockMe()} style={[styles.button, styles.buttonShadow, {display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly', width: '95%', height: '95%', backgroundColor: "#f3c677", }]}>
         <View style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly'}}>
           <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly'}}>
-            <Text style={{fontSize: 60, color: 'black'}}>Hunt </Text>
-            <Icon name='arrow-forward' size={40} />
+            <Text style={{fontSize: 70, color: 'black', marginRight: 40}}>HUNT </Text>
+            <Image source={require('../../img/black-arrow-2.png')} style={{resizeMode: 'contain'}}/>
           </View>
           <Text>Get the items you need in the time you have</Text>
         </View>
@@ -108,11 +108,11 @@ export default class HuntOrSave extends React.Component {
 
 
     <View style={{width: '95%', height: '30%', display: 'flex', alignItems: 'center', marginBottom: 25,}}>
-      <TouchableOpacity onPress={() => this.toChooseItem()} style={[styles.button, styles.buttonShadow, {display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly', width: '95%', height: '95%', backgroundColor: "#f3c677", borderRadius: 15, }]}>
+      <TouchableOpacity onPress={() => this.toChooseItem()} style={[styles.button, styles.buttonShadow, {display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly', width: '95%', height: '95%', backgroundColor: "#f3c677", }]}>
         <View style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly'}}>
           <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly'}}>
-            <Text style={{fontSize: 60, color: 'black'}}>Save </Text>
-            <Icon name='arrow-forward' size={40} />
+            <Text style={{fontSize: 70, color: 'black', marginRight: 40}}>SAVE </Text>
+            <Image source={require('../../img/black-arrow-2.png')} style={{resizeMode: 'contain'}}/>
           </View>
           <Text>Shop within your budget</Text>
         </View>
