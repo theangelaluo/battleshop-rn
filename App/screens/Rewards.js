@@ -203,8 +203,7 @@ const reward_styles = StyleSheet.create({
     shadowRadius: 1,
     shadowOffset: {width: 2, height: 2},
     borderRadius: 15
-  },
-
+   }
 });
 
 module.exports = Rewards;
