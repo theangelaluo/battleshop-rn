@@ -109,7 +109,7 @@ export default class ChooseItem extends React.Component {
 
   render() {
     return (
-      <View style = {{flex: 1, backgroundColor: '#F9564F'}}>
+      <View style = {{flex: 1, backgroundColor: '#F9564F', height:'90%'}}>
         <Text style={{marginTop: 30, color: "white", fontWeight: 'bold', textAlign: 'center', fontSize: 36}}>Choose Your Item</Text>
         <View style={{height: '70%'}}>
         <ScrollView contentContainerStyle={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
@@ -132,13 +132,12 @@ export default class ChooseItem extends React.Component {
               value={this.state.item_text}
               />
             </View>
-            <TouchableOpacity onPress={() => this.press()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 25}]}>
-              <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 30, color: 'white'}}>Continue</Text>
-            </TouchableOpacity>
           </ScrollView>
           </View>
-
-            <View style={{...styles.progressBar, left:'10%'}}>
+            <TouchableOpacity onPress={() => this.press()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 25, marginBottom: 25}]}>
+              <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 30, color: 'white'}}>Continue</Text>
+            </TouchableOpacity>
+            <View style={{...styles.progressBar, left:'10%', marginBottom: 10,}}>
               <Progress.Bar progress={0.3} width={300} progress={0.5} color={'rgba(123, 30, 122, 1)'}/>
             </View>
       </View>
