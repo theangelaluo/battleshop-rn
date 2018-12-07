@@ -1,7 +1,50 @@
 import {StyleSheet} from 'react-native'
-import { material } from 'react-native-typography'
 
 const styles = StyleSheet.create({
+  header: {
+    fontSize: 36,
+    fontWeight: 'bold',
+    color: 'white'
+  },
+  subheader: {
+    paddingRight: 15,
+    paddingLeft: 15,
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#575757',
+  },
+  opponent: {
+    paddingRight: 18,
+    paddingLeft: 18,
+    fontSize: 25,
+    color: 'black'
+  },
+  titleFont:{
+    color: "white",
+    fontSize: 36,
+    fontWeight: 'bold'
+  },
+  titleFontNotBold:{
+    color: "white",
+    fontSize: 35,
+  },
+  H2Font:{
+    color: "white",
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginTop: 10,
+  },
+  H2FontBlackUnbold:{
+    color: "black",
+    fontSize: 24,
+    marginTop: 10,
+  },
+  H3Font:{
+    color: "white",
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginTop: 10,
+  },
   container: {
     flex: 1,
     backgroundColor: '#F9564F',
@@ -86,24 +129,6 @@ itemButton: {
     shadowColor:'#202020',
     shadowRadius: 1,
     shadowOffset: {width: 2, height: 2},
-  },
-  header: {
-    fontSize: 36,
-    fontWeight: 'bold',
-    color: 'white'
-  },
-  subheader: {
-    paddingRight: 15,
-    paddingLeft: 15,
-    fontSize: 30,
-    fontWeight: 'bold',
-    color: '#575757',
-  },
-  opponent: {
-    paddingRight: 20,
-    paddingLeft: 20,
-    fontSize: 25,
-    color: 'black'
   },
   separator: {
     flex: 1,

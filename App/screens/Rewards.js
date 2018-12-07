@@ -21,6 +21,8 @@ import TimePicker from 'react-native-simple-time-picker';
 
 import {styles} from '../styles.js';
 
+import { sanFranciscoWeights } from 'react-native-typography'
+
 export default class Rewards extends React.Component {
   constructor() {
     super();
@@ -114,7 +116,7 @@ export default class Rewards extends React.Component {
        if (this.state.showReward1) {
            return (
                <TouchableOpacity style={reward_styles.itemButton} onPress={this.selectedReward1.bind(this)}>
-                 <Text style={{textAlign: 'center', fontSize: 24}}>Nuggets at Chick-fil-a: 100 coins</Text>
+                 <Text style={styles.H2FontBlackUnbold}>Nuggets at Chick-fil-a: 100 coins</Text>
                </TouchableOpacity>
            );
        } else {
@@ -126,7 +128,7 @@ export default class Rewards extends React.Component {
         if (this.state.showReward2) {
             return (
                 <TouchableOpacity style={reward_styles.itemButton} onPress={this.selectedReward2.bind(this)}>
-                  <Text style={{textAlign: 'center', fontSize: 24}}>Dessert at Red Lobster: 200 coins</Text>
+                  <Text style={styles.H2FontBlackUnbold}>Dessert at Red Lobster: 200 coins</Text>
                 </TouchableOpacity>
             );
         } else {
@@ -138,7 +140,7 @@ export default class Rewards extends React.Component {
          if (this.state.showReward3) {
              return (
                  <TouchableOpacity style={reward_styles.itemButton} onPress={this.selectedReward3.bind(this)}>
-                   <Text style={{textAlign: 'center', fontSize: 24}}>10% off at Nike: 300 coins</Text>
+                   <Text style={styles.H2FontBlackUnbold}>10% off at Nike: 300 coins</Text>
                  </TouchableOpacity>
              );
          } else {
@@ -150,7 +152,7 @@ export default class Rewards extends React.Component {
           if (this.state.showReward4) {
               return (
                   <TouchableOpacity style={reward_styles.itemButton} onPress={this.selectedReward4.bind(this)}>
-                    <Text style={{textAlign: 'center', fontSize: 24}}>15% off at Macy's: 400 coins</Text>
+                    <Text style={styles.H2FontBlackUnbold}>15% off at Macy's: 400 coins</Text>
                   </TouchableOpacity>
               );
           } else {
@@ -164,11 +166,11 @@ export default class Rewards extends React.Component {
           <View style={{marginTop: 20, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
           <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 10}}>
             <Image source={require('../../img/coins.png')} style={{resizeMode: 'contain', marginRight: 20}}/>
-            <Text style={{color: "white", fontSize: 35, fontWeight: 'bold'}}>{global.coins}</Text>
-            <Text style={{color: "white", fontSize: 35}}> COINS</Text>
+            <Text style={styles.titleFont}>{global.coins}</Text>
+            <Text style={styles.titleFontNotBold}> COINS</Text>
           </View>
-            <Text style={{color: "white", fontSize: 35, marginTop: 20, fontWeight: 'bold'}}>Available Rewards</Text>
-            <Text style={{color: "white", fontSize: 20, marginTop: 10, fontWeight: 'bold'}}>Click to redeem!</Text>
+            <Text style={styles.titleFont}>Available Rewards</Text>
+            <Text style={styles.H2Font}>Click to redeem!</Text>
 
           </View>
 

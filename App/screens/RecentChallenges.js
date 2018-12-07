@@ -170,7 +170,6 @@ export default class RecentChallenges extends React.Component {
       <TouchableOpacity style={styles.itemButton} onPress={this.selectedThird.bind(this)} >
         <Text style={{textAlign: 'center', fontSize: 24, width: '95%'}}>SAVE vs. Yanyan</Text>
         <Text style={{textAlign: 'center', fontSize: 16, width: '95%'}}>Item: Blouse; Budget: $60; Time: 45 Minutes</Text>
-
       </TouchableOpacity>
     )
   }
@@ -197,14 +196,14 @@ export default class RecentChallenges extends React.Component {
   render() {
     return (
       <View style = {{flex: 1, backgroundColor: '#F9564F'}}>
-        <Text style={{marginTop: 30, marginLeft: 30, marginRight: 30, marginBottom: 15, color: "white", fontWeight: 'bold', textAlign: 'center', fontSize: 36}}>Compete Page</Text>
+        <Text style={{...styles.titleFont, marginTop: 30, marginLeft: 30, marginRight: 30, marginBottom: 15, textAlign: 'center'}}>Compete Page</Text>
         <View style={styles.itemsContainer}>
         <TouchableOpacity onPress={() => this.toNewChallenge()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 25}]}>
-          <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 20, color: 'white'}}>New Challenge</Text>
+          <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', justifyContent: 'center', color: 'white', fontSize: 24}}>New Challenge</Text>
         </TouchableOpacity>
 
           <View style={{display: 'flex', flexDirection: 'column', width: '90%'}}>
-            <Text style={{marginBottom: 20, color: "white", fontWeight: 'bold', textAlign: 'center', fontSize: 20}}>Recent Challenges</Text>
+            <Text style={{...styles.H2Font, marginBottom: 20, fontWeight: 'bold', textAlign: 'center'}}>Recent Challenges</Text>
             <ScrollView contentContainerStyle={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
               {this._renderButton1()}
               {this._renderButton2()}
