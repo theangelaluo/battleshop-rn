@@ -204,7 +204,7 @@ export default class RecentChallenges extends React.Component {
   render() {
     return (
       <View style = {{flex: 1, backgroundColor: '#F9564F'}}>
-        <Text style={{...styles.titleFont, marginTop: 30, marginLeft: 30, marginRight: 30, marginBottom: 15, textAlign: 'center'}}>Compete Page</Text>
+        <Text style={{...styles.titleFont, marginTop: 30, marginLeft: 30, marginRight: 30, marginBottom: 15, textAlign: 'center'}}>Compete</Text>
         <View style={styles.itemsContainer}>
         <TouchableOpacity onPress={() => this.toNewChallenge()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 10}]}>
           <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', justifyContent: 'center', color: 'white', fontSize: 24}}>New Challenge</Text>

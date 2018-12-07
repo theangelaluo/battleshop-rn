@@ -25,7 +25,7 @@ export default class ChooseItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      item_text: '',
+      item_text: 'Custom Item',
       dress_color: '#F2C57D',
       shirt_color: '#F2C57D',
       jacket_color: '#F2C57D',
@@ -101,6 +101,9 @@ export default class ChooseItem extends React.Component {
 
   handleInputChange = (text) => {
       global.item = text;
+      this.setState({
+        item_text: text
+      })
   }
 
 
@@ -108,6 +111,7 @@ export default class ChooseItem extends React.Component {
     return (
       <View style = {{flex: 1, backgroundColor: '#F9564F'}}>
         <Text style={{marginTop: 30, color: "white", fontWeight: 'bold', textAlign: 'center', fontSize: 36}}>Choose Your Item</Text>
+        <View style={{height: '70%'}}>
         <ScrollView contentContainerStyle={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
             <TouchableOpacity style={[styles.itemButton, {backgroundColor: this.state.dress_color}]} onPress={this.selectedDress.bind(this)}>
               <Text style={{textAlign: 'center', fontSize: 24}}>Dress</Text>
@@ -132,6 +136,8 @@ export default class ChooseItem extends React.Component {
               <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 30, color: 'white'}}>Continue</Text>
             </TouchableOpacity>
           </ScrollView>
+          </View>
+
             <View style={{...styles.progressBar, left:'10%'}}>
               <Progress.Bar progress={0.3} width={300} progress={0.5} color={'rgba(123, 30, 122, 1)'}/>
             </View>

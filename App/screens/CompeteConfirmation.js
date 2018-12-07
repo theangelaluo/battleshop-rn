@@ -38,7 +38,7 @@ export default class CompeteConfirmation extends React.Component {
        } else{
          return(
             <View>
-              <Text style={{...styles.H3Font, marginTop: 30, marginLeft: 30, marginRight: 30, marginBottom: 5, fontWeight: 'bold', textAlign: 'center'}}>For SAVE, you will be searching for {global.item}. Your job is to look for the cheapest one IN THE STORE within the time limit.</Text>
+              <Text style={{...styles.H3Font, marginTop: 10, marginLeft: 30, marginRight: 30, marginBottom: 5, fontWeight: 'bold', textAlign: 'center'}}>For SAVE, you will be searching for {global.item}. Your job is to look for the cheapest one IN THE STORE within the time limit.</Text>
               <Text style={{...styles.H3Font, marginTop: 30, marginLeft: 30, marginRight: 30, marginBottom: 5, fontWeight: 'bold', textAlign: 'center'}}>As you find good candidates, send a picture to the chat.</Text>
               <Text style={{...styles.H3Font, marginTop: 30, marginLeft: 30, marginRight: 30, marginBottom: 5, fontWeight: 'bold', textAlign: 'center'}}>At the end of {global.time_string}, the person who found the item with lowest price will win!</Text>
             </View>
@@ -68,7 +68,7 @@ export default class CompeteConfirmation extends React.Component {
 
         {this._renderOpponent(global.duel_or_solo == "duel")}
         {this._renderInstructions(global.hunt_or_save == "hunt")}
-        <TouchableOpacity onPress={() => this.startChallenge()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 10}]}>
+        <TouchableOpacity onPress={() => this.startChallenge()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 20}]}>
           <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 20, color: 'white', fontSize: '24'}}>Start Challenge!</Text>
         </TouchableOpacity>
       </View>
