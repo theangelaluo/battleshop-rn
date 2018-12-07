@@ -37,7 +37,6 @@ const styles = StyleSheet.create({
   H2FontBlackUnbold:{
     color: "black",
     fontSize: 24,
-    marginTop: 10,
   },
   H3Font:{
     color: "white",

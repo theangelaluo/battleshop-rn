@@ -115,9 +115,12 @@ export default class Rewards extends React.Component {
   _renderButton1() {
        if (this.state.showReward1) {
            return (
-               <TouchableOpacity style={reward_styles.itemButton} onPress={this.selectedReward1.bind(this)}>
-                 <Text style={styles.H2FontBlackUnbold}>Nuggets at Chick-fil-a: 100 coins</Text>
-               </TouchableOpacity>
+             <TouchableOpacity style={[reward_styles.itemButton, {marginTop: 10, width: '95%'}]} onPress={this.selectedReward3.bind(this)}>
+               <Text style={styles.H2FontBlackUnbold}>Nuggets at Chick-fil-a</Text>
+               <Text style={styles.H2FontBlackUnbold}>100 coins</Text>
+             </TouchableOpacity>
+
+
            );
        } else {
            return null;
@@ -127,9 +130,10 @@ export default class Rewards extends React.Component {
    _renderButton2() {
         if (this.state.showReward2) {
             return (
-                <TouchableOpacity style={reward_styles.itemButton} onPress={this.selectedReward2.bind(this)}>
-                  <Text style={styles.H2FontBlackUnbold}>Dessert at Red Lobster: 200 coins</Text>
-                </TouchableOpacity>
+              <TouchableOpacity style={[reward_styles.itemButton, {marginTop: 10, width: '95%'}]} onPress={this.selectedReward3.bind(this)}>
+                <Text style={styles.H2FontBlackUnbold}>Dessert at Red Lobster</Text>
+                <Text style={styles.H2FontBlackUnbold}>200 coins</Text>
+              </TouchableOpacity>
             );
         } else {
             return null;
@@ -139,8 +143,9 @@ export default class Rewards extends React.Component {
     _renderButton3() {
          if (this.state.showReward3) {
              return (
-                 <TouchableOpacity style={reward_styles.itemButton} onPress={this.selectedReward3.bind(this)}>
-                   <Text style={styles.H2FontBlackUnbold}>10% off at Nike: 300 coins</Text>
+                 <TouchableOpacity style={[reward_styles.itemButton, {marginTop: 10, width: '95%'}]} onPress={this.selectedReward3.bind(this)}>
+                   <Text style={styles.H2FontBlackUnbold}>10% off at Nike</Text>
+                   <Text style={styles.H2FontBlackUnbold}>300 coins</Text>
                  </TouchableOpacity>
              );
          } else {
@@ -151,9 +156,11 @@ export default class Rewards extends React.Component {
      _renderButton4() {
           if (this.state.showReward4) {
               return (
-                  <TouchableOpacity style={reward_styles.itemButton} onPress={this.selectedReward4.bind(this)}>
-                    <Text style={styles.H2FontBlackUnbold}>15% off at Macy's: 400 coins</Text>
-                  </TouchableOpacity>
+                <TouchableOpacity style={[reward_styles.itemButton, {marginTop: 10, width: '95%'}]} onPress={this.selectedReward3.bind(this)}>
+                  <Text style={styles.H2FontBlackUnbold}>15% off at Macy's</Text>
+                  <Text style={styles.H2FontBlackUnbold}>400 coins</Text>
+                </TouchableOpacity>
+
               );
           } else {
               return null;

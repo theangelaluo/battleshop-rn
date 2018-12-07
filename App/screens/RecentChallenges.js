@@ -158,7 +158,7 @@ export default class RecentChallenges extends React.Component {
   _renderButton1() {
     return(
       <TouchableOpacity onPress={this.selectedFirst.bind(this)} >
-      <View style={styles.itemButton} >
+      <View style={[styles.itemButton, {display: 'flex', justifyContent: 'center', alignItems: 'center'}]} >
         <Text style={{...styles.H2FontBlackUnbold, textAlign: 'center', fontSize: 24, width: '95%', borderBottom: 0.2}}>SAVE vs. Alice</Text>
         <Text style={{...styles.H2FontBlackUnbold, textAlign: 'center', fontSize: 16, width: '95%',}}>Item: Dress; Budget: $50; Time: 1 Hour</Text>
         </View>
@@ -170,7 +170,7 @@ export default class RecentChallenges extends React.Component {
     return(
       // I switched the order, so that's why I'm calling selectedThird rather than selectedSecond
       <TouchableOpacity onPress={this.selectedThird.bind(this)} >
-      <View style={styles.itemButton} >
+      <View style={[styles.itemButton, {display: 'flex', justifyContent: 'center', alignItems: 'center'}]} >
         <Text style={{...styles.H2FontBlackUnbold, textAlign: 'center', fontSize: 24, width: '95%',  borderBottom: 0.2}}>SAVE vs Yanyan</Text>
         <Text style={{...styles.H2FontBlackUnbold, textAlign: 'center', fontSize: 16, width: '95%', }}>Item: Blouse; Budget: $60; Time: 45 Minutes</Text>
       </View>
@@ -181,7 +181,7 @@ export default class RecentChallenges extends React.Component {
   _renderButton3() {
     return(
       <TouchableOpacity onPress={this.selectedSecond.bind(this)} >
-      <View style={styles.itemButton} >
+      <View style={[styles.itemButton, {display: 'flex', justifyContent: 'center', alignItems: 'center'}]} >
         <Text style={{...styles.H2FontBlackUnbold, textAlign: 'center', fontSize: 24, width: '95%', borderBottom: 0.2}}>SAVE vs Barry</Text>
         <Text style={{...styles.H2FontBlackUnbold, textAlign: 'center', fontSize: 16, width: '95%'}}>Item: Shoes; Budget: $75; Time: 30 Minutes</Text>
       </View>
@@ -192,7 +192,7 @@ export default class RecentChallenges extends React.Component {
   _renderButton4() {
     return(
       <TouchableOpacity onPress={this.selectedFourth.bind(this)} >
-        <View style={styles.itemButton} >
+        <View style={[styles.itemButton, {display: 'flex', justifyContent: 'center', alignItems: 'center'}]} >
           <Text style={{...styles.H2FontBlackUnbold, textAlign: 'center', fontSize: 24, width: '95%', borderBottom: 0.2}}>SAVE vs. Clark</Text>
           <Text style={{...styles.H2FontBlackUnbold, textAlign: 'center', fontSize: 16, width: '95%',}}>Item: Glasses; Budget: $70; Time: 1.5 Hours</Text>
         </View>
@@ -206,11 +206,11 @@ export default class RecentChallenges extends React.Component {
       <View style = {{flex: 1, backgroundColor: '#F9564F'}}>
         <Text style={{...styles.titleFont, marginTop: 30, marginLeft: 30, marginRight: 30, marginBottom: 15, textAlign: 'center'}}>Compete Page</Text>
         <View style={styles.itemsContainer}>
-        <TouchableOpacity onPress={() => this.toNewChallenge()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 25}]}>
+        <TouchableOpacity onPress={() => this.toNewChallenge()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 10}]}>
           <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', justifyContent: 'center', color: 'white', fontSize: 24}}>New Challenge</Text>
         </TouchableOpacity>
 
-          <View style={{display: 'flex', flexDirection: 'column', width: '90%'}}>
+          <View style={{display: 'flex', flexDirection: 'column', height: '70%'}}>
             <Text style={{...styles.H2Font, marginBottom: 20, fontWeight: 'bold', textAlign: 'center'}}>Recent Challenges</Text>
             <ScrollView contentContainerStyle={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
               {this._renderButton1()}
