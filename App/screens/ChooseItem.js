@@ -12,6 +12,7 @@ import {
   Button,
   Image,
   FlatList,
+  ScrollView
 } from 'react-native';
 
 import { Icon } from 'react-native-elements';
@@ -107,7 +108,7 @@ export default class ChooseItem extends React.Component {
     return (
       <View style = {{flex: 1, backgroundColor: '#F9564F'}}>
         <Text style={{marginTop: 30, color: "white", fontWeight: 'bold', textAlign: 'center', fontSize: 36}}>Choose Your Item</Text>
-        <View style={styles.itemsContainer}>
+        <ScrollView contentContainerStyle={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
             <TouchableOpacity style={[styles.itemButton, {backgroundColor: this.state.dress_color}]} onPress={this.selectedDress.bind(this)}>
               <Text style={{textAlign: 'center', fontSize: 24}}>Dress</Text>
             </TouchableOpacity>
@@ -133,7 +134,8 @@ export default class ChooseItem extends React.Component {
             <View style={styles.progressBar}>
               <Progress.Bar progress={0.3} width={300} progress={0.5} color={'rgba(123, 30, 122, 1)'}/>
             </View>
-        </View>
+        </ScrollView>
+
       </View>
     )
   }
