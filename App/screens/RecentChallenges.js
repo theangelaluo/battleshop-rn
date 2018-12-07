@@ -180,7 +180,7 @@ export default class RecentChallenges extends React.Component {
       <TouchableOpacity onPress={this.selectedThird.bind(this)}>
         <View style={{borderColor: "#D3D3D3", borderBottomWidth:1, paddingLeft: 15, paddingRight: 20, paddingTop: 10, paddingBottom: 10, backgroundColor: 'white', width: '100%', flexDirection: 'row', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
           <View style={{display: 'flex', flexDirection: 'row'}}>
-          <Image source={require('../../img/Alice.png')} style={{resizeMode: 'contain'}}/>
+          <Image source={require('../../img/yanyan.png')} style={{resizeMode: 'contain'}}/>
           <View style={{marginLeft: 15, display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
             <Text style={{fontSize: 16, fontWeight: 'bold'}}>SAVE vs. Yanyan</Text>
             <Text>Item: Blouse</Text>
@@ -199,7 +199,7 @@ export default class RecentChallenges extends React.Component {
       <TouchableOpacity onPress={this.selectedSecond.bind(this)}>
         <View style={{borderColor: "#D3D3D3", borderBottomWidth:1, paddingLeft: 15, paddingRight: 20, paddingTop: 10, paddingBottom: 10, backgroundColor: 'white', width: '100%', flexDirection: 'row', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
           <View style={{display: 'flex', flexDirection: 'row'}}>
-          <Image source={require('../../img/Alice.png')} style={{resizeMode: 'contain'}}/>
+          <Image source={require('../../img/barry.png')} style={{resizeMode: 'contain'}}/>
           <View style={{marginLeft: 15, display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
             <Text style={{fontSize: 16, fontWeight: 'bold'}}>SAVE vs. Barry</Text>
             <Text>Item: Shoes</Text>
@@ -218,7 +218,7 @@ export default class RecentChallenges extends React.Component {
       <TouchableOpacity onPress={this.selectedFourth.bind(this)}>
         <View style={{borderColor: "#D3D3D3", borderBottomWidth:1, paddingLeft: 15, paddingRight: 20, paddingTop: 10, paddingBottom: 10, backgroundColor: 'white', width: '100%', flexDirection: 'row', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
           <View style={{display: 'flex', flexDirection: 'row'}}>
-          <Image source={require('../../img/Alice.png')} style={{resizeMode: 'contain'}}/>
+          <Image source={require('../../img/clark.png')} style={{resizeMode: 'contain'}}/>
           <View style={{marginLeft: 15, display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
             <Text style={{fontSize: 16, fontWeight: 'bold'}}>SAVE vs. Clark</Text>
             <Text>Item: Glasses</Text>

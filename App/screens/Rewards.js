@@ -115,11 +115,21 @@ export default class Rewards extends React.Component {
   _renderButton1() {
        if (this.state.showReward1) {
            return (
-             <TouchableOpacity style={[reward_styles.itemButton, {marginTop: 10, width: '95%'}]} onPress={this.selectedReward1.bind(this)}>
-               <Text style={styles.H2FontBlackUnbold}>Nuggets at Chick-fil-a</Text>
-               <Text style={styles.H2FontBlackUnbold}>100 coins</Text>
+             <TouchableOpacity onPress={this.selectedReward1.bind(this)} style={{width: '100%',}}>
+               <View style={{borderColor: "#D3D3D3", borderBottomWidth:1, paddingLeft: 15, paddingRight: 20, paddingTop: 10, paddingBottom: 10, backgroundColor: 'white', width: '100%', flexDirection: 'row', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+                 <View style={{display: 'flex', flexDirection: 'row'}}>
+                 <Image source={require('../../img/chickfila.png')} style={{resizeMode: 'contain'}}/>
+                 <View style={{marginLeft: 15, display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+                   <Text style={{fontSize: 16, color:'#0C0C3D', fontWeight: 'bold'}}>Free Nuggets</Text>
+                   <Text style={{fontSize: 16, color:'#0C0C3D'}}>Chick-fil-a</Text>
+                 </View>
+                 </View>
+                 <View style={{marginLeft: 15, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-end'}}>
+                   <Text style={{fontSize: 17, fontWeight: 'bold', color:'#0C0C3D', marginBottom: 5}}>100</Text>
+                   <Image source={require('../../img/coins-rewards.png')} style={{resizeMode: 'contain'}}/>
+                 </View>
+               </View>
              </TouchableOpacity>
-
 
            );
        } else {
@@ -130,9 +140,20 @@ export default class Rewards extends React.Component {
    _renderButton2() {
         if (this.state.showReward2) {
             return (
-              <TouchableOpacity style={[reward_styles.itemButton, {marginTop: 10, width: '95%'}]} onPress={this.selectedReward2.bind(this)}>
-                <Text style={styles.H2FontBlackUnbold}>Dessert at Red Lobster</Text>
-                <Text style={styles.H2FontBlackUnbold}>200 coins</Text>
+              <TouchableOpacity onPress={this.selectedReward2.bind(this)} style={{width: '100%',}}>
+                <View style={{borderColor: "#D3D3D3", borderBottomWidth:1, paddingLeft: 15, paddingRight: 20, paddingTop: 10, paddingBottom: 10, backgroundColor: 'white', width: '100%', flexDirection: 'row', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+                  <View style={{display: 'flex', flexDirection: 'row'}}>
+                  <Image source={require('../../img/redlobster.png')} style={{resizeMode: 'contain'}}/>
+                  <View style={{marginLeft: 15, display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+                    <Text style={{fontSize: 16, color:'#0C0C3D', fontWeight: 'bold'}}>Free Dessert</Text>
+                    <Text style={{fontSize: 16, color:'#0C0C3D'}}>Red Lobster</Text>
+                  </View>
+                  </View>
+                  <View style={{marginLeft: 15, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-end'}}>
+                    <Text style={{fontSize: 17, fontWeight: 'bold', color:'#0C0C3D', marginBottom: 5}}>200</Text>
+                    <Image source={require('../../img/coins-rewards.png')} style={{resizeMode: 'contain'}}/>
+                  </View>
+                </View>
               </TouchableOpacity>
             );
         } else {
@@ -143,10 +164,21 @@ export default class Rewards extends React.Component {
     _renderButton3() {
          if (this.state.showReward3) {
              return (
-                 <TouchableOpacity style={[reward_styles.itemButton, {marginTop: 10, width: '95%'}]} onPress={this.selectedReward3.bind(this)}>
-                   <Text style={styles.H2FontBlackUnbold}>10% off at Nike</Text>
-                   <Text style={styles.H2FontBlackUnbold}>300 coins</Text>
-                 </TouchableOpacity>
+               <TouchableOpacity onPress={this.selectedReward3.bind(this)} style={{width: '100%',}}>
+                 <View style={{borderColor: "#D3D3D3", borderBottomWidth:1, paddingLeft: 15, paddingRight: 20, paddingTop: 10, paddingBottom: 10, backgroundColor: 'white', width: '100%', flexDirection: 'row', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+                   <View style={{display: 'flex', flexDirection: 'row'}}>
+                   <Image source={require('../../img/nike.png')} style={{resizeMode: 'contain'}}/>
+                   <View style={{marginLeft: 15, display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+                     <Text style={{fontSize: 16, color:'#0C0C3D', fontWeight: 'bold'}}>10% Off Any Item</Text>
+                     <Text style={{fontSize: 16, color:'#0C0C3D'}}>Nike</Text>
+                   </View>
+                   </View>
+                   <View style={{marginLeft: 15, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-end'}}>
+                     <Text style={{fontSize: 17, fontWeight: 'bold', color:'#0C0C3D', marginBottom: 5}}>300</Text>
+                     <Image source={require('../../img/coins-rewards.png')} style={{resizeMode: 'contain'}}/>
+                   </View>
+                 </View>
+               </TouchableOpacity>
              );
          } else {
              return null;
@@ -156,9 +188,20 @@ export default class Rewards extends React.Component {
      _renderButton4() {
           if (this.state.showReward4) {
               return (
-                <TouchableOpacity style={[reward_styles.itemButton, {marginTop: 10, width: '95%'}]} onPress={this.selectedReward4.bind(this)}>
-                  <Text style={styles.H2FontBlackUnbold}>15% off at Macy's</Text>
-                  <Text style={styles.H2FontBlackUnbold}>400 coins</Text>
+                <TouchableOpacity onPress={this.selectedReward4.bind(this)} style={{width: '100%',}}>
+                  <View style={{borderColor: "#D3D3D3", borderBottomWidth:1, paddingLeft: 15, paddingRight: 20, paddingTop: 10, paddingBottom: 10, backgroundColor: 'white', width: '100%', flexDirection: 'row', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+                    <View style={{display: 'flex', flexDirection: 'row'}}>
+                    <Image source={require('../../img/macys.png')} style={{resizeMode: 'contain'}}/>
+                    <View style={{marginLeft: 15, display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+                      <Text style={{fontSize: 16, color:'#0C0C3D', fontWeight: 'bold'}}>15% Off Purchase</Text>
+                      <Text style={{fontSize: 16, color:'#0C0C3D'}}>Macy's</Text>
+                    </View>
+                    </View>
+                    <View style={{marginLeft: 15, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-end'}}>
+                      <Text style={{fontSize: 17, fontWeight: 'bold', color:'#0C0C3D', marginBottom: 5}}>400</Text>
+                      <Image source={require('../../img/coins-rewards.png')} style={{resizeMode: 'contain'}}/>
+                    </View>
+                  </View>
                 </TouchableOpacity>
 
               );
@@ -170,38 +213,45 @@ export default class Rewards extends React.Component {
     _renderRewardText() {
       if (this.state.showReward1 == false && this.state.showReward2 == false && this.state.showReward3 == false && this.state.showReward4 == false) {
         return (
-          <Text style={{...styles.titleFont, textAlign:'center'}}>No rewards currently available!</Text>
+          <Text style={{color:'white', fontSize: 20, textAlign:'center'}}>No rewards currently available!</Text>
         );
       } else {
           return(
-            <Text style={{...styles.titleFont, textAlign:'center'}}>Click to redeem an available award!</Text>
+            <Text style={{color:'white', fontSize: 20, textAlign:'center'}}>Click to redeem an available award!</Text>
           );
       }
      }
 
   render() {
     return (
-      <View style={{flex: 1, backgroundColor: '#F9564F', alignItems: 'center', justifyContent: "center"}}>
+      <View style={{flex: 1, backgroundColor: '#F9564F', alignItems: 'center', }}>
+        <Text style={{...styles.titleFont, marginTop: 30}}>Rewards</Text>
           <View style={{marginTop: 20, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-            <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 10}}>
+            <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
               <Image source={require('../../img/coins.png')} style={{resizeMode: 'contain', marginRight: 20}}/>
               <Text style={styles.titleFont}>{global.coins}</Text>
               <Text style={styles.titleFontNotBold}> COINS</Text>
             </View>
           </View>
-          <View style={{alignItems: 'center', justifyContent: "center"}}>
+          <View style={{marginTop: 20, marginBottom: 10, alignItems: 'center', justifyContent: "center"}}>
             {this._renderRewardText()}
           </View>
-            <ScrollView contentContainerStyle={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-              {this._renderButton1()}
-              {this._renderButton2()}
-              {this._renderButton3()}
-              {this._renderButton4()}
-            </ScrollView>
+
+          <View style={{width: '95%', height: '60%'}}>
+          <ScrollView contentContainerStyle={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+            {this._renderButton1()}
+            {this._renderButton2()}
+            {this._renderButton3()}
+            {this._renderButton4()}
+          </ScrollView>
+          </View>
+
       </View>
     )
   }
 }
+
+
 
 const reward_styles = StyleSheet.create({
   itemButton: {
