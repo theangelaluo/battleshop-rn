@@ -167,27 +167,37 @@ export default class Rewards extends React.Component {
           }
       }
 
+    _renderRewardText() {
+      if (this.state.showReward1 == false && this.state.showReward2 == false && this.state.showReward3 == false && this.state.showReward4 == false) {
+        return (
+          <Text style={{...styles.titleFont, textAlign:'center'}}>No rewards currently available!</Text>
+        );
+      } else {
+          return(
+            <Text style={{...styles.titleFont, textAlign:'center'}}>Click to redeem an available award!</Text>
+          );
+      }
+     }
+
   render() {
     return (
       <View style={{flex: 1, backgroundColor: '#F9564F', alignItems: 'center', justifyContent: "center"}}>
           <View style={{marginTop: 20, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-          <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 10}}>
-            <Image source={require('../../img/coins.png')} style={{resizeMode: 'contain', marginRight: 20}}/>
-            <Text style={styles.titleFont}>{global.coins}</Text>
-            <Text style={styles.titleFontNotBold}> COINS</Text>
+            <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 10}}>
+              <Image source={require('../../img/coins.png')} style={{resizeMode: 'contain', marginRight: 20}}/>
+              <Text style={styles.titleFont}>{global.coins}</Text>
+              <Text style={styles.titleFontNotBold}> COINS</Text>
+            </View>
           </View>
-            <Text style={styles.titleFont}>Available Rewards</Text>
-            <Text style={styles.H2Font}>Click to redeem!</Text>
-
+          <View style={{alignItems: 'center', justifyContent: "center"}}>
+            {this._renderRewardText()}
           </View>
-
             <ScrollView contentContainerStyle={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
               {this._renderButton1()}
               {this._renderButton2()}
               {this._renderButton3()}
               {this._renderButton4()}
             </ScrollView>
-
       </View>
     )
   }
