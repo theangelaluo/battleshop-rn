@@ -194,7 +194,13 @@ export default class CompeteScreen extends React.Component {
           <CountDown
             until={global.hours * 60 * 60 + global.minutes * 60}
             size={30}
-            onFinish={() => Alert.alert('Challenge Over!', "You're out of time. X has won this challenge.")}
+            onFinish={() => Alert.alert(
+              'Challenge Over!',
+              'Time has run out. You won this challenge!',
+              [
+                {text: 'OK', onPress: () => this.endChallenge()},
+              ],
+            )}
             digitBgColor={'#F8F8F8'}
             digitTxtColor={'#565656'}
             timeToShow={['H', 'M', 'S']}
@@ -202,7 +208,15 @@ export default class CompeteScreen extends React.Component {
             labelH={'hours'}
             labelS={'seconds'}
           />
-          <TouchableOpacity onPress={() => this.endChallenge()} style={[styles.button, {backgroundColor: '#ffffff', borderRadius: 2, borderColor: 'black'}]}>
+          <TouchableOpacity onPress={() => Alert.alert(
+  'End Challenge',
+  'Are you sure you want to end this challenge?',
+  [
+    {text: 'End Challenge', onPress: () => this.endChallenge()},
+    {text: 'Cancel', onPress: () => {}},
+  ],
+  { cancelable: true }
+)} style={styles.endChallengeButton}>
               <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 20, color: 'black', fontWeight: 'bold'}}>End Challenge</Text>
           </TouchableOpacity>
         </View>
@@ -244,10 +258,21 @@ const styles = StyleSheet.create({
     //paddingTop: Constants.statusBarHeight + 64,
     backgroundColor: '#F65854',
   },
+  endChallengeButton: {
+    height: 30,
+    width: '50%',
+    backgroundColor: '#F8F8F8',
+    borderRadius: 2,
+    borderColor: 'black',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
   countdown: {
+    marginTop: 20,
     height: 100,
     backgroundColor: 'white',
     justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
