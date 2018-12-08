@@ -36,7 +36,7 @@ export default class Rewards extends React.Component {
     global.rewards_arr.push('Chick-fil-a nuggets');
     Alert.alert(
       'Battleshop Says',
-      'Are you sure you want to reedem Chick-fil-a nuggets for 100 coins?',
+      'Are you sure you want to redeem Free Nuggets at Chick-fil-a for 100 coins?',
     [
       {text: 'Cancel', style: 'cancel'},
       {text: 'OK', onPress: () => {
@@ -56,7 +56,7 @@ export default class Rewards extends React.Component {
     global.rewards_arr.push('Dessert at Red Lobster');
     Alert.alert(
       'Battleshop Says',
-      'Are you sure you want to reedem Dessert at Red Lobster for 200 coins?',
+      'Are you sure you want to redeem Free Dessert at Red Lobster for 200 coins?',
     [
       {text: 'Cancel', style: 'cancel'},
       {text: 'OK', onPress: () => {
@@ -76,7 +76,7 @@ export default class Rewards extends React.Component {
     global.rewards_arr.push('10% off at Nike?');
     Alert.alert(
       'Battleshop Says',
-      'Are you sure you want to reedem 10% off at Nike for 300 coins?',
+      'Are you sure you want to redeem 10% off any item at Nike for 300 coins?',
     [
       {text: 'Cancel', style: 'cancel'},
       {text: 'OK', onPress: () => {
@@ -96,7 +96,7 @@ export default class Rewards extends React.Component {
     global.rewards_arr.push('15% off at Macy\'s');
     Alert.alert(
       'Battleshop Says',
-      'Are you sure you want to reedem 15% off at Macy\'s for 400 coins?',
+      'Are you sure you want to redeem 15% off entire purchase at Macy\'s for 400 coins?',
     [
       {text: 'Cancel', style: 'cancel'},
       {text: 'OK', onPress: () => {

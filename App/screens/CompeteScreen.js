@@ -306,7 +306,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#F65854',
   },
   endChallengeButton: {
-    height: 30,
+    display: 'flex',
+    textAlign: 'center',
+    height: 35,
     width: '50%',
     backgroundColor: '#F8F8F8',
     borderRadius: 2,
