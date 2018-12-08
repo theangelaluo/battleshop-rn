@@ -76,7 +76,7 @@ export default class CompeteScreen extends React.Component {
      // });
      setTimeout(() => {
        callback();
-     }, 1000);
+     }, 2000);
      Keyboard.dismiss();
    }
 
@@ -134,28 +134,28 @@ export default class CompeteScreen extends React.Component {
        },
        {
          text: '$110',
-         image: require('../../img/dress4.jpg'),
+         image: '../../img/dress4.jpg',
        },
        {
          text: '$Check this out! $95',
 
-         image: require('../../img/dress5.jpg'),
+         image: '../../img/dress5.jpg',
        },
        {
          text: 'Is this too sparkly? $125',
-         image: require('../../img/dress8.jpg'),
+         image:'../../img/dress8.jpg',
        },
        {
          text: 'What do you think? $120',
-         image: require('../../img/dress6.jpg'),
+         image: '../../img/dress1.jpg',
        },
        {
          text: 'I love this one! $147',
-         image: require('../../img/dress7.jpg'),
+         image: '../../img/dress7.jpg',
        },
        {
          text: 'Can I pull this off? $230',
-         image: require('../../img/dress9.jpg'),
+         image: '../../img/dress9.jpg',
        },
      ]
     //firebaseBackend.shared.on(message =>
