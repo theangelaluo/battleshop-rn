@@ -71,7 +71,8 @@ export default class CustomActions extends React.Component {
   }
 
   onActionsPress() {
-    const options = ['Choose From Library...', 'Take a Picture...', 'Cancel'];
+    // const options = ['Choose From Library...', 'Take a Picture...', 'Cancel'];
+    const options = ['Choose From Library...','Cancel'];
     const cancelButtonIndex = options.length - 1;
     this.context.actionSheet().showActionSheetWithOptions({
       options,
