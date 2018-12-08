@@ -43,6 +43,7 @@ export default class Rewards extends React.Component {
         this.setState({
           showReward1: !this.state.showReward1,
         });
+        alert("Check your email for your reward!");
         global.coins-=100;
         this.forceUpdate();
       }
@@ -63,6 +64,7 @@ export default class Rewards extends React.Component {
         this.setState({
           showReward2: !this.state.showReward2,
         });
+        alert("Check your email for your reward!");
         global.coins-=200;
         this.forceUpdate();
       }
@@ -83,6 +85,7 @@ export default class Rewards extends React.Component {
         this.setState({
           showReward3: !this.state.showReward3,
         });
+        alert("Check your email for your reward!");
         global.coins-=300;
         this.forceUpdate();
       }
@@ -103,6 +106,7 @@ export default class Rewards extends React.Component {
         this.setState({
           showReward4: !this.state.showReward4,
         });
+        alert("Check your email for your reward!");
         global.coins-=400;
         this.forceUpdate();
       }
