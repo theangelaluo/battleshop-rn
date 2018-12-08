@@ -83,9 +83,9 @@ export default class CustomActions extends React.Component {
         case 0:
           this.setModalVisible(true);
           break;
-        case 1:
-          this.setCameraVisible(true);
-          break;
+        // case 1:
+        //   this.setCameraVisible(true);
+        //   break;
         default:
       }
     });

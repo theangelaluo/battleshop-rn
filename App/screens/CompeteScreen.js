@@ -138,7 +138,6 @@ export default class CompeteScreen extends React.Component {
        },
        {
          text: '$Check this out! $95',
-
          image: '../../img/dress5.jpg',
        },
        {
@@ -264,7 +263,7 @@ export default class CompeteScreen extends React.Component {
               ],
               { cancelable: true }
             )} style={styles.endChallengeButton}>
-              <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 20, color: 'black', fontWeight: 'bold'}}>End Challenge</Text>
+              <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', marginBottom: 10, fontSize: 20, color: 'black', fontWeight: 'bold'}}>End Challenge</Text>
           </TouchableOpacity>
         </View>
         <GiftedChat
@@ -317,7 +316,7 @@ const styles = StyleSheet.create({
   },
   countdown: {
     marginTop: 20,
-    height: 100,
+    height: 135,
     backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
