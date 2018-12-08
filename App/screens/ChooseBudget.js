@@ -82,6 +82,8 @@ export default class ChooseBudget extends React.Component {
       <View style = {{flex: 1, backgroundColor: '#F9564F', alignItems: 'center'}}>
         <Text style={{marginTop: 30, marginBottom: 30, textAlign: 'center', fontSize: 36, color: "white", fontWeight: 'bold'}}>Choose Budget</Text>
 
+          <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+          <Text style={{color: 'white', fontSize: 40, fontWeight: 'bold'}}>$ </Text>
           <View style={styles.textBoxSurroundings}>
             <TextInput
             style={styles.textBox}
@@ -89,6 +91,7 @@ export default class ChooseBudget extends React.Component {
             onChangeText={this.handleInputChange}
             value={this.state.text}
             />
+          </View>
           </View>
 
         <TouchableOpacity onPress={() => this.toChooseTime()} style={[styles.button, {backgroundColor: '#7B1E7A', marginTop: 25}]}>
