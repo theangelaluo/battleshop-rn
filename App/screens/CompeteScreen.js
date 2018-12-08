@@ -258,8 +258,8 @@ export default class CompeteScreen extends React.Component {
               'End Challenge',
               'Are you sure you want to end this challenge?',
               [
-                {text: 'End Challenge', onPress: () => this.endChallenge()},
                 {text: 'Cancel', onPress: () => {}},
+                {text: 'End Challenge', onPress: () => this.endChallenge()},
               ],
               { cancelable: true }
             )} style={styles.endChallengeButton}>
