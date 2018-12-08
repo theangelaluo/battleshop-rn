@@ -41,7 +41,7 @@ export default class CompeteStatusBar extends React.Component {
         <Image source={require('../../img/avatar.jpg')} style={{width: 100, height: 60, resizeMode: 'contain'}}/>
         <Text style={styles.nameText}>{global.opponents_arr[0]} </Text>
         <Text style={styles.statusText}> vs. </Text>
-        <Text style={styles.nameText}> You    </Text>
+        <Text style={styles.nameText}> You</Text>
         {this._showWinner()}
         <Image source={require('../../img/Rachel-Rouhana-Profile-Pic-Square.jpg')} style={{width: 60, height: 100, resizeMode: 'contain'}}/>
       </View>
@@ -51,10 +51,15 @@ export default class CompeteStatusBar extends React.Component {
 
 const styles = StyleSheet.create({
   bar:{
+    display: 'flex',
+    paddingRight: 17,
     flexDirection: 'row',
     backgroundColor: '#F65854',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    width: '100%',
+    borderWidth: 1,
+    borderColor: 'black'
   },
   nameText:{
     color: 'white',

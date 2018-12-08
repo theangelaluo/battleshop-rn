@@ -300,6 +300,7 @@ componentWillUnmount() {
 const styles = StyleSheet.create({
   competeStatus: {
     height: 90,
+    display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     //paddingTop: Constants.statusBarHeight + 64,
