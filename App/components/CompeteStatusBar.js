@@ -26,7 +26,7 @@ import { createBottomTabNavigator,  createStackNavigator, createAppContainer } f
 export default class CompeteStatusBar extends React.Component {
   constructor() {
     super();
-    this.state = {showWinner: false};
+    this.state = {showWinner: true};
   }
 
   _showWinner(){

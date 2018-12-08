@@ -100,6 +100,8 @@ itemButton: {
     justifyContent: 'center',
     height: 60,
     width: '95%',
+    textAlign: 'center',
+    fontSize: 20
   },
   textBoxSurroundings: {
     flex: 0,

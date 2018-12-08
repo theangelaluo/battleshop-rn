@@ -54,7 +54,7 @@ class Opponent extends React.Component {
         <View style={{backgroundColor: this.state.color, paddingLeft: 15, paddingRight: 20, paddingTop: 7, paddingBottom: 7, width: '100%', flexDirection: 'row', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
 
           <View style={{display: 'flex', flexDirection: 'row'}}>
-            <Image source={require('../../img/alice-small.png')} style={{resizeMode: 'contain'}}/>
+            <Image source={require('../../img/avatar-small.png')} style={{resizeMode: 'contain'}}/>
                 <View style={{marginLeft: 15, display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
                     <Text style={{fontSize: 16, fontWeight: 'bold'}}>{this.props.item}</Text>
                 </View>
@@ -93,9 +93,8 @@ export default class ChooseOpponents extends React.Component {
 
     this.state = {
       color: '#F2C57D',
-      dataSource: ds.cloneWithRows(['Alice Vera', 'YanYan Tong',
-      'Barry Allen', 'Clark Kent']),
-      dataSource2: ds.cloneWithRows([ 'Alice Vera', 'Angela Luo', 'Barry Allen', 'Bruce Wayne', 'Clark Kent',
+      dataSource: ds.cloneWithRows(["Alice Vera", "Yanyan Tong", "Barry Allen", "Clark Kent"]),
+      dataSource2: ds.cloneWithRows(['Alice Vera', 'Angela Luo', 'Barry Allen', 'Bruce Wayne', 'Clark Kent',
       'Emily Hu', 'Francesca Colombo', 'Kara Danvers', 'Logan Pearce', 'Michael Cooper', 'Yanyan Tong'
       ]),
     };
