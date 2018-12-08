@@ -58,8 +58,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
-    borderWidth: 1,
-    borderColor: 'black'
   },
   nameText:{
     color: 'white',
