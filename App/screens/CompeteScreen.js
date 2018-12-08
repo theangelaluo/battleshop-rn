@@ -22,7 +22,6 @@ import { Provider } from 'react-redux';
 import CustomActions from './CustomActions';
 var CompeteStatusBar = require("../components/CompeteStatusBar");
 console.disableYellowBox = true;
-
 // import firebaseBackend from '../config/firebase';
 
 export default class CompeteScreen extends React.Component {
@@ -75,7 +74,9 @@ export default class CompeteScreen extends React.Component {
      //     messages: GiftedChat.append(previousState.messages, messages),
      //   };
      // });
-     callback();
+     setTimeout(() => {
+       callback();
+     }, 1000);
      Keyboard.dismiss();
    }
 
@@ -114,19 +115,65 @@ export default class CompeteScreen extends React.Component {
      // }, 1000);
    // }
    onReceive(text) {
+     setMessages = [
+       {
+         text: 'Looks good! Check out what I found for $90',
+         image: '../../img/dress.jpg',
+       },
+       {
+         text: 'This is only $100!',
+         image: '../../img/dress.jpg',
+       },
+       {
+         text: 'I want this but $200 is a lot',
+         image: '../../img/dress2.jpg',
+       },
+       {
+         text: 'Prom dress for $180',
+         image: '../../img/dress3.jpg',
+       },
+       {
+         text: '$110',
+         image: require('../../img/dress4.jpg'),
+       },
+       {
+         text: '$Check this out! $95',
+
+         image: require('../../img/dress5.jpg'),
+       },
+       {
+         text: 'Is this too sparkly? $125',
+         image: require('../../img/dress8.jpg'),
+       },
+       {
+         text: 'What do you think? $120',
+         image: require('../../img/dress6.jpg'),
+       },
+       {
+         text: 'I love this one! $147',
+         image: require('../../img/dress7.jpg'),
+       },
+       {
+         text: 'Can I pull this off? $230',
+         image: require('../../img/dress9.jpg'),
+       },
+     ]
     //firebaseBackend.shared.on(message =>
+    messageI = setMessages[Math.floor(Math.random()*setMessages.length)];
       this.setState((previousState) => {
         return {
+
           messages: GiftedChat.append(previousState.messages, {
             _id: Math.round(Math.random() * 1000000),
-            text: "Hey, I found one for $100!",
+            text: messageI.text,
             createdAt: new Date(),
             user: {
               _id: 2,
-              name: 'Opponent',
+              name: opponents_arr[0],
               //avatar: '../../img/Rachel-Rouhana-Profile-Pic-Square.jpg',
             },
-            image: ('../../img/avatar.jpg')
+            image: messageI.image,
+            //image: ('../../img/avatar.jpg')
           }),
         }
       }
@@ -209,14 +256,14 @@ export default class CompeteScreen extends React.Component {
             labelS={'seconds'}
           />
           <TouchableOpacity onPress={() => Alert.alert(
-  'End Challenge',
-  'Are you sure you want to end this challenge?',
-  [
-    {text: 'End Challenge', onPress: () => this.endChallenge()},
-    {text: 'Cancel', onPress: () => {}},
-  ],
-  { cancelable: true }
-)} style={styles.endChallengeButton}>
+              'End Challenge',
+              'Are you sure you want to end this challenge?',
+              [
+                {text: 'End Challenge', onPress: () => this.endChallenge()},
+                {text: 'Cancel', onPress: () => {}},
+              ],
+              { cancelable: true }
+            )} style={styles.endChallengeButton}>
               <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 20, color: 'black', fontWeight: 'bold'}}>End Challenge</Text>
           </TouchableOpacity>
         </View>
@@ -228,6 +275,7 @@ export default class CompeteScreen extends React.Component {
           user={{
             _id: 1, // sent messages should have same user._id
           }}
+          forceRenderImage={true}
           renderBubble={this.renderBubble}
         />
           </View>
