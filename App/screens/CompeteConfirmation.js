@@ -37,10 +37,19 @@ export default class CompeteConfirmation extends React.Component {
            );
        } else{
          return(
-            <View>
-              <Text style={{...styles.H3Font, marginTop: 10, marginLeft: 30, marginRight: 30, marginBottom: 5, fontWeight: 'bold', textAlign: 'center'}}>Your job is to look for the cheapest {global.item} IN THE STORE within the time limit.</Text>
-              <Text style={{...styles.H3Font, marginTop: 30, marginLeft: 30, marginRight: 30, marginBottom: 5, fontWeight: 'bold', textAlign: 'center'}}>Send pictures and prices of items to the chat to try to win!</Text>
-              <Text style={{...styles.H3Font, marginTop: 30, marginLeft: 30, marginRight: 30, marginBottom: 5, fontWeight: 'bold', textAlign: 'center'}}>At the end of {global.time_string}, the person who found the item with lowest price will win!</Text>
+            <View style={{display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 10}}>
+              <View style={{width: '80%', display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+                <Image source={require('../../img/search.png')} style={{marginRight: 20, resizeMode: 'contain'}}/>
+                <Text style={{...styles.H3Font, width: '60%', marginTop: 10, marginRight: 30, fontWeight: 'bold', textAlign: 'center'}}>Your job is to look for the cheapest {global.item} IN THE STORE within the time limit.</Text>
+              </View>
+              <View style={{width: '80%', display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+                <Image source={require('../../img/camera-icon.png')} style={{marginRight: 20, resizeMode: 'contain'}}/>
+                <Text style={{...styles.H3Font, width: '60%', marginTop: 20, marginRight: 30, fontWeight: 'bold', textAlign: 'center'}}>Send pictures and prices of items to the chat to try to win!</Text>
+              </View>
+              <View style={{width: '80%', display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+                <Image source={require('../../img/money.png')} style={{marginRight: 20, resizeMode: 'contain'}}/>
+                <Text style={{...styles.H3Font, width: '60%', marginTop: 20, marginRight: 30, fontWeight: 'bold', textAlign: 'center'}}>At the end of {global.time_string}, the person who found the item with lowest price will win!</Text>
+              </View>
             </View>
          );
      }
@@ -49,11 +58,11 @@ export default class CompeteConfirmation extends React.Component {
   _renderOpponent(isDuel) {
        if (isDuel) {
            return (
-              <Text style={{...styles.titleFont, marginTop: 30, marginLeft: 30, marginRight: 30, marginBottom: 15, fontWeight: 'bold', textAlign: 'center'}}>You're about to start a "{global.hunt_or_save}" {global.duel_or_solo} with {global.opponents_arr[0]}!</Text>
+              <Text style={{...styles.titleFont, fontSize: 20, marginTop: 20, marginLeft: 30, marginRight: 30, marginBottom: 15, fontWeight: 'bold', textAlign: 'center'}}>You're about to start a "{global.hunt_or_save}" {global.duel_or_solo} with {global.opponents_arr[0]}!</Text>
            );
        } else{
          return(
-              <Text style={{...styles.titleFont, marginTop: 30, marginLeft: 30, marginRight: 30, marginBottom: 15, fontWeight: 'bold', textAlign: 'center'}}>You're about to start a "{global.hunt_or_save}" {global.duel_or_solo}!</Text>
+              <Text style={{...styles.titleFont, fontSize: 20, marginTop: 20, marginLeft: 30, marginRight: 30, marginBottom: 15, fontWeight: 'bold', textAlign: 'center'}}>You're about to start a "{global.hunt_or_save}" {global.duel_or_solo}!</Text>
          );
        }
    }
