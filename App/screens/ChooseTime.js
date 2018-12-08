@@ -21,7 +21,7 @@ import CountDown from 'react-native-countdown-component';
 import {styles} from '../styles.js';
 
 export default class ChooseTime extends React.Component {
- 
+
   toChallengeSent() {
     if (global.hours === 0 && global.minutes === 0) {
       Alert.alert(
@@ -135,7 +135,7 @@ if (global.duel_or_solo === "duel") {
           />
           </View>
         </View>
-        <TouchableOpacity onPress={() => this.toChallengeSent()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 15}]}>
+        <TouchableOpacity onPress={() => this.toChallengeSent()} style={[styles.button, {backgroundColor: '#7B1E7A', marginTop: 15}]}>
           <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 30, color: 'white'}}>Send Challenge</Text>
         </TouchableOpacity>
         <View style={styles.progressBar}>

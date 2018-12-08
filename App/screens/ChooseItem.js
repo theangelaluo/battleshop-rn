@@ -57,7 +57,7 @@ export default class ChooseItem extends React.Component {
   selectedDress() {
     global.item = 'a dress';
     this.setState({
-      dress_color: 'white',
+      dress_color: 'rgba(103, 49, 189, 0.55)',
       shirt_color: '#F2C57D',
       jacket_color: '#F2C57D',
       pants_color: '#F2C57D'
@@ -69,7 +69,7 @@ export default class ChooseItem extends React.Component {
     global.item = 'a shirt';
     this.setState({
       dress_color: '#F2C57D',
-      shirt_color: 'white',
+      shirt_color: 'rgba(103, 49, 189, 0.55)',
       jacket_color: '#F2C57D',
       pants_color: '#F2C57D'
     })
@@ -81,7 +81,7 @@ export default class ChooseItem extends React.Component {
     this.setState({
       dress_color: '#F2C57D',
       shirt_color: '#F2C57D',
-      jacket_color: 'white',
+      jacket_color: 'rgba(103, 49, 189, 0.55)',
       pants_color: '#F2C57D'
     })
   //  this.toChooseBudget();
@@ -93,7 +93,7 @@ export default class ChooseItem extends React.Component {
       dress_color: '#F2C57D',
       shirt_color: '#F2C57D',
       jacket_color: '#F2C57D',
-      pants_color: 'white'
+      pants_color: 'rgba(103, 49, 189, 0.55)'
     })
   //  this.toChooseBudget();
   }
@@ -109,36 +109,80 @@ export default class ChooseItem extends React.Component {
 
   render() {
     return (
-      <View style = {{flex: 1, backgroundColor: '#F9564F',}}>
+      <View style = {{flex: 1, backgroundColor: '#F9564F',display: 'flex', alignItems: 'center'}}>
         <Text style={{marginTop: 30, color: "white", fontWeight: 'bold', textAlign: 'center', fontSize: 36}}>Choose Your Item</Text>
-        <View style={{height: '70%'}}>
-        <View style ={{height: '90%'}}>
-          <ScrollView contentContainerStyle={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-              <TouchableOpacity style={[styles.itemButton, {backgroundColor: this.state.dress_color}]} onPress={this.selectedDress.bind(this)}>
-                <Text style={{textAlign: 'center', fontSize: 24}}>Dress</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={[styles.itemButton, {backgroundColor: this.state.shirt_color}]} onPress={this.selectedShirt.bind(this)}>
-                <Text style={{textAlign: 'center', fontSize: 24}}>Shirt</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={[styles.itemButton, {backgroundColor: this.state.jacket_color}]} onPress={this.selectedJacket.bind(this)}>
-                <Text style={{textAlign: 'center', fontSize: 24}}>Jacket</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={[styles.itemButton, {backgroundColor: this.state.pants_color}]} onPress={this.selectedPants.bind(this)}>
-                <Text style={{textAlign: 'center', fontSize: 24}}>Pants</Text>
-              </TouchableOpacity>
-              <View style={[styles.textBoxSurroundings, {marginTop: 20}]}>
-                <TextInput
-                style={styles.textBox}
-                onChangeText={this.handleInputChange}
-                value={this.state.item_text}
-                />
+
+        <View style={[styles.textBoxSurroundings, {width: '95%', marginTop: 20, marginBottom: 20}]}>
+          <TextInput
+          style={styles.textBox}
+          onChangeText={this.handleInputChange}
+          value={this.state.item_text}
+          />
+        </View>
+
+        <View style={{height: '48%', width: '95%'}}>
+
+          <ScrollView contentContainerStyle={{width: '100%'}}>
+
+          <TouchableOpacity onPress={this.selectedDress.bind(this)}>
+            <View style={{borderColor: "#404040", borderBottomWidth:1, paddingLeft: 15, paddingRight: 20, paddingTop: 10, paddingBottom: 10, backgroundColor: this.state.dress_color, width: '100%', flexDirection: 'row', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+              <View style={{display: 'flex', flexDirection: 'row'}}>
+              <Image source={require('../../img/dress.png')} style={{resizeMode: 'contain'}}/>
+              <View style={{marginLeft: 15, display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+                <Text style={{fontSize: 16, fontWeight: 'bold'}}>Dress</Text>
               </View>
+              </View>
+              <Image source={require('../../img/black-arrow-small.png')} style={{resizeMode: 'contain'}}/>
+            </View>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={this.selectedShirt.bind(this)}>
+            <View style={{borderColor: "#404040", borderBottomWidth:1, paddingLeft: 15, paddingRight: 20, paddingTop: 10, paddingBottom: 10, backgroundColor: this.state.shirt_color, width: '100%', flexDirection: 'row', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+              <View style={{display: 'flex', flexDirection: 'row'}}>
+              <Image source={require('../../img/shirt.png')} style={{resizeMode: 'contain'}}/>
+              <View style={{marginLeft: 15, display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+                <Text style={{fontSize: 16, fontWeight: 'bold'}}>Shirt</Text>
+              </View>
+              </View>
+              <Image source={require('../../img/black-arrow-small.png')} style={{resizeMode: 'contain'}}/>
+            </View>
+          </TouchableOpacity>
+
+
+          <TouchableOpacity onPress={this.selectedJacket.bind(this)}>
+            <View style={{borderColor: "#404040", borderBottomWidth:1, paddingLeft: 15, paddingRight: 20, paddingTop: 10, paddingBottom: 10, backgroundColor: this.state.jacket_color, width: '100%', flexDirection: 'row', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+              <View style={{display: 'flex', flexDirection: 'row'}}>
+              <Image source={require('../../img/jacket-icon.png')} style={{resizeMode: 'contain'}}/>
+              <View style={{marginLeft: 15, display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+                <Text style={{fontSize: 16, fontWeight: 'bold'}}>Jacket</Text>
+              </View>
+              </View>
+              <Image source={require('../../img/black-arrow-small.png')} style={{resizeMode: 'contain'}}/>
+            </View>
+          </TouchableOpacity>
+
+
+          <TouchableOpacity onPress={this.selectedPants.bind(this)}>
+            <View style={{borderColor: "#404040", borderBottomWidth:1, paddingLeft: 15, paddingRight: 20, paddingTop: 10, paddingBottom: 10, backgroundColor: this.state.pants_color, width: '100%', flexDirection: 'row', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+              <View style={{display: 'flex', flexDirection: 'row'}}>
+              <Image source={require('../../img/pants.png')} style={{resizeMode: 'contain'}}/>
+              <View style={{marginLeft: 15, display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+                <Text style={{fontSize: 16, fontWeight: 'bold'}}>Pants</Text>
+              </View>
+              </View>
+              <Image source={require('../../img/black-arrow-small.png')} style={{resizeMode: 'contain'}}/>
+            </View>
+          </TouchableOpacity>
+
+
             </ScrollView>
             </View>
-              <TouchableOpacity onPress={() => this.press()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 25, marginBottom: 25}]}>
-                <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 30, color: 'white'}}>Continue</Text>
+
+              <TouchableOpacity onPress={() => this.press()} style={[styles.button, {backgroundColor: '#7B1E7A', marginTop: 15, marginBottom: 25}]}>
+                <Text style={{paddingLeft: 10, paddingRight: 10, textAlign: 'center', fontSize: 30, color: 'white'}}>Continue</Text>
               </TouchableOpacity>
-            </View>
+
+
             <View style={{...styles.progressBar, left:'10%'}}>
               <Progress.Bar progress={0.3} width={300} progress={0.5} color={'rgba(123, 30, 122, 1)'}/>
             </View>

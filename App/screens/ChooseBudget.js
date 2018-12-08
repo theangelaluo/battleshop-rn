@@ -91,7 +91,7 @@ export default class ChooseBudget extends React.Component {
             />
           </View>
 
-        <TouchableOpacity onPress={() => this.toChooseTime()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 25}]}>
+        <TouchableOpacity onPress={() => this.toChooseTime()} style={[styles.button, {backgroundColor: '#7B1E7A', marginTop: 25}]}>
           <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 30, color: 'white'}}>Continue</Text>
         </TouchableOpacity>
         <View style={styles.progressBar}>
