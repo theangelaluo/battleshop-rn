@@ -42,7 +42,7 @@ export default class ChallengeSent extends React.Component {
         <Text style={{marginTop: 20, fontSize: 30, color: 'white', textAlign: 'center'}}>
           We will let you know when {global.opponents_arr[0]} accepts the challenge.
         </Text>
-        <TouchableOpacity onPress={() => this.backToRecentChallenges()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 30}]}>
+        <TouchableOpacity onPress={() => this.backToRecentChallenges()} style={[styles.button, {backgroundColor: '#7B1E7A', marginTop: 30}]}>
           <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 20, color: 'white'}}>Back to Home</Text>
         </TouchableOpacity>
         <View style={styles.countdown}>

@@ -68,7 +68,7 @@ export default class CompeteConfirmation extends React.Component {
 
         {this._renderOpponent(global.duel_or_solo == "duel")}
         {this._renderInstructions(global.hunt_or_save == "hunt")}
-        <TouchableOpacity onPress={() => this.startChallenge()} style={[styles.button, styles.shadow, {backgroundColor: '#7B1E7A', borderRadius: 15, marginTop: 20}]}>
+        <TouchableOpacity onPress={() => this.startChallenge()} style={[styles.button,  {backgroundColor: '#7B1E7A',  marginTop: 20}]}>
           <Text style={{paddingRight: 15, paddingLeft: 15, textAlign: 'center', fontSize: 20, color: 'white', fontSize: '24'}}>Start Challenge!</Text>
         </TouchableOpacity>
       </View>
